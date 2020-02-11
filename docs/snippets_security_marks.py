@@ -113,7 +113,7 @@ def test_add_to_asset(asset_name):
     # Its format is "organization/{organization_id}/assets/{asset_id}
     # e.g.:
     # asset_name = organizations/123123342/assets/12312321
-    marks_name = client.security_marks_patht(asset_name)
+    marks_name = client.asset_security_marks_path(asset_name)
 
     # Notice the suffix after "marks." in the field mask matches the keys
     # in marks.
@@ -146,7 +146,7 @@ def test_clear_from_asset(asset_name):
     # Its format is "organization/{organization_id}/assets/{asset_id}
     # e.g.:
     # asset_name = organizations/123123342/assets/12312321
-    marks_name = client.security_marks(asset_name)
+    marks_name = client.asset_security_marks_path(asset_name)
 
     field_mask = field_mask_pb2.FieldMask(paths=["marks.key_a", "marks.key_b"])
 
@@ -203,7 +203,7 @@ def test_add_to_finding(finding_name):
     # "organizations/{org_id}/sources/{source_id}/findings/{finding_id}"
     # e.g.:
     # finding_name = "organizations/1112/sources/1234/findings/findingid"
-    finding_marks_name = client.asset_security_marks_path(finding_name)
+    finding_marks_name = client.findings_security_marks_path(finding_name)
 
     # Notice the suffix after "marks." in the field mask matches the keys
     # in marks.
