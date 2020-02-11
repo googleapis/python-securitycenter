@@ -34,7 +34,7 @@ def asset_name(organization_id):
     client = securitycenter.SecurityCenterClient()
     # organization_id is the numeric ID of the organization.
     # organization_id=1234567777
-    org_name = "organizations/{org_id}".format(org_id=organization_id)
+    org_name = client.organization_path(organization_id)
     assets = list(client.list_assets(org_name))
     # Select a random asset to avoid collision between integration tests.
     asset = (random.sample(assets, 1)[0]).asset.name
@@ -53,7 +53,7 @@ def source_name(organization_id):
     from google.cloud import securitycenter
 
     client = securitycenter.SecurityCenterClient()
-    org_name = "organizations/{org_id}".format(org_id=organization_id)
+    org_name = client.organization_path(organization_id)
     source = client.create_source(
         org_name,
         {
@@ -112,7 +112,7 @@ def test_add_to_asset(asset_name):
     # Its format is "organization/{organization_id}/assets/{asset_id}
     # e.g.:
     # asset_name = organizations/123123342/assets/12312321
-    marks_name = "{}/securityMarks".format(asset_name)
+    marks_name = client.security_marks_patht(asset_name)
 
     # Notice the suffix after "marks." in the field mask matches the keys
     # in marks.
@@ -145,7 +145,7 @@ def test_clear_from_asset(asset_name):
     # Its format is "organization/{organization_id}/assets/{asset_id}
     # e.g.:
     # asset_name = organizations/123123342/assets/12312321
-    marks_name = "{}/securityMarks".format(asset_name)
+    marks_name = client.security_marks(asset_name)
 
     field_mask = field_mask_pb2.FieldMask(paths=["marks.key_a", "marks.key_b"])
 
@@ -177,7 +177,7 @@ def test_delete_and_update_marks(asset_name):
     # Its format is "organization/{organization_id}/assets/{asset_id}
     # e.g.:
     # asset_name = organizations/123123342/assets/12312321
-    marks_name = "{}/securityMarks".format(asset_name)
+    marks_name = client.security_marks(asset_name)
 
     field_mask = field_mask_pb2.FieldMask(paths=["marks.key_a", "marks.key_b"])
     marks = {"key_a": "new_value_for_a"}
@@ -202,7 +202,7 @@ def test_add_to_finding(finding_name):
     # "organizations/{org_id}/sources/{source_id}/findings/{finding_id}"
     # e.g.:
     # finding_name = "organizations/1112/sources/1234/findings/findingid"
-    finding_marks_name = "{}/securityMarks".format(finding_name)
+    finding_marks_name = client.asset_security_marks_path(finding_name)
 
     # Notice the suffix after "marks." in the field mask matches the keys
     # in marks.
@@ -229,7 +229,7 @@ def test_list_assets_with_query_marks(organization_id, asset_name):
 
     # organization_id is the numeric ID of the organization.
     # organization_id=1234567777
-    org_name = "organizations/{org_id}".format(org_id=organization_id)
+    org_name = client.organization_path(organization_id)
 
     marks_filter = 'security_marks.marks.key_a = "value_a"'
     # Call the API and print results.

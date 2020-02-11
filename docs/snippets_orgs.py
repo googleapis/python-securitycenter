@@ -32,9 +32,7 @@ def test_get_settings(organization_id):
     client = securitycenter.SecurityCenterClient()
     # organization_id is numeric ID for the organization. e.g.
     # organization_id = "111112223333"
-    org_settings_name = "organizations/{org_id}/organizationSettings".format(
-        org_id=organization_id
-    )
+    org_settings_name = client.organization_path(organization_id)
 
     org_settings = client.get_organization_settings(org_settings_name)
     print(org_settings)
@@ -52,9 +50,7 @@ def test_update_asset_discovery_org_settings(organization_id):
     client = securitycenter.SecurityCenterClient()
     # organization_id is numeric ID for the organization. e.g.
     # organization_id = "111112223333"
-    org_settings_name = "organizations/{org_id}/organizationSettings".format(
-        org_id=organization_id
-    )
+    org_settings_name = client.organization_settings_path(organization_id)
     # Only update the enable_asset_discovery_value (leave others untouched).
     field_mask = field_mask_pb2.FieldMask(paths=["enable_asset_discovery"])
     # Call the service.
