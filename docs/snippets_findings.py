@@ -32,7 +32,7 @@ def source_name(organization_id):
     from google.cloud import securitycenter
 
     client = securitycenter.SecurityCenterClient()
-    org_name = client.organization_path(organization_id)
+    org_name = "organizations/{org_id}".format(org_id=organization_id)
 
     source = client.create_source(
         org_name,
@@ -52,7 +52,7 @@ def test_create_source(organization_id):
     client = securitycenter.SecurityCenterClient()
     # organization_id is the numeric ID of the organization. e.g.:
     # organization_id = "111122222444"
-    org_name = client.organization_path(organization_id)
+    org_name = "organizations/{org_id}".format(org_id=organization_id)
 
     created = client.create_source(
         org_name,
@@ -500,7 +500,7 @@ def test_group_all_findings(organization_id):
 
     # organization_id is the numeric ID of the organization. e.g.:
     # organization_id = "111122222444"
-    org_name = client.organization_path(organization_id)
+    org_name = "organizations/{org_id}".format(org_id=organization_id)
     # The "sources/-" suffix lists findings across all sources.  You
     # also use a specific source_name instead.
     all_sources = "{org_name}/sources/-".format(org_name=org_name)

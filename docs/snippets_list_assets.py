@@ -53,7 +53,7 @@ def test_list_assets_with_filters(organization_id):
 
     # organization_id is the numeric ID of the organization.
     # organization_id = "1234567777"
-    org_name = client.organization_path(organization_id)
+    org_name = "organizations/{org_id}".format(org_id=organization_id)
 
     project_filter = (
         "security_center_properties.resource_type="
@@ -80,7 +80,7 @@ def test_list_assets_with_filters_and_read_time(organization_id):
 
     # organization_id is the numeric ID of the organization.
     # organization_id = "1234567777"
-    org_name = client.organization_path(organization_id)
+    org_name = "organizations/{org_id}".format(org_id=organization_id)
 
     project_filter = (
         "security_center_properties.resource_type="
@@ -114,7 +114,7 @@ def test_list_point_in_time_changes(organization_id):
 
     # organization_id is the numeric ID of the organization.
     # organization_id = "1234567777"
-    org_name = client.organization_path(organization_id)
+    org_name = "organizations/{org_id}".format(org_id=organization_id)
     project_filter = (
         "security_center_properties.resource_type="
         + '"google.cloud.resourcemanager.Project"'
@@ -145,7 +145,7 @@ def test_group_assets(organization_id):
 
     # organization_id is the numeric ID of the organization.
     # organization_id = "1234567777"
-    org_name = client.organization_path(organization_id)
+    org_name = "organizations/{org_id}".format(org_id=organization_id)
 
     group_by_type = "security_center_properties.resource_type"
 
@@ -166,7 +166,7 @@ def test_group_filtered_assets(organization_id):
 
     # organization_id is the numeric ID of the organization.
     # organization_id = "1234567777"
-    org_name = client.organization_path(organization_id)
+    org_name = "organizations/{org_id}".format(org_id=organization_id)
 
     group_by_type = "security_center_properties.resource_type"
     only_projects = (
@@ -198,7 +198,7 @@ def test_group_assets_by_changes(organization_id):
 
     # organization_id is the numeric ID of the organization.
     # organization_id = "1234567777"
-    org_name = client.organization_path(organization_id)
+    org_name = "organizations/{org_id}".format(org_id=organization_id)
     result_iterator = client.group_assets(
         org_name, group_by="state_change", compare_duration=duration_proto
     )
