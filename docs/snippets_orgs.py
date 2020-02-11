@@ -32,7 +32,7 @@ def test_get_settings(organization_id):
     client = securitycenter.SecurityCenterClient()
     # organization_id is numeric ID for the organization. e.g.
     # organization_id = "111112223333"
-    org_settings_name = client.organization_path(organization_id)
+    org_settings_name = client.organization_settings_path(organization_id)
 
     org_settings = client.get_organization_settings(org_settings_name)
     print(org_settings)
