@@ -76,6 +76,9 @@ def finding_name(source_name):
     now_proto = Timestamp()
     now_proto.GetCurrentTime()
 
+    # REMOVE ME
+    print(f"SOURCE NAME: {source_name}")
+
     finding = client.create_finding(
         source_name,
         "scfinding",
