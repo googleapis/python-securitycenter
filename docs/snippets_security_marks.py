@@ -83,7 +83,7 @@ def finding_name(source_name):
             "state": Finding.ACTIVE,
             "category": "C1",
             "event_time": now_proto,
-            "resource_name": "//cloudresourcemanager.googleapis.com/{source_name}".format(source_name=source_name),
+            "resource_name": "//cloudresourcemanager.googleapis.com/organizations/1234",
         },
     )
     client.create_finding(
@@ -93,6 +93,7 @@ def finding_name(source_name):
             "state": Finding.ACTIVE,
             "category": "MEDIUM_RISK_ONE",
             "event_time": now_proto,
+            "resource_name": "//cloudresourcemanager.googleapis.com/organizations/1234",
         },
     )
 
