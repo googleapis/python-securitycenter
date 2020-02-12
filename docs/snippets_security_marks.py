@@ -65,7 +65,7 @@ def source_name(organization_id):
 
 
 @pytest.fixture(scope="module")
-def finding_name(source_name):
+def finding_name(organization_id, source_name):
     """Creates a new finding and returns it name."""
     from google.cloud import securitycenter
     from google.cloud.securitycenter_v1.proto.finding_pb2 import Finding
@@ -75,10 +75,7 @@ def finding_name(source_name):
 
     now_proto = Timestamp()
     now_proto.GetCurrentTime()
-
-    # REMOVE ME
-    print(f"SOURCE NAME: {source_name}")
-
+    
     finding = client.create_finding(
         source_name,
         "scfinding",
@@ -86,7 +83,7 @@ def finding_name(source_name):
             "state": Finding.ACTIVE,
             "category": "C1",
             "event_time": now_proto,
-            "resource_name": "//cloudresourcemanager.googleapis.com/organizations/11232",
+            "resource_name": "//cloudresourcemanager.googleapis.com/organizations/{org_id}".format(org_id=organization_id),
         },
     )
     client.create_finding(
