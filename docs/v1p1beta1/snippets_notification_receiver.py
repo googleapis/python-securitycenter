@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Copyright 2019 Google LLC
+# Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""Demos for working with security marks."""
+"""Demo for receiving notifications."""
 
 def receive_notifications(project_id, subscription_name):
   # [START scc_receive_notifications]
@@ -48,3 +48,4 @@ def receive_notifications(project_id, subscription_name):
   except:
     streaming_pull_future.cancel()
   # [END scc_receive_notifications]
+  return True

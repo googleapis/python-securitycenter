@@ -147,6 +147,21 @@ def snippets(session):
             session.env['GCLOUD_ORGANIZATION'] = '1081635000895'
         else:
             session.skip('Credentials must be set via environment variable.')
+    if not os.environ.get('GCLOUD_PROJECT', ''):
+        if 'KOKORO_GFILE_DIR' in os.environ:
+            session.env['GCLOUD_PROJECT'] = 'project-a-id'
+        else:
+            session.skip('Credentials must be set via environment variable.')
+    if not os.environ.get('GCLOUD_PUBSUB_TOPIC', ''):
+        if 'KOKORO_GFILE_DIR' in os.environ:
+            session.env['GCLOUD_PUBSUB_TOPIC'] = 'projects/project-a-id/topics/notifications-sample-topic'
+        else:
+            session.skip('Credentials must be set via environment variable.')
+    if not os.environ.get('GCLOUD_PUBSUB_SUBSCRIPTION', ''):
+        if 'KOKORO_GFILE_DIR' in os.environ:
+            session.env['GCLOUD_PUBSUB_SUBSCRIPTION'] = 'notification_sample_subscription'
+        else:
+            session.skip('Credentials must be set via environment variable.')
 
 
     # Install all test dependencies, then install local packages in place.

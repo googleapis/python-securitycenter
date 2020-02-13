@@ -47,6 +47,7 @@ def create_notification_config(organization_id, notification_config_id,
 
   print(created_notification_config)
   # [END scc_create_notification_config]
+  return created_notification_config
 
 
 def delete_notification_config(organization_id, notification_config_id):
@@ -65,6 +66,7 @@ def delete_notification_config(organization_id, notification_config_id):
   client.delete_notification_config(notification_config_name)
   print("Deleted notification config: {}".format(notification_config_name))
   # [END scc_delete_notification_config]
+  return True
 
 
 def get_notification_config(organization_id, notification_config_id):
@@ -83,6 +85,7 @@ def get_notification_config(organization_id, notification_config_id):
   notification_config = client.get_notification_config(notification_config_name)
   print("Got notification config: {}".format(notification_config))
   # [END scc_get_notification_config]
+  return notification_config
 
 
 def list_notification_configs(organization_id):
@@ -99,6 +102,7 @@ def list_notification_configs(organization_id):
   for i, config in enumerate(notification_configs_iterator):
     print("{}: notification_config: {}".format(i, config))
   # [END scc_list_notification_configs]
+  return notification_configs_iterator
 
 
 def update_notification_config(organization_id, notification_config_id,
@@ -133,3 +137,4 @@ def update_notification_config(organization_id, notification_config_id,
 
   print(updated_notification_config)
   # [END scc_update_notification_config]
+  return updated_notification_config
