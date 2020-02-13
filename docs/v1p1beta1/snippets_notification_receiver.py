@@ -44,7 +44,7 @@ def receive_notifications(project_id, subscription_name):
 
   print("Listening for messages on {}...\n".format(subscription_path))
   try:
-    streaming_pull_future.result()
+    streaming_pull_future.result(timeout=1) # Block for 1 second
   except:
     streaming_pull_future.cancel()
   # [END scc_receive_notifications]
