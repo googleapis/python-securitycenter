@@ -17,7 +17,7 @@
 
 import os
 
-from google.cloud import securitycenter as securitycenter
+from google.cloud import securitycenter_v1p1beta1 as securitycenter
 from google.cloud.securitycenter_v1p1beta1.proto.notification_config_pb2 import (
     NotificationConfig,
 )
@@ -29,7 +29,7 @@ import snippets_notification_receiver
 ORG_ID = os.environ["GCLOUD_ORGANIZATION"]
 PROJECT_ID = os.environ["GCLOUD_PROJECT"]
 PUBSUB_TOPIC = os.environ["GLCOUD_PUBSUB_TOPIC"]
-PUBSUB_SUBSCRIPTION = os.environ["GCLOUD_PUSBUSB_SUBSCRIPTION"]
+PUBSUB_SUBSCRIPTION = os.environ["GCLOUD_PUBUSB_SUBSCRIPTION"]
 
 CONFIG_ID = "new-notification-pytest"
 
@@ -94,7 +94,7 @@ def test_create_notification_config():
 def test_delete_notification_config(deleted_notification_config):
     assert (
         snippets_notification_configs.delete_notification_config(ORG_ID, CONFIG_ID)
-        is True
+        == True
     )
 
 
@@ -126,5 +126,5 @@ def test_receive_notifications():
         snippets_notification_receiver.receive_notifications(
             PROJECT_ID, PUBSUB_SUBSCRIPTION
         )
-        is True
+        == True
     )
