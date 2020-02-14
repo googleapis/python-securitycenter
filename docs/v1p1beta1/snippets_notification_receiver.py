@@ -15,37 +15,44 @@
 # limitations under the License.
 """Demo for receiving notifications."""
 
+
 def receive_notifications(project_id, subscription_name):
-  # [START scc_receive_notifications]
-  # Requires https://cloud.google.com/pubsub/docs/quickstart-client-libraries#pubsub-client-libraries-python
-  from google.cloud import pubsub_v1
-  from google.cloud.securitycenter_v1p1beta1.proto.notification_message_pb2 import NotificationMessage
-  from google.protobuf import json_format
+    # [START scc_receive_notifications]
+    # Requires https://cloud.google.com/pubsub/docs/quickstart-client-libraries#pubsub-client-libraries-python
+    from google.cloud import pubsub_v1
+    from google.cloud.securitycenter_v1p1beta1.proto.notification_message_pb2 import (
+        NotificationMessage,
+    )
+    from google.protobuf import json_format
 
-  # TODO: project_id = "your-project-id"
-  # TODO: subscription_name = "your-subscription-name"
+    # TODO: project_id = "your-project-id"
+    # TODO: subscription_name = "your-subscription-name"
 
-  def callback(message):
-    print("Received message")
+    def callback(message):
+        print("Received message")
 
-    notification_msg = NotificationMessage()
-    json_format.Parse(message.data, notification_msg)
+        notification_msg = NotificationMessage()
+        json_format.Parse(message.data, notification_msg)
 
-    print("Notification config name: {}".format(notification_msg.notification_config_name))
-    print("Finding: {}".format(notification_msg.finding))
+        print(
+            "Notification config name: {}".format(
+                notification_msg.notification_config_name
+            )
+        )
+        print("Finding: {}".format(notification_msg.finding))
 
-    # Ack the message to prevent it from being pulled again
-    message.ack()
+        # Ack the message to prevent it from being pulled again
+        message.ack()
 
-  subscriber = pubsub_v1.SubscriberClient()
-  subscription_path = subscriber.subscription_path(project_id, subscription_name)
+    subscriber = pubsub_v1.SubscriberClient()
+    subscription_path = subscriber.subscription_path(project_id, subscription_name)
 
-  streaming_pull_future = subscriber.subscribe(subscription_path, callback=callback)
+    streaming_pull_future = subscriber.subscribe(subscription_path, callback=callback)
 
-  print("Listening for messages on {}...\n".format(subscription_path))
-  try:
-    streaming_pull_future.result(timeout=1) # Block for 1 second
-  except:
-    streaming_pull_future.cancel()
-  # [END scc_receive_notifications]
-  return True
+    print("Listening for messages on {}...\n".format(subscription_path))
+    try:
+        streaming_pull_future.result(timeout=1)  # Block for 1 second
+    except:
+        streaming_pull_future.cancel()
+    # [END scc_receive_notifications]
+    return True
