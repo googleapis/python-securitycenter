@@ -29,7 +29,7 @@ import snippets_notification_receiver
 ORG_ID = os.environ["GCLOUD_ORGANIZATION"]
 PROJECT_ID = os.environ["GCLOUD_PROJECT"]
 PUBSUB_TOPIC = os.environ["GCLOUD_PUBSUB_TOPIC"]
-PUBSUB_SUBSCRIPTION = os.environ["GCLOUD_PUBUSB_SUBSCRIPTION"]
+PUBSUB_SUBSCRIPTION = os.environ["GCLOUD_PUBSUB_SUBSCRIPTION"]
 
 CONFIG_ID = "new-notification-pytest"
 
