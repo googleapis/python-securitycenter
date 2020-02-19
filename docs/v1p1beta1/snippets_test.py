@@ -16,6 +16,7 @@
 """Tests for snippets."""
 
 import os
+import uuid
 
 from google.cloud import securitycenter_v1p1beta1 as securitycenter
 from google.cloud.securitycenter_v1p1beta1.proto.notification_config_pb2 import (
@@ -31,7 +32,10 @@ PROJECT_ID = os.environ["GCLOUD_PROJECT"]
 PUBSUB_TOPIC = os.environ["GCLOUD_PUBSUB_TOPIC"]
 PUBSUB_SUBSCRIPTION = os.environ["GCLOUD_PUBSUB_SUBSCRIPTION"]
 
-CONFIG_ID = "new-notification-pytest"
+CREATE_CONFIG_ID = "new-notification-pytest" + str(uuid.uuid1())
+DELETE_CONFIG_ID = "new-notification-pytest" + str(uuid.uuid1())
+GET_CONFIG_ID = "new-notification-pytest" + str(uuid.uuid1())
+UPDATE_CONFIG_ID = "new-notification-pytest" + str(uuid.uuid1())
 
 
 def cleanup_notification_config(notification_config_id):
@@ -44,14 +48,14 @@ def cleanup_notification_config(notification_config_id):
 
 
 @pytest.fixture
-def new_notification_config():
+def new_notification_config_for_update():
     client = securitycenter.SecurityCenterClient()
 
     org_name = "organizations/{org_id}".format(org_id=ORG_ID)
 
     created_notification_config = client.create_notification_config(
         org_name,
-        CONFIG_ID,
+        UPDATE_CONFIG_ID,
         {
             "description": "Notification for active findings",
             "pubsub_topic": PUBSUB_TOPIC,
@@ -60,7 +64,26 @@ def new_notification_config():
         },
     )
     yield created_notification_config
-    cleanup_notification_config(CONFIG_ID)
+    cleanup_notification_config(UPDATE_CONFIG_ID)
+
+@pytest.fixture
+def new_notification_config_for_get():
+    client = securitycenter.SecurityCenterClient()
+
+    org_name = "organizations/{org_id}".format(org_id=ORG_ID)
+
+    created_notification_config = client.create_notification_config(
+        org_name,
+        GET_CONFIG_ID,
+        {
+            "description": "Notification for active findings",
+            "pubsub_topic": PUBSUB_TOPIC,
+            "event_type": NotificationConfig.FINDING,
+            "streaming_config": {"filter": "",},
+        },
+    )
+    yield created_notification_config
+    cleanup_notification_config(GET_CONFIG_ID)
 
 
 @pytest.fixture
@@ -71,7 +94,7 @@ def deleted_notification_config():
 
     created_notification_config = client.create_notification_config(
         org_name,
-        CONFIG_ID,
+        DELETE_CONFIG_ID,
         {
             "description": "Notification for active findings",
             "pubsub_topic": PUBSUB_TOPIC,
@@ -84,27 +107,25 @@ def deleted_notification_config():
 
 def test_create_notification_config():
     created_notification_config = snippets_notification_configs.create_notification_config(
-        ORG_ID, CONFIG_ID, PUBSUB_TOPIC
+        ORG_ID, CREATE_CONFIG_ID, PUBSUB_TOPIC
     )
     assert created_notification_config is not None
 
-    cleanup_notification_config(CONFIG_ID)
+    cleanup_notification_config(CREATE_CONFIG_ID)
 
 
 def test_delete_notification_config(deleted_notification_config):
     assert (
-        snippets_notification_configs.delete_notification_config(ORG_ID, CONFIG_ID)
+        snippets_notification_configs.delete_notification_config(ORG_ID, DELETE_CONFIG_ID)
         == True
     )
 
 
-def test_get_notification_config(new_notification_config):
+def test_get_notification_config(new_notification_config_for_get):
     retrieved_config = snippets_notification_configs.get_notification_config(
-        ORG_ID, CONFIG_ID
+        ORG_ID, GET_CONFIG_ID
     )
     assert retrieved_config is not None
-
-    cleanup_notification_config(CONFIG_ID)
 
 
 def test_list_notification_configs():
@@ -112,13 +133,11 @@ def test_list_notification_configs():
     assert iterator is not None
 
 
-def test_update_notification_config(new_notification_config):
+def test_update_notification_config(new_notification_config_for_update):
     updated_config = snippets_notification_configs.update_notification_config(
-        ORG_ID, CONFIG_ID, PUBSUB_TOPIC
+        ORG_ID, UPDATE_CONFIG_ID, PUBSUB_TOPIC
     )
     assert updated_config is not None
-
-    cleanup_notification_config(CONFIG_ID)
 
 
 def test_receive_notifications():
