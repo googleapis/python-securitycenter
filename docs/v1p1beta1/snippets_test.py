@@ -66,6 +66,7 @@ def new_notification_config_for_update():
     yield created_notification_config
     cleanup_notification_config(UPDATE_CONFIG_ID)
 
+
 @pytest.fixture
 def new_notification_config_for_get():
     client = securitycenter.SecurityCenterClient()
@@ -116,7 +117,9 @@ def test_create_notification_config():
 
 def test_delete_notification_config(deleted_notification_config):
     assert (
-        snippets_notification_configs.delete_notification_config(ORG_ID, DELETE_CONFIG_ID)
+        snippets_notification_configs.delete_notification_config(
+            ORG_ID, DELETE_CONFIG_ID
+        )
         == True
     )
 
