@@ -70,7 +70,6 @@ def default(session):
     # Install all test dependencies, then install this package in-place.
     session.install("mock", "pytest", "pytest-cov")
     session.install("-e", ".")
-    session.install("-r", "docs/requirements.txt")
 
     # Run py.test against the unit tests.
     session.run(
@@ -167,6 +166,7 @@ def snippets(session):
 
     # Install all test dependencies, then install local packages in place.
     session.install('mock', 'pytest')
+    session.install("-r", "docs/requirements.txt")
     session.install('-e', '.')
     session.run(
         'py.test',
