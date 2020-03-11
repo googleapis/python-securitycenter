@@ -491,8 +491,8 @@ Asset = _reflection.GeneratedProtocolMessageType(
             dict(
                 DESCRIPTOR=_ASSET_SECURITYCENTERPROPERTIES,
                 __module__="google.cloud.securitycenter_v1.proto.asset_pb2",
-                __doc__="""Cloud SCC managed properties. These properties are managed
-    by Cloud SCC and cannot be modified by the user.
+                __doc__="""Cloud SCC managed properties. These properties are managed by Cloud SCC
+    and cannot be modified by the user.
     
     
     Attributes:
@@ -533,9 +533,9 @@ Asset = _reflection.GeneratedProtocolMessageType(
             dict(
                 DESCRIPTOR=_ASSET_IAMPOLICY,
                 __module__="google.cloud.securitycenter_v1.proto.asset_pb2",
-                __doc__="""IAM Policy information associated with the GCP resource described by the
-    Cloud SCC asset. This information is managed and defined by the GCP
-    resource and cannot be modified by the user.
+                __doc__="""IAM Policy information associated with the GCP resource
+    described by the Cloud SCC asset. This information is managed and
+    defined by the GCP resource and cannot be modified by the user.
     
     
     Attributes:
