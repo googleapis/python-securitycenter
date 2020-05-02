@@ -21,10 +21,16 @@ import enum
 
 class NullValue(enum.IntEnum):
     """
-    ``NullValue`` is a singleton enumeration to represent the null value for
-    the ``Value`` type union.
+    A designation of a specific field behavior (required, output only,
+    etc.) in protobuf messages.
 
-    The JSON representation for ``NullValue`` is JSON ``null``.
+    Examples:
+
+    string name = 1 [(google.api.field_behavior) = REQUIRED]; State state =
+    1 [(google.api.field_behavior) = OUTPUT_ONLY]; google.protobuf.Duration
+    ttl = 1 [(google.api.field_behavior) = INPUT_ONLY];
+    google.protobuf.Timestamp expire_time = 1 [(google.api.field_behavior) =
+    OUTPUT_ONLY, (google.api.field_behavior) = IMMUTABLE];
 
     Attributes:
       NULL_VALUE (int): Null value.
@@ -54,11 +60,13 @@ class ListAssetsResponse(object):
     class ListAssetsResult(object):
         class State(enum.IntEnum):
             """
-            State of the asset.
+            The hostname for this service. This should be specified with no
+            prefix or protocol.
 
-            When querying across two points in time this describes the change
-            between the two points: ADDED, REMOVED, or ACTIVE. If there was no
-            compare\_duration supplied in the request the state should be: UNUSED
+            Example:
+
+            service Foo { option (google.api.default_host) = "foo.googleapi.com";
+            ... }
 
             Attributes:
               STATE_UNSPECIFIED (int): Unspecified state.
@@ -79,13 +87,12 @@ class OrganizationSettings(object):
     class AssetDiscoveryConfig(object):
         class InclusionMode(enum.IntEnum):
             """
-            The mode of inclusion when running Asset Discovery. Asset discovery can
-            be limited by explicitly identifying projects to be included or
-            excluded. If INCLUDE\_ONLY is set, then only those projects within the
-            organization and their children are discovered during asset discovery.
-            If EXCLUDE is set, then projects that don't match those projects are
-            discovered during asset discovery. If neither are set, then all projects
-            within the organization are discovered during asset discovery.
+            If set true, then the Java code generator will generate a separate
+            .java file for each top-level message, enum, and service defined in the
+            .proto file. Thus, these types will *not* be nested inside the outer
+            class named by java_outer_classname. However, the outer class will still
+            be generated to contain the file's getDescriptor() method as well as any
+            top-level extensions defined in the file.
 
             Attributes:
               INCLUSION_MODE_UNSPECIFIED (int): Unspecified. Setting the mode with this value will disable
@@ -99,3 +106,22 @@ class OrganizationSettings(object):
             INCLUSION_MODE_UNSPECIFIED = 0
             INCLUDE_ONLY = 1
             EXCLUDE = 2
+
+
+class RunAssetDiscoveryResponse(object):
+    class State(enum.IntEnum):
+        """
+        The state of an asset discovery run.
+
+        Attributes:
+          STATE_UNSPECIFIED (int): Asset discovery run state was unspecified.
+          COMPLETED (int): Asset discovery run completed successfully.
+          SUPERSEDED (int): Asset discovery run was cancelled with tasks still pending, as another
+          run for the same organization was started with a higher priority.
+          TERMINATED (int): Asset discovery run was killed and terminated.
+        """
+
+        STATE_UNSPECIFIED = 0
+        COMPLETED = 1
+        SUPERSEDED = 2
+        TERMINATED = 3

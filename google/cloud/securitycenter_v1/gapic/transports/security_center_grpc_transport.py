@@ -151,11 +151,37 @@ class SecurityCenterGrpcTransport(object):
     def group_findings(self):
         """Return the gRPC stub for :meth:`SecurityCenterClient.group_findings`.
 
-        Filters an organization or source's findings and groups them by their
-        specified properties.
+        Protocol Buffers - Google's data interchange format Copyright 2008
+        Google Inc. All rights reserved.
+        https://developers.google.com/protocol-buffers/
 
-        To group across all sources provide a ``-`` as the source id. Example:
-        /v1/organizations/{organization\_id}/sources/-/findings
+        Redistribution and use in source and binary forms, with or without
+        modification, are permitted provided that the following conditions are
+        met:
+
+        ::
+
+            * Redistributions of source code must retain the above copyright
+
+        notice, this list of conditions and the following disclaimer. \*
+        Redistributions in binary form must reproduce the above copyright
+        notice, this list of conditions and the following disclaimer in the
+        documentation and/or other materials provided with the distribution. \*
+        Neither the name of Google Inc. nor the names of its contributors may be
+        used to endorse or promote products derived from this software without
+        specific prior written permission.
+
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+        IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+        TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+        PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+        OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+        EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+        PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+        PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+        LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+        NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -286,10 +312,7 @@ class SecurityCenterGrpcTransport(object):
     def list_findings(self):
         """Return the gRPC stub for :meth:`SecurityCenterClient.list_findings`.
 
-        Lists an organization or source's findings.
-
-        To list across all sources provide a ``-`` as the source id. Example:
-        /v1/organizations/{organization\_id}/sources/-/findings
+        Request message for ``TestIamPermissions`` method.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -328,12 +351,8 @@ class SecurityCenterGrpcTransport(object):
     def run_asset_discovery(self):
         """Return the gRPC stub for :meth:`SecurityCenterClient.run_asset_discovery`.
 
-        Runs asset discovery. The discovery is tracked with a long-running
-        operation.
-
-        This API can only be called with limited frequency for an organization.
-        If it is called too frequently the caller will receive a
-        TOO\_MANY\_REQUESTS error.
+        Required. Resource name of the new finding's parent. Its format
+        should be "organizations/[organization_id]/sources/[source_id]".
 
         Returns:
             Callable: A callable which accepts the appropriate

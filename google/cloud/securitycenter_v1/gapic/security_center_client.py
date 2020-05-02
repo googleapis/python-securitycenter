@@ -306,8 +306,12 @@ class SecurityCenterClient(object):
         Args:
             resource (str): REQUIRED: The resource for which the policy is being requested.
                 See the operation documentation for the appropriate value for this field.
-            options_ (Union[dict, ~google.cloud.securitycenter_v1.types.GetPolicyOptions]): OPTIONAL: A ``GetPolicyOptions`` object for specifying options to
-                ``GetIamPolicy``. This field is only used by Cloud IAM.
+            options_ (Union[dict, ~google.cloud.securitycenter_v1.types.GetPolicyOptions]): For findings on Google Cloud Platform (GCP) resources, the full
+                resource name of the GCP resource this finding is for. See:
+                https://cloud.google.com/apis/design/resource_names#full_resource_name
+                When the finding is for a non-GCP resource, the resourceName can be a
+                customer or partner defined string. This field is immutable after
+                creation time.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.GetPolicyOptions`
@@ -402,27 +406,8 @@ class SecurityCenterClient(object):
             ...         pass
 
         Args:
-            parent (str): Required. Name of the organization to groupBy. Its format is
-                "organizations/[organization\_id]".
-            group_by (str): Required. Expression that defines what assets fields to use for
-                grouping. The string value should follow SQL syntax: comma separated
-                list of fields. For example:
-                "security\_center\_properties.resource\_project,security\_center\_properties.project".
-
-                The following fields are supported when compare\_duration is not set:
-
-                -  security\_center\_properties.resource\_project
-                -  security\_center\_properties.resource\_project\_display\_name
-                -  security\_center\_properties.resource\_type
-                -  security\_center\_properties.resource\_parent
-                -  security\_center\_properties.resource\_parent\_display\_name
-
-                The following fields are supported when compare\_duration is set:
-
-                -  security\_center\_properties.resource\_type
-                -  security\_center\_properties.resource\_project\_display\_name
-                -  security\_center\_properties.resource\_parent\_display\_name
-            filter_ (str): Expression that defines the filter to apply across assets. The
+            parent (str): Response message for ``TestIamPermissions`` method.
+            group_by (str): Expression that defines the filter to apply across assets. The
                 expression is a list of zero or more restrictions combined via logical
                 operators ``AND`` and ``OR``. Parentheses are supported, and ``OR`` has
                 higher precedence than ``AND``.
@@ -432,9 +417,9 @@ class SecurityCenterClient(object):
                 those defined in the Asset resource. Examples include:
 
                 -  name
-                -  security\_center\_properties.resource\_name
-                -  resource\_properties.a\_property
-                -  security\_marks.marks.marka
+                -  security_center_properties.resource_name
+                -  resource_properties.a_property
+                -  security_marks.marks.marka
 
                 The supported operators are:
 
@@ -448,75 +433,56 @@ class SecurityCenterClient(object):
                 -  integer literals without quotes.
                 -  boolean literals ``true`` and ``false`` without quotes.
 
-                The following field and operator combinations are supported:
+                The following are the allowed field and operator combinations:
 
                 -  name: ``=``
 
-                -  update\_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
+                -  update_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
 
                    Usage: This should be milliseconds since epoch or an RFC3339 string.
-                   Examples: "update\_time = "2019-06-10T16:07:18-07:00"" "update\_time
-                   = 1560208038000"
+                   Examples: "update_time = "2019-06-10T16:07:18-07:00"" "update_time =
+                   1560208038000"
 
-                -  create\_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
+                -  create_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
 
                    Usage: This should be milliseconds since epoch or an RFC3339 string.
-                   Examples: "create\_time = "2019-06-10T16:07:18-07:00"" "create\_time
-                   = 1560208038000"
+                   Examples: "create_time = "2019-06-10T16:07:18-07:00"" "create_time =
+                   1560208038000"
 
-                -  iam\_policy.policy\_blob: ``=``, ``:``
+                -  iam_policy.policy_blob: ``=``, ``:``
 
-                -  resource\_properties: ``=``, ``:``, ``>``, ``<``, ``>=``, ``<=``
+                -  resource_properties: ``=``, ``:``, ``>``, ``<``, ``>=``, ``<=``
 
-                -  security\_marks.marks: ``=``, ``:``
+                -  security_marks.marks: ``=``, ``:``
 
-                -  security\_center\_properties.resource\_name: ``=``, ``:``
+                -  security_center_properties.resource_name: ``=``, ``:``
 
-                -  security\_center\_properties.resource\_display\_name: ``=``, ``:``
+                -  security_center_properties.resource_display_name: ``=``, ``:``
 
-                -  security\_center\_properties.resource\_type: ``=``, ``:``
+                -  security_center_properties.resource_type: ``=``, ``:``
 
-                -  security\_center\_properties.resource\_parent: ``=``, ``:``
+                -  security_center_properties.resource_parent: ``=``, ``:``
 
-                -  security\_center\_properties.resource\_parent\_display\_name: ``=``,
+                -  security_center_properties.resource_parent_display_name: ``=``, ``:``
+
+                -  security_center_properties.resource_project: ``=``, ``:``
+
+                -  security_center_properties.resource_project_display_name: ``=``,
                    ``:``
 
-                -  security\_center\_properties.resource\_project: ``=``, ``:``
-
-                -  security\_center\_properties.resource\_project\_display\_name: ``=``,
-                   ``:``
-
-                -  security\_center\_properties.resource\_owners: ``=``, ``:``
+                -  security_center_properties.resource_owners: ``=``, ``:``
 
                 For example, ``resource_properties.size = 100`` is a valid filter
                 string.
-            compare_duration (Union[dict, ~google.cloud.securitycenter_v1.types.Duration]): When compare\_duration is set, the GroupResult's "state\_change"
-                property is updated to indicate whether the asset was added, removed, or
-                remained present during the compare\_duration period of time that
-                precedes the read\_time. This is the time between (read\_time -
-                compare\_duration) and read\_time.
+            filter_ (str): A subset of ``TestPermissionsRequest.permissions`` that the caller
+                is allowed.
+            compare_duration (Union[dict, ~google.cloud.securitycenter_v1.types.Duration]): The FieldMask to use when updating the finding resource. This field
+                should not be specified when creating a finding.
 
-                The state change value is derived based on the presence of the asset at
-                the two points in time. Intermediate state changes between the two times
-                don't affect the result. For example, the results aren't affected if the
-                asset is removed and re-created again.
-
-                Possible "state\_change" values when compare\_duration is specified:
-
-                -  "ADDED": indicates that the asset was not present at the start of
-                   compare\_duration, but present at reference\_time.
-                -  "REMOVED": indicates that the asset was present at the start of
-                   compare\_duration, but not present at reference\_time.
-                -  "ACTIVE": indicates that the asset was present at both the start and
-                   the end of the time period defined by compare\_duration and
-                   reference\_time.
-
-                If compare\_duration is not specified, then the only possible
-                state\_change is "UNUSED", which will be the state\_change set for all
-                assets present at read\_time.
-
-                If this field is set then ``state_change`` must be a specified field in
-                ``group_by``.
+                When updating a finding, an empty mask is treated as updating all
+                mutable fields and replacing source_properties. Individual
+                source_properties can be added/updated by using "source_properties." in
+                the field mask.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.Duration`
@@ -614,11 +580,37 @@ class SecurityCenterClient(object):
         metadata=None,
     ):
         """
-        Filters an organization or source's findings and groups them by their
-        specified properties.
+        Protocol Buffers - Google's data interchange format Copyright 2008
+        Google Inc. All rights reserved.
+        https://developers.google.com/protocol-buffers/
 
-        To group across all sources provide a ``-`` as the source id. Example:
-        /v1/organizations/{organization\_id}/sources/-/findings
+        Redistribution and use in source and binary forms, with or without
+        modification, are permitted provided that the following conditions are
+        met:
+
+        ::
+
+            * Redistributions of source code must retain the above copyright
+
+        notice, this list of conditions and the following disclaimer. \*
+        Redistributions in binary form must reproduce the above copyright
+        notice, this list of conditions and the following disclaimer in the
+        documentation and/or other materials provided with the distribution. \*
+        Neither the name of Google Inc. nor the names of its contributors may be
+        used to endorse or promote products derived from this software without
+        specific prior written permission.
+
+        THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+        IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+        TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+        PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+        OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+        EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+        PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+        PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+        LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+        NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+        SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
         Example:
             >>> from google.cloud import securitycenter_v1
@@ -645,73 +637,274 @@ class SecurityCenterClient(object):
             ...         pass
 
         Args:
-            parent (str): Required. Name of the source to groupBy. Its format is
-                "organizations/[organization\_id]/sources/[source\_id]". To groupBy
-                across all sources provide a source\_id of ``-``. For example:
-                organizations/{organization\_id}/sources/-
-            group_by (str): Required. Expression that defines what assets fields to use for grouping
-                (including ``state_change``). The string value should follow SQL syntax:
-                comma separated list of fields. For example: "parent,resource\_name".
+            parent (str): ``FieldMask`` represents a set of symbolic field paths, for example:
 
-                The following fields are supported:
+                ::
 
-                -  resource\_name
-                -  category
-                -  state
-                -  parent
+                    paths: "f.a"
+                    paths: "f.b.d"
 
-                The following fields are supported when compare\_duration is set:
+                Here ``f`` represents a field in some root message, ``a`` and ``b``
+                fields in the message found in ``f``, and ``d`` a field found in the
+                message in ``f.b``.
 
-                -  state\_change
-            filter_ (str): Expression that defines the filter to apply across findings. The
-                expression is a list of one or more restrictions combined via logical
-                operators ``AND`` and ``OR``. Parentheses are supported, and ``OR`` has
-                higher precedence than ``AND``.
+                Field masks are used to specify a subset of fields that should be
+                returned by a get operation or modified by an update operation. Field
+                masks also have a custom JSON encoding (see below).
 
-                Restrictions have the form ``<field> <operator> <value>`` and may have a
-                ``-`` character in front of them to indicate negation. Examples include:
+                # Field Masks in Projections
 
-                -  name
-                -  source\_properties.a\_property
-                -  security\_marks.marks.marka
+                When used in the context of a projection, a response message or
+                sub-message is filtered by the API to only contain those fields as
+                specified in the mask. For example, if the mask in the previous example
+                is applied to a response message as follows:
 
-                The supported operators are:
+                ::
 
-                -  ``=`` for all value types.
-                -  ``>``, ``<``, ``>=``, ``<=`` for integer values.
-                -  ``:``, meaning substring matching, for strings.
+                    f {
+                      a : 22
+                      b {
+                        d : 1
+                        x : 2
+                      }
+                      y : 13
+                    }
+                    z: 8
 
-                The supported value types are:
+                The result will not contain specific values for fields x,y and z (their
+                value will be set to the default, and omitted in proto text output):
 
-                -  string literals in quotes.
-                -  integer literals without quotes.
-                -  boolean literals ``true`` and ``false`` without quotes.
+                ::
 
-                The following field and operator combinations are supported:
+                    f {
+                      a : 22
+                      b {
+                        d : 1
+                      }
+                    }
 
-                -  name: ``=``
+                A repeated field is not allowed except at the last position of a paths
+                string.
 
-                -  parent: ``=``, ``:``
+                If a FieldMask object is not present in a get operation, the operation
+                applies to all fields (as if a FieldMask of all fields had been
+                specified).
 
-                -  resource\_name: ``=``, ``:``
+                Note that a field mask does not necessarily apply to the top-level
+                response message. In case of a REST get operation, the field mask
+                applies directly to the response, but in case of a REST list operation,
+                the mask instead applies to each individual message in the returned
+                resource list. In case of a REST custom method, other definitions may be
+                used. Where the mask applies will be clearly documented together with
+                its declaration in the API. In any case, the effect on the returned
+                resource/resources is required behavior for APIs.
 
-                -  state: ``=``, ``:``
+                # Field Masks in Update Operations
 
-                -  category: ``=``, ``:``
+                A field mask in update operations specifies which fields of the targeted
+                resource are going to be updated. The API is required to only change the
+                values of the fields as specified in the mask and leave the others
+                untouched. If a resource is passed in to describe the updated values,
+                the API ignores the values of all fields not covered by the mask.
 
-                -  external\_uri: ``=``, ``:``
+                If a repeated field is specified for an update operation, new values
+                will be appended to the existing repeated field in the target resource.
+                Note that a repeated field is only allowed in the last position of a
+                ``paths`` string.
 
-                -  event\_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
+                If a sub-message is specified in the last position of the field mask for
+                an update operation, then new value will be merged into the existing
+                sub-message in the target resource.
 
-                   Usage: This should be milliseconds since epoch or an RFC3339 string.
-                   Examples: "event\_time = "2019-06-10T16:07:18-07:00"" "event\_time =
-                   1560208038000"
+                For example, given the target message:
 
-                -  security\_marks.marks: ``=``, ``:``
+                ::
 
-                -  source\_properties: ``=``, ``:``, ``>``, ``<``, ``>=``, ``<=``
+                    f {
+                      b {
+                        d: 1
+                        x: 2
+                      }
+                      c: [1]
+                    }
 
-                For example, ``source_properties.size = 100`` is a valid filter string.
+                And an update message:
+
+                ::
+
+                    f {
+                      b {
+                        d: 10
+                      }
+                      c: [2]
+                    }
+
+                then if the field mask is:
+
+                paths: ["f.b", "f.c"]
+
+                then the result will be:
+
+                ::
+
+                    f {
+                      b {
+                        d: 10
+                        x: 2
+                      }
+                      c: [1, 2]
+                    }
+
+                An implementation may provide options to override this default behavior
+                for repeated and message fields.
+
+                In order to reset a field's value to the default, the field must be in
+                the mask and set to the default value in the provided resource. Hence,
+                in order to reset all fields of a resource, provide a default instance
+                of the resource and set all fields in the mask, or do not provide a mask
+                as described below.
+
+                If a field mask is not present on update, the operation applies to all
+                fields (as if a field mask of all fields has been specified). Note that
+                in the presence of schema evolution, this may mean that fields the
+                client does not know and has therefore not filled into the request will
+                be reset to their default. If this is unwanted behavior, a specific
+                service may require a client to always specify a field mask, producing
+                an error if not.
+
+                As with get operations, the location of the resource which describes the
+                updated values in the request message depends on the operation kind. In
+                any case, the effect of the field mask is required to be honored by the
+                API.
+
+                ## Considerations for HTTP REST
+
+                The HTTP kind of an update operation which uses a field mask must be set
+                to PATCH instead of PUT in order to satisfy HTTP semantics (PUT must
+                only be used for full updates).
+
+                # JSON Encoding of Field Masks
+
+                In JSON, a field mask is encoded as a single string where paths are
+                separated by a comma. Fields name in each path are converted to/from
+                lower-camel naming conventions.
+
+                As an example, consider the following message declarations:
+
+                ::
+
+                    message Profile {
+                      User user = 1;
+                      Photo photo = 2;
+                    }
+                    message User {
+                      string display_name = 1;
+                      string address = 2;
+                    }
+
+                In proto a field mask for ``Profile`` may look as such:
+
+                ::
+
+                    mask {
+                      paths: "user.display_name"
+                      paths: "photo"
+                    }
+
+                In JSON, the same mask is represented as below:
+
+                ::
+
+                    {
+                      mask: "user.displayName,photo"
+                    }
+
+                # Field Masks and Oneof Fields
+
+                Field masks treat fields in oneofs just as regular fields. Consider the
+                following message:
+
+                ::
+
+                    message SampleMessage {
+                      oneof test_oneof {
+                        string name = 4;
+                        SubMessage sub_message = 9;
+                      }
+                    }
+
+                The field mask can be:
+
+                ::
+
+                    mask {
+                      paths: "name"
+                    }
+
+                Or:
+
+                ::
+
+                    mask {
+                      paths: "sub_message"
+                    }
+
+                Note that oneof type names ("test_oneof" in this case) cannot be used in
+                paths.
+
+                ## Field Mask Verification
+
+                The implementation of any API method which has a FieldMask type field in
+                the request should verify the included field paths, and return an
+                ``INVALID_ARGUMENT`` error if any path is unmappable.
+            group_by (str): Protocol Buffers - Google's data interchange format Copyright 2008
+                Google Inc. All rights reserved.
+                https://developers.google.com/protocol-buffers/
+
+                Redistribution and use in source and binary forms, with or without
+                modification, are permitted provided that the following conditions are
+                met:
+
+                ::
+
+                    * Redistributions of source code must retain the above copyright
+
+                notice, this list of conditions and the following disclaimer. \*
+                Redistributions in binary form must reproduce the above copyright
+                notice, this list of conditions and the following disclaimer in the
+                documentation and/or other materials provided with the distribution. \*
+                Neither the name of Google Inc. nor the names of its contributors may be
+                used to endorse or promote products derived from this software without
+                specific prior written permission.
+
+                THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+                IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+                TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+                PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+                OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+                EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+                PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+                PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+                LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+                NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+                SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+            filter_ (str): Expression that defines what fields and order to use for sorting.
+                The string value should follow SQL syntax: comma separated list of
+                fields. For example: "name,resource_properties.a_property". The default
+                sorting order is ascending. To specify descending order for a field, a
+                suffix " desc" should be appended to the field name. For example: "name
+                desc,resource_properties.a_property". Redundant space characters in the
+                syntax are insignificant. "name desc,resource_properties.a_property" and
+                " name desc , resource_properties.a_property " are equivalent.
+
+                The following fields are supported: name update_time resource_properties
+                security_marks.marks security_center_properties.resource_name
+                security_center_properties.resource_display_name
+                security_center_properties.resource_parent
+                security_center_properties.resource_parent_display_name
+                security_center_properties.resource_project
+                security_center_properties.resource_project_display_name
+                security_center_properties.resource_type
             read_time (Union[dict, ~google.cloud.securitycenter_v1.types.Timestamp]): Time used as a reference point when filtering findings. The filter is
                 limited to findings existing at the supplied time and their values are
                 those at that specific time. Absence of this field will default to the
@@ -719,39 +912,14 @@ class SecurityCenterClient(object):
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.Timestamp`
-            compare_duration (Union[dict, ~google.cloud.securitycenter_v1.types.Duration]): When compare\_duration is set, the GroupResult's "state\_change"
-                attribute is updated to indicate whether the finding had its state
-                changed, the finding's state remained unchanged, or if the finding was
-                added during the compare\_duration period of time that precedes the
-                read\_time. This is the time between (read\_time - compare\_duration)
-                and read\_time.
+            compare_duration (Union[dict, ~google.cloud.securitycenter_v1.types.Duration]): The change in state of the finding.
 
-                The state\_change value is derived based on the presence and state of
-                the finding at the two points in time. Intermediate state changes
-                between the two times don't affect the result. For example, the results
-                aren't affected if the finding is made inactive and then active again.
-
-                Possible "state\_change" values when compare\_duration is specified:
-
-                -  "CHANGED": indicates that the finding was present and matched the
-                   given filter at the start of compare\_duration, but changed its state
-                   at read\_time.
-                -  "UNCHANGED": indicates that the finding was present and matched the
-                   given filter at the start of compare\_duration and did not change
-                   state at read\_time.
-                -  "ADDED": indicates that the finding did not match the given filter or
-                   was not present at the start of compare\_duration, but was present at
-                   read\_time.
-                -  "REMOVED": indicates that the finding was present and matched the
-                   filter at the start of compare\_duration, but did not match the
-                   filter at read\_time.
-
-                If compare\_duration is not specified, then the only possible
-                state\_change is "UNUSED", which will be the state\_change set for all
-                findings present at read\_time.
-
-                If this field is set then ``state_change`` must be a specified field in
-                ``group_by``.
+                When querying across two points in time this describes the change in the
+                finding between the two points: CHANGED, UNCHANGED, ADDED, or REMOVED.
+                Findings can not be deleted, so REMOVED implies that the finding at
+                timestamp does not match the filter specified, but it did at timestamp -
+                compare_duration. If there was no compare_duration supplied in the
+                request the state change will be: UNUSED
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.Duration`
@@ -856,10 +1024,14 @@ class SecurityCenterClient(object):
         Args:
             resource (str): REQUIRED: The resource for which the policy detail is being requested.
                 See the operation documentation for the appropriate value for this field.
-            permissions (list[str]): The set of permissions to check for the ``resource``. Permissions with
-                wildcards (such as '*' or 'storage.*') are not allowed. For more
-                information see `IAM
-                Overview <https://cloud.google.com/iam/docs/overview#permissions>`__.
+            permissions (list[str]): ``Struct`` represents a structured data value, consisting of fields
+                which map to dynamically typed values. In some languages, ``Struct``
+                might be supported by a native representation. For example, in scripting
+                languages like JS a struct is represented as an object. The details of
+                that representation are described together with the proto support for
+                the language.
+
+                The JSON representation for ``Struct`` is JSON object.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -934,10 +1106,66 @@ class SecurityCenterClient(object):
             >>> response = client.create_source(parent, source)
 
         Args:
-            parent (str): Required. Resource name of the new source's parent. Its format should be
-                "organizations/[organization\_id]".
-            source (Union[dict, ~google.cloud.securitycenter_v1.types.Source]): Required. The Source being created, only the display\_name and
-                description will be used. All other fields will be ignored.
+            parent (str): If this SourceCodeInfo represents a complete declaration, these are
+                any comments appearing before and after the declaration which appear to
+                be attached to the declaration.
+
+                A series of line comments appearing on consecutive lines, with no other
+                tokens appearing on those lines, will be treated as a single comment.
+
+                leading_detached_comments will keep paragraphs of comments that appear
+                before (but not connected to) the current element. Each paragraph,
+                separated by empty lines, will be one comment element in the repeated
+                field.
+
+                Only the comment content is provided; comment markers (e.g. //) are
+                stripped out. For block comments, leading whitespace and an asterisk
+                will be stripped from the beginning of each line other than the first.
+                Newlines are included in the output.
+
+                Examples:
+
+                optional int32 foo = 1; // Comment attached to foo. // Comment attached
+                to bar. optional int32 bar = 2;
+
+                optional string baz = 3; // Comment attached to baz. // Another line
+                attached to baz.
+
+                // Comment attached to qux. // // Another line attached to qux. optional
+                double qux = 4;
+
+                // Detached comment for corge. This is not leading or trailing comments
+                // to qux or corge because there are blank lines separating it from //
+                both.
+
+                // Detached comment for corge paragraph 2.
+
+                optional string corge = 5; /\* Block comment attached \* to corge.
+                Leading asterisks \* will be removed. */ /* Block comment attached to \*
+                grault. \*/ optional int32 grault = 6;
+
+                // ignored detached comments.
+            source (Union[dict, ~google.cloud.securitycenter_v1.types.Source]): Expression that defines the filter to apply across create/update
+                events of assets or findings as specified by the event type. The
+                expression is a list of zero or more restrictions combined via logical
+                operators ``AND`` and ``OR``. Parentheses are supported, and ``OR`` has
+                higher precedence than ``AND``.
+
+                Restrictions have the form ``<field> <operator> <value>`` and may have a
+                ``-`` character in front of them to indicate negation. The fields map to
+                those defined in the corresponding resource.
+
+                The supported operators are:
+
+                -  ``=`` for all value types.
+                -  ``>``, ``<``, ``>=``, ``<=`` for integer values.
+                -  ``:``, meaning substring matching, for strings.
+
+                The supported value types are:
+
+                -  string literals in quotes.
+                -  integer literals without quotes.
+                -  boolean literals ``true`` and ``false`` without quotes.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.Source`
@@ -1020,13 +1248,41 @@ class SecurityCenterClient(object):
             >>> response = client.create_finding(parent, finding_id, finding)
 
         Args:
-            parent (str): Required. Resource name of the new finding's parent. Its format should
-                be "organizations/[organization\_id]/sources/[source\_id]".
+            parent (str): See ``HttpRule``.
             finding_id (str): Required. Unique identifier provided by the client within the parent scope.
                 It must be alphanumeric and less than or equal to 32 characters and
                 greater than 0 characters in length.
-            finding (Union[dict, ~google.cloud.securitycenter_v1.types.Finding]): Required. The Finding being created. The name and security\_marks will
-                be ignored as they are both output only fields on this resource.
+            finding (Union[dict, ~google.cloud.securitycenter_v1.types.Finding]): Protocol Buffers - Google's data interchange format Copyright 2008
+                Google Inc. All rights reserved.
+                https://developers.google.com/protocol-buffers/
+
+                Redistribution and use in source and binary forms, with or without
+                modification, are permitted provided that the following conditions are
+                met:
+
+                ::
+
+                    * Redistributions of source code must retain the above copyright
+
+                notice, this list of conditions and the following disclaimer. \*
+                Redistributions in binary form must reproduce the above copyright
+                notice, this list of conditions and the following disclaimer in the
+                documentation and/or other materials provided with the distribution. \*
+                Neither the name of Google Inc. nor the names of its contributors may be
+                used to endorse or promote products derived from this software without
+                specific prior written permission.
+
+                THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+                IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+                TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+                PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+                OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+                EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+                PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+                PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+                LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+                NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+                SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.Finding`
@@ -1108,8 +1364,10 @@ class SecurityCenterClient(object):
             >>> response = client.create_notification_config(parent, config_id, notification_config)
 
         Args:
-            parent (str): Required. Resource name of the new notification config's parent. Its
-                format is "organizations/[organization\_id]".
+            parent (str): The set of permissions to check for the ``resource``. Permissions
+                with wildcards (such as '*' or 'storage.*') are not allowed. For more
+                information see `IAM
+                Overview <https://cloud.google.com/iam/docs/overview#permissions>`__.
             config_id (str): Required.
                 Unique identifier provided by the client within the parent scope.
                 It must be between 1 and 128 characters, and contains alphanumeric
@@ -1192,8 +1450,14 @@ class SecurityCenterClient(object):
             >>> client.delete_notification_config(name)
 
         Args:
-            name (str): Required. Name of the notification config to delete. Its format is
-                "organizations/[organization\_id]/notificationConfigs/[config\_id]".
+            name (str): The ``Status`` type defines a logical error model that is suitable
+                for different programming environments, including REST APIs and RPC
+                APIs. It is used by `gRPC <https://github.com/grpc>`__. Each ``Status``
+                message contains three pieces of data: error code, error message, and
+                error details.
+
+                You can find out more about this error model and how to work with it in
+                the `API Design Guide <https://cloud.google.com/apis/design/errors>`__.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1261,8 +1525,8 @@ class SecurityCenterClient(object):
             >>> response = client.get_notification_config(name)
 
         Args:
-            name (str): Required. Name of the notification config to get. Its format is
-                "organizations/[organization\_id]/notificationConfigs/[config\_id]".
+            name (str): Required. Name of the organization assets should belong to. Its
+                format is "organizations/[organization_id]".
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1331,8 +1595,8 @@ class SecurityCenterClient(object):
             >>> response = client.get_organization_settings(name)
 
         Args:
-            name (str): Required. Name of the organization to get organization settings for. Its
-                format is "organizations/[organization\_id]/organizationSettings".
+            name (str): Required. The Finding being created. The name and security_marks
+                will be ignored as they are both output only fields on this resource.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1401,8 +1665,10 @@ class SecurityCenterClient(object):
             >>> response = client.get_source(name)
 
         Args:
-            name (str): Required. Relative resource name of the source. Its format is
-                "organizations/[organization\_id]/source/[source\_id]".
+            name (str): The relative resource name of this notification config. See:
+                https://cloud.google.com/apis/design/resource_names#relative_resource_name
+                Example:
+                "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -1489,95 +1755,37 @@ class SecurityCenterClient(object):
             ...         pass
 
         Args:
-            parent (str): Required. Name of the organization assets should belong to. Its format
-                is "organizations/[organization\_id]".
-            filter_ (str): Expression that defines the filter to apply across assets. The
-                expression is a list of zero or more restrictions combined via logical
-                operators ``AND`` and ``OR``. Parentheses are supported, and ``OR`` has
-                higher precedence than ``AND``.
+            parent (str): Input and output type names. These are resolved in the same way as
+                FieldDescriptorProto.type_name, but must refer to a message type.
+            filter_ (str): A URL/resource name that uniquely identifies the type of the
+                serialized protocol buffer message. This string must contain at least
+                one "/" character. The last segment of the URL's path must represent the
+                fully qualified name of the type (as in
+                ``path/google.protobuf.Duration``). The name should be in a canonical
+                form (e.g., leading "." is not accepted).
 
-                Restrictions have the form ``<field> <operator> <value>`` and may have a
-                ``-`` character in front of them to indicate negation. The fields map to
-                those defined in the Asset resource. Examples include:
+                In practice, teams usually precompile into the binary all types that
+                they expect it to use in the context of Any. However, for URLs which use
+                the scheme ``http``, ``https``, or no scheme, one can optionally set up
+                a type server that maps type URLs to message definitions as follows:
 
-                -  name
-                -  security\_center\_properties.resource\_name
-                -  resource\_properties.a\_property
-                -  security\_marks.marks.marka
+                -  If no scheme is provided, ``https`` is assumed.
+                -  An HTTP GET on the URL must yield a ``google.protobuf.Type`` value in
+                   binary format, or produce an error.
+                -  Applications are allowed to cache lookup results based on the URL, or
+                   have them precompiled into a binary to avoid any lookup. Therefore,
+                   binary compatibility needs to be preserved on changes to types. (Use
+                   versioned type names to manage breaking changes.)
 
-                The supported operators are:
+                Note: this functionality is not currently available in the official
+                protobuf release, and it is not used for type URLs beginning with
+                type.googleapis.com.
 
-                -  ``=`` for all value types.
-                -  ``>``, ``<``, ``>=``, ``<=`` for integer values.
-                -  ``:``, meaning substring matching, for strings.
-
-                The supported value types are:
-
-                -  string literals in quotes.
-                -  integer literals without quotes.
-                -  boolean literals ``true`` and ``false`` without quotes.
-
-                The following are the allowed field and operator combinations:
-
-                -  name: ``=``
-
-                -  update\_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
-
-                   Usage: This should be milliseconds since epoch or an RFC3339 string.
-                   Examples: "update\_time = "2019-06-10T16:07:18-07:00"" "update\_time
-                   = 1560208038000"
-
-                -  create\_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
-
-                   Usage: This should be milliseconds since epoch or an RFC3339 string.
-                   Examples: "create\_time = "2019-06-10T16:07:18-07:00"" "create\_time
-                   = 1560208038000"
-
-                -  iam\_policy.policy\_blob: ``=``, ``:``
-
-                -  resource\_properties: ``=``, ``:``, ``>``, ``<``, ``>=``, ``<=``
-
-                -  security\_marks.marks: ``=``, ``:``
-
-                -  security\_center\_properties.resource\_name: ``=``, ``:``
-
-                -  security\_center\_properties.resource\_display\_name: ``=``, ``:``
-
-                -  security\_center\_properties.resource\_type: ``=``, ``:``
-
-                -  security\_center\_properties.resource\_parent: ``=``, ``:``
-
-                -  security\_center\_properties.resource\_parent\_display\_name: ``=``,
-                   ``:``
-
-                -  security\_center\_properties.resource\_project: ``=``, ``:``
-
-                -  security\_center\_properties.resource\_project\_display\_name: ``=``,
-                   ``:``
-
-                -  security\_center\_properties.resource\_owners: ``=``, ``:``
-
-                For example, ``resource_properties.size = 100`` is a valid filter
-                string.
-            order_by (str): Expression that defines what fields and order to use for sorting. The
-                string value should follow SQL syntax: comma separated list of fields.
-                For example: "name,resource\_properties.a\_property". The default
-                sorting order is ascending. To specify descending order for a field, a
-                suffix " desc" should be appended to the field name. For example: "name
-                desc,resource\_properties.a\_property". Redundant space characters in
-                the syntax are insignificant. "name
-                desc,resource\_properties.a\_property" and " name desc ,
-                resource\_properties.a\_property " are equivalent.
-
-                The following fields are supported: name update\_time
-                resource\_properties security\_marks.marks
-                security\_center\_properties.resource\_name
-                security\_center\_properties.resource\_display\_name
-                security\_center\_properties.resource\_parent
-                security\_center\_properties.resource\_parent\_display\_name
-                security\_center\_properties.resource\_project
-                security\_center\_properties.resource\_project\_display\_name
-                security\_center\_properties.resource\_type
+                Schemes other than ``http``, ``https`` (or the empty scheme) might be
+                used with implementation specific semantics.
+            order_by (str): The value returned by the last ``ListAssetsResponse``; indicates
+                that this is a continuation of a prior ``ListAssets`` call, and that the
+                system should return the next page of data.
             read_time (Union[dict, ~google.cloud.securitycenter_v1.types.Timestamp]): Time used as a reference point when filtering assets. The filter is limited
                 to assets existing at the supplied time and their values are those at that
                 specific time. Absence of this field will default to the API's version of
@@ -1585,30 +1793,8 @@ class SecurityCenterClient(object):
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.Timestamp`
-            compare_duration (Union[dict, ~google.cloud.securitycenter_v1.types.Duration]): When compare\_duration is set, the ListAssetsResult's "state\_change"
-                attribute is updated to indicate whether the asset was added, removed,
-                or remained present during the compare\_duration period of time that
-                precedes the read\_time. This is the time between (read\_time -
-                compare\_duration) and read\_time.
-
-                The state\_change value is derived based on the presence of the asset at
-                the two points in time. Intermediate state changes between the two times
-                don't affect the result. For example, the results aren't affected if the
-                asset is removed and re-created again.
-
-                Possible "state\_change" values when compare\_duration is specified:
-
-                -  "ADDED": indicates that the asset was not present at the start of
-                   compare\_duration, but present at read\_time.
-                -  "REMOVED": indicates that the asset was present at the start of
-                   compare\_duration, but not present at read\_time.
-                -  "ACTIVE": indicates that the asset was present at both the start and
-                   the end of the time period defined by compare\_duration and
-                   read\_time.
-
-                If compare\_duration is not specified, then the only possible
-                state\_change is "UNUSED", which will be the state\_change set for all
-                assets present at read\_time.
+            compare_duration (Union[dict, ~google.cloud.securitycenter_v1.types.Duration]): Required. Resource name of the new source's parent. Its format
+                should be "organizations/[organization_id]".
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.Duration`
@@ -1706,10 +1892,7 @@ class SecurityCenterClient(object):
         metadata=None,
     ):
         """
-        Lists an organization or source's findings.
-
-        To list across all sources provide a ``-`` as the source id. Example:
-        /v1/organizations/{organization\_id}/sources/-/findings
+        Request message for ``TestIamPermissions`` method.
 
         Example:
             >>> from google.cloud import securitycenter_v1
@@ -1733,59 +1916,46 @@ class SecurityCenterClient(object):
             ...         pass
 
         Args:
-            parent (str): Required. Name of the source the findings belong to. Its format is
-                "organizations/[organization\_id]/sources/[source\_id]". To list across
-                all sources provide a source\_id of ``-``. For example:
-                organizations/{organization\_id}/sources/-
-            filter_ (str): Expression that defines the filter to apply across findings. The
-                expression is a list of one or more restrictions combined via logical
-                operators ``AND`` and ``OR``. Parentheses are supported, and ``OR`` has
-                higher precedence than ``AND``.
+            parent (str): Protocol Buffers - Google's data interchange format Copyright 2008
+                Google Inc. All rights reserved.
+                https://developers.google.com/protocol-buffers/
 
-                Restrictions have the form ``<field> <operator> <value>`` and may have a
-                ``-`` character in front of them to indicate negation. Examples include:
+                Redistribution and use in source and binary forms, with or without
+                modification, are permitted provided that the following conditions are
+                met:
 
-                -  name
-                -  source\_properties.a\_property
-                -  security\_marks.marks.marka
+                ::
 
-                The supported operators are:
+                    * Redistributions of source code must retain the above copyright
 
-                -  ``=`` for all value types.
-                -  ``>``, ``<``, ``>=``, ``<=`` for integer values.
-                -  ``:``, meaning substring matching, for strings.
+                notice, this list of conditions and the following disclaimer. \*
+                Redistributions in binary form must reproduce the above copyright
+                notice, this list of conditions and the following disclaimer in the
+                documentation and/or other materials provided with the distribution. \*
+                Neither the name of Google Inc. nor the names of its contributors may be
+                used to endorse or promote products derived from this software without
+                specific prior written permission.
 
-                The supported value types are:
+                THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+                IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+                TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+                PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
+                OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+                EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+                PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+                PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+                LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+                NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+                SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+            filter_ (str): The full resource name of the GCP resource this asset represents.
+                This field is immutable after create time. See:
+                https://cloud.google.com/apis/design/resource_names#full_resource_name
+            order_by (str): The change in state of the asset.
 
-                -  string literals in quotes.
-                -  integer literals without quotes.
-                -  boolean literals ``true`` and ``false`` without quotes.
-
-                The following field and operator combinations are supported:
-
-                name: ``=`` parent: ``=``, ``:`` resource\_name: ``=``, ``:`` state:
-                ``=``, ``:`` category: ``=``, ``:`` external\_uri: ``=``, ``:``
-                event\_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
-
-                Usage: This should be milliseconds since epoch or an RFC3339 string.
-                Examples: "event\_time = "2019-06-10T16:07:18-07:00"" "event\_time =
-                1560208038000"
-
-                security\_marks.marks: ``=``, ``:`` source\_properties: ``=``, ``:``,
-                ``>``, ``<``, ``>=``, ``<=``
-
-                For example, ``source_properties.size = 100`` is a valid filter string.
-            order_by (str): Expression that defines what fields and order to use for sorting. The
-                string value should follow SQL syntax: comma separated list of fields.
-                For example: "name,resource\_properties.a\_property". The default
-                sorting order is ascending. To specify descending order for a field, a
-                suffix " desc" should be appended to the field name. For example: "name
-                desc,source\_properties.a\_property". Redundant space characters in the
-                syntax are insignificant. "name desc,source\_properties.a\_property" and
-                " name desc , source\_properties.a\_property " are equivalent.
-
-                The following fields are supported: name parent state category
-                resource\_name event\_time source\_properties security\_marks.marks
+                When querying across two points in time this describes the change
+                between the two points: ADDED, REMOVED, or ACTIVE. If there was no
+                compare_duration supplied in the request the state change will be:
+                UNUSED
             read_time (Union[dict, ~google.cloud.securitycenter_v1.types.Timestamp]): Time used as a reference point when filtering findings. The filter is
                 limited to findings existing at the supplied time and their values are
                 those at that specific time. Absence of this field will default to the
@@ -1793,36 +1963,8 @@ class SecurityCenterClient(object):
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.Timestamp`
-            compare_duration (Union[dict, ~google.cloud.securitycenter_v1.types.Duration]): When compare\_duration is set, the ListFindingsResult's "state\_change"
-                attribute is updated to indicate whether the finding had its state
-                changed, the finding's state remained unchanged, or if the finding was
-                added in any state during the compare\_duration period of time that
-                precedes the read\_time. This is the time between (read\_time -
-                compare\_duration) and read\_time.
-
-                The state\_change value is derived based on the presence and state of
-                the finding at the two points in time. Intermediate state changes
-                between the two times don't affect the result. For example, the results
-                aren't affected if the finding is made inactive and then active again.
-
-                Possible "state\_change" values when compare\_duration is specified:
-
-                -  "CHANGED": indicates that the finding was present and matched the
-                   given filter at the start of compare\_duration, but changed its state
-                   at read\_time.
-                -  "UNCHANGED": indicates that the finding was present and matched the
-                   given filter at the start of compare\_duration and did not change
-                   state at read\_time.
-                -  "ADDED": indicates that the finding did not match the given filter or
-                   was not present at the start of compare\_duration, but was present at
-                   read\_time.
-                -  "REMOVED": indicates that the finding was present and matched the
-                   filter at the start of compare\_duration, but did not match the
-                   filter at read\_time.
-
-                If compare\_duration is not specified, then the only possible
-                state\_change is "UNUSED", which will be the state\_change set for all
-                findings present at read\_time.
+            compare_duration (Union[dict, ~google.cloud.securitycenter_v1.types.Duration]): Required. Name of the notification config to delete. Its format is
+                "organizations/[organization_id]/notificationConfigs/[config_id]".
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.Duration`
@@ -1939,8 +2081,29 @@ class SecurityCenterClient(object):
             ...         pass
 
         Args:
-            parent (str): Required. Name of the organization to list notification configs. Its
-                format is "organizations/[organization\_id]".
+            parent (str): When compare_duration is set, the ListAssetsResult's "state_change"
+                attribute is updated to indicate whether the asset was added, removed,
+                or remained present during the compare_duration period of time that
+                precedes the read_time. This is the time between (read_time -
+                compare_duration) and read_time.
+
+                The state_change value is derived based on the presence of the asset at
+                the two points in time. Intermediate state changes between the two times
+                don't affect the result. For example, the results aren't affected if the
+                asset is removed and re-created again.
+
+                Possible "state_change" values when compare_duration is specified:
+
+                -  "ADDED": indicates that the asset was not present at the start of
+                   compare_duration, but present at read_time.
+                -  "REMOVED": indicates that the asset was present at the start of
+                   compare_duration, but not present at read_time.
+                -  "ACTIVE": indicates that the asset was present at both the start and
+                   the end of the time period defined by compare_duration and read_time.
+
+                If compare_duration is not specified, then the only possible
+                state_change is "UNUSED", which will be the state_change set for all
+                assets present at read_time.
             page_size (int): The maximum number of resources contained in the
                 underlying API response. If page streaming is performed per-
                 resource, this parameter does not affect the return value. If page
@@ -2043,8 +2206,11 @@ class SecurityCenterClient(object):
             ...         pass
 
         Args:
-            parent (str): Required. Resource name of the parent of sources to list. Its format
-                should be "organizations/[organization\_id]".
+            parent (str): The FieldMask to use when updating the security marks resource.
+
+                The field mask must not contain duplicate fields. If empty or set to
+                "marks", all marks will be replaced. Individual marks can be updated
+                using "marks.<mark_key>".
             page_size (int): The maximum number of resources contained in the
                 underlying API response. If page streaming is performed per-
                 resource, this parameter does not affect the return value. If page
@@ -2122,12 +2288,8 @@ class SecurityCenterClient(object):
         metadata=None,
     ):
         """
-        Runs asset discovery. The discovery is tracked with a long-running
-        operation.
-
-        This API can only be called with limited frequency for an organization.
-        If it is called too frequently the caller will receive a
-        TOO\_MANY\_REQUESTS error.
+        Required. Resource name of the new finding's parent. Its format
+        should be "organizations/[organization_id]/sources/[source_id]".
 
         Example:
             >>> from google.cloud import securitycenter_v1
@@ -2148,8 +2310,14 @@ class SecurityCenterClient(object):
             >>> metadata = response.metadata()
 
         Args:
-            parent (str): Required. Name of the organization to run asset discovery for. Its
-                format is "organizations/[organization\_id]".
+            parent (str): Required. The message name of the metadata type for this
+                long-running operation.
+
+                If the response is in a different package from the rpc, a
+                fully-qualified message name must be used (e.g.
+                ``google.protobuf.Struct``).
+
+                Note: Altering this value constitutes a breaking change.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -2233,10 +2401,37 @@ class SecurityCenterClient(object):
             >>> response = client.set_finding_state(name, state, start_time)
 
         Args:
-            name (str): Required. The relative resource name of the finding. See:
-                https://cloud.google.com/apis/design/resource\_names#relative\_resource\_name
-                Example:
-                "organizations/{organization\_id}/sources/{source\_id}/finding/{finding\_id}".
+            name (str): Each of the definitions above may have "options" attached. These are
+                just annotations which may cause code to be generated slightly
+                differently or may contain hints for code that manipulates protocol
+                messages.
+
+                Clients may define custom options as extensions of the \*Options
+                messages. These extensions may not yet be known at parsing time, so the
+                parser cannot store the values in them. Instead it stores them in a
+                field in the \*Options message called uninterpreted_option. This field
+                must have the same name across all \*Options messages. We then use this
+                field to populate the extensions when we build a descriptor, at which
+                point all protos have been parsed and so all extensions are known.
+
+                Extension numbers for custom options may be chosen as follows:
+
+                -  For options which will only be used within a single application or
+                   organization, or for experimental options, use field numbers 50000
+                   through 99999. It is up to you to ensure that you do not use the same
+                   number for multiple options.
+                -  For options which will be published and used publicly by multiple
+                   independent entities, e-mail
+                   protobuf-global-extension-registry@google.com to reserve extension
+                   numbers. Simply provide your project name (e.g. Objective-C plugin)
+                   and your project website (if available) -- there's no need to explain
+                   how you intend to use them. Usually you only need one extension
+                   number. You can declare multiple options with only one extension
+                   number by putting them in a sub-message. See the Custom Options
+                   section of the docs for examples:
+                   https://developers.google.com/protocol-buffers/docs/proto#options If
+                   this turns out to be popular, a web service will be set up to
+                   automatically assign option numbers.
             state (~google.cloud.securitycenter_v1.types.State): Required. The desired State of the finding.
             start_time (Union[dict, ~google.cloud.securitycenter_v1.types.Timestamp]): Required. The time at which the updated state takes effect.
 
@@ -2319,10 +2514,12 @@ class SecurityCenterClient(object):
         Args:
             resource (str): REQUIRED: The resource for which the policy is being specified.
                 See the operation documentation for the appropriate value for this field.
-            policy (Union[dict, ~google.cloud.securitycenter_v1.types.Policy]): REQUIRED: The complete policy to be applied to the ``resource``. The
-                size of the policy is limited to a few 10s of KB. An empty policy is a
-                valid policy but certain Cloud Platform services (such as Projects)
-                might reject them.
+            policy (Union[dict, ~google.cloud.securitycenter_v1.types.Policy]): Required. The finding resource to update or create if it does not
+                already exist. parent, security_marks, and update_time will be ignored.
+
+                In the case of creation, the finding id portion of the name must be
+                alphanumeric and less than or equal to 32 characters and greater than 0
+                characters in length.
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.Policy`
@@ -2397,23 +2594,16 @@ class SecurityCenterClient(object):
             >>> response = client.update_finding(finding)
 
         Args:
-            finding (Union[dict, ~google.cloud.securitycenter_v1.types.Finding]): Required. The finding resource to update or create if it does not
-                already exist. parent, security\_marks, and update\_time will be
-                ignored.
-
-                In the case of creation, the finding id portion of the name must be
-                alphanumeric and less than or equal to 32 characters and greater than 0
-                characters in length.
+            finding (Union[dict, ~google.cloud.securitycenter_v1.types.Finding]): Required. Name of the organization to get organization settings for.
+                Its format is "organizations/[organization_id]/organizationSettings".
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.Finding`
-            update_mask (Union[dict, ~google.cloud.securitycenter_v1.types.FieldMask]): The FieldMask to use when updating the finding resource. This field
-                should not be specified when creating a finding.
-
-                When updating a finding, an empty mask is treated as updating all
-                mutable fields and replacing source\_properties. Individual
-                source\_properties can be added/updated by using "source\_properties."
-                in the field mask.
+            update_mask (Union[dict, ~google.cloud.securitycenter_v1.types.FieldMask]): If set, all the classes from the .proto file are wrapped in a single
+                outer class with the given name. This applies to both Proto1 (equivalent
+                to the old "--one_java_file" option) and Proto2 (where a .proto always
+                translates to a single class, but you may want to explicitly choose the
+                class name).
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.FieldMask`
@@ -2746,11 +2936,16 @@ class SecurityCenterClient(object):
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.SecurityMarks`
-            update_mask (Union[dict, ~google.cloud.securitycenter_v1.types.FieldMask]): The FieldMask to use when updating the security marks resource.
+            update_mask (Union[dict, ~google.cloud.securitycenter_v1.types.FieldMask]): A message representing the message types used by a long-running
+                operation.
 
-                The field mask must not contain duplicate fields. If empty or set to
-                "marks", all marks will be replaced. Individual marks can be updated
-                using "marks.<mark\_key>".
+                Example:
+
+                rpc LongRunningRecognize(LongRunningRecognizeRequest) returns
+                (google.longrunning.Operation) { option
+                (google.longrunning.operation_info) = { response_type:
+                "LongRunningRecognizeResponse" metadata_type:
+                "LongRunningRecognizeMetadata" }; }
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1.types.FieldMask`

@@ -21,10 +21,16 @@ import enum
 
 class NullValue(enum.IntEnum):
     """
-    ``NullValue`` is a singleton enumeration to represent the null value for
-    the ``Value`` type union.
+    A designation of a specific field behavior (required, output only,
+    etc.) in protobuf messages.
 
-    The JSON representation for ``NullValue`` is JSON ``null``.
+    Examples:
+
+    string name = 1 [(google.api.field_behavior) = REQUIRED]; State state =
+    1 [(google.api.field_behavior) = OUTPUT_ONLY]; google.protobuf.Duration
+    ttl = 1 [(google.api.field_behavior) = INPUT_ONLY];
+    google.protobuf.Timestamp expire_time = 1 [(google.api.field_behavior) =
+    OUTPUT_ONLY, (google.api.field_behavior) = IMMUTABLE];
 
     Attributes:
       NULL_VALUE (int): Null value.
@@ -54,12 +60,8 @@ class ListAssetsResponse(object):
     class ListAssetsResult(object):
         class StateChange(enum.IntEnum):
             """
-            The change in state of the asset.
-
-            When querying across two points in time this describes the change
-            between the two points: ADDED, REMOVED, or ACTIVE. If there was no
-            compare\_duration supplied in the request the state change will be:
-            UNUSED
+            Required. The Source being created, only the display_name and
+            description will be used. All other fields will be ignored.
 
             Attributes:
               UNUSED (int): State change is unused, this is the canonical default for this enum.
@@ -78,14 +80,17 @@ class ListFindingsResponse(object):
     class ListFindingsResult(object):
         class StateChange(enum.IntEnum):
             """
-            The change in state of the finding.
+            A generic empty message that you can re-use to avoid defining
+            duplicated empty messages in your APIs. A typical example is to use it
+            as the request or the response type of an API method. For instance:
 
-            When querying across two points in time this describes the change in the
-            finding between the two points: CHANGED, UNCHANGED, ADDED, or REMOVED.
-            Findings can not be deleted, so REMOVED implies that the finding at
-            timestamp does not match the filter specified, but it did at timestamp -
-            compare\_duration. If there was no compare\_duration supplied in the
-            request the state change will be: UNUSED
+            ::
+
+                service Foo {
+                  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+                }
+
+            The JSON representation for ``Empty`` is empty JSON object ``{}``.
 
             Attributes:
               UNUSED (int): State change is unused, this is the canonical default for this enum.
@@ -94,8 +99,8 @@ class ListFindingsResponse(object):
               UNCHANGED (int): The finding has not changed state between the points in time and
               existed at both points.
               ADDED (int): The finding was created between the points in time.
-              REMOVED (int): The finding at timestamp does not match the filter specified, but it did
-              at timestamp - compare\_duration.
+              REMOVED (int): Required. Name of the notification config to get. Its format is
+              "organizations/[organization_id]/notificationConfigs/[config_id]".
             """
 
             UNUSED = 0
@@ -109,13 +114,9 @@ class OrganizationSettings(object):
     class AssetDiscoveryConfig(object):
         class InclusionMode(enum.IntEnum):
             """
-            The mode of inclusion when running Asset Discovery. Asset discovery can
-            be limited by explicitly identifying projects to be included or
-            excluded. If INCLUDE\_ONLY is set, then only those projects within the
-            organization and their children are discovered during asset discovery.
-            If EXCLUDE is set, then projects that don't match those projects are
-            discovered during asset discovery. If neither are set, then all projects
-            within the organization are discovered during asset discovery.
+            If type_name is set, this need not be set. If both this and
+            type_name are set, this must be one of TYPE_ENUM, TYPE_MESSAGE or
+            TYPE_GROUP.
 
             Attributes:
               INCLUSION_MODE_UNSPECIFIED (int): Unspecified. Setting the mode with this value will disable

@@ -243,11 +243,12 @@ class SecurityCenterGrpcTransport(object):
     def group_findings(self):
         """Return the gRPC stub for :meth:`SecurityCenterClient.group_findings`.
 
-        Filters an organization or source's findings and groups them by their
-        specified properties.
+        Runs asset discovery. The discovery is tracked with a long-running
+        operation.
 
-        To group across all sources provide a ``-`` as the source id. Example:
-        /v1p1beta1/organizations/{organization\_id}/sources/-/findings
+        This API can only be called with limited frequency for an organization.
+        If it is called too frequently the caller will receive a
+        TOO_MANY_REQUESTS error.
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -273,10 +274,22 @@ class SecurityCenterGrpcTransport(object):
     def list_findings(self):
         """Return the gRPC stub for :meth:`SecurityCenterClient.list_findings`.
 
-        Lists an organization or source's findings.
+        Identifies which part of the FileDescriptorProto was defined at this
+        location.
 
-        To list across all sources provide a ``-`` as the source id. Example:
-        /v1p1beta1/organizations/{organization\_id}/sources/-/findings
+        Each element is a field number or an index. They form a path from the
+        root FileDescriptorProto to the place where the definition. For example,
+        this path: [ 4, 3, 2, 7, 1 ] refers to: file.message_type(3) // 4, 3
+        .field(7) // 2, 7 .name() // 1 This is because
+        FileDescriptorProto.message_type has field number 4: repeated
+        DescriptorProto message_type = 4; and DescriptorProto.field has field
+        number 2: repeated FieldDescriptorProto field = 2; and
+        FieldDescriptorProto.name has field number 1: optional string name = 1;
+
+        Thus, the above path gives the location of a field name. If we removed
+        the last element: [ 4, 3, 2, 7 ] this path refers to the whole field
+        declaration (from the beginning of the label to the terminating
+        semicolon).
 
         Returns:
             Callable: A callable which accepts the appropriate
@@ -315,12 +328,7 @@ class SecurityCenterGrpcTransport(object):
     def run_asset_discovery(self):
         """Return the gRPC stub for :meth:`SecurityCenterClient.run_asset_discovery`.
 
-        Runs asset discovery. The discovery is tracked with a long-running
-        operation.
-
-        This API can only be called with limited frequency for an organization.
-        If it is called too frequently the caller will receive a
-        TOO\_MANY\_REQUESTS error.
+        Request message for ``GetIamPolicy`` method.
 
         Returns:
             Callable: A callable which accepts the appropriate

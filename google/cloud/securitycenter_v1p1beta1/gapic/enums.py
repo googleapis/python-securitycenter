@@ -21,10 +21,9 @@ import enum
 
 class NullValue(enum.IntEnum):
     """
-    ``NullValue`` is a singleton enumeration to represent the null value for
-    the ``Value`` type union.
-
-    The JSON representation for ``NullValue`` is JSON ``null``.
+    The value returned by the last ``GroupAssetsResponse``; indicates
+    that this is a continuation of a prior ``GroupAssets`` call, and that
+    the system should return the next page of data.
 
     Attributes:
       NULL_VALUE (int): Null value.
@@ -54,12 +53,32 @@ class ListAssetsResponse(object):
     class ListAssetsResult(object):
         class StateChange(enum.IntEnum):
             """
-            The change in state of the asset.
+            A URL/resource name that uniquely identifies the type of the
+            serialized protocol buffer message. This string must contain at least
+            one "/" character. The last segment of the URL's path must represent the
+            fully qualified name of the type (as in
+            ``path/google.protobuf.Duration``). The name should be in a canonical
+            form (e.g., leading "." is not accepted).
 
-            When querying across two points in time this describes the change
-            between the two points: ADDED, REMOVED, or ACTIVE. If there was no
-            compare\_duration supplied in the request the state change will be:
-            UNUSED
+            In practice, teams usually precompile into the binary all types that
+            they expect it to use in the context of Any. However, for URLs which use
+            the scheme ``http``, ``https``, or no scheme, one can optionally set up
+            a type server that maps type URLs to message definitions as follows:
+
+            -  If no scheme is provided, ``https`` is assumed.
+            -  An HTTP GET on the URL must yield a ``google.protobuf.Type`` value in
+               binary format, or produce an error.
+            -  Applications are allowed to cache lookup results based on the URL, or
+               have them precompiled into a binary to avoid any lookup. Therefore,
+               binary compatibility needs to be preserved on changes to types. (Use
+               versioned type names to manage breaking changes.)
+
+            Note: this functionality is not currently available in the official
+            protobuf release, and it is not used for type URLs beginning with
+            type.googleapis.com.
+
+            Schemes other than ``http``, ``https`` (or the empty scheme) might be
+            used with implementation specific semantics.
 
             Attributes:
               UNUSED (int): State change is unused, this is the canonical default for this enum.
@@ -78,14 +97,37 @@ class ListFindingsResponse(object):
     class ListFindingsResult(object):
         class StateChange(enum.IntEnum):
             """
-            The change in state of the finding.
+            Each of the definitions above may have "options" attached. These are
+            just annotations which may cause code to be generated slightly
+            differently or may contain hints for code that manipulates protocol
+            messages.
 
-            When querying across two points in time this describes the change in the
-            finding between the two points: CHANGED, UNCHANGED, ADDED, or REMOVED.
-            Findings can not be deleted, so REMOVED implies that the finding at
-            timestamp does not match the filter specified, but it did at timestamp -
-            compare\_duration. If there was no compare\_duration supplied in the
-            request the state change will be: UNUSED
+            Clients may define custom options as extensions of the \*Options
+            messages. These extensions may not yet be known at parsing time, so the
+            parser cannot store the values in them. Instead it stores them in a
+            field in the \*Options message called uninterpreted_option. This field
+            must have the same name across all \*Options messages. We then use this
+            field to populate the extensions when we build a descriptor, at which
+            point all protos have been parsed and so all extensions are known.
+
+            Extension numbers for custom options may be chosen as follows:
+
+            -  For options which will only be used within a single application or
+               organization, or for experimental options, use field numbers 50000
+               through 99999. It is up to you to ensure that you do not use the same
+               number for multiple options.
+            -  For options which will be published and used publicly by multiple
+               independent entities, e-mail
+               protobuf-global-extension-registry@google.com to reserve extension
+               numbers. Simply provide your project name (e.g. Objective-C plugin)
+               and your project website (if available) -- there's no need to explain
+               how you intend to use them. Usually you only need one extension
+               number. You can declare multiple options with only one extension
+               number by putting them in a sub-message. See the Custom Options
+               section of the docs for examples:
+               https://developers.google.com/protocol-buffers/docs/proto#options If
+               this turns out to be popular, a web service will be set up to
+               automatically assign option numbers.
 
             Attributes:
               UNUSED (int): State change is unused, this is the canonical default for this enum.
@@ -94,8 +136,8 @@ class ListFindingsResponse(object):
               UNCHANGED (int): The finding has not changed state between the points in time and
               existed at both points.
               ADDED (int): The finding was created between the points in time.
-              REMOVED (int): The finding at timestamp does not match the filter specified, but it did
-              at timestamp - compare\_duration.
+              REMOVED (int): Required. The Source being created, only the display_name and
+              description will be used. All other fields will be ignored.
             """
 
             UNUSED = 0
@@ -123,13 +165,9 @@ class OrganizationSettings(object):
     class AssetDiscoveryConfig(object):
         class InclusionMode(enum.IntEnum):
             """
-            The mode of inclusion when running Asset Discovery. Asset discovery can
-            be limited by explicitly identifying projects to be included or
-            excluded. If INCLUDE\_ONLY is set, then only those projects within the
-            organization and their children are discovered during asset discovery.
-            If EXCLUDE is set, then projects that don't match those projects are
-            discovered during asset discovery. If neither are set, then all projects
-            within the organization are discovered during asset discovery.
+            If type_name is set, this need not be set. If both this and
+            type_name are set, this must be one of TYPE_ENUM, TYPE_MESSAGE or
+            TYPE_GROUP.
 
             Attributes:
               INCLUSION_MODE_UNSPECIFIED (int): Unspecified. Setting the mode with this value will disable
