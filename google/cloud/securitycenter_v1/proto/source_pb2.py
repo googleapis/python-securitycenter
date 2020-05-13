@@ -15,8 +15,8 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
-from google.api import resource_pb2 as google_dot_api_dot_resource__pb2
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
+from google.api import resource_pb2 as google_dot_api_dot_resource__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -27,11 +27,11 @@ DESCRIPTOR = _descriptor.FileDescriptor(
         '\n"com.google.cloud.securitycenter.v1P\001ZLgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1;securitycenter\252\002\036Google.Cloud.SecurityCenter.V1\312\002\036Google\\Cloud\\SecurityCenter\\V1\352\002!Google::Cloud::SecurityCenter::V1'
     ),
     serialized_pb=_b(
-        '\n1google/cloud/securitycenter_v1/proto/source.proto\x12\x1egoogle.cloud.securitycenter.v1\x1a\x19google/api/resource.proto\x1a\x1cgoogle/api/annotations.proto"\x9b\x01\n\x06Source\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t:X\xea\x41U\n$securitycenter.googleapis.com/Source\x12-organizations/{organization}/sources/{source}B\xda\x01\n"com.google.cloud.securitycenter.v1P\x01ZLgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1;securitycenter\xaa\x02\x1eGoogle.Cloud.SecurityCenter.V1\xca\x02\x1eGoogle\\Cloud\\SecurityCenter\\V1\xea\x02!Google::Cloud::SecurityCenter::V1b\x06proto3'
+        '\n1google/cloud/securitycenter_v1/proto/source.proto\x12\x1egoogle.cloud.securitycenter.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x19google/api/resource.proto"\x9b\x01\n\x06Source\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t:X\xea\x41U\n$securitycenter.googleapis.com/Source\x12-organizations/{organization}/sources/{source}B\xda\x01\n"com.google.cloud.securitycenter.v1P\x01ZLgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1;securitycenter\xaa\x02\x1eGoogle.Cloud.SecurityCenter.V1\xca\x02\x1eGoogle\\Cloud\\SecurityCenter\\V1\xea\x02!Google::Cloud::SecurityCenter::V1b\x06proto3'
     ),
     dependencies=[
-        google_dot_api_dot_resource__pb2.DESCRIPTOR,
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
+        google_dot_api_dot_resource__pb2.DESCRIPTOR,
     ],
 )
 
@@ -121,12 +121,10 @@ Source = _reflection.GeneratedProtocolMessageType(
     dict(
         DESCRIPTOR=_SOURCE,
         __module__="google.cloud.securitycenter_v1.proto.source_pb2",
-        __doc__="""Cloud Security Command Center's (Cloud SCC) finding
-  source. A finding source is an entity or a mechanism that can produce a
-  finding. A source is like a container of findings that come from the
-  same scanner, logger, monitor, and other tools.
-  
-  
+        __doc__="""Cloud Security Command Center's (Cloud SCC) finding source. A finding
+  source is an entity or a mechanism that can produce a finding. A
+  source is like a container of findings that come from the same
+  scanner, logger, monitor, and other tools.
   Attributes:
       name:
           The relative resource name of this source. See: https://cloud.
