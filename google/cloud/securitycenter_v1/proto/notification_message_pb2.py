@@ -23,6 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.securitycenter.v1",
     syntax="proto3",
     serialized_options=b'\n"com.google.cloud.securitycenter.v1B\030NotificationMessageProtoP\001ZLgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1;securitycenter\252\002\036Google.Cloud.SecurityCenter.V1\312\002\036Google\\Cloud\\SecurityCenter\\V1\352\002!Google::Cloud::SecurityCenter::V1',
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n?google/cloud/securitycenter_v1/proto/notification_message.proto\x12\x1egoogle.cloud.securitycenter.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x32google/cloud/securitycenter_v1/proto/finding.proto"|\n\x13NotificationMessage\x12 \n\x18notification_config_name\x18\x01 \x01(\t\x12:\n\x07\x66inding\x18\x02 \x01(\x0b\x32\'.google.cloud.securitycenter.v1.FindingH\x00\x42\x07\n\x05\x65ventB\xf4\x01\n"com.google.cloud.securitycenter.v1B\x18NotificationMessageProtoP\x01ZLgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1;securitycenter\xaa\x02\x1eGoogle.Cloud.SecurityCenter.V1\xca\x02\x1eGoogle\\Cloud\\SecurityCenter\\V1\xea\x02!Google::Cloud::SecurityCenter::V1b\x06proto3',
     dependencies=[
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
@@ -37,6 +38,7 @@ _NOTIFICATIONMESSAGE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="notification_config_name",
@@ -55,6 +57,7 @@ _NOTIFICATIONMESSAGE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="finding",
@@ -73,6 +76,7 @@ _NOTIFICATIONMESSAGE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -88,6 +92,7 @@ _NOTIFICATIONMESSAGE = _descriptor.Descriptor(
             full_name="google.cloud.securitycenter.v1.NotificationMessage.event",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
