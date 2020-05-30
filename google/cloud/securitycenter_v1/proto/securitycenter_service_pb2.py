@@ -2744,8 +2744,6 @@ CreateFindingRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _CREATEFINDINGREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for creating a finding.
-  
-  
   Attributes:
       parent:
           Required. Resource name of the new finding’s parent. Its
@@ -2772,8 +2770,6 @@ CreateNotificationConfigRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _CREATENOTIFICATIONCONFIGREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for creating a notification config.
-  
-  
   Attributes:
       parent:
           Required. Resource name of the new notification config’s
@@ -2799,8 +2795,6 @@ CreateSourceRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _CREATESOURCEREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for creating a source.
-  
-  
   Attributes:
       parent:
           Required. Resource name of the new source’s parent. Its format
@@ -2821,8 +2815,6 @@ DeleteNotificationConfigRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _DELETENOTIFICATIONCONFIGREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for deleting a notification config.
-  
-  
   Attributes:
       name:
           Required. Name of the notification config to delete. Its
@@ -2841,8 +2833,6 @@ GetNotificationConfigRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GETNOTIFICATIONCONFIGREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for getting a notification config.
-  
-  
   Attributes:
       name:
           Required. Name of the notification config to get. Its format
@@ -2861,8 +2851,6 @@ GetOrganizationSettingsRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GETORGANIZATIONSETTINGSREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for getting organization settings.
-  
-  
   Attributes:
       name:
           Required. Name of the organization to get organization
@@ -2881,8 +2869,6 @@ GetSourceRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GETSOURCEREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for getting a source.
-  
-  
   Attributes:
       name:
           Required. Relative resource name of the source. Its format is
@@ -2900,8 +2886,6 @@ GroupAssetsRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GROUPASSETSREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for grouping by assets.
-  
-  
   Attributes:
       parent:
           Required. Name of the organization to groupBy. Its format is
@@ -3008,8 +2992,6 @@ GroupAssetsResponse = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GROUPASSETSRESPONSE,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Response message for grouping by assets.
-  
-  
   Attributes:
       group_by_results:
           Group results. There exists an element for each existing
@@ -3036,8 +3018,6 @@ GroupFindingsRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GROUPFINDINGSREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for grouping by findings.
-  
-  
   Attributes:
       parent:
           Required. Name of the source to groupBy. Its format is
@@ -3131,8 +3111,6 @@ GroupFindingsResponse = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GROUPFINDINGSRESPONSE,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Response message for group by findings.
-  
-  
   Attributes:
       group_by_results:
           Group results. There exists an element for each existing
@@ -3167,10 +3145,7 @@ GroupResult = _reflection.GeneratedProtocolMessageType(
         ),
         "DESCRIPTOR": _GROUPRESULT,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
-        "__doc__": """Result containing the properties and count of a groupBy
-  request.
-  
-  
+        "__doc__": """Result containing the properties and count of a groupBy request.
   Attributes:
       properties:
           Properties matching the groupBy fields in the request.
@@ -3190,8 +3165,6 @@ ListNotificationConfigsRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTNOTIFICATIONCONFIGSREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for listing notification configs.
-  
-  
   Attributes:
       parent:
           Required. Name of the organization to list notification
@@ -3217,8 +3190,6 @@ ListNotificationConfigsResponse = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTNOTIFICATIONCONFIGSRESPONSE,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Response message for listing notification configs.
-  
-  
   Attributes:
       notification_configs:
           Notification configs belonging to the requested parent.
@@ -3238,8 +3209,6 @@ ListSourcesRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTSOURCESREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for listing sources.
-  
-  
   Attributes:
       parent:
           Required. Resource name of the parent of sources to list. Its
@@ -3265,8 +3234,6 @@ ListSourcesResponse = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTSOURCESRESPONSE,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Response message for listing sources.
-  
-  
   Attributes:
       sources:
           Sources belonging to the requested parent.
@@ -3286,8 +3253,6 @@ ListAssetsRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTASSETSREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for listing assets.
-  
-  
   Attributes:
       parent:
           Required. Name of the organization assets should belong to.
@@ -3406,8 +3371,6 @@ ListAssetsResponse = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _LISTASSETSRESPONSE_LISTASSETSRESULT,
                 "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
                 "__doc__": """Result containing the Asset and its State.
-    
-    
     Attributes:
         asset:
             Asset matching the search request.
@@ -3420,8 +3383,6 @@ ListAssetsResponse = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTASSETSRESPONSE,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Response message for listing assets.
-  
-  
   Attributes:
       list_assets_results:
           Assets matching the list request.
@@ -3446,8 +3407,6 @@ ListFindingsRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTFINDINGSREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for listing findings.
-  
-  
   Attributes:
       parent:
           Required. Name of the source the findings belong to. Its
@@ -3557,10 +3516,8 @@ ListFindingsResponse = _reflection.GeneratedProtocolMessageType(
                     {
                         "DESCRIPTOR": _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT_RESOURCE,
                         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
-                        "__doc__": """Information related to the Google Cloud Platform (GCP)
-      resource that is associated with this finding.
-      
-      
+                        "__doc__": """Information related to the Google Cloud Platform (GCP) resource that
+      is associated with this finding.
       Attributes:
           name:
               The full resource name of the resource. See: https://cloud.goo
@@ -3582,8 +3539,6 @@ ListFindingsResponse = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT,
                 "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
                 "__doc__": """Result containing the Finding and its StateChange.
-    
-    
     Attributes:
         finding:
             Finding matching the search request.
@@ -3598,8 +3553,6 @@ ListFindingsResponse = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTFINDINGSRESPONSE,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Response message for listing findings.
-  
-  
   Attributes:
       list_findings_results:
           Findings matching the list request.
@@ -3625,8 +3578,6 @@ SetFindingStateRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _SETFINDINGSTATEREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for updating a finding’s state.
-  
-  
   Attributes:
       name:
           Required. The relative resource name of the finding. See: http
@@ -3649,10 +3600,7 @@ RunAssetDiscoveryRequest = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _RUNASSETDISCOVERYREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
-        "__doc__": """Request message for running asset discovery for an
-  organization.
-  
-  
+        "__doc__": """Request message for running asset discovery for an organization.
   Attributes:
       parent:
           Required. Name of the organization to run asset discovery for.
@@ -3670,8 +3618,6 @@ UpdateFindingRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _UPDATEFINDINGREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for updating or creating a finding.
-  
-  
   Attributes:
       finding:
           Required. The finding resource to update or create if it does
@@ -3700,8 +3646,6 @@ UpdateNotificationConfigRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _UPDATENOTIFICATIONCONFIGREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for updating a notification config.
-  
-  
   Attributes:
       notification_config:
           Required. The notification config to update.
@@ -3721,8 +3665,6 @@ UpdateOrganizationSettingsRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _UPDATEORGANIZATIONSETTINGSREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for updating an organization’s settings.
-  
-  
   Attributes:
       organization_settings:
           Required. The organization settings resource to update.
@@ -3742,8 +3684,6 @@ UpdateSourceRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _UPDATESOURCEREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for updating a source.
-  
-  
   Attributes:
       source:
           Required. The source resource to update.
@@ -3763,8 +3703,6 @@ UpdateSecurityMarksRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _UPDATESECURITYMARKSREQUEST,
         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
         "__doc__": """Request message for updating a SecurityMarks resource.
-  
-  
   Attributes:
       security_marks:
           Required. The security marks resource to update.
