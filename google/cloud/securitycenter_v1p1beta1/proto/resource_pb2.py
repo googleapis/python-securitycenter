@@ -19,9 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     name="google/cloud/securitycenter_v1p1beta1/proto/resource.proto",
     package="google.cloud.securitycenter.v1p1beta1",
     syntax="proto3",
-    serialized_options=b"\n)com.google.cloud.securitycenter.v1p1beta1B\rResourceProtoP\001ZSgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1p1beta1;securitycenter\252\002%Google.Cloud.SecurityCenter.V1p1Beta1\312\002%Google\\Cloud\\SecurityCenter\\V1p1beta1\352\002(Google::Cloud::SecurityCenter::V1p1beta1",
+    serialized_options=b"\n)com.google.cloud.securitycenter.v1p1beta1B\rResourceProtoP\001ZSgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1p1beta1;securitycenter\252\002%Google.Cloud.SecurityCenter.V1P1Beta1\312\002%Google\\Cloud\\SecurityCenter\\V1p1beta1\352\002(Google::Cloud::SecurityCenter::V1p1beta1",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n:google/cloud/securitycenter_v1p1beta1/proto/resource.proto\x12%google.cloud.securitycenter.v1p1beta1\x1a\x1cgoogle/api/annotations.proto"t\n\x08Resource\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07project\x18\x02 \x01(\t\x12\x1c\n\x14project_display_name\x18\x03 \x01(\t\x12\x0e\n\x06parent\x18\x04 \x01(\t\x12\x1b\n\x13parent_display_name\x18\x05 \x01(\tB\x8c\x02\n)com.google.cloud.securitycenter.v1p1beta1B\rResourceProtoP\x01ZSgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1p1beta1;securitycenter\xaa\x02%Google.Cloud.SecurityCenter.V1p1Beta1\xca\x02%Google\\Cloud\\SecurityCenter\\V1p1beta1\xea\x02(Google::Cloud::SecurityCenter::V1p1beta1b\x06proto3',
+    serialized_pb=b'\n:google/cloud/securitycenter_v1p1beta1/proto/resource.proto\x12%google.cloud.securitycenter.v1p1beta1\x1a\x1cgoogle/api/annotations.proto"t\n\x08Resource\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07project\x18\x02 \x01(\t\x12\x1c\n\x14project_display_name\x18\x03 \x01(\t\x12\x0e\n\x06parent\x18\x04 \x01(\t\x12\x1b\n\x13parent_display_name\x18\x05 \x01(\tB\x8c\x02\n)com.google.cloud.securitycenter.v1p1beta1B\rResourceProtoP\x01ZSgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1p1beta1;securitycenter\xaa\x02%Google.Cloud.SecurityCenter.V1P1Beta1\xca\x02%Google\\Cloud\\SecurityCenter\\V1p1beta1\xea\x02(Google::Cloud::SecurityCenter::V1p1beta1b\x06proto3',
     dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,],
 )
 
