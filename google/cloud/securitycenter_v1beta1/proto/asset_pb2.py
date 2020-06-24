@@ -385,6 +385,7 @@ Asset = _reflection.GeneratedProtocolMessageType(
                 "__module__": "google.cloud.securitycenter_v1beta1.proto.asset_pb2",
                 "__doc__": """Cloud SCC managed properties. These properties are managed by Cloud
     SCC and cannot be modified by the user.
+    
     Attributes:
         resource_name:
             Immutable. The full resource name of the GCP resource this
@@ -426,6 +427,7 @@ Asset = _reflection.GeneratedProtocolMessageType(
   captures information about a single GCP resource. All modifications to
   an Asset are only within the context of Cloud SCC and don’t affect the
   referenced GCP resource.
+  
   Attributes:
       name:
           The relative resource name of this asset. See: https://cloud.g

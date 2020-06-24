@@ -393,6 +393,7 @@ Finding = _reflection.GeneratedProtocolMessageType(
   Security Command Center for presentation, notification, analysis,
   policy testing, and enforcement. For example, a cross-site scripting
   (XSS) vulnerability in an App Engine application is a finding.
+  
   Attributes:
       name:
           The relative resource name of this finding. See: https://cloud

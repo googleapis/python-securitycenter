@@ -172,6 +172,7 @@ SecurityMarks = _reflection.GeneratedProtocolMessageType(
   Security Command Center (Cloud SCC) resource. Security marks are
   scoped within a Cloud SCC organization – they can be modified and
   viewed by all users who have proper permissions on the organization.
+  
   Attributes:
       name:
           The relative resource name of the SecurityMarks. See: https://

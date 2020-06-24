@@ -507,6 +507,7 @@ Asset = _reflection.GeneratedProtocolMessageType(
                 "__module__": "google.cloud.securitycenter_v1p1beta1.proto.asset_pb2",
                 "__doc__": """Security Command Center managed properties. These properties are
     managed by Security Command Center and cannot be modified by the user.
+    
     Attributes:
         resource_name:
             The full resource name of the Google Cloud resource this asset
@@ -550,6 +551,7 @@ Asset = _reflection.GeneratedProtocolMessageType(
     described by the Security Command Center asset. This information is
     managed and defined by the Google Cloud resource and cannot be
     modified by the user.
+    
     Attributes:
         policy_blob:
             The JSON representation of the Policy associated with the
@@ -576,6 +578,7 @@ Asset = _reflection.GeneratedProtocolMessageType(
   information about a single Google Cloud resource. All modifications to
   an Asset are only within the context of Security Command Center and
   don’t affect the referenced Google Cloud resource.
+  
   Attributes:
       name:
           The relative resource name of this asset. See: https://cloud.g

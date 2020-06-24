@@ -393,6 +393,7 @@ Finding = _reflection.GeneratedProtocolMessageType(
   into Cloud SCC for presentation, notification, analysis, policy
   testing, and enforcement. For example, an XSS vulnerability in an App
   Engine application is a finding.
+  
   Attributes:
       name:
           The relative resource name of this finding. See: https://cloud

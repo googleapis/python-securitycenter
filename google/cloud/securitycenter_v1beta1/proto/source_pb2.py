@@ -121,6 +121,7 @@ Source = _reflection.GeneratedProtocolMessageType(
   source is an entity or a mechanism that can produce a finding. A
   source is like a container of findings that come from the same
   scanner, logger, monitor, etc.
+  
   Attributes:
       name:
           The relative resource name of this source. See: https://cloud.

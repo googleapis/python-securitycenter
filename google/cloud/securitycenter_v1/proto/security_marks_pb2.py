@@ -172,6 +172,7 @@ SecurityMarks = _reflection.GeneratedProtocolMessageType(
   Command Center resource. Security marks are scoped within a Security
   Command Center organization – they can be modified and viewed by all
   users who have proper permissions on the organization.
+  
   Attributes:
       name:
           The relative resource name of the SecurityMarks. See: https://

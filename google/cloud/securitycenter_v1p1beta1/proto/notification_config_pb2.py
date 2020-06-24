@@ -277,6 +277,7 @@ NotificationConfig = _reflection.GeneratedProtocolMessageType(
                 "__module__": "google.cloud.securitycenter_v1p1beta1.proto.notification_config_pb2",
                 "__doc__": """The config for streaming-based notifications, which send each event as
     soon as it is detected.
+    
     Attributes:
         filter:
             Expression that defines the filter to apply across
@@ -303,6 +304,7 @@ NotificationConfig = _reflection.GeneratedProtocolMessageType(
   is a Security Command Center resource that contains the configuration
   to send notifications for create/update events of findings, assets and
   etc.
+  
   Attributes:
       name:
           The relative resource name of this notification config. See: h

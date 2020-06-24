@@ -152,6 +152,7 @@ Resource = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _RESOURCE,
         "__module__": "google.cloud.securitycenter_v1p1beta1.proto.resource_pb2",
         "__doc__": """Information related to the Google Cloud resource.
+  
   Attributes:
       name:
           The full resource name of the resource. See: https://cloud.goo
