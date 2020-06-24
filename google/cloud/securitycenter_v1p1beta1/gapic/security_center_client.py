@@ -890,7 +890,6 @@ class SecurityCenterClient(object):
         filter_=None,
         compare_duration=None,
         read_time=None,
-        having=None,
         page_size=None,
         retry=google.api_core.gapic_v1.method.DEFAULT,
         timeout=google.api_core.gapic_v1.method.DEFAULT,
@@ -978,14 +977,14 @@ class SecurityCenterClient(object):
                 -  update_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
 
                    Usage: This should be milliseconds since epoch or an RFC3339 string.
-                   Examples: "update_time = "2019-06-10T16:07:18-07:00"" "update_time =
-                   1560208038000"
+                   Examples: ``update_time = "2019-06-10T16:07:18-07:00"``
+                   ``update_time = 1560208038000``
 
                 -  create_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
 
                    Usage: This should be milliseconds since epoch or an RFC3339 string.
-                   Examples: "create_time = "2019-06-10T16:07:18-07:00"" "create_time =
-                   1560208038000"
+                   Examples: ``create_time = "2019-06-10T16:07:18-07:00"``
+                   ``create_time = 1560208038000``
 
                 -  iam_policy.policy_blob: ``=``, ``:``
 
@@ -1012,6 +1011,12 @@ class SecurityCenterClient(object):
 
                 For example, ``resource_properties.size = 100`` is a valid filter
                 string.
+
+                Use a partial match on the empty string to filter based on a property
+                existing: ``resource_properties.my_property : ""``
+
+                Use a negated partial match on the empty string to filter based on a
+                property not existing: ``-resource_properties.my_property : ""``
             compare_duration (Union[dict, ~google.cloud.securitycenter_v1p1beta1.types.Duration]): When compare_duration is set, the GroupResult's "state_change"
                 property is updated to indicate whether the asset was added, removed, or
                 remained present during the compare_duration period of time that
@@ -1049,9 +1054,6 @@ class SecurityCenterClient(object):
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1p1beta1.types.Timestamp`
-            having (str): Filter that specifies what fields to further filter on *after* the
-                query filter has been executed. Currently only ``state_change`` is
-                supported and requires compare_duration to be specified.
             page_size (int): The maximum number of resources contained in the
                 underlying API response. If page streaming is performed per-
                 resource, this parameter does not affect the return value. If page
@@ -1096,7 +1098,6 @@ class SecurityCenterClient(object):
             filter=filter_,
             compare_duration=compare_duration,
             read_time=read_time,
-            having=having,
             page_size=page_size,
         )
         if metadata is None:
@@ -1134,7 +1135,6 @@ class SecurityCenterClient(object):
         filter_=None,
         read_time=None,
         compare_duration=None,
-        having=None,
         page_size=None,
         retry=google.api_core.gapic_v1.method.DEFAULT,
         timeout=google.api_core.gapic_v1.method.DEFAULT,
@@ -1232,14 +1232,20 @@ class SecurityCenterClient(object):
                 -  event_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
 
                    Usage: This should be milliseconds since epoch or an RFC3339 string.
-                   Examples: "event_time = "2019-06-10T16:07:18-07:00"" "event_time =
-                   1560208038000"
+                   Examples: ``event_time = "2019-06-10T16:07:18-07:00"``
+                   ``event_time = 1560208038000``
 
                 -  security_marks.marks: ``=``, ``:``
 
                 -  source_properties: ``=``, ``:``, ``>``, ``<``, ``>=``, ``<=``
 
                 For example, ``source_properties.size = 100`` is a valid filter string.
+
+                Use a partial match on the empty string to filter based on a property
+                existing: ``source_properties.my_property : ""``
+
+                Use a negated partial match on the empty string to filter based on a
+                property not existing: ``-source_properties.my_property : ""``
             read_time (Union[dict, ~google.cloud.securitycenter_v1p1beta1.types.Timestamp]): Time used as a reference point when filtering findings. The filter is
                 limited to findings existing at the supplied time and their values are
                 those at that specific time. Absence of this field will default to the
@@ -1261,12 +1267,18 @@ class SecurityCenterClient(object):
 
                 Possible "state_change" values when compare_duration is specified:
 
-                -  "CHANGED": indicates that the finding was present at the start of
-                   compare_duration, but changed its state at read_time.
-                -  "UNCHANGED": indicates that the finding was present at the start of
-                   compare_duration and did not change state at read_time.
-                -  "ADDED": indicates that the finding was not present at the start of
-                   compare_duration, but was present at read_time.
+                -  "CHANGED": indicates that the finding was present and matched the
+                   given filter at the start of compare_duration, but changed its state
+                   at read_time.
+                -  "UNCHANGED": indicates that the finding was present and matched the
+                   given filter at the start of compare_duration and did not change
+                   state at read_time.
+                -  "ADDED": indicates that the finding did not match the given filter or
+                   was not present at the start of compare_duration, but was present at
+                   read_time.
+                -  "REMOVED": indicates that the finding was present and matched the
+                   filter at the start of compare_duration, but did not match the filter
+                   at read_time.
 
                 If compare_duration is not specified, then the only possible
                 state_change is "UNUSED", which will be the state_change set for all
@@ -1277,10 +1289,6 @@ class SecurityCenterClient(object):
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1p1beta1.types.Duration`
-            having (str): Filter that specifies what fields to further filter on *after* the
-                query filter has been executed. Currently only ``finding.state`` and
-                ``state_change`` are supported and requires compare_duration to be
-                specified.
             page_size (int): The maximum number of resources contained in the
                 underlying API response. If page streaming is performed per-
                 resource, this parameter does not affect the return value. If page
@@ -1325,7 +1333,6 @@ class SecurityCenterClient(object):
             filter=filter_,
             read_time=read_time,
             compare_duration=compare_duration,
-            having=having,
             page_size=page_size,
         )
         if metadata is None:
@@ -1363,7 +1370,6 @@ class SecurityCenterClient(object):
         order_by=None,
         read_time=None,
         compare_duration=None,
-        having=None,
         field_mask=None,
         page_size=None,
         retry=google.api_core.gapic_v1.method.DEFAULT,
@@ -1430,14 +1436,14 @@ class SecurityCenterClient(object):
                 -  update_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
 
                    Usage: This should be milliseconds since epoch or an RFC3339 string.
-                   Examples: "update_time = "2019-06-10T16:07:18-07:00"" "update_time =
-                   1560208038000"
+                   Examples: ``update_time = "2019-06-10T16:07:18-07:00"``
+                   ``update_time = 1560208038000``
 
                 -  create_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
 
                    Usage: This should be milliseconds since epoch or an RFC3339 string.
-                   Examples: "create_time = "2019-06-10T16:07:18-07:00"" "create_time =
-                   1560208038000"
+                   Examples: ``create_time = "2019-06-10T16:07:18-07:00"``
+                   ``create_time = 1560208038000``
 
                 -  iam_policy.policy_blob: ``=``, ``:``
 
@@ -1464,6 +1470,12 @@ class SecurityCenterClient(object):
 
                 For example, ``resource_properties.size = 100`` is a valid filter
                 string.
+
+                Use a partial match on the empty string to filter based on a property
+                existing: ``resource_properties.my_property : ""``
+
+                Use a negated partial match on the empty string to filter based on a
+                property not existing: ``-resource_properties.my_property : ""``
             order_by (str): Expression that defines what fields and order to use for sorting.
                 The string value should follow SQL syntax: comma separated list of
                 fields. For example: "name,resource_properties.a_property". The default
@@ -1514,9 +1526,6 @@ class SecurityCenterClient(object):
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1p1beta1.types.Duration`
-            having (str): Filter that specifies what fields to further filter on *after* the
-                query filter has been executed. Currently only ``state_change`` is
-                supported and requires compare_duration to be specified.
             field_mask (Union[dict, ~google.cloud.securitycenter_v1p1beta1.types.FieldMask]): Optional.
                 A field mask to specify the ListAssetsResult fields to be listed in the
                 response.
@@ -1568,7 +1577,6 @@ class SecurityCenterClient(object):
             order_by=order_by,
             read_time=read_time,
             compare_duration=compare_duration,
-            having=having,
             field_mask=field_mask,
             page_size=page_size,
         )
@@ -1607,7 +1615,6 @@ class SecurityCenterClient(object):
         order_by=None,
         read_time=None,
         compare_duration=None,
-        having=None,
         field_mask=None,
         page_size=None,
         retry=google.api_core.gapic_v1.method.DEFAULT,
@@ -1677,13 +1684,19 @@ class SecurityCenterClient(object):
                 event_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
 
                 Usage: This should be milliseconds since epoch or an RFC3339 string.
-                Examples: "event_time = "2019-06-10T16:07:18-07:00"" "event_time =
-                1560208038000"
+                Examples: ``event_time = "2019-06-10T16:07:18-07:00"``
+                ``event_time = 1560208038000``
 
                 security_marks.marks: ``=``, ``:`` source_properties: ``=``, ``:``,
                 ``>``, ``<``, ``>=``, ``<=``
 
                 For example, ``source_properties.size = 100`` is a valid filter string.
+
+                Use a partial match on the empty string to filter based on a property
+                existing: ``source_properties.my_property : ""``
+
+                Use a negated partial match on the empty string to filter based on a
+                property not existing: ``-source_properties.my_property : ""``
             order_by (str): Expression that defines what fields and order to use for sorting.
                 The string value should follow SQL syntax: comma separated list of
                 fields. For example: "name,resource_properties.a_property". The default
@@ -1716,12 +1729,18 @@ class SecurityCenterClient(object):
 
                 Possible "state_change" values when compare_duration is specified:
 
-                -  "CHANGED": indicates that the finding was present at the start of
-                   compare_duration, but changed its state at read_time.
-                -  "UNCHANGED": indicates that the finding was present at the start of
-                   compare_duration and did not change state at read_time.
-                -  "ADDED": indicates that the finding was not present at the start of
-                   compare_duration, but was present at read_time.
+                -  "CHANGED": indicates that the finding was present and matched the
+                   given filter at the start of compare_duration, but changed its state
+                   at read_time.
+                -  "UNCHANGED": indicates that the finding was present and matched the
+                   given filter at the start of compare_duration and did not change
+                   state at read_time.
+                -  "ADDED": indicates that the finding did not match the given filter or
+                   was not present at the start of compare_duration, but was present at
+                   read_time.
+                -  "REMOVED": indicates that the finding was present and matched the
+                   filter at the start of compare_duration, but did not match the filter
+                   at read_time.
 
                 If compare_duration is not specified, then the only possible
                 state_change is "UNUSED", which will be the state_change set for all
@@ -1729,10 +1748,6 @@ class SecurityCenterClient(object):
 
                 If a dict is provided, it must be of the same form as the protobuf
                 message :class:`~google.cloud.securitycenter_v1p1beta1.types.Duration`
-            having (str): Filter that specifies what fields to further filter on *after* the
-                query filter has been executed. Currently only ``finding.state`` and
-                ``state_change`` are supported and requires compare_duration to be
-                specified.
             field_mask (Union[dict, ~google.cloud.securitycenter_v1p1beta1.types.FieldMask]): Optional.
                 A field mask to specify the Finding fields to be listed in the response.
                 An empty field mask will list all fields.
@@ -1783,7 +1798,6 @@ class SecurityCenterClient(object):
             order_by=order_by,
             read_time=read_time,
             compare_duration=compare_duration,
-            having=having,
             field_mask=field_mask,
             page_size=page_size,
         )

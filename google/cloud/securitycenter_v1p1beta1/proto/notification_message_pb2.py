@@ -19,6 +19,9 @@ from google.cloud.securitycenter_v1p1beta1.proto import (
 from google.cloud.securitycenter_v1p1beta1.proto import (
     finding_pb2 as google_dot_cloud_dot_securitycenter__v1p1beta1_dot_proto_dot_finding__pb2,
 )
+from google.cloud.securitycenter_v1p1beta1.proto import (
+    resource_pb2 as google_dot_cloud_dot_securitycenter__v1p1beta1_dot_proto_dot_resource__pb2,
+)
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -27,11 +30,12 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=b"\n)com.google.cloud.securitycenter.v1p1beta1P\001ZSgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1p1beta1;securitycenter\252\002%Google.Cloud.SecurityCenter.V1P1Beta1\312\002%Google\\Cloud\\SecurityCenter\\V1p1beta1\352\002(Google::Cloud::SecurityCenter::V1p1beta1",
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\nFgoogle/cloud/securitycenter_v1p1beta1/proto/notification_message.proto\x12%google.cloud.securitycenter.v1p1beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x37google/cloud/securitycenter_v1p1beta1/proto/asset.proto\x1a\x39google/cloud/securitycenter_v1p1beta1/proto/finding.proto"\x83\x01\n\x13NotificationMessage\x12 \n\x18notification_config_name\x18\x01 \x01(\t\x12\x41\n\x07\x66inding\x18\x02 \x01(\x0b\x32..google.cloud.securitycenter.v1p1beta1.FindingH\x00\x42\x07\n\x05\x65ventB\xfd\x01\n)com.google.cloud.securitycenter.v1p1beta1P\x01ZSgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1p1beta1;securitycenter\xaa\x02%Google.Cloud.SecurityCenter.V1P1Beta1\xca\x02%Google\\Cloud\\SecurityCenter\\V1p1beta1\xea\x02(Google::Cloud::SecurityCenter::V1p1beta1b\x06proto3',
+    serialized_pb=b'\nFgoogle/cloud/securitycenter_v1p1beta1/proto/notification_message.proto\x12%google.cloud.securitycenter.v1p1beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x37google/cloud/securitycenter_v1p1beta1/proto/asset.proto\x1a\x39google/cloud/securitycenter_v1p1beta1/proto/finding.proto\x1a:google/cloud/securitycenter_v1p1beta1/proto/resource.proto"\xc6\x01\n\x13NotificationMessage\x12 \n\x18notification_config_name\x18\x01 \x01(\t\x12\x41\n\x07\x66inding\x18\x02 \x01(\x0b\x32..google.cloud.securitycenter.v1p1beta1.FindingH\x00\x12\x41\n\x08resource\x18\x03 \x01(\x0b\x32/.google.cloud.securitycenter.v1p1beta1.ResourceB\x07\n\x05\x65ventB\xfd\x01\n)com.google.cloud.securitycenter.v1p1beta1P\x01ZSgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1p1beta1;securitycenter\xaa\x02%Google.Cloud.SecurityCenter.V1P1Beta1\xca\x02%Google\\Cloud\\SecurityCenter\\V1p1beta1\xea\x02(Google::Cloud::SecurityCenter::V1p1beta1b\x06proto3',
     dependencies=[
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
         google_dot_cloud_dot_securitycenter__v1p1beta1_dot_proto_dot_asset__pb2.DESCRIPTOR,
         google_dot_cloud_dot_securitycenter__v1p1beta1_dot_proto_dot_finding__pb2.DESCRIPTOR,
+        google_dot_cloud_dot_securitycenter__v1p1beta1_dot_proto_dot_resource__pb2.DESCRIPTOR,
     ],
 )
 
@@ -82,6 +86,25 @@ _NOTIFICATIONMESSAGE = _descriptor.Descriptor(
             file=DESCRIPTOR,
             create_key=_descriptor._internal_create_key,
         ),
+        _descriptor.FieldDescriptor(
+            name="resource",
+            full_name="google.cloud.securitycenter.v1p1beta1.NotificationMessage.resource",
+            index=2,
+            number=3,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
     ],
     extensions=[],
     nested_types=[],
@@ -100,14 +123,19 @@ _NOTIFICATIONMESSAGE = _descriptor.Descriptor(
             fields=[],
         ),
     ],
-    serialized_start=260,
-    serialized_end=391,
+    serialized_start=320,
+    serialized_end=518,
 )
 
 _NOTIFICATIONMESSAGE.fields_by_name[
     "finding"
 ].message_type = (
     google_dot_cloud_dot_securitycenter__v1p1beta1_dot_proto_dot_finding__pb2._FINDING
+)
+_NOTIFICATIONMESSAGE.fields_by_name[
+    "resource"
+].message_type = (
+    google_dot_cloud_dot_securitycenter__v1p1beta1_dot_proto_dot_resource__pb2._RESOURCE
 )
 _NOTIFICATIONMESSAGE.oneofs_by_name["event"].fields.append(
     _NOTIFICATIONMESSAGE.fields_by_name["finding"]
@@ -124,7 +152,7 @@ NotificationMessage = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _NOTIFICATIONMESSAGE,
         "__module__": "google.cloud.securitycenter_v1p1beta1.proto.notification_message_pb2",
-        "__doc__": """Cloud SCC’s Notification
+        "__doc__": """Security Command Center’s Notification
   Attributes:
       notification_config_name:
           Name of the notification config that generated current
@@ -134,6 +162,8 @@ NotificationMessage = _reflection.GeneratedProtocolMessageType(
       finding:
           If it’s a Finding based notification config, this field will
           be populated.
+      resource:
+          The Cloud resource tied to the notification.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.securitycenter.v1p1beta1.NotificationMessage)
     },

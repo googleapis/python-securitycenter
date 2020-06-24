@@ -301,8 +301,7 @@ class SecurityCenterServicer(object):
         raise NotImplementedError("Method not implemented!")
 
     def UpdateFinding(self, request, context):
-        """
-    Creates or updates a finding. The corresponding source must exist for a
+        """Creates or updates a finding. The corresponding source must exist for a
     finding creation to succeed.
     """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)

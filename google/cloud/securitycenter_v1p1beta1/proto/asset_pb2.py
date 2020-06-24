@@ -505,19 +505,20 @@ Asset = _reflection.GeneratedProtocolMessageType(
             {
                 "DESCRIPTOR": _ASSET_SECURITYCENTERPROPERTIES,
                 "__module__": "google.cloud.securitycenter_v1p1beta1.proto.asset_pb2",
-                "__doc__": """Cloud SCC managed properties. These properties are managed by Cloud
-    SCC and cannot be modified by the user.
+                "__doc__": """Security Command Center managed properties. These properties are
+    managed by Security Command Center and cannot be modified by the user.
     Attributes:
         resource_name:
-            The full resource name of the GCP resource this asset
+            The full resource name of the Google Cloud resource this asset
             represents. This field is immutable after create time. See: ht
             tps://cloud.google.com/apis/design/resource_names#full_resourc
             e_name
         resource_type:
-            The type of the GCP resource. Examples include: APPLICATION,
-            PROJECT, and ORGANIZATION. This is a case insensitive field
-            defined by Cloud SCC and/or the producer of the resource and
-            is immutable after create time.
+            The type of the Google Cloud resource. Examples include:
+            APPLICATION, PROJECT, and ORGANIZATION. This is a case
+            insensitive field defined by Security Command Center and/or
+            the producer of the resource and is immutable after create
+            time.
         resource_parent:
             The full resource name of the immediate parent of the
             resource. See: https://cloud.google.com/apis/design/resource_n
@@ -545,14 +546,15 @@ Asset = _reflection.GeneratedProtocolMessageType(
             {
                 "DESCRIPTOR": _ASSET_IAMPOLICY,
                 "__module__": "google.cloud.securitycenter_v1p1beta1.proto.asset_pb2",
-                "__doc__": """IAM Policy information associated with the GCP resource described by
-    the Cloud SCC asset. This information is managed and defined by the
-    GCP resource and cannot be modified by the user.
+                "__doc__": """Cloud IAM Policy information associated with the Google Cloud resource
+    described by the Security Command Center asset. This information is
+    managed and defined by the Google Cloud resource and cannot be
+    modified by the user.
     Attributes:
         policy_blob:
             The JSON representation of the Policy associated with the
             asset. See
-            https://cloud.google.com/iam/reference/rest/v1/Policy for
+            https://cloud.google.com/iam/docs/reference/rest/v1/Policy for
             format details.
     """,
                 # @@protoc_insertion_point(class_scope:google.cloud.securitycenter.v1p1beta1.Asset.IamPolicy)
@@ -569,37 +571,39 @@ Asset = _reflection.GeneratedProtocolMessageType(
         ),
         "DESCRIPTOR": _ASSET,
         "__module__": "google.cloud.securitycenter_v1p1beta1.proto.asset_pb2",
-        "__doc__": """Cloud Security Command Center’s (Cloud SCC) representation of a Google
-  Cloud Platform (GCP) resource.  The Asset is a Cloud SCC resource that
-  captures information about a single GCP resource. All modifications to
-  an Asset are only within the context of Cloud SCC and don’t affect the
-  referenced GCP resource.
+        "__doc__": """Security Command Center representation of a Google Cloud resource.
+  The Asset is a Security Command Center resource that captures
+  information about a single Google Cloud resource. All modifications to
+  an Asset are only within the context of Security Command Center and
+  don’t affect the referenced Google Cloud resource.
   Attributes:
       name:
           The relative resource name of this asset. See: https://cloud.g
           oogle.com/apis/design/resource_names#relative_resource_name
           Example: “organizations/{organization_id}/assets/{asset_id}”.
       security_center_properties:
-          Cloud SCC managed properties. These properties are managed by
-          Cloud SCC and cannot be modified by the user.
+          Security Command Center managed properties. These properties
+          are managed by Security Command Center and cannot be modified
+          by the user.
       resource_properties:
           Resource managed properties. These properties are managed and
-          defined by the GCP resource and cannot be modified by the
-          user.
+          defined by the Google Cloud resource and cannot be modified by
+          the user.
       security_marks:
           User specified security marks. These marks are entirely
           managed by the user and come from the SecurityMarks resource
           that belongs to the asset.
       create_time:
-          The time at which the asset was created in Cloud SCC.
+          The time at which the asset was created in Security Command
+          Center.
       update_time:
           The time at which the asset was last updated, added, or
           deleted in Cloud SCC.
       iam_policy:
-          IAM Policy information associated with the GCP resource
-          described by the Cloud SCC asset. This information is managed
-          and defined by the GCP resource and cannot be modified by the
-          user.
+          Cloud IAM Policy information associated with the Google Cloud
+          resource described by the Security Command Center asset. This
+          information is managed and defined by the Google Cloud
+          resource and cannot be modified by the user.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.securitycenter.v1p1beta1.Asset)
     },

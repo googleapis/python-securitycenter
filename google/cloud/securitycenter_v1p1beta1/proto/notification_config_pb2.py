@@ -299,10 +299,10 @@ NotificationConfig = _reflection.GeneratedProtocolMessageType(
         ),
         "DESCRIPTOR": _NOTIFICATIONCONFIG,
         "__module__": "google.cloud.securitycenter_v1p1beta1.proto.notification_config_pb2",
-        "__doc__": """Cloud Security Command Center (Cloud SCC) notification configs.  A
-  notification config is a Cloud SCC resource that contains the
-  configuration to send notifications for create/update events of
-  findings, assets and etc.
+        "__doc__": """Security Command Center notification configs.  A notification config
+  is a Security Command Center resource that contains the configuration
+  to send notifications for create/update events of findings, assets and
+  etc.
   Attributes:
       name:
           The relative resource name of this notification config. See: h
@@ -315,11 +315,11 @@ NotificationConfig = _reflection.GeneratedProtocolMessageType(
       event_type:
           The type of events the config is for, e.g. FINDING.
       pubsub_topic:
-          The PubSub topic to send notifications to. Its format is
+          The Pub/Sub topic to send notifications to. Its format is
           “projects/[project_id]/topics/[topic]”.
       service_account:
           Output only. The service account that needs
-          “pubsub.topics.publish” permission to publish to the PubSub
+          “pubsub.topics.publish” permission to publish to the Pub/Sub
           topic.
       notify_config:
           The config for triggering notifications.
