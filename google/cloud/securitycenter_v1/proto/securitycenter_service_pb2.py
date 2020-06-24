@@ -3085,14 +3085,15 @@ GroupAssetsRequest = _reflection.GeneratedProtocolMessageType(
           without quotes.  The following field and operator combinations
           are supported:  -  name: ``=`` -  update_time: ``=``, ``>``,
           ``<``, ``>=``, ``<=``     Usage: This should be milliseconds
-          since epoch or an RFC3339 string.    Examples: “update_time =
-          "2019-06-10T16:07:18-07:00"” “update_time =    1560208038000”
-          -  create_time: ``=``, ``>``, ``<``, ``>=``, ``<=``     Usage:
-          This should be milliseconds since epoch or an RFC3339 string.
-          Examples: “create_time = "2019-06-10T16:07:18-07:00"”
-          “create_time =    1560208038000”  -  iam_policy.policy_blob:
-          ``=``, ``:`` -  resource_properties: ``=``, ``:``, ``>``,
-          ``<``, ``>=``, ``<=`` -  security_marks.marks: ``=``, ``:`` -
+          since epoch or an RFC3339 string.    Examples: ``update_time =
+          "2019-06-10T16:07:18-07:00"``    ``update_time =
+          1560208038000``  -  create_time: ``=``, ``>``, ``<``, ``>=``,
+          ``<=``     Usage: This should be milliseconds since epoch or
+          an RFC3339 string.    Examples: ``create_time =
+          "2019-06-10T16:07:18-07:00"``    ``create_time =
+          1560208038000``  -  iam_policy.policy_blob: ``=``, ``:`` -
+          resource_properties: ``=``, ``:``, ``>``, ``<``, ``>=``,
+          ``<=`` -  security_marks.marks: ``=``, ``:`` -
           security_center_properties.resource_name: ``=``, ``:`` -
           security_center_properties.resource_display_name: ``=``, ``:``
           -  security_center_properties.resource_type: ``=``, ``:`` -
@@ -3103,7 +3104,12 @@ GroupAssetsRequest = _reflection.GeneratedProtocolMessageType(
           security_center_properties.resource_project_display_name:
           ``=``,    ``:`` -  security_center_properties.resource_owners:
           ``=``, ``:``  For example, ``resource_properties.size = 100``
-          is a valid filter string.
+          is a valid filter string.  Use a partial match on the empty
+          string to filter based on a property existing:\
+          ``resource_properties.my_property : ""``  Use a negated
+          partial match on the empty string to filter based on a
+          property not existing: ``-resource_properties.my_property :
+          ""``
       group_by:
           Required. Expression that defines what assets fields to use
           for grouping. The string value should follow SQL syntax: comma
@@ -3220,11 +3226,15 @@ GroupFindingsRequest = _reflection.GeneratedProtocolMessageType(
           category: ``=``, ``:`` -  external_uri: ``=``, ``:`` -
           event_time: ``=``, ``>``, ``<``, ``>=``, ``<=``     Usage:
           This should be milliseconds since epoch or an RFC3339 string.
-          Examples: “event_time = "2019-06-10T16:07:18-07:00"”
-          “event_time =    1560208038000”  -  security_marks.marks:
+          Examples: ``event_time = "2019-06-10T16:07:18-07:00"``
+          ``event_time = 1560208038000``  -  security_marks.marks:
           ``=``, ``:`` -  source_properties: ``=``, ``:``, ``>``, ``<``,
           ``>=``, ``<=``  For example, ``source_properties.size = 100``
-          is a valid filter string.
+          is a valid filter string.  Use a partial match on the empty
+          string to filter based on a property existing:
+          ``source_properties.my_property : ""``  Use a negated partial
+          match on the empty string to filter based on a property not
+          existing: ``-source_properties.my_property : ""``
       group_by:
           Required. Expression that defines what assets fields to use
           for grouping (including ``state_change``). The string value
@@ -3453,12 +3463,12 @@ ListAssetsRequest = _reflection.GeneratedProtocolMessageType(
           operator combinations:  -  name: ``=`` -  update_time: ``=``,
           ``>``, ``<``, ``>=``, ``<=``     Usage: This should be
           milliseconds since epoch or an RFC3339 string.    Examples:
-          “update_time = "2019-06-10T16:07:18-07:00"” “update_time =
-          1560208038000”  -  create_time: ``=``, ``>``, ``<``, ``>=``,
-          ``<=``     Usage: This should be milliseconds since epoch or
-          an RFC3339 string.    Examples: “create_time =
-          "2019-06-10T16:07:18-07:00"” “create_time =    1560208038000”
-          -  iam_policy.policy_blob: ``=``, ``:`` -
+          ``update_time = "2019-06-10T16:07:18-07:00"``    ``update_time
+          = 1560208038000``  -  create_time: ``=``, ``>``, ``<``,
+          ``>=``, ``<=``     Usage: This should be milliseconds since
+          epoch or an RFC3339 string.    Examples: ``create_time =
+          "2019-06-10T16:07:18-07:00"``    ``create_time =
+          1560208038000``  -  iam_policy.policy_blob: ``=``, ``:`` -
           resource_properties: ``=``, ``:``, ``>``, ``<``, ``>=``,
           ``<=`` -  security_marks.marks: ``=``, ``:`` -
           security_center_properties.resource_name: ``=``, ``:`` -
@@ -3471,7 +3481,12 @@ ListAssetsRequest = _reflection.GeneratedProtocolMessageType(
           security_center_properties.resource_project_display_name:
           ``=``,    ``:`` -  security_center_properties.resource_owners:
           ``=``, ``:``  For example, ``resource_properties.size = 100``
-          is a valid filter string.
+          is a valid filter string.  Use a partial match on the empty
+          string to filter based on a property existing:
+          ``resource_properties.my_property : ""``  Use a negated
+          partial match on the empty string to filter based on a
+          property not existing: ``-resource_properties.my_property :
+          ""``
       order_by:
           Expression that defines what fields and order to use for
           sorting. The string value should follow SQL syntax: comma
@@ -3610,11 +3625,15 @@ ListFindingsRequest = _reflection.GeneratedProtocolMessageType(
           ``=``, ``:`` external_uri: ``=``, ``:`` event_time: ``=``,
           ``>``, ``<``, ``>=``, ``<=``  Usage: This should be
           milliseconds since epoch or an RFC3339 string. Examples:
-          “event_time = "2019-06-10T16:07:18-07:00"” “event_time =
-          1560208038000”  security_marks.marks: ``=``, ``:``
+          ``event_time = "2019-06-10T16:07:18-07:00"`` ``event_time =
+          1560208038000``  security_marks.marks: ``=``, ``:``
           source_properties: ``=``, ``:``, ``>``, ``<``, ``>=``, ``<=``
           For example, ``source_properties.size = 100`` is a valid
-          filter string.
+          filter string.  Use a partial match on the empty string to
+          filter based on a property existing:
+          ``source_properties.my_property : ""``  Use a negated partial
+          match on the empty string to filter based on a property not
+          existing: ``-source_properties.my_property : ""``
       order_by:
           Expression that defines what fields and order to use for
           sorting. The string value should follow SQL syntax: comma
@@ -3692,8 +3711,8 @@ ListFindingsResponse = _reflection.GeneratedProtocolMessageType(
                     {
                         "DESCRIPTOR": _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT_RESOURCE,
                         "__module__": "google.cloud.securitycenter_v1.proto.securitycenter_service_pb2",
-                        "__doc__": """Information related to the Google Cloud Platform (GCP) resource that
-      is associated with this finding.
+                        "__doc__": """Information related to the Google Cloud resource that is associated
+      with this finding.
       Attributes:
           name:
               The full resource name of the resource. See: https://cloud.goo
