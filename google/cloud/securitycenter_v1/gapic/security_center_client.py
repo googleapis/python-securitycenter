@@ -2495,7 +2495,8 @@ class SecurityCenterClient(object):
         metadata=None,
     ):
         """
-        Updates a notification config.
+        Updates a notification config. The following update fields are
+        allowed: description, pubsub_topic, streaming_config.filter
 
         Example:
             >>> from google.cloud import securitycenter_v1

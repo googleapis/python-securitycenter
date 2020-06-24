@@ -309,7 +309,8 @@ class SecurityCenterServicer(object):
         raise NotImplementedError("Method not implemented!")
 
     def UpdateNotificationConfig(self, request, context):
-        """Updates a notification config.
+        """Updates a notification config. The following update
+    fields are allowed: description, pubsub_topic, streaming_config.filter
     """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")

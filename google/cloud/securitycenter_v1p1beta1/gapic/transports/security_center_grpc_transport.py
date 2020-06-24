@@ -386,7 +386,8 @@ class SecurityCenterGrpcTransport(object):
     def update_notification_config(self):
         """Return the gRPC stub for :meth:`SecurityCenterClient.update_notification_config`.
 
-        Updates a notification config.
+        Updates a notification config. The following update fields are
+        allowed: description, pubsub_topic, streaming_config.filter
 
         Returns:
             Callable: A callable which accepts the appropriate
