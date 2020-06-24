@@ -55,6 +55,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.securitycenter.v1",
     syntax="proto3",
     serialized_options=b'\n"com.google.cloud.securitycenter.v1P\001ZLgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1;securitycenter\252\002\036Google.Cloud.SecurityCenter.V1\312\002\036Google\\Cloud\\SecurityCenter\\V1\352\002!Google::Cloud::SecurityCenter::V1',
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\nAgoogle/cloud/securitycenter_v1/proto/securitycenter_service.proto\x12\x1egoogle.cloud.securitycenter.v1\x1aGgoogle/cloud/securitycenter_v1/proto/run_asset_discovery_response.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x19google/api/resource.proto\x1a\x30google/cloud/securitycenter_v1/proto/asset.proto\x1a\x32google/cloud/securitycenter_v1/proto/finding.proto\x1a>google/cloud/securitycenter_v1/proto/notification_config.proto\x1a@google/cloud/securitycenter_v1/proto/organization_settings.proto\x1a\x39google/cloud/securitycenter_v1/proto/security_marks.proto\x1a\x31google/cloud/securitycenter_v1/proto/source.proto\x1a\x1egoogle/iam/v1/iam_policy.proto\x1a\x1agoogle/iam/v1/policy.proto\x1a#google/longrunning/operations.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a google/protobuf/field_mask.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto"\xac\x01\n\x14\x43reateFindingRequest\x12<\n\x06parent\x18\x01 \x01(\tB,\xe0\x41\x02\xfa\x41&\n$securitycenter.googleapis.com/Source\x12\x17\n\nfinding_id\x18\x02 \x01(\tB\x03\xe0\x41\x02\x12=\n\x07\x66inding\x18\x03 \x01(\x0b\x32\'.google.cloud.securitycenter.v1.FindingB\x03\xe0\x41\x02"\xd9\x01\n\x1f\x43reateNotificationConfigRequest\x12H\n\x06parent\x18\x01 \x01(\tB8\xe0\x41\x02\xfa\x41\x32\n0cloudresourcemanager.googleapis.com/Organization\x12\x16\n\tconfig_id\x18\x02 \x01(\tB\x03\xe0\x41\x02\x12T\n\x13notification_config\x18\x03 \x01(\x0b\x32\x32.google.cloud.securitycenter.v1.NotificationConfigB\x03\xe0\x41\x02"\x9c\x01\n\x13\x43reateSourceRequest\x12H\n\x06parent\x18\x01 \x01(\tB8\xe0\x41\x02\xfa\x41\x32\n0cloudresourcemanager.googleapis.com/Organization\x12;\n\x06source\x18\x02 \x01(\x0b\x32&.google.cloud.securitycenter.v1.SourceB\x03\xe0\x41\x02"i\n\x1f\x44\x65leteNotificationConfigRequest\x12\x46\n\x04name\x18\x01 \x01(\tB8\xe0\x41\x02\xfa\x41\x32\n0securitycenter.googleapis.com/NotificationConfig"f\n\x1cGetNotificationConfigRequest\x12\x46\n\x04name\x18\x01 \x01(\tB8\xe0\x41\x02\xfa\x41\x32\n0securitycenter.googleapis.com/NotificationConfig"j\n\x1eGetOrganizationSettingsRequest\x12H\n\x04name\x18\x01 \x01(\tB:\xe0\x41\x02\xfa\x41\x34\n2securitycenter.googleapis.com/OrganizationSettings"N\n\x10GetSourceRequest\x12:\n\x04name\x18\x01 \x01(\tB,\xe0\x41\x02\xfa\x41&\n$securitycenter.googleapis.com/Source"\x90\x02\n\x12GroupAssetsRequest\x12H\n\x06parent\x18\x01 \x01(\tB8\xe0\x41\x02\xfa\x41\x32\n0cloudresourcemanager.googleapis.com/Organization\x12\x0e\n\x06\x66ilter\x18\x02 \x01(\t\x12\x15\n\x08group_by\x18\x03 \x01(\tB\x03\xe0\x41\x02\x12\x33\n\x10\x63ompare_duration\x18\x04 \x01(\x0b\x32\x19.google.protobuf.Duration\x12-\n\tread_time\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x12\n\npage_token\x18\x07 \x01(\t\x12\x11\n\tpage_size\x18\x08 \x01(\x05"\xb8\x01\n\x13GroupAssetsResponse\x12\x45\n\x10group_by_results\x18\x01 \x03(\x0b\x32+.google.cloud.securitycenter.v1.GroupResult\x12-\n\tread_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\x0fnext_page_token\x18\x03 \x01(\t\x12\x12\n\ntotal_size\x18\x04 \x01(\x05"\x86\x02\n\x14GroupFindingsRequest\x12<\n\x06parent\x18\x01 \x01(\tB,\xe0\x41\x02\xfa\x41&\n$securitycenter.googleapis.com/Source\x12\x0e\n\x06\x66ilter\x18\x02 \x01(\t\x12\x15\n\x08group_by\x18\x03 \x01(\tB\x03\xe0\x41\x02\x12-\n\tread_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x33\n\x10\x63ompare_duration\x18\x05 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x12\n\npage_token\x18\x07 \x01(\t\x12\x11\n\tpage_size\x18\x08 \x01(\x05"\xba\x01\n\x15GroupFindingsResponse\x12\x45\n\x10group_by_results\x18\x01 \x03(\x0b\x32+.google.cloud.securitycenter.v1.GroupResult\x12-\n\tread_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\x0fnext_page_token\x18\x03 \x01(\t\x12\x12\n\ntotal_size\x18\x04 \x01(\x05"\xb8\x01\n\x0bGroupResult\x12O\n\nproperties\x18\x01 \x03(\x0b\x32;.google.cloud.securitycenter.v1.GroupResult.PropertiesEntry\x12\r\n\x05\x63ount\x18\x02 \x01(\x03\x1aI\n\x0fPropertiesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.google.protobuf.Value:\x02\x38\x01"\x91\x01\n\x1eListNotificationConfigsRequest\x12H\n\x06parent\x18\x01 \x01(\tB8\xe0\x41\x02\xfa\x41\x32\n0cloudresourcemanager.googleapis.com/Organization\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x11\n\tpage_size\x18\x03 \x01(\x05"\x8c\x01\n\x1fListNotificationConfigsResponse\x12P\n\x14notification_configs\x18\x01 \x03(\x0b\x32\x32.google.cloud.securitycenter.v1.NotificationConfig\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"\x85\x01\n\x12ListSourcesRequest\x12H\n\x06parent\x18\x01 \x01(\tB8\xe0\x41\x02\xfa\x41\x32\n0cloudresourcemanager.googleapis.com/Organization\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x11\n\tpage_size\x18\x07 \x01(\x05"g\n\x13ListSourcesResponse\x12\x37\n\x07sources\x18\x01 \x03(\x0b\x32&.google.cloud.securitycenter.v1.Source\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"\xbf\x02\n\x11ListAssetsRequest\x12H\n\x06parent\x18\x01 \x01(\tB8\xe0\x41\x02\xfa\x41\x32\n0cloudresourcemanager.googleapis.com/Organization\x12\x0e\n\x06\x66ilter\x18\x02 \x01(\t\x12\x10\n\x08order_by\x18\x03 \x01(\t\x12-\n\tread_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x33\n\x10\x63ompare_duration\x18\x05 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x33\n\nfield_mask\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.FieldMaskB\x03\xe0\x41\x01\x12\x12\n\npage_token\x18\x08 \x01(\t\x12\x11\n\tpage_size\x18\t \x01(\x05"\xc3\x03\n\x12ListAssetsResponse\x12`\n\x13list_assets_results\x18\x01 \x03(\x0b\x32\x43.google.cloud.securitycenter.v1.ListAssetsResponse.ListAssetsResult\x12-\n\tread_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\x0fnext_page_token\x18\x03 \x01(\t\x12\x12\n\ntotal_size\x18\x04 \x01(\x05\x1a\xee\x01\n\x10ListAssetsResult\x12\x34\n\x05\x61sset\x18\x01 \x01(\x0b\x32%.google.cloud.securitycenter.v1.Asset\x12\x65\n\x0cstate_change\x18\x02 \x01(\x0e\x32O.google.cloud.securitycenter.v1.ListAssetsResponse.ListAssetsResult.StateChange"=\n\x0bStateChange\x12\n\n\x06UNUSED\x10\x00\x12\t\n\x05\x41\x44\x44\x45\x44\x10\x01\x12\x0b\n\x07REMOVED\x10\x02\x12\n\n\x06\x41\x43TIVE\x10\x03"\xb5\x02\n\x13ListFindingsRequest\x12<\n\x06parent\x18\x01 \x01(\tB,\xe0\x41\x02\xfa\x41&\n$securitycenter.googleapis.com/Source\x12\x0e\n\x06\x66ilter\x18\x02 \x01(\t\x12\x10\n\x08order_by\x18\x03 \x01(\t\x12-\n\tread_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x33\n\x10\x63ompare_duration\x18\x05 \x01(\x0b\x32\x19.google.protobuf.Duration\x12\x33\n\nfield_mask\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.FieldMaskB\x03\xe0\x41\x01\x12\x12\n\npage_token\x18\x08 \x01(\t\x12\x11\n\tpage_size\x18\t \x01(\x05"\xc9\x05\n\x14ListFindingsResponse\x12\x66\n\x15list_findings_results\x18\x01 \x03(\x0b\x32G.google.cloud.securitycenter.v1.ListFindingsResponse.ListFindingsResult\x12-\n\tread_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\x0fnext_page_token\x18\x03 \x01(\t\x12\x12\n\ntotal_size\x18\x04 \x01(\x05\x1a\xec\x03\n\x12ListFindingsResult\x12\x38\n\x07\x66inding\x18\x01 \x01(\x0b\x32\'.google.cloud.securitycenter.v1.Finding\x12i\n\x0cstate_change\x18\x02 \x01(\x0e\x32S.google.cloud.securitycenter.v1.ListFindingsResponse.ListFindingsResult.StateChange\x12\x62\n\x08resource\x18\x03 \x01(\x0b\x32P.google.cloud.securitycenter.v1.ListFindingsResponse.ListFindingsResult.Resource\x1a~\n\x08Resource\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0cproject_name\x18\x02 \x01(\t\x12\x1c\n\x14project_display_name\x18\x03 \x01(\t\x12\x13\n\x0bparent_name\x18\x04 \x01(\t\x12\x1b\n\x13parent_display_name\x18\x05 \x01(\t"M\n\x0bStateChange\x12\n\n\x06UNUSED\x10\x00\x12\x0b\n\x07\x43HANGED\x10\x01\x12\r\n\tUNCHANGED\x10\x02\x12\t\n\x05\x41\x44\x44\x45\x44\x10\x03\x12\x0b\n\x07REMOVED\x10\x04"\xcd\x01\n\x16SetFindingStateRequest\x12;\n\x04name\x18\x01 \x01(\tB-\xe0\x41\x02\xfa\x41\'\n%securitycenter.googleapis.com/Finding\x12\x41\n\x05state\x18\x02 \x01(\x0e\x32-.google.cloud.securitycenter.v1.Finding.StateB\x03\xe0\x41\x02\x12\x33\n\nstart_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.TimestampB\x03\xe0\x41\x02"d\n\x18RunAssetDiscoveryRequest\x12H\n\x06parent\x18\x01 \x01(\tB8\xe0\x41\x02\xfa\x41\x32\n0cloudresourcemanager.googleapis.com/Organization"\x86\x01\n\x14UpdateFindingRequest\x12=\n\x07\x66inding\x18\x01 \x01(\x0b\x32\'.google.cloud.securitycenter.v1.FindingB\x03\xe0\x41\x02\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"\xa8\x01\n\x1fUpdateNotificationConfigRequest\x12T\n\x13notification_config\x18\x01 \x01(\x0b\x32\x32.google.cloud.securitycenter.v1.NotificationConfigB\x03\xe0\x41\x02\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"\xae\x01\n!UpdateOrganizationSettingsRequest\x12X\n\x15organization_settings\x18\x01 \x01(\x0b\x32\x34.google.cloud.securitycenter.v1.OrganizationSettingsB\x03\xe0\x41\x02\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"\x83\x01\n\x13UpdateSourceRequest\x12;\n\x06source\x18\x01 \x01(\x0b\x32&.google.cloud.securitycenter.v1.SourceB\x03\xe0\x41\x02\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"\xc9\x01\n\x1aUpdateSecurityMarksRequest\x12J\n\x0esecurity_marks\x18\x01 \x01(\x0b\x32-.google.cloud.securitycenter.v1.SecurityMarksB\x03\xe0\x41\x02\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask\x12.\n\nstart_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp2\xd6&\n\x0eSecurityCenter\x12\xb1\x01\n\x0c\x43reateSource\x12\x33.google.cloud.securitycenter.v1.CreateSourceRequest\x1a&.google.cloud.securitycenter.v1.Source"D\x82\xd3\xe4\x93\x02."$/v1/{parent=organizations/*}/sources:\x06source\xda\x41\rparent,source\x12\xcc\x01\n\rCreateFinding\x12\x34.google.cloud.securitycenter.v1.CreateFindingRequest\x1a\'.google.cloud.securitycenter.v1.Finding"\\\x82\xd3\xe4\x93\x02:"//v1/{parent=organizations/*/sources/*}/findings:\x07\x66inding\xda\x41\x19parent,finding_id,finding\x12\xa3\x02\n\x18\x43reateNotificationConfig\x12?.google.cloud.securitycenter.v1.CreateNotificationConfigRequest\x1a\x32.google.cloud.securitycenter.v1.NotificationConfig"\x91\x01\x82\xd3\xe4\x93\x02G"0/v1/{parent=organizations/*}/notificationConfigs:\x13notification_config\xda\x41$parent,config_id,notification_config\xda\x41\x1aparent,notification_config\x12\xb4\x01\n\x18\x44\x65leteNotificationConfig\x12?.google.cloud.securitycenter.v1.DeleteNotificationConfigRequest\x1a\x16.google.protobuf.Empty"?\x82\xd3\xe4\x93\x02\x32*0/v1/{name=organizations/*/notificationConfigs/*}\xda\x41\x04name\x12\x96\x01\n\x0cGetIamPolicy\x12".google.iam.v1.GetIamPolicyRequest\x1a\x15.google.iam.v1.Policy"K\x82\xd3\xe4\x93\x02:"5/v1/{resource=organizations/*/sources/*}:getIamPolicy:\x01*\xda\x41\x08resource\x12\xca\x01\n\x15GetNotificationConfig\x12<.google.cloud.securitycenter.v1.GetNotificationConfigRequest\x1a\x32.google.cloud.securitycenter.v1.NotificationConfig"?\x82\xd3\xe4\x93\x02\x32\x12\x30/v1/{name=organizations/*/notificationConfigs/*}\xda\x41\x04name\x12\xcf\x01\n\x17GetOrganizationSettings\x12>.google.cloud.securitycenter.v1.GetOrganizationSettingsRequest\x1a\x34.google.cloud.securitycenter.v1.OrganizationSettings">\x82\xd3\xe4\x93\x02\x31\x12//v1/{name=organizations/*/organizationSettings}\xda\x41\x04name\x12\x9a\x01\n\tGetSource\x12\x30.google.cloud.securitycenter.v1.GetSourceRequest\x1a&.google.cloud.securitycenter.v1.Source"3\x82\xd3\xe4\x93\x02&\x12$/v1/{name=organizations/*/sources/*}\xda\x41\x04name\x12\xac\x01\n\x0bGroupAssets\x12\x32.google.cloud.securitycenter.v1.GroupAssetsRequest\x1a\x33.google.cloud.securitycenter.v1.GroupAssetsResponse"4\x82\xd3\xe4\x93\x02.")/v1/{parent=organizations/*}/assets:group:\x01*\x12\xd0\x01\n\rGroupFindings\x12\x34.google.cloud.securitycenter.v1.GroupFindingsRequest\x1a\x35.google.cloud.securitycenter.v1.GroupFindingsResponse"R\x82\xd3\xe4\x93\x02:"5/v1/{parent=organizations/*/sources/*}/findings:group:\x01*\xda\x41\x0fparent,group_by\x12\xa0\x01\n\nListAssets\x12\x31.google.cloud.securitycenter.v1.ListAssetsRequest\x1a\x32.google.cloud.securitycenter.v1.ListAssetsResponse"+\x82\xd3\xe4\x93\x02%\x12#/v1/{parent=organizations/*}/assets\x12\xb2\x01\n\x0cListFindings\x12\x33.google.cloud.securitycenter.v1.ListFindingsRequest\x1a\x34.google.cloud.securitycenter.v1.ListFindingsResponse"7\x82\xd3\xe4\x93\x02\x31\x12//v1/{parent=organizations/*/sources/*}/findings\x12\xdd\x01\n\x17ListNotificationConfigs\x12>.google.cloud.securitycenter.v1.ListNotificationConfigsRequest\x1a?.google.cloud.securitycenter.v1.ListNotificationConfigsResponse"A\x82\xd3\xe4\x93\x02\x32\x12\x30/v1/{parent=organizations/*}/notificationConfigs\xda\x41\x06parent\x12\xad\x01\n\x0bListSources\x12\x32.google.cloud.securitycenter.v1.ListSourcesRequest\x1a\x33.google.cloud.securitycenter.v1.ListSourcesResponse"5\x82\xd3\xe4\x93\x02&\x12$/v1/{parent=organizations/*}/sources\xda\x41\x06parent\x12\x87\x02\n\x11RunAssetDiscovery\x12\x38.google.cloud.securitycenter.v1.RunAssetDiscoveryRequest\x1a\x1d.google.longrunning.Operation"\x98\x01\x82\xd3\xe4\x93\x02\x35"0/v1/{parent=organizations/*}/assets:runDiscovery:\x01*\xda\x41\x06parent\xca\x41Q\n8google.cloud.securitycenter.v1.RunAssetDiscoveryResponse\x12\x15google.protobuf.Empty\x12\xcf\x01\n\x0fSetFindingState\x12\x36.google.cloud.securitycenter.v1.SetFindingStateRequest\x1a\'.google.cloud.securitycenter.v1.Finding"[\x82\xd3\xe4\x93\x02="8/v1/{name=organizations/*/sources/*/findings/*}:setState:\x01*\xda\x41\x15name,state,start_time\x12\x9d\x01\n\x0cSetIamPolicy\x12".google.iam.v1.SetIamPolicyRequest\x1a\x15.google.iam.v1.Policy"R\x82\xd3\xe4\x93\x02:"5/v1/{resource=organizations/*/sources/*}:setIamPolicy:\x01*\xda\x41\x0fresource,policy\x12\xc8\x01\n\x12TestIamPermissions\x12(.google.iam.v1.TestIamPermissionsRequest\x1a).google.iam.v1.TestIamPermissionsResponse"]\x82\xd3\xe4\x93\x02@";/v1/{resource=organizations/*/sources/*}:testIamPermissions:\x01*\xda\x41\x14resource,permissions\x12\xc2\x01\n\rUpdateFinding\x12\x34.google.cloud.securitycenter.v1.UpdateFindingRequest\x1a\'.google.cloud.securitycenter.v1.Finding"R\x82\xd3\xe4\x93\x02\x42\x32\x37/v1/{finding.name=organizations/*/sources/*/findings/*}:\x07\x66inding\xda\x41\x07\x66inding\x12\xab\x02\n\x18UpdateNotificationConfig\x12?.google.cloud.securitycenter.v1.UpdateNotificationConfigRequest\x1a\x32.google.cloud.securitycenter.v1.NotificationConfig"\x99\x01\x82\xd3\xe4\x93\x02[2D/v1/{notification_config.name=organizations/*/notificationConfigs/*}:\x13notification_config\xda\x41\x13notification_config\xda\x41\x1fnotification_config,update_mask\x12\x93\x02\n\x1aUpdateOrganizationSettings\x12\x41.google.cloud.securitycenter.v1.UpdateOrganizationSettingsRequest\x1a\x34.google.cloud.securitycenter.v1.OrganizationSettings"|\x82\xd3\xe4\x93\x02^2E/v1/{organization_settings.name=organizations/*/organizationSettings}:\x15organization_settings\xda\x41\x15organization_settings\x12\xb1\x01\n\x0cUpdateSource\x12\x33.google.cloud.securitycenter.v1.UpdateSourceRequest\x1a&.google.cloud.securitycenter.v1.Source"D\x82\xd3\xe4\x93\x02\x35\x32+/v1/{source.name=organizations/*/sources/*}:\x06source\xda\x41\x06source\x12\xcd\x02\n\x13UpdateSecurityMarks\x12:.google.cloud.securitycenter.v1.UpdateSecurityMarksRequest\x1a-.google.cloud.securitycenter.v1.SecurityMarks"\xca\x01\x82\xd3\xe4\x93\x02\xb2\x01\x32@/v1/{security_marks.name=organizations/*/assets/*/securityMarks}:\x0esecurity_marksZ^2L/v1/{security_marks.name=organizations/*/sources/*/findings/*/securityMarks}:\x0esecurity_marks\xda\x41\x0esecurity_marks\x1aQ\xca\x41\x1dsecuritycenter.googleapis.com\xd2\x41.https://www.googleapis.com/auth/cloud-platformB\xda\x01\n"com.google.cloud.securitycenter.v1P\x01ZLgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1;securitycenter\xaa\x02\x1eGoogle.Cloud.SecurityCenter.V1\xca\x02\x1eGoogle\\Cloud\\SecurityCenter\\V1\xea\x02!Google::Cloud::SecurityCenter::V1P\x00\x62\x06proto3',
     dependencies=[
         google_dot_cloud_dot_securitycenter__v1_dot_proto_dot_run__asset__discovery__response__pb2.DESCRIPTOR,
@@ -88,18 +89,39 @@ _LISTASSETSRESPONSE_LISTASSETSRESULT_STATECHANGE = _descriptor.EnumDescriptor(
     full_name="google.cloud.securitycenter.v1.ListAssetsResponse.ListAssetsResult.StateChange",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name="UNUSED", index=0, number=0, serialized_options=None, type=None
+            name="UNUSED",
+            index=0,
+            number=0,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="ADDED", index=1, number=1, serialized_options=None, type=None
+            name="ADDED",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="REMOVED", index=2, number=2, serialized_options=None, type=None
+            name="REMOVED",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="ACTIVE", index=3, number=3, serialized_options=None, type=None
+            name="ACTIVE",
+            index=3,
+            number=3,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -114,21 +136,47 @@ _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT_STATECHANGE = _descriptor.EnumDescripto
     full_name="google.cloud.securitycenter.v1.ListFindingsResponse.ListFindingsResult.StateChange",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
-            name="UNUSED", index=0, number=0, serialized_options=None, type=None
+            name="UNUSED",
+            index=0,
+            number=0,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="CHANGED", index=1, number=1, serialized_options=None, type=None
+            name="CHANGED",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="UNCHANGED", index=2, number=2, serialized_options=None, type=None
+            name="UNCHANGED",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="ADDED", index=3, number=3, serialized_options=None, type=None
+            name="ADDED",
+            index=3,
+            number=3,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="REMOVED", index=4, number=4, serialized_options=None, type=None
+            name="REMOVED",
+            index=4,
+            number=4,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -145,6 +193,7 @@ _CREATEFINDINGREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -163,6 +212,7 @@ _CREATEFINDINGREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A&\n$securitycenter.googleapis.com/Source",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="finding_id",
@@ -181,6 +231,7 @@ _CREATEFINDINGREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="finding",
@@ -199,6 +250,7 @@ _CREATEFINDINGREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -220,6 +272,7 @@ _CREATENOTIFICATIONCONFIGREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -238,6 +291,7 @@ _CREATENOTIFICATIONCONFIGREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A2\n0cloudresourcemanager.googleapis.com/Organization",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="config_id",
@@ -256,6 +310,7 @@ _CREATENOTIFICATIONCONFIGREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="notification_config",
@@ -274,6 +329,7 @@ _CREATENOTIFICATIONCONFIGREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -295,6 +351,7 @@ _CREATESOURCEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -313,6 +370,7 @@ _CREATESOURCEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A2\n0cloudresourcemanager.googleapis.com/Organization",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="source",
@@ -331,6 +389,7 @@ _CREATESOURCEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -352,6 +411,7 @@ _DELETENOTIFICATIONCONFIGREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -370,6 +430,7 @@ _DELETENOTIFICATIONCONFIGREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A2\n0securitycenter.googleapis.com/NotificationConfig",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -391,6 +452,7 @@ _GETNOTIFICATIONCONFIGREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -409,6 +471,7 @@ _GETNOTIFICATIONCONFIGREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A2\n0securitycenter.googleapis.com/NotificationConfig",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -430,6 +493,7 @@ _GETORGANIZATIONSETTINGSREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -448,6 +512,7 @@ _GETORGANIZATIONSETTINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A4\n2securitycenter.googleapis.com/OrganizationSettings",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -469,6 +534,7 @@ _GETSOURCEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -487,6 +553,7 @@ _GETSOURCEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A&\n$securitycenter.googleapis.com/Source",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -508,6 +575,7 @@ _GROUPASSETSREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -526,6 +594,7 @@ _GROUPASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A2\n0cloudresourcemanager.googleapis.com/Organization",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="filter",
@@ -544,6 +613,7 @@ _GROUPASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="group_by",
@@ -562,6 +632,7 @@ _GROUPASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="compare_duration",
@@ -580,6 +651,7 @@ _GROUPASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="read_time",
@@ -598,6 +670,7 @@ _GROUPASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_token",
@@ -616,6 +689,7 @@ _GROUPASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_size",
@@ -634,6 +708,7 @@ _GROUPASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -655,6 +730,7 @@ _GROUPASSETSRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="group_by_results",
@@ -673,6 +749,7 @@ _GROUPASSETSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="read_time",
@@ -691,6 +768,7 @@ _GROUPASSETSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="next_page_token",
@@ -709,6 +787,7 @@ _GROUPASSETSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="total_size",
@@ -727,6 +806,7 @@ _GROUPASSETSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -748,6 +828,7 @@ _GROUPFINDINGSREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -766,6 +847,7 @@ _GROUPFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A&\n$securitycenter.googleapis.com/Source",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="filter",
@@ -784,6 +866,7 @@ _GROUPFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="group_by",
@@ -802,6 +885,7 @@ _GROUPFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="read_time",
@@ -820,6 +904,7 @@ _GROUPFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="compare_duration",
@@ -838,6 +923,7 @@ _GROUPFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_token",
@@ -856,6 +942,7 @@ _GROUPFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_size",
@@ -874,6 +961,7 @@ _GROUPFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -895,6 +983,7 @@ _GROUPFINDINGSRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="group_by_results",
@@ -913,6 +1002,7 @@ _GROUPFINDINGSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="read_time",
@@ -931,6 +1021,7 @@ _GROUPFINDINGSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="next_page_token",
@@ -949,6 +1040,7 @@ _GROUPFINDINGSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="total_size",
@@ -967,6 +1059,7 @@ _GROUPFINDINGSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -988,6 +1081,7 @@ _GROUPRESULT_PROPERTIESENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -1006,6 +1100,7 @@ _GROUPRESULT_PROPERTIESENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -1024,6 +1119,7 @@ _GROUPRESULT_PROPERTIESENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1044,6 +1140,7 @@ _GROUPRESULT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="properties",
@@ -1062,6 +1159,7 @@ _GROUPRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="count",
@@ -1080,6 +1178,7 @@ _GROUPRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1101,6 +1200,7 @@ _LISTNOTIFICATIONCONFIGSREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -1119,6 +1219,7 @@ _LISTNOTIFICATIONCONFIGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A2\n0cloudresourcemanager.googleapis.com/Organization",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_token",
@@ -1137,6 +1238,7 @@ _LISTNOTIFICATIONCONFIGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_size",
@@ -1155,6 +1257,7 @@ _LISTNOTIFICATIONCONFIGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1176,6 +1279,7 @@ _LISTNOTIFICATIONCONFIGSRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="notification_configs",
@@ -1194,6 +1298,7 @@ _LISTNOTIFICATIONCONFIGSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="next_page_token",
@@ -1212,6 +1317,7 @@ _LISTNOTIFICATIONCONFIGSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1233,6 +1339,7 @@ _LISTSOURCESREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -1251,6 +1358,7 @@ _LISTSOURCESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A2\n0cloudresourcemanager.googleapis.com/Organization",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_token",
@@ -1269,6 +1377,7 @@ _LISTSOURCESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_size",
@@ -1287,6 +1396,7 @@ _LISTSOURCESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1308,6 +1418,7 @@ _LISTSOURCESRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="sources",
@@ -1326,6 +1437,7 @@ _LISTSOURCESRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="next_page_token",
@@ -1344,6 +1456,7 @@ _LISTSOURCESRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1365,6 +1478,7 @@ _LISTASSETSREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -1383,6 +1497,7 @@ _LISTASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A2\n0cloudresourcemanager.googleapis.com/Organization",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="filter",
@@ -1401,6 +1516,7 @@ _LISTASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="order_by",
@@ -1419,6 +1535,7 @@ _LISTASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="read_time",
@@ -1437,6 +1554,7 @@ _LISTASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="compare_duration",
@@ -1455,6 +1573,7 @@ _LISTASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="field_mask",
@@ -1473,6 +1592,7 @@ _LISTASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\001",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_token",
@@ -1491,6 +1611,7 @@ _LISTASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_size",
@@ -1509,6 +1630,7 @@ _LISTASSETSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1530,6 +1652,7 @@ _LISTASSETSRESPONSE_LISTASSETSRESULT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="asset",
@@ -1548,6 +1671,7 @@ _LISTASSETSRESPONSE_LISTASSETSRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="state_change",
@@ -1566,6 +1690,7 @@ _LISTASSETSRESPONSE_LISTASSETSRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1586,6 +1711,7 @@ _LISTASSETSRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="list_assets_results",
@@ -1604,6 +1730,7 @@ _LISTASSETSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="read_time",
@@ -1622,6 +1749,7 @@ _LISTASSETSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="next_page_token",
@@ -1640,6 +1768,7 @@ _LISTASSETSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="total_size",
@@ -1658,6 +1787,7 @@ _LISTASSETSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1679,6 +1809,7 @@ _LISTFINDINGSREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -1697,6 +1828,7 @@ _LISTFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A&\n$securitycenter.googleapis.com/Source",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="filter",
@@ -1715,6 +1847,7 @@ _LISTFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="order_by",
@@ -1733,6 +1866,7 @@ _LISTFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="read_time",
@@ -1751,6 +1885,7 @@ _LISTFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="compare_duration",
@@ -1769,6 +1904,7 @@ _LISTFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="field_mask",
@@ -1787,6 +1923,7 @@ _LISTFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\001",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_token",
@@ -1805,6 +1942,7 @@ _LISTFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_size",
@@ -1823,6 +1961,7 @@ _LISTFINDINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1844,6 +1983,7 @@ _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT_RESOURCE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -1862,6 +2002,7 @@ _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT_RESOURCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="project_name",
@@ -1880,6 +2021,7 @@ _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT_RESOURCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="project_display_name",
@@ -1898,6 +2040,7 @@ _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT_RESOURCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="parent_name",
@@ -1916,6 +2059,7 @@ _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT_RESOURCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="parent_display_name",
@@ -1934,6 +2078,7 @@ _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT_RESOURCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1954,6 +2099,7 @@ _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="finding",
@@ -1972,6 +2118,7 @@ _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="state_change",
@@ -1990,6 +2137,7 @@ _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="resource",
@@ -2008,6 +2156,7 @@ _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -2028,6 +2177,7 @@ _LISTFINDINGSRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="list_findings_results",
@@ -2046,6 +2196,7 @@ _LISTFINDINGSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="read_time",
@@ -2064,6 +2215,7 @@ _LISTFINDINGSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="next_page_token",
@@ -2082,6 +2234,7 @@ _LISTFINDINGSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="total_size",
@@ -2100,6 +2253,7 @@ _LISTFINDINGSRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -2121,6 +2275,7 @@ _SETFINDINGSTATEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -2139,6 +2294,7 @@ _SETFINDINGSTATEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A'\n%securitycenter.googleapis.com/Finding",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="state",
@@ -2157,6 +2313,7 @@ _SETFINDINGSTATEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="start_time",
@@ -2175,6 +2332,7 @@ _SETFINDINGSTATEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -2196,6 +2354,7 @@ _RUNASSETDISCOVERYREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -2214,6 +2373,7 @@ _RUNASSETDISCOVERYREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A2\n0cloudresourcemanager.googleapis.com/Organization",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -2235,6 +2395,7 @@ _UPDATEFINDINGREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="finding",
@@ -2253,6 +2414,7 @@ _UPDATEFINDINGREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="update_mask",
@@ -2271,6 +2433,7 @@ _UPDATEFINDINGREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -2292,6 +2455,7 @@ _UPDATENOTIFICATIONCONFIGREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="notification_config",
@@ -2310,6 +2474,7 @@ _UPDATENOTIFICATIONCONFIGREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="update_mask",
@@ -2328,6 +2493,7 @@ _UPDATENOTIFICATIONCONFIGREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -2349,6 +2515,7 @@ _UPDATEORGANIZATIONSETTINGSREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="organization_settings",
@@ -2367,6 +2534,7 @@ _UPDATEORGANIZATIONSETTINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="update_mask",
@@ -2385,6 +2553,7 @@ _UPDATEORGANIZATIONSETTINGSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -2406,6 +2575,7 @@ _UPDATESOURCEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="source",
@@ -2424,6 +2594,7 @@ _UPDATESOURCEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="update_mask",
@@ -2442,6 +2613,7 @@ _UPDATESOURCEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -2463,6 +2635,7 @@ _UPDATESECURITYMARKSREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="security_marks",
@@ -2481,6 +2654,7 @@ _UPDATESECURITYMARKSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="update_mask",
@@ -2499,6 +2673,7 @@ _UPDATESECURITYMARKSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="start_time",
@@ -2517,6 +2692,7 @@ _UPDATESECURITYMARKSREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -3765,6 +3941,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
     file=DESCRIPTOR,
     index=0,
     serialized_options=b"\312A\035securitycenter.googleapis.com\322A.https://www.googleapis.com/auth/cloud-platform",
+    create_key=_descriptor._internal_create_key,
     serialized_start=6412,
     serialized_end=11362,
     methods=[
@@ -3776,6 +3953,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_CREATESOURCEREQUEST,
             output_type=google_dot_cloud_dot_securitycenter__v1_dot_proto_dot_source__pb2._SOURCE,
             serialized_options=b'\202\323\344\223\002."$/v1/{parent=organizations/*}/sources:\006source\332A\rparent,source',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="CreateFinding",
@@ -3785,6 +3963,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_CREATEFINDINGREQUEST,
             output_type=google_dot_cloud_dot_securitycenter__v1_dot_proto_dot_finding__pb2._FINDING,
             serialized_options=b'\202\323\344\223\002:"//v1/{parent=organizations/*/sources/*}/findings:\007finding\332A\031parent,finding_id,finding',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="CreateNotificationConfig",
@@ -3794,6 +3973,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_CREATENOTIFICATIONCONFIGREQUEST,
             output_type=google_dot_cloud_dot_securitycenter__v1_dot_proto_dot_notification__config__pb2._NOTIFICATIONCONFIG,
             serialized_options=b'\202\323\344\223\002G"0/v1/{parent=organizations/*}/notificationConfigs:\023notification_config\332A$parent,config_id,notification_config\332A\032parent,notification_config',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="DeleteNotificationConfig",
@@ -3803,6 +3983,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_DELETENOTIFICATIONCONFIGREQUEST,
             output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
             serialized_options=b"\202\323\344\223\0022*0/v1/{name=organizations/*/notificationConfigs/*}\332A\004name",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="GetIamPolicy",
@@ -3812,6 +3993,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=google_dot_iam_dot_v1_dot_iam__policy__pb2._GETIAMPOLICYREQUEST,
             output_type=google_dot_iam_dot_v1_dot_policy__pb2._POLICY,
             serialized_options=b'\202\323\344\223\002:"5/v1/{resource=organizations/*/sources/*}:getIamPolicy:\001*\332A\010resource',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="GetNotificationConfig",
@@ -3821,6 +4003,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_GETNOTIFICATIONCONFIGREQUEST,
             output_type=google_dot_cloud_dot_securitycenter__v1_dot_proto_dot_notification__config__pb2._NOTIFICATIONCONFIG,
             serialized_options=b"\202\323\344\223\0022\0220/v1/{name=organizations/*/notificationConfigs/*}\332A\004name",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="GetOrganizationSettings",
@@ -3830,6 +4013,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_GETORGANIZATIONSETTINGSREQUEST,
             output_type=google_dot_cloud_dot_securitycenter__v1_dot_proto_dot_organization__settings__pb2._ORGANIZATIONSETTINGS,
             serialized_options=b"\202\323\344\223\0021\022//v1/{name=organizations/*/organizationSettings}\332A\004name",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="GetSource",
@@ -3839,6 +4023,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_GETSOURCEREQUEST,
             output_type=google_dot_cloud_dot_securitycenter__v1_dot_proto_dot_source__pb2._SOURCE,
             serialized_options=b"\202\323\344\223\002&\022$/v1/{name=organizations/*/sources/*}\332A\004name",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="GroupAssets",
@@ -3848,6 +4033,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_GROUPASSETSREQUEST,
             output_type=_GROUPASSETSRESPONSE,
             serialized_options=b'\202\323\344\223\002.")/v1/{parent=organizations/*}/assets:group:\001*',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="GroupFindings",
@@ -3857,6 +4043,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_GROUPFINDINGSREQUEST,
             output_type=_GROUPFINDINGSRESPONSE,
             serialized_options=b'\202\323\344\223\002:"5/v1/{parent=organizations/*/sources/*}/findings:group:\001*\332A\017parent,group_by',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="ListAssets",
@@ -3866,6 +4053,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_LISTASSETSREQUEST,
             output_type=_LISTASSETSRESPONSE,
             serialized_options=b"\202\323\344\223\002%\022#/v1/{parent=organizations/*}/assets",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="ListFindings",
@@ -3875,6 +4063,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_LISTFINDINGSREQUEST,
             output_type=_LISTFINDINGSRESPONSE,
             serialized_options=b"\202\323\344\223\0021\022//v1/{parent=organizations/*/sources/*}/findings",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="ListNotificationConfigs",
@@ -3884,6 +4073,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_LISTNOTIFICATIONCONFIGSREQUEST,
             output_type=_LISTNOTIFICATIONCONFIGSRESPONSE,
             serialized_options=b"\202\323\344\223\0022\0220/v1/{parent=organizations/*}/notificationConfigs\332A\006parent",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="ListSources",
@@ -3893,6 +4083,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_LISTSOURCESREQUEST,
             output_type=_LISTSOURCESRESPONSE,
             serialized_options=b"\202\323\344\223\002&\022$/v1/{parent=organizations/*}/sources\332A\006parent",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="RunAssetDiscovery",
@@ -3902,6 +4093,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_RUNASSETDISCOVERYREQUEST,
             output_type=google_dot_longrunning_dot_operations__pb2._OPERATION,
             serialized_options=b'\202\323\344\223\0025"0/v1/{parent=organizations/*}/assets:runDiscovery:\001*\332A\006parent\312AQ\n8google.cloud.securitycenter.v1.RunAssetDiscoveryResponse\022\025google.protobuf.Empty',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="SetFindingState",
@@ -3911,6 +4103,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_SETFINDINGSTATEREQUEST,
             output_type=google_dot_cloud_dot_securitycenter__v1_dot_proto_dot_finding__pb2._FINDING,
             serialized_options=b'\202\323\344\223\002="8/v1/{name=organizations/*/sources/*/findings/*}:setState:\001*\332A\025name,state,start_time',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="SetIamPolicy",
@@ -3920,6 +4113,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=google_dot_iam_dot_v1_dot_iam__policy__pb2._SETIAMPOLICYREQUEST,
             output_type=google_dot_iam_dot_v1_dot_policy__pb2._POLICY,
             serialized_options=b'\202\323\344\223\002:"5/v1/{resource=organizations/*/sources/*}:setIamPolicy:\001*\332A\017resource,policy',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="TestIamPermissions",
@@ -3929,6 +4123,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=google_dot_iam_dot_v1_dot_iam__policy__pb2._TESTIAMPERMISSIONSREQUEST,
             output_type=google_dot_iam_dot_v1_dot_iam__policy__pb2._TESTIAMPERMISSIONSRESPONSE,
             serialized_options=b'\202\323\344\223\002@";/v1/{resource=organizations/*/sources/*}:testIamPermissions:\001*\332A\024resource,permissions',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="UpdateFinding",
@@ -3938,6 +4133,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_UPDATEFINDINGREQUEST,
             output_type=google_dot_cloud_dot_securitycenter__v1_dot_proto_dot_finding__pb2._FINDING,
             serialized_options=b"\202\323\344\223\002B27/v1/{finding.name=organizations/*/sources/*/findings/*}:\007finding\332A\007finding",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="UpdateNotificationConfig",
@@ -3947,6 +4143,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_UPDATENOTIFICATIONCONFIGREQUEST,
             output_type=google_dot_cloud_dot_securitycenter__v1_dot_proto_dot_notification__config__pb2._NOTIFICATIONCONFIG,
             serialized_options=b"\202\323\344\223\002[2D/v1/{notification_config.name=organizations/*/notificationConfigs/*}:\023notification_config\332A\023notification_config\332A\037notification_config,update_mask",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="UpdateOrganizationSettings",
@@ -3956,6 +4153,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_UPDATEORGANIZATIONSETTINGSREQUEST,
             output_type=google_dot_cloud_dot_securitycenter__v1_dot_proto_dot_organization__settings__pb2._ORGANIZATIONSETTINGS,
             serialized_options=b"\202\323\344\223\002^2E/v1/{organization_settings.name=organizations/*/organizationSettings}:\025organization_settings\332A\025organization_settings",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="UpdateSource",
@@ -3965,6 +4163,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_UPDATESOURCEREQUEST,
             output_type=google_dot_cloud_dot_securitycenter__v1_dot_proto_dot_source__pb2._SOURCE,
             serialized_options=b"\202\323\344\223\00252+/v1/{source.name=organizations/*/sources/*}:\006source\332A\006source",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="UpdateSecurityMarks",
@@ -3974,6 +4173,7 @@ _SECURITYCENTER = _descriptor.ServiceDescriptor(
             input_type=_UPDATESECURITYMARKSREQUEST,
             output_type=google_dot_cloud_dot_securitycenter__v1_dot_proto_dot_security__marks__pb2._SECURITYMARKS,
             serialized_options=b"\202\323\344\223\002\262\0012@/v1/{security_marks.name=organizations/*/assets/*/securityMarks}:\016security_marksZ^2L/v1/{security_marks.name=organizations/*/sources/*/findings/*/securityMarks}:\016security_marks\332A\016security_marks",
+            create_key=_descriptor._internal_create_key,
         ),
     ],
 )

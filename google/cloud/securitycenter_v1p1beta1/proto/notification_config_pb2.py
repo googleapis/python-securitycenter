@@ -22,6 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="google.cloud.securitycenter.v1p1beta1",
     syntax="proto3",
     serialized_options=b"\n)com.google.cloud.securitycenter.v1p1beta1P\001ZSgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1p1beta1;securitycenter\252\002%Google.Cloud.SecurityCenter.V1P1Beta1\312\002%Google\\Cloud\\SecurityCenter\\V1p1beta1\352\002(Google::Cloud::SecurityCenter::V1p1beta1\352A@\n\033pubsub.googleapis.com/Topic\022!projects/{project}/topics/{topic}",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\nEgoogle/cloud/securitycenter_v1p1beta1/proto/notification_config.proto\x12%google.cloud.securitycenter.v1p1beta1\x1a\x1cgoogle/api/annotations.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x19google/api/resource.proto"\xb6\x04\n\x12NotificationConfig\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12W\n\nevent_type\x18\x03 \x01(\x0e\x32\x43.google.cloud.securitycenter.v1p1beta1.NotificationConfig.EventType\x12\x36\n\x0cpubsub_topic\x18\x04 \x01(\tB \xfa\x41\x1d\n\x1bpubsub.googleapis.com/Topic\x12\x1c\n\x0fservice_account\x18\x05 \x01(\tB\x03\xe0\x41\x03\x12\x65\n\x10streaming_config\x18\x06 \x01(\x0b\x32I.google.cloud.securitycenter.v1p1beta1.NotificationConfig.StreamingConfigH\x00\x1a!\n\x0fStreamingConfig\x12\x0e\n\x06\x66ilter\x18\x01 \x01(\t"4\n\tEventType\x12\x1a\n\x16\x45VENT_TYPE_UNSPECIFIED\x10\x00\x12\x0b\n\x07\x46INDING\x10\x01:}\xea\x41z\n0securitycenter.googleapis.com/NotificationConfig\x12\x46organizations/{organization}/notificationConfigs/{notification_config}B\x0f\n\rnotify_configB\xc0\x02\n)com.google.cloud.securitycenter.v1p1beta1P\x01ZSgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1p1beta1;securitycenter\xaa\x02%Google.Cloud.SecurityCenter.V1P1Beta1\xca\x02%Google\\Cloud\\SecurityCenter\\V1p1beta1\xea\x02(Google::Cloud::SecurityCenter::V1p1beta1\xea\x41@\n\x1bpubsub.googleapis.com/Topic\x12!projects/{project}/topics/{topic}b\x06proto3',
     dependencies=[
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
@@ -36,6 +37,7 @@ _NOTIFICATIONCONFIG_EVENTTYPE = _descriptor.EnumDescriptor(
     full_name="google.cloud.securitycenter.v1p1beta1.NotificationConfig.EventType",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="EVENT_TYPE_UNSPECIFIED",
@@ -43,9 +45,15 @@ _NOTIFICATIONCONFIG_EVENTTYPE = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="FINDING", index=1, number=1, serialized_options=None, type=None
+            name="FINDING",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -62,6 +70,7 @@ _NOTIFICATIONCONFIG_STREAMINGCONFIG = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="filter",
@@ -80,6 +89,7 @@ _NOTIFICATIONCONFIG_STREAMINGCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -100,6 +110,7 @@ _NOTIFICATIONCONFIG = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -118,6 +129,7 @@ _NOTIFICATIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="description",
@@ -136,6 +148,7 @@ _NOTIFICATIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="event_type",
@@ -154,6 +167,7 @@ _NOTIFICATIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="pubsub_topic",
@@ -172,6 +186,7 @@ _NOTIFICATIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\372A\035\n\033pubsub.googleapis.com/Topic",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="service_account",
@@ -190,6 +205,7 @@ _NOTIFICATIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\003",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="streaming_config",
@@ -208,6 +224,7 @@ _NOTIFICATIONCONFIG = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -223,6 +240,7 @@ _NOTIFICATIONCONFIG = _descriptor.Descriptor(
             full_name="google.cloud.securitycenter.v1p1beta1.NotificationConfig.notify_config",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
