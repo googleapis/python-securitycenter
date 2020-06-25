@@ -177,9 +177,8 @@ SecurityMarks = _reflection.GeneratedProtocolMessageType(
       name:
           The relative resource name of the SecurityMarks. See: https://
           cloud.google.com/apis/design/resource_names#relative_resource_
-          name Examples: “organizations/{organization_id}/assets/{asset_
-          id}/securityMarks” “organizations/{organization_id}/sources/{s
-          ource_id}/findings/{finding_id}/securityMarks”.
+          name Examples: ``organizations/{organization_id}/assets/{asset_id}/securityMarks``
+          ``organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks``.
       marks:
           Mutable user specified security marks belonging to the parent
           resource. Constraints are as follows:  -  Keys and values are
