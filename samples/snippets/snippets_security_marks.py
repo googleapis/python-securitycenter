@@ -77,8 +77,7 @@ def clear_from_asset(asset_name):
     )
     print(updated_marks)
     # [END clear_marks_asset]
-    assert "other" in updated_marks.marks
-    assert len(updated_marks.marks) == 1
+    return updated_marks
 
 
 def delete_and_update_marks(asset_name):
@@ -104,7 +103,7 @@ def delete_and_update_marks(asset_name):
     )
     print(updated_marks)
     # [END delete_and_update_marks]
-    assert updated_marks.marks == {"key_a": "new_value_for_a", "other": "other_val"}
+    return updated_marks
 
 
 def add_to_finding(finding_name):
@@ -132,13 +131,13 @@ def add_to_finding(finding_name):
         {"name": finding_marks_name, "marks": marks}, update_mask=field_mask
     )
     # [END add_marks_to_finding]
-
-    assert updated_marks.marks == marks
+    return updated_marks, marks
 
 
 def list_assets_with_query_marks(organization_id, asset_name):
     """Lists assets with a filter on security marks. """
     add_to_asset(asset_name)
+    i = -1
     # [START demo_list_assets_with_security_marks]
     from google.cloud import securitycenter
 
@@ -157,7 +156,7 @@ def list_assets_with_query_marks(organization_id, asset_name):
     for i, asset_result in enumerate(asset_iterator):
         print(i, asset_result)
     # [END demo_list_assets_with_security_marks]
-    assert i >= 0
+    return i
 
 
 def list_findings_with_query_marks(source_name, finding_name):
@@ -185,4 +184,4 @@ def list_findings_with_query_marks(source_name, finding_name):
     # [END demo_list_findings_with_security_marks]
     # one finding should have been updated with keys, and one should be
     # untouched.
-    assert i == 0
+    return i
