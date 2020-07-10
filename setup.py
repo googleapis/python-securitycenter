@@ -24,7 +24,9 @@ description = 'Cloud Security Command Center API API client library'
 version = "0.6.0"
 release_status = 'Development Status :: 3 - Alpha'
 dependencies = [
-    'google-api-core[grpc] >= 1.14.0, < 2.0.0dev',
+    'google-api-core[grpc] >= 1.17.2, < 2.0.0dev',
+    'libcst>=0.2.5',
+    'proto-plus>=0.4.0',
     'grpc-google-iam-v1 >= 0.12.3, < 0.13dev',
     'enum34; python_version < "3.4"',
 ]
@@ -36,7 +38,7 @@ with io.open(readme_filename, encoding='utf-8') as readme_file:
     readme = readme_file.read()
 
 packages = [
-    package for package in setuptools.find_packages()
+    package for package in setuptools.PEP420PackageFinder.find()
     if package.startswith('google')
 ]
 

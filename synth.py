@@ -30,28 +30,15 @@ for version in versions:
         bazel_target=f"//google/cloud/securitycenter/{version}:securitycenter-{version}-py",
         include_protos=True
     )
-    s.move(library / f"google/cloud/securitycenter_{version}")
-    s.move(library / f"tests/unit/gapic/{version}")
-    s.move(library / f"docs/gapic/{version}")
-
-# Use the highest version library to generate import alias.
-s.move(library / "google/cloud/securitycenter.py")
-
-# Fix bad line wrapping in docstring
-s.replace("google/**/security_marks_pb2.py",
-"""“organizations/\{organization_id\}/assets/\{asset_
-\s+id\}/securityMarks” “organizations/\{organization_id\}/sources/\{s
-\s+ource_id\}/findings/\{finding_id\}/securityMarks”\.""",
-"""``organizations/{organization_id}/assets/{asset_id}/securityMarks``
-          ``organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks``.""")
+    s.copy(library, ignores=["docs/index.rst", "README.rst", "setup.py"])
 
 # ----------------------------------------------------------------------------
 # Add templated files
 # ----------------------------------------------------------------------------
-templated_files = common.py_library(cov_level=88)
-s.move(templated_files, excludes=['noxfile.py'])
-
-# TODO(busunkim): Use latest sphinx after microgenerator transition
-s.replace("noxfile.py", """['"]sphinx['"]""", '"sphinx<3.0.0"')
+templated_files = common.py_library(
+    samples=True,  # set to True only if there are samples
+    microgenerator=True,
+)
+s.move(templated_files, excludes=[".coveragerc"])  # microgenerator has a good .coveragerc file
 
 s.shell.run(["nox", "-s", "blacken"], hide_output=False)
