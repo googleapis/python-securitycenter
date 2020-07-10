@@ -19,7 +19,7 @@
 def receive_notifications(project_id, subscription_name):
     # [START scc_receive_notifications]
     # Requires https://cloud.google.com/pubsub/docs/quickstart-client-libraries#pubsub-client-libraries-python
-    import google.api_core.exceptions.DeadlineExceeded
+    import google.api_core.exceptions
     from google.cloud import pubsub_v1
     from google.cloud.securitycenter_v1.proto.notification_message_pb2 import (
         NotificationMessage,
