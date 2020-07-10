@@ -16,35 +16,9 @@
 
 """Examples of working with source and findings in Cloud Security Command Center."""
 
-from itertools import chain
-import os
-import pytest
 
 
-@pytest.fixture(scope="module")
-def organization_id():
-    """Get Organization ID from the environment variable """
-    return os.environ["GCLOUD_ORGANIZATION"]
-
-
-@pytest.fixture(scope="module")
-def source_name(organization_id):
-    from google.cloud import securitycenter
-
-    client = securitycenter.SecurityCenterClient()
-    org_name = "organizations/{org_id}".format(org_id=organization_id)
-
-    source = client.create_source(
-        org_name,
-        {
-            "display_name": "Unit test source",
-            "description": "A new custom source that does X",
-        },
-    )
-    return source.name
-
-
-def test_create_source(organization_id):
+def create_source(organization_id):
     """Create a new findings source. """
     # [START create_source]
     from google.cloud import securitycenter
@@ -65,7 +39,7 @@ def test_create_source(organization_id):
     # [END create_source]
 
 
-def test_get_source(source_name):
+def get_source(source_name):
     """Gets an existing source."""
     # [START get_source]
     from google.cloud import securitycenter
@@ -82,9 +56,10 @@ def test_get_source(source_name):
 
     print("Source: {}".format(source))
     # [END get_source]
+    return source
 
 
-def test_update_source(source_name):
+def update_source(source_name):
     """Updates a source's display name."""
     # [START update_source]
     from google.cloud import securitycenter
@@ -107,10 +82,10 @@ def test_update_source(source_name):
     )
     print("Updated Source: {}".format(updated))
     # [END update_source]
-    assert updated.display_name == "Updated Display Name"
+    return updated
 
 
-def test_add_user_to_source(source_name):
+def add_user_to_source(source_name):
     """Gives a user findingsEditor permission to the source."""
     user_email = "csccclienttest@gmail.com"
     # [START update_source_iam]
@@ -144,15 +119,11 @@ def test_add_user_to_source(source_name):
     print("Updated Policy: {}".format(updated))
 
     # [END update_source_iam]
-    assert any(
-        member == "user:csccclienttest@gmail.com"
-        for member in chain.from_iterable(
-            binding.members for binding in updated.bindings
-        )
-    )
+    return binding, updated
 
 
-def test_list_source(organization_id):
+
+def list_source(organization_id):
     """Lists finding sources."""
     i = -1
     # [START list_sources]
@@ -168,10 +139,10 @@ def test_list_source(organization_id):
     for i, source in enumerate(client.list_sources(org_name)):
         print(i, source)
     # [END list_sources]
-    assert i >= 0
+    
 
 
-def test_create_finding(source_name):
+def create_finding(source_name):
     """Creates a new finding."""
     # [START create_finding]
     from google.cloud import securitycenter
@@ -213,10 +184,10 @@ def test_create_finding(source_name):
     )
     print(created_finding)
     # [END create_finding]
-    assert len(created_finding.name) > 0
+    return created_finding
 
 
-def test_create_finding_with_source_properties(source_name):
+def create_finding_with_source_properties(source_name):
     """Demonstrate creating a new finding with source properties. """
     # [START create_finding_with_properties]
     from google.cloud import securitycenter
@@ -267,7 +238,7 @@ def test_create_finding_with_source_properties(source_name):
     # [END create_finding_with_properties]
 
 
-def test_update_finding(source_name):
+def update_finding(source_name):
     # [START update_finding]
     from google.cloud import securitycenter
     from google.protobuf.struct_pb2 import Value
@@ -312,7 +283,7 @@ def test_update_finding(source_name):
     # [END update_finding]
 
 
-def test_update_finding_state(source_name):
+def update_finding_state(source_name):
     """Demonstrate updating only a finding state."""
     # [START update_finding_state]
     from google.cloud import securitycenter
@@ -341,7 +312,7 @@ def test_update_finding_state(source_name):
     # [END update_finding_state]
 
 
-def test_trouble_shoot(source_name):
+def trouble_shoot(source_name):
     """Demonstrate calling test_iam_permissions to determine if the
     service account has the correct permisions."""
     # [START test_iam_permissions]
@@ -377,10 +348,11 @@ def test_trouble_shoot(source_name):
         "Permision to update state? {}".format(len(permission_response.permissions) > 0)
     )
     # [END test_iam_permissions]
+    return permission_response
     assert len(permission_response.permissions) > 0
 
 
-def test_list_all_findings(organization_id):
+def list_all_findings(organization_id):
     # [START list_all_findings]
     from google.cloud import securitycenter
 
@@ -401,10 +373,10 @@ def test_list_all_findings(organization_id):
             )
         )
     # [END list_all_findings]
-    assert i > 0
+    return i
 
 
-def test_list_filtered_findings(source_name):
+def list_filtered_findings(source_name):
     # [START list_filtered_findings]
     from google.cloud import securitycenter
 
@@ -431,10 +403,10 @@ def test_list_filtered_findings(source_name):
             )
         )
     # [END list_filtered_findings]
-    assert i > 0
+    return i
 
 
-def test_list_findings_at_time(source_name):
+def list_findings_at_time(source_name):
     # [START list_findings_at_a_time]
     from google.cloud import securitycenter
     from google.protobuf.timestamp_pb2 import Timestamp
@@ -466,12 +438,11 @@ def test_list_findings_at_time(source_name):
             )
         )
     # [END list_findings_at_a_time]
-    assert i == -1
+    return i
 
 
-def test_get_iam_policy(source_name):
+def get_iam_policy(source_name):
     """Gives a user findingsEditor permission to the source."""
-    user_email = "csccclienttest@gmail.com"
     # [START get_source_iam]
     from google.cloud import securitycenter
     from google.iam.v1 import policy_pb2
@@ -490,8 +461,9 @@ def test_get_iam_policy(source_name):
     # [END get_source_iam]
 
 
-def test_group_all_findings(organization_id):
+def group_all_findings(organization_id):
     """Demonstrates grouping all findings across an organization."""
+    i = 0
     # [START group_all_findings]
     from google.cloud import securitycenter
 
@@ -511,8 +483,9 @@ def test_group_all_findings(organization_id):
     assert i > 0
 
 
-def test_group_filtered_findings(source_name):
+def group_filtered_findings(source_name):
     """Demonstrates grouping all findings across an organization."""
+    i = 0
     # [START group_filtered_findings]
     from google.cloud import securitycenter
 
@@ -535,7 +508,7 @@ def test_group_filtered_findings(source_name):
     assert i == 0
 
 
-def test_group_findings_at_time(source_name):
+def group_findings_at_time(source_name):
     """Demonstrates grouping all findings across an organization as of
     a specific time."""
     i = -1
@@ -568,9 +541,10 @@ def test_group_findings_at_time(source_name):
     assert i == -1
 
 
-def test_group_findings_and_changes(source_name):
+def group_findings_and_changes(source_name):
     """Demonstrates grouping all findings across an organization and
     associated changes."""
+    i = 0
     # [START group_filtered_findings_with_changes]
     from datetime import timedelta
 

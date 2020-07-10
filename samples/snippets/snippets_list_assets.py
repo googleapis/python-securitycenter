@@ -15,19 +15,12 @@
 # limitations under the License.
 
 """ Examples of listing assets in Cloud Security Command Center."""
-import os
-from datetime import datetime, timedelta
-import pytest
 
 
-@pytest.fixture(scope="module")
-def organization_id():
-    """Get Organization ID from the environment variable """
-    return os.environ["GCLOUD_ORGANIZATION"]
 
-
-def test_list_all_assets(organization_id):
+def list_all_assets(organization_id):
     """Demonstrate listing and printing all assets."""
+    i = 0
     # [START demo_list_all_assets]
     from google.cloud import securitycenter
 
@@ -41,11 +34,12 @@ def test_list_all_assets(organization_id):
     for i, asset_result in enumerate(asset_iterator):
         print(i, asset_result)
     # [END demo_list_all_assets]
-    assert i > 0
+    return i
 
 
-def test_list_assets_with_filters(organization_id):
+def list_assets_with_filters(organization_id):
     """Demonstrate listing assets with a filter."""
+    i = 0
     # [START demo_list_assets_with_filter]
     from google.cloud import securitycenter
 
@@ -64,11 +58,12 @@ def test_list_assets_with_filters(organization_id):
     for i, asset_result in enumerate(asset_iterator):
         print(i, asset_result)
     # [END demo_list_assets_with_filter]
-    assert i > 0
+    return i
 
 
-def test_list_assets_with_filters_and_read_time(organization_id):
+def list_assets_with_filters_and_read_time(organization_id):
     """Demonstrate listing assets with a filter."""
+    i = 0
     # [START demo_list_assets_with_filter_and_time]
     from datetime import datetime, timedelta
 
@@ -99,11 +94,12 @@ def test_list_assets_with_filters_and_read_time(organization_id):
     for i, asset_result in enumerate(asset_iterator):
         print(i, asset_result)
     # [END demo_list_assets_with_filter_and_time]
-    assert i > 0
+    return i
 
 
-def test_list_point_in_time_changes(organization_id):
+def list_point_in_time_changes(organization_id):
     """Demonstrate listing assets along with their state changes."""
+    i = 0
     # [START demo_list_assets_changes]
     from datetime import timedelta
 
@@ -136,8 +132,9 @@ def test_list_point_in_time_changes(organization_id):
     assert i > 0
 
 
-def test_group_assets(organization_id):
+def group_assets(organization_id):
     """Demonstrates grouping all assets by type. """
+    i = 0
     # [START group_all_assets]
     from google.cloud import securitycenter
 
@@ -153,12 +150,12 @@ def test_group_assets(organization_id):
     for i, result in enumerate(result_iterator):
         print((i + 1), result)
     # [END group_all_assets]
-    # 8 different asset types.
-    assert i >= 8
+    return i
 
 
-def test_group_filtered_assets(organization_id):
+def group_filtered_assets(organization_id):
     """Demonstrates grouping assets by type with a filter. """
+    i = 0
     # [START group_all_assets]
     from google.cloud import securitycenter
 
@@ -180,11 +177,12 @@ def test_group_filtered_assets(organization_id):
         print((i + 1), result)
     # [END group_all_assets]
     # only one asset type is a project
-    assert i == 0
+    return i
 
 
-def test_group_assets_by_changes(organization_id):
+def group_assets_by_changes(organization_id):
     """Demonstrates grouping assets by there changes over a period of time."""
+    i = 0
     # [START group_all_assets_by_change]
     from datetime import timedelta
 
@@ -205,5 +203,4 @@ def test_group_assets_by_changes(organization_id):
     for i, result in enumerate(result_iterator):
         print((i + 1), result)
     # [END group_all_assets_by_change]
-    # only one asset type is a project
-    assert i >= 0
+    return i

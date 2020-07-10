@@ -14,17 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Examples for working with organization settings. """
-import os
-import pytest
 
 
-@pytest.fixture(scope="module")
-def organization_id():
-    """Get Organization ID from the environment variable """
-    return os.environ["GCLOUD_ORGANIZATION"]
-
-
-def test_get_settings(organization_id):
+def get_settings(organization_id):
     """Example showing how to retreive current organization settings."""
     # [START get_org_settings]
     from google.cloud import securitycenter
@@ -40,7 +32,7 @@ def test_get_settings(organization_id):
     # [END get_org_settings]
 
 
-def test_update_asset_discovery_org_settings(organization_id):
+def update_asset_discovery_org_settings(organization_id):
     """Example showing how to update the asset discovery configuration
     for an organization."""
     # [START update_org_settings]
@@ -63,4 +55,4 @@ def test_update_asset_discovery_org_settings(organization_id):
     )
     print("Asset Discovery Enabled? {}".format(updated.enable_asset_discovery))
     # [END update_org_settings]
-    assert updated.enable_asset_discovery == True
+    return updated
