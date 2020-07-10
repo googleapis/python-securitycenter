@@ -14,90 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Demos for working with security marks."""
-import os
-import random
-
-import pytest
-
-
-@pytest.fixture(scope="module")
-def organization_id():
-    """Gets Organization ID from the environment variable """
-    return os.environ["GCLOUD_ORGANIZATION"]
-
-
-@pytest.fixture(scope="module")
-def asset_name(organization_id):
-    """Returns a random asset name from existing assets."""
-    from google.cloud import securitycenter
-
-    client = securitycenter.SecurityCenterClient()
-    # organization_id is the numeric ID of the organization.
-    # organization_id=1234567777
-    org_name = "organizations/{org_id}".format(org_id=organization_id)
-    assets = list(client.list_assets(org_name))
-    # Select a random asset to avoid collision between integration tests.
-    asset = (random.sample(assets, 1)[0]).asset.name
-
-    # Set fresh marks.
-    update = client.update_security_marks(
-        {"name": "{}/securityMarks".format(asset), "marks": {"other": "other_val"}}
-    )
-    assert update.marks == {"other": "other_val"}
-    return asset
-
-
-@pytest.fixture(scope="module")
-def source_name(organization_id):
-    """Creates a new source in the organization."""
-    from google.cloud import securitycenter
-
-    client = securitycenter.SecurityCenterClient()
-    org_name = "organizations/{org_id}".format(org_id=organization_id)
-    source = client.create_source(
-        org_name,
-        {
-            "display_name": "Security marks Unit test source",
-            "description": "A new custom source that does X",
-        },
-    )
-    return source.name
-
-
-@pytest.fixture(scope="module")
-def finding_name(source_name):
-    """Creates a new finding and returns it name."""
-    from google.cloud import securitycenter
-    from google.cloud.securitycenter_v1.proto.finding_pb2 import Finding
-    from google.protobuf.timestamp_pb2 import Timestamp
-
-    client = securitycenter.SecurityCenterClient()
-
-    now_proto = Timestamp()
-    now_proto.GetCurrentTime()
-
-    finding = client.create_finding(
-        source_name,
-        "scfinding",
-        {
-            "state": Finding.ACTIVE,
-            "category": "C1",
-            "event_time": now_proto,
-            "resource_name": "//cloudresourcemanager.googleapis.com/organizations/1234",
-        },
-    )
-    client.create_finding(
-        source_name,
-        "untouched",
-        {
-            "state": Finding.ACTIVE,
-            "category": "MEDIUM_RISK_ONE",
-            "event_time": now_proto,
-            "resource_name": "//cloudresourcemanager.googleapis.com/organizations/1234",
-        },
-    )
-
-    return finding.name
 
 
 def add_to_asset(asset_name):
@@ -128,7 +44,7 @@ def add_to_asset(asset_name):
     )
     print(updated_marks)
     # [END add_marks_to_asset]
-    assert updated_marks.marks.keys() >= marks.keys()
+    return updated_marks, marks
 
 
 def clear_from_asset(asset_name):

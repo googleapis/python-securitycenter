@@ -56,7 +56,7 @@ def new_notification_config_for_update():
         {
             "description": "Notification for active findings",
             "pubsub_topic": PUBSUB_TOPIC,
-            "streaming_config": {"filter": "",},
+            "streaming_config": {"filter": ""},
         },
     )
     yield created_notification_config
@@ -75,7 +75,7 @@ def new_notification_config_for_get():
         {
             "description": "Notification for active findings",
             "pubsub_topic": PUBSUB_TOPIC,
-            "streaming_config": {"filter": "",},
+            "streaming_config": {"filter": ""},
         },
     )
     yield created_notification_config
@@ -94,7 +94,7 @@ def deleted_notification_config():
         {
             "description": "Notification for active findings",
             "pubsub_topic": PUBSUB_TOPIC,
-            "streaming_config": {"filter": "",},
+            "streaming_config": {"filter": ""},
         },
     )
     return created_notification_config
@@ -114,7 +114,6 @@ def test_delete_notification_config(deleted_notification_config):
         snippets_notification_configs.delete_notification_config(
             ORG_ID, DELETE_CONFIG_ID
         )
-        == True
     )
 
 
@@ -142,5 +141,4 @@ def test_receive_notifications():
         snippets_notification_receiver.receive_notifications(
             PROJECT_ID, PUBSUB_SUBSCRIPTION
         )
-        == True
     )

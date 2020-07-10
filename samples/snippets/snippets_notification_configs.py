@@ -36,7 +36,7 @@ def create_notification_config(organization_id, notification_config_id, pubsub_t
         {
             "description": "Notification for active findings",
             "pubsub_topic": pubsub_topic,
-            "streaming_config": {"filter": 'state = "ACTIVE"',},
+            "streaming_config": {"filter": 'state = "ACTIVE"'},
         },
     )
 

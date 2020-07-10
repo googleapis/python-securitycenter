@@ -21,6 +21,7 @@ import pytest
 
 import snippets_security_marks
 
+
 @pytest.fixture(scope="module")
 def organization_id():
     """Gets Organization ID from the environment variable """
@@ -64,6 +65,7 @@ def source_name(organization_id):
     )
     return source.name
 
+
 @pytest.fixture(scope="module")
 def finding_name(source_name):
     """Creates a new finding and returns it name."""
@@ -99,27 +101,37 @@ def finding_name(source_name):
 
     return finding.name
 
+
 def test_add_to_asset(asset_name):
     updated_marks, marks = snippets_security_marks.add_to_asset(asset_name)
     assert updated_marks.marks.keys() >= marks.keys()
+
 
 def test_clear_from_asset(asset_name):
     updated_marks = snippets_security_marks.clear_from_asset(asset_name)
     assert "other" in updated_marks.marks
     assert len(updated_marks.marks) == 1
 
+
 def test_delete_and_update_marks(asset_name):
     updated_marks = snippets_security_marks.delete_and_update_marks(asset_name)
     assert updated_marks.marks == {"key_a": "new_value_for_a", "other": "other_val"}
+
 
 def test_add_to_finding(finding_name):
     updated_marks, marks = snippets_security_marks.add_to_finding(finding_name)
     assert updated_marks.marks == marks
 
+
 def test_list_assets_with_query_marks(organization_id, asset_name):
-    count = snippets_security_marks.list_assets_with_query_marks(organization_id, asset_name)
+    count = snippets_security_marks.list_assets_with_query_marks(
+        organization_id, asset_name
+    )
     assert count >= 0
 
+
 def test_list_findings_with_query_marks(source_name, finding_name):
-    count = snippets_security_marks.list_findings_with_query_marks(source_name, finding_name)
+    count = snippets_security_marks.list_findings_with_query_marks(
+        source_name, finding_name
+    )
     assert count == 0

@@ -17,7 +17,6 @@
 """ Examples of listing assets in Cloud Security Command Center."""
 
 
-
 def list_all_assets(organization_id):
     """Demonstrate listing and printing all assets."""
     i = 0
@@ -129,7 +128,7 @@ def list_point_in_time_changes(organization_id):
         print(i, asset)
 
     # [END demo_list_assets_changes]
-    assert i > 0
+    return i
 
 
 def group_assets(organization_id):

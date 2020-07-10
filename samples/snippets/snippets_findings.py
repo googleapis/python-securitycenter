@@ -17,7 +17,6 @@
 """Examples of working with source and findings in Cloud Security Command Center."""
 
 
-
 def create_source(organization_id):
     """Create a new findings source. """
     # [START create_source]
@@ -122,7 +121,6 @@ def add_user_to_source(source_name):
     return binding, updated
 
 
-
 def list_source(organization_id):
     """Lists finding sources."""
     i = -1
@@ -139,7 +137,7 @@ def list_source(organization_id):
     for i, source in enumerate(client.list_sources(org_name)):
         print(i, source)
     # [END list_sources]
-    
+    return i
 
 
 def create_finding(source_name):
@@ -289,7 +287,6 @@ def update_finding_state(source_name):
     from google.cloud import securitycenter
     from google.cloud.securitycenter_v1.proto.finding_pb2 import Finding
     from google.protobuf.timestamp_pb2 import Timestamp
-    from datetime import datetime
 
     # Create a client.
     client = securitycenter.SecurityCenterClient()
@@ -445,7 +442,6 @@ def get_iam_policy(source_name):
     """Gives a user findingsEditor permission to the source."""
     # [START get_source_iam]
     from google.cloud import securitycenter
-    from google.iam.v1 import policy_pb2
 
     client = securitycenter.SecurityCenterClient()
 
@@ -480,7 +476,7 @@ def group_all_findings(organization_id):
     for i, group_result in enumerate(group_result_iterator):
         print((i + 1), group_result)
     # [END group_all_findings]
-    assert i > 0
+    return i
 
 
 def group_filtered_findings(source_name):
@@ -505,7 +501,7 @@ def group_filtered_findings(source_name):
     for i, group_result in enumerate(group_result_iterator):
         print((i + 1), group_result)
     # [END group_filtered_findings]
-    assert i == 0
+    return i
 
 
 def group_findings_at_time(source_name):
@@ -538,7 +534,7 @@ def group_findings_at_time(source_name):
     for i, group_result in enumerate(group_result_iterator):
         print((i + 1), group_result)
     # [END group_filtered_findings_at_time]
-    assert i == -1
+    return i
 
 
 def group_findings_and_changes(source_name):
@@ -573,4 +569,4 @@ def group_findings_and_changes(source_name):
     for i, group_result in enumerate(group_result_iterator):
         print((i + 1), group_result)
     # [END group_findings_with_changes]
-    assert i == 0
+    return i
