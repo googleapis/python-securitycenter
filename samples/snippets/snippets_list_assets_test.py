@@ -37,21 +37,21 @@ def list_assets_with_filters(organization_id):
     assert count > 0
 
 def test_list_assets_with_filters_and_read_time(organization_id):
-    count = snippets_list_assets.test_list_assets_with_filters_and_read_time(organization_id)
+    count = snippets_list_assets.list_assets_with_filters_and_read_time(organization_id)
     assert count > 0
 
 def test_list_point_in_time_changes(organization_id):
-    count = snippets_list_assets.test_list_point_in_time_changes(organization_id)
+    count = snippets_list_assets.list_point_in_time_changes(organization_id)
     assert count > 0
 
 def test_group_assets(organization_id):
-    count = snippets_list_assets.test_group_assets(organization_id)
+    count = snippets_list_assets.group_assets(organization_id)
     assert count >= 8  # 8 different asset types.
 
 def test_group_filtered_assets(organization_id):
-    count = snippets_list_assets.test_group_filtered_assets(organization_id)
+    count = snippets_list_assets.group_filtered_assets(organization_id)
     assert count == 0
 
 def test_group_assets_by_changes(organization_id):
-    count = snippets_list_assets.test_group_assets_by_change(organization_id)
+    count = snippets_list_assets.group_assets_by_change(organization_id)
     assert count >= 0  # only one asset type is a project

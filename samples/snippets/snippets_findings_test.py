@@ -51,11 +51,11 @@ def test_get_source(source_name):
     assert source.name == source_name
 
 def test_update_source(source_name):
-    updated = snippets_findings.test_update_source(source_name)
+    updated = snippets_findings.update_source(source_name)
     assert updated.display_name == "Updated Display Name"
 
 def test_add_user_to_source(source_name):
-    binding, updated = snippets_findings.test_add_user_to_source(source_name)
+    binding, updated = snippets_findings.add_user_to_source(source_name)
     assert any(
         member == "user:csccclienttest@gmail.com"
         for member in chain.from_iterable(
@@ -72,7 +72,7 @@ def test_create_finding(source_name):
     assert len(created_finding.name) > 0
 
 def test_create_finding_with_source_properties(source_name):
-    snippets_findings.test_create_finding_with_source_properties(source_name)
+    snippets_findings.create_finding_with_source_properties(source_name)
 
 
 def test_update_finding(source_name):
@@ -100,7 +100,7 @@ def test_get_iam_policy(source_name):
     snippets_findings.get_iam_policy(source_name)
 
 def test_group_all_findings(organization_id):
-    count = snippets_findings.test_group_all_findings(organization_id)
+    count = snippets_findings.group_all_findings(organization_id)
     assert count > 0
 
 def test_group_filtered_findings(source_name):
@@ -108,9 +108,9 @@ def test_group_filtered_findings(source_name):
     assert count == 0
 
 def test_group_findings_at_time(source_name):
-    count = snippets_findings.test_group_findings_at_time(source_name)
+    count = snippets_findings.group_findings_at_time(source_name)
     assert count == -1
 
 def test_group_findings_and_changes(source_name):
-    count = snippets_findings.test_group_findings_and_changes(source_name)
+    count = snippets_findings.group_findings_and_changes(source_name)
     assert count == 0

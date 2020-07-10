@@ -100,7 +100,7 @@ def finding_name(source_name):
     return finding.name
 
 
-def test_add_to_asset(asset_name):
+def add_to_asset(asset_name):
     """Add new security marks to an asset."""
     # [START add_marks_to_asset]
     from google.cloud import securitycenter
@@ -131,10 +131,10 @@ def test_add_to_asset(asset_name):
     assert updated_marks.marks.keys() >= marks.keys()
 
 
-def test_clear_from_asset(asset_name):
+def clear_from_asset(asset_name):
     """Removes security marks from an asset."""
     # Make sure they are there first
-    test_add_to_asset(asset_name)
+    add_to_asset(asset_name)
     # [START clear_marks_asset]
     from google.cloud import securitycenter
     from google.protobuf import field_mask_pb2
@@ -165,10 +165,10 @@ def test_clear_from_asset(asset_name):
     assert len(updated_marks.marks) == 1
 
 
-def test_delete_and_update_marks(asset_name):
+def delete_and_update_marks(asset_name):
     """Updates and deletes security marks from an asset in the same call."""
     # Make sure they are there first
-    test_add_to_asset(asset_name)
+    add_to_asset(asset_name)
     # [START delete_and_update_marks]
     from google.cloud import securitycenter
     from google.protobuf import field_mask_pb2
@@ -191,7 +191,7 @@ def test_delete_and_update_marks(asset_name):
     assert updated_marks.marks == {"key_a": "new_value_for_a", "other": "other_val"}
 
 
-def test_add_to_finding(finding_name):
+def add_to_finding(finding_name):
     """Adds security marks to a finding. """
     # [START add_marks_to_finding]
     from google.cloud import securitycenter
@@ -220,9 +220,9 @@ def test_add_to_finding(finding_name):
     assert updated_marks.marks == marks
 
 
-def test_list_assets_with_query_marks(organization_id, asset_name):
+def list_assets_with_query_marks(organization_id, asset_name):
     """Lists assets with a filter on security marks. """
-    test_add_to_asset(asset_name)
+    add_to_asset(asset_name)
     # [START demo_list_assets_with_security_marks]
     from google.cloud import securitycenter
 
@@ -244,10 +244,10 @@ def test_list_assets_with_query_marks(organization_id, asset_name):
     assert i >= 0
 
 
-def test_list_findings_with_query_marks(source_name, finding_name):
+def list_findings_with_query_marks(source_name, finding_name):
     """Lists findings with a filter on security marks."""
     # ensure marks are set on finding.
-    test_add_to_finding(finding_name)
+    add_to_finding(finding_name)
     i = -1
     # [START demo_list_findings_with_security_marks]
     from google.cloud import securitycenter
