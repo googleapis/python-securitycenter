@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-securitycenter/#history
 
+### [0.6.1](https://www.github.com/googleapis/python-securitycenter/compare/v0.6.0...v0.6.1) (2020-07-23)
+
+
+### Documentation
+
+* Update Security Command Center UpdateNotificationConfig sample, adding filter to mutable field ([#39](https://www.github.com/googleapis/python-securitycenter/issues/39)) ([c70d790](https://www.github.com/googleapis/python-securitycenter/commit/c70d7904425ae5ac252ffa7317ec6d08234a6c27))
+
 ## [0.6.0](https://www.github.com/googleapis/python-securitycenter/compare/v0.5.0...v0.6.0) (2020-07-01)
 
 
