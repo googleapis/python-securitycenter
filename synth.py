@@ -59,7 +59,9 @@ s.replace("google/**/*client.py", "\-  parent", "- parent\n")
 # Add templated files
 # ----------------------------------------------------------------------------
 templated_files = common.py_library(
-    samples=True, microgenerator=True,  # set to True only if there are samples
+    samples=True,
+    microgenerator=True,  # set to True only if there are samples
+    cov_level=99,
 )
 s.move(
     templated_files, excludes=[".coveragerc"]
