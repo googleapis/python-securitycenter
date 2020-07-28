@@ -48,14 +48,12 @@ from google.cloud import securitycenter
 
 client = securitycenter.securitycenterClient()
 
-request = {
+assets = client.list_assets(
+   request={
     "org_name": org_name, 
     "filter_:": project_filter,
     "read_time": timestamp_proto
-}
-
-assets = client.list_assets(
-   request=request
+    }
 )
 ```
 
@@ -148,20 +146,34 @@ The submodules `enums` and `types` have been removed.
 
 from google.cloud import securitycenter
 
-encoding = securitycenter.enums.AudioEncoding.MP3
-voice = securitycenter.types.VoiceSelectionParams(language_code="en-US")
+finding = securitycenter.types.Finding()
 ```
-
 
 **After:**
 ```py
+
 from google.cloud import securitycenter
 
-encoding = securitycenter.AudioEncoding.MP3
-voice = securitycenter.VoiceSelectionParams(language_code="en-US")
+finding = securitycenter.Finding()
 ```
 
 ## Datetime and Timedelta
 
 Native Python datetime and timedeltas can be passed to the library.
+
+```py
+from google.cloud import securitycenter
+
+client = securitycenter.SecurityCenterClient()
+
+read_time = datetime.utcnow() - timedelta(days=1)
+
+group_result_iterator = client.group_findings(
+    request={
+        "parent": source_name,
+        "group_by": "category",
+        "read_time": read_time,
+    }
+)
+```
 
