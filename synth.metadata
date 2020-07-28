@@ -3,8 +3,8 @@
     {
       "git": {
         "name": ".",
-        "remote": "git@github.com:googleapis/python-securitycenter.git",
-        "sha": "a30a996cafb8dd9fed3c86ef641d42ab959febe3"
+        "remote": "https://github.com/googleapis/python-securitycenter.git",
+        "sha": "c70d7904425ae5ac252ffa7317ec6d08234a6c27"
       }
     },
     {
