@@ -41,7 +41,7 @@ def cleanup_notification_config(notification_config_id):
     notification_config_name = "organizations/{org_id}/notificationConfigs/{config_id}".format(
         org_id=ORG_ID, config_id=notification_config_id
     )
-    client.delete_notification_config(notification_config_name)
+    client.delete_notification_config(request={"name": notification_config_name})
 
 
 @pytest.fixture
@@ -51,13 +51,15 @@ def new_notification_config_for_update():
     org_name = "organizations/{org_id}".format(org_id=ORG_ID)
 
     created_notification_config = client.create_notification_config(
-        org_name,
-        UPDATE_CONFIG_ID,
-        {
-            "description": "Notification for active findings",
-            "pubsub_topic": PUBSUB_TOPIC,
-            "streaming_config": {"filter": ""},
-        },
+        request={
+            "parent": org_name,
+            "config_id": UPDATE_CONFIG_ID,
+            "notification_config": {
+                "description": "Notification for active findings",
+                "pubsub_topic": PUBSUB_TOPIC,
+                "streaming_config": {"filter": ""},
+            },
+        }
     )
     yield created_notification_config
     cleanup_notification_config(UPDATE_CONFIG_ID)
@@ -70,13 +72,15 @@ def new_notification_config_for_get():
     org_name = "organizations/{org_id}".format(org_id=ORG_ID)
 
     created_notification_config = client.create_notification_config(
-        org_name,
-        GET_CONFIG_ID,
-        {
-            "description": "Notification for active findings",
-            "pubsub_topic": PUBSUB_TOPIC,
-            "streaming_config": {"filter": ""},
-        },
+        request={
+            "parent": org_name,
+            "config_id": GET_CONFIG_ID,
+            "notification_config": {
+                "description": "Notification for active findings",
+                "pubsub_topic": PUBSUB_TOPIC,
+                "streaming_config": {"filter": ""},
+            },
+        }
     )
     yield created_notification_config
     cleanup_notification_config(GET_CONFIG_ID)
@@ -89,20 +93,24 @@ def deleted_notification_config():
     org_name = "organizations/{org_id}".format(org_id=ORG_ID)
 
     created_notification_config = client.create_notification_config(
-        org_name,
-        DELETE_CONFIG_ID,
-        {
-            "description": "Notification for active findings",
-            "pubsub_topic": PUBSUB_TOPIC,
-            "streaming_config": {"filter": ""},
-        },
+        request={
+            "parent": org_name,
+            "config_id": DELETE_CONFIG_ID,
+            "notification_config": {
+                "description": "Notification for active findings",
+                "pubsub_topic": PUBSUB_TOPIC,
+                "streaming_config": {"filter": ""},
+            },
+        }
     )
     return created_notification_config
 
 
 def test_create_notification_config():
     created_notification_config = snippets_notification_configs.create_notification_config(
-        ORG_ID, CREATE_CONFIG_ID, PUBSUB_TOPIC
+        ORG_ID,
+        CREATE_CONFIG_ID,
+        PUBSUB_TOPIC
     )
     assert created_notification_config is not None
 
@@ -110,10 +118,8 @@ def test_create_notification_config():
 
 
 def test_delete_notification_config(deleted_notification_config):
-    assert (
-        snippets_notification_configs.delete_notification_config(
-            ORG_ID, DELETE_CONFIG_ID
-        )
+    assert snippets_notification_configs.delete_notification_config(
+        ORG_ID, DELETE_CONFIG_ID
     )
 
 
@@ -125,7 +131,9 @@ def test_get_notification_config(new_notification_config_for_get):
 
 
 def test_list_notification_configs():
-    iterator = snippets_notification_configs.list_notification_configs(ORG_ID)
+    iterator = snippets_notification_configs.list_notification_configs(
+        ORG_ID
+    )
     assert iterator is not None
 
 
@@ -137,8 +145,6 @@ def test_update_notification_config(new_notification_config_for_update):
 
 
 def test_receive_notifications():
-    assert (
-        snippets_notification_receiver.receive_notifications(
-            PROJECT_ID, PUBSUB_SUBSCRIPTION
-        )
+    assert snippets_notification_receiver.receive_notifications(
+        PROJECT_ID, PUBSUB_SUBSCRIPTION
     )

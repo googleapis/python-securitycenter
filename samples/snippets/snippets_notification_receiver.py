@@ -22,9 +22,7 @@ def receive_notifications(project_id, subscription_name):
     import concurrent
 
     from google.cloud import pubsub_v1
-    from google.cloud.securitycenter_v1.proto.notification_message_pb2 import (
-        NotificationMessage,
-    )
+    from google.cloud.securitycenter_v1 import NotificationMessage
     from google.protobuf import json_format
 
     # TODO: project_id = "your-project-id"
