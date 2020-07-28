@@ -202,8 +202,7 @@ def create_finding_with_source_properties(source_name):
     import datetime
 
     from google.cloud import securitycenter
-    from google.cloud.securitycenter_v1  import Finding
-    from google.protobuf.timestamp_pb2 import Timestamp
+    from google.cloud.securitycenter_v1 import Finding
     from google.protobuf.struct_pb2 import Value
 
     # Create a new client.
@@ -257,7 +256,7 @@ def update_finding(source_name):
     import datetime
 
     from google.cloud import securitycenter
-    from google.cloud.securitycenter_v1  import Finding
+    from google.cloud.securitycenter_v1 import Finding
     from google.protobuf import field_mask_pb2
 
     client = securitycenter.SecurityCenterClient()
@@ -305,8 +304,6 @@ def update_finding_state(source_name):
 
     from google.cloud import securitycenter
     from google.cloud.securitycenter_v1 import Finding
-    from google.protobuf.timestamp_pb2 import Timestamp
-
     # Create a client.
     client = securitycenter.SecurityCenterClient()
     # source_name is the resource path for a source that has been
@@ -432,7 +429,6 @@ def list_filtered_findings(source_name):
 def list_findings_at_time(source_name):
     # [START list_findings_at_a_time]
     from google.cloud import securitycenter
-    from google.protobuf.timestamp_pb2 import Timestamp
     from datetime import timedelta, datetime
 
     # Create a new client.
@@ -543,7 +539,6 @@ def group_findings_at_time(source_name):
     # [START group_findings_at_time]
     from datetime import datetime, timedelta
     from google.cloud import securitycenter
-    from google.protobuf.timestamp_pb2 import Timestamp
 
     # Create a client.
     client = securitycenter.SecurityCenterClient()
@@ -579,7 +574,6 @@ def group_findings_and_changes(source_name):
     from datetime import timedelta
 
     from google.cloud import securitycenter
-    from google.protobuf.duration_pb2 import Duration
 
     # Create a client.
     client = securitycenter.SecurityCenterClient()
