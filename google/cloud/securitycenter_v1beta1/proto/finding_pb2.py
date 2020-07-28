@@ -388,9 +388,9 @@ Finding = _reflection.GeneratedProtocolMessageType(
         ),
         "DESCRIPTOR": _FINDING,
         "__module__": "google.cloud.securitycenter_v1beta1.proto.finding_pb2",
-        "__doc__": """Cloud Security Command Center (Cloud SCC) finding.  A finding is a
-  record of assessment data (security, risk, health or privacy) ingested
-  into Cloud SCC for presentation, notification, analysis, policy
+        "__doc__": """Security Command Center finding.  A finding is a record of assessment
+  data (security, risk, health or privacy) ingested into Security
+  Command Center for presentation, notification, analysis, policy
   testing, and enforcement. For example, an XSS vulnerability in an App
   Engine application is a finding.
   
@@ -407,10 +407,10 @@ Finding = _reflection.GeneratedProtocolMessageType(
           after creation time. For example:
           “organizations/{organization_id}/sources/{source_id}”
       resource_name:
-          For findings on Google Cloud Platform (GCP) resources, the
-          full resource name of the GCP resource this finding is for.
-          See: https://cloud.google.com/apis/design/resource_names#full_
-          resource_name When the finding is for a non-GCP resource, the
+          For findings on Google Cloud resources, the full resource name
+          of the Google Cloud resource this finding is for. See: https:/
+          /cloud.google.com/apis/design/resource_names#full_resource_nam
+          e When the finding is for a non-Google Cloud resource, the
           resourceName can be a customer or partner defined string. This
           field is immutable after creation time.
       state:
@@ -421,9 +421,9 @@ Finding = _reflection.GeneratedProtocolMessageType(
           “XSS_FLASH_INJECTION”
       external_uri:
           The URI that, if available, points to a web page outside of
-          Cloud SCC where additional information about the finding can
-          be found. This field is guaranteed to be either empty or a
-          well formed URL.
+          Security Command Center where additional information about the
+          finding can be found. This field is guaranteed to be either
+          empty or a well formed URL.
       source_properties:
           Source specific properties. These properties are managed by
           the source that writes the finding. The key names in the
@@ -440,7 +440,8 @@ Finding = _reflection.GeneratedProtocolMessageType(
           the detector believes the firewall became open. The accuracy
           is determined by the detector.
       create_time:
-          The time at which the finding was created in Cloud SCC.
+          The time at which the finding was created in Security Command
+          Center.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.securitycenter.v1beta1.Finding)
     },
