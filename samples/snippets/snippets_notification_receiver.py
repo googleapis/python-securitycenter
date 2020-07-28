@@ -31,8 +31,7 @@ def receive_notifications(project_id, subscription_name):
     def callback(message):
         print("Received message")
 
-        notification_msg = NotificationMessage()
-        json_format.Parse(message.data, notification_msg)
+        notification_msg = NotificationMessage.from_json(message.data)
 
         print(
             "Notification config name: {}".format(
