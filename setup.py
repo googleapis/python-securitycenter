@@ -20,7 +20,7 @@ import os
 import setuptools
 
 name = "google-cloud-securitycenter"
-description = "Cloud Security Command Center API API client library"
+description = "Cloud Security Command Center API client library"
 version = "0.7.1"
 release_status = "Development Status :: 3 - Alpha"
 dependencies = [

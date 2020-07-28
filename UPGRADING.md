@@ -160,3 +160,8 @@ from google.cloud import securitycenter
 encoding = securitycenter.AudioEncoding.MP3
 voice = securitycenter.VoiceSelectionParams(language_code="en-US")
 ```
+
+## Datetime and Timedelta
+
+Native Python datetime and timedeltas can be passed to the library.
+
