@@ -108,9 +108,7 @@ def deleted_notification_config():
 
 def test_create_notification_config():
     created_notification_config = snippets_notification_configs.create_notification_config(
-        ORG_ID,
-        CREATE_CONFIG_ID,
-        PUBSUB_TOPIC
+        ORG_ID, CREATE_CONFIG_ID, PUBSUB_TOPIC
     )
     assert created_notification_config is not None
 
@@ -131,9 +129,7 @@ def test_get_notification_config(new_notification_config_for_get):
 
 
 def test_list_notification_configs():
-    iterator = snippets_notification_configs.list_notification_configs(
-        ORG_ID
-    )
+    iterator = snippets_notification_configs.list_notification_configs(ORG_ID)
     assert iterator is not None
 
 
