@@ -23,7 +23,7 @@ from google.cloud.securitycenter_v1 import types
 
 
 __all__ = (
-    'enums',
-    'types',
-    'SecurityCenterClient',
+    "enums",
+    "types",
+    "SecurityCenterClient",
 )
