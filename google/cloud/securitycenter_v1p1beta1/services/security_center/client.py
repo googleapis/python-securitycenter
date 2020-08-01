@@ -369,21 +369,27 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent, source]):
+        has_flattened_params = any([parent, source])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.CreateSourceRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.CreateSourceRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.CreateSourceRequest):
+            request = securitycenter_service.CreateSourceRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if parent is not None:
-            request.parent = parent
-        if source is not None:
-            request.source = source
+            if parent is not None:
+                request.parent = parent
+            if source is not None:
+                request.source = source
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -465,23 +471,29 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent, finding_id, finding]):
+        has_flattened_params = any([parent, finding_id, finding])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.CreateFindingRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.CreateFindingRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.CreateFindingRequest):
+            request = securitycenter_service.CreateFindingRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if parent is not None:
-            request.parent = parent
-        if finding_id is not None:
-            request.finding_id = finding_id
-        if finding is not None:
-            request.finding = finding
+            if parent is not None:
+                request.parent = parent
+            if finding_id is not None:
+                request.finding_id = finding_id
+            if finding is not None:
+                request.finding = finding
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -561,23 +573,31 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent, config_id, notification_config]):
+        has_flattened_params = any([parent, config_id, notification_config])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.CreateNotificationConfigRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.CreateNotificationConfigRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(
+            request, securitycenter_service.CreateNotificationConfigRequest
+        ):
+            request = securitycenter_service.CreateNotificationConfigRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if parent is not None:
-            request.parent = parent
-        if config_id is not None:
-            request.config_id = config_id
-        if notification_config is not None:
-            request.notification_config = notification_config
+            if parent is not None:
+                request.parent = parent
+            if config_id is not None:
+                request.config_id = config_id
+            if notification_config is not None:
+                request.notification_config = notification_config
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -629,19 +649,27 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name]):
+        has_flattened_params = any([name])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.DeleteNotificationConfigRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.DeleteNotificationConfigRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(
+            request, securitycenter_service.DeleteNotificationConfigRequest
+        ):
+            request = securitycenter_service.DeleteNotificationConfigRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if name is not None:
-            request.name = name
+            if name is not None:
+                request.name = name
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -763,7 +791,8 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([resource]):
+        has_flattened_params = any([resource])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -777,11 +806,11 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         elif not request:
             request = iam_policy.GetIamPolicyRequest()
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if resource is not None:
-            request.resource = resource
+            if resource is not None:
+                request.resource = resource
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -842,19 +871,25 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name]):
+        has_flattened_params = any([name])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.GetNotificationConfigRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.GetNotificationConfigRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.GetNotificationConfigRequest):
+            request = securitycenter_service.GetNotificationConfigRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if name is not None:
-            request.name = name
+            if name is not None:
+                request.name = name
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -911,19 +946,27 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name]):
+        has_flattened_params = any([name])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.GetOrganizationSettingsRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.GetOrganizationSettingsRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(
+            request, securitycenter_service.GetOrganizationSettingsRequest
+        ):
+            request = securitycenter_service.GetOrganizationSettingsRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if name is not None:
-            request.name = name
+            if name is not None:
+                request.name = name
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -985,19 +1028,25 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name]):
+        has_flattened_params = any([name])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.GetSourceRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.GetSourceRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.GetSourceRequest):
+            request = securitycenter_service.GetSourceRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if name is not None:
-            request.name = name
+            if name is not None:
+                request.name = name
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1048,7 +1097,12 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         """
         # Create or coerce a protobuf request object.
 
-        request = securitycenter_service.GroupAssetsRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.GroupAssetsRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.GroupAssetsRequest):
+            request = securitycenter_service.GroupAssetsRequest(request)
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1141,21 +1195,27 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent, group_by]):
+        has_flattened_params = any([parent, group_by])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.GroupFindingsRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.GroupFindingsRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.GroupFindingsRequest):
+            request = securitycenter_service.GroupFindingsRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if parent is not None:
-            request.parent = parent
-        if group_by is not None:
-            request.group_by = group_by
+            if parent is not None:
+                request.parent = parent
+            if group_by is not None:
+                request.group_by = group_by
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1217,19 +1277,25 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent]):
+        has_flattened_params = any([parent])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.ListAssetsRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.ListAssetsRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.ListAssetsRequest):
+            request = securitycenter_service.ListAssetsRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if parent is not None:
-            request.parent = parent
+            if parent is not None:
+                request.parent = parent
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1300,19 +1366,25 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent]):
+        has_flattened_params = any([parent])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.ListFindingsRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.ListFindingsRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.ListFindingsRequest):
+            request = securitycenter_service.ListFindingsRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if parent is not None:
-            request.parent = parent
+            if parent is not None:
+                request.parent = parent
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1377,19 +1449,27 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent]):
+        has_flattened_params = any([parent])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.ListNotificationConfigsRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.ListNotificationConfigsRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(
+            request, securitycenter_service.ListNotificationConfigsRequest
+        ):
+            request = securitycenter_service.ListNotificationConfigsRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if parent is not None:
-            request.parent = parent
+            if parent is not None:
+                request.parent = parent
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1454,19 +1534,25 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent]):
+        has_flattened_params = any([parent])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.ListSourcesRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.ListSourcesRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.ListSourcesRequest):
+            request = securitycenter_service.ListSourcesRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if parent is not None:
-            request.parent = parent
+            if parent is not None:
+                request.parent = parent
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1536,19 +1622,25 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent]):
+        has_flattened_params = any([parent])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.RunAssetDiscoveryRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.RunAssetDiscoveryRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.RunAssetDiscoveryRequest):
+            request = securitycenter_service.RunAssetDiscoveryRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if parent is not None:
-            request.parent = parent
+            if parent is not None:
+                request.parent = parent
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1635,23 +1727,29 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name, state, start_time]):
+        has_flattened_params = any([name, state, start_time])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.SetFindingStateRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.SetFindingStateRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.SetFindingStateRequest):
+            request = securitycenter_service.SetFindingStateRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if name is not None:
-            request.name = name
-        if state is not None:
-            request.state = state
-        if start_time is not None:
-            request.start_time = start_time
+            if name is not None:
+                request.name = name
+            if state is not None:
+                request.state = state
+            if start_time is not None:
+                request.start_time = start_time
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1772,7 +1870,8 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([resource]):
+        has_flattened_params = any([resource])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -1786,11 +1885,11 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         elif not request:
             request = iam_policy.SetIamPolicyRequest()
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if resource is not None:
-            request.resource = resource
+            if resource is not None:
+                request.resource = resource
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1855,7 +1954,8 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([resource, permissions]):
+        has_flattened_params = any([resource, permissions])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -1869,14 +1969,14 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         elif not request:
             request = iam_policy.TestIamPermissionsRequest()
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if resource is not None:
-            request.resource = resource
+            if resource is not None:
+                request.resource = resource
 
-        if permissions:
-            request.permissions.extend(permissions)
+            if permissions:
+                request.permissions.extend(permissions)
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1958,21 +2058,27 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([finding, update_mask]):
+        has_flattened_params = any([finding, update_mask])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.UpdateFindingRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.UpdateFindingRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.UpdateFindingRequest):
+            request = securitycenter_service.UpdateFindingRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if finding is not None:
-            request.finding = finding
-        if update_mask is not None:
-            request.update_mask = update_mask
+            if finding is not None:
+                request.finding = finding
+            if update_mask is not None:
+                request.update_mask = update_mask
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -2044,21 +2150,29 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([notification_config, update_mask]):
+        has_flattened_params = any([notification_config, update_mask])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.UpdateNotificationConfigRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.UpdateNotificationConfigRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(
+            request, securitycenter_service.UpdateNotificationConfigRequest
+        ):
+            request = securitycenter_service.UpdateNotificationConfigRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if notification_config is not None:
-            request.notification_config = notification_config
-        if update_mask is not None:
-            request.update_mask = update_mask
+            if notification_config is not None:
+                request.notification_config = notification_config
+            if update_mask is not None:
+                request.update_mask = update_mask
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -2118,19 +2232,27 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([organization_settings]):
+        has_flattened_params = any([organization_settings])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.UpdateOrganizationSettingsRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.UpdateOrganizationSettingsRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(
+            request, securitycenter_service.UpdateOrganizationSettingsRequest
+        ):
+            request = securitycenter_service.UpdateOrganizationSettingsRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if organization_settings is not None:
-            request.organization_settings = organization_settings
+            if organization_settings is not None:
+                request.organization_settings = organization_settings
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -2202,21 +2324,27 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([source, update_mask]):
+        has_flattened_params = any([source, update_mask])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.UpdateSourceRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.UpdateSourceRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.UpdateSourceRequest):
+            request = securitycenter_service.UpdateSourceRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if source is not None:
-            request.source = source
-        if update_mask is not None:
-            request.update_mask = update_mask
+            if source is not None:
+                request.source = source
+            if update_mask is not None:
+                request.update_mask = update_mask
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -2291,21 +2419,27 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([security_marks, update_mask]):
+        has_flattened_params = any([security_marks, update_mask])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
             )
 
-        request = securitycenter_service.UpdateSecurityMarksRequest(request)
+        # Minor optimization to avoid making a copy if the user passes
+        # in a securitycenter_service.UpdateSecurityMarksRequest.
+        # There's no risk of modifying the input as we've already verified
+        # there are no flattened fields.
+        if not isinstance(request, securitycenter_service.UpdateSecurityMarksRequest):
+            request = securitycenter_service.UpdateSecurityMarksRequest(request)
 
-        # If we have keyword arguments corresponding to fields on the
-        # request, apply these.
+            # If we have keyword arguments corresponding to fields on the
+            # request, apply these.
 
-        if security_marks is not None:
-            request.security_marks = security_marks
-        if update_mask is not None:
-            request.update_mask = update_mask
+            if security_marks is not None:
+                request.security_marks = security_marks
+            if update_mask is not None:
+                request.update_mask = update_mask
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.

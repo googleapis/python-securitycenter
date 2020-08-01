@@ -70,17 +70,17 @@ class SecurityCenterAsyncClient:
 
     finding_path = staticmethod(SecurityCenterClient.finding_path)
 
-    security_marks_path = staticmethod(SecurityCenterClient.security_marks_path)
+    source_path = staticmethod(SecurityCenterClient.source_path)
 
     notification_config_path = staticmethod(
         SecurityCenterClient.notification_config_path
     )
 
+    security_marks_path = staticmethod(SecurityCenterClient.security_marks_path)
+
     organization_settings_path = staticmethod(
         SecurityCenterClient.organization_settings_path
     )
-
-    source_path = staticmethod(SecurityCenterClient.source_path)
 
     from_service_account_file = SecurityCenterClient.from_service_account_file
     from_service_account_json = from_service_account_file
