@@ -37,9 +37,9 @@ from google.protobuf import empty_pb2
 from google.protobuf import timestamp_pb2
 
 
+
 class MultiCallableStub(object):
     """Stub for the grpc.UnaryUnaryMultiCallable interface."""
-
     def __init__(self, method, channel_stub):
         self.method = method
         self.channel_stub = channel_stub
@@ -60,12 +60,12 @@ class MultiCallableStub(object):
 
 class ChannelStub(object):
     """Stub for the grpc.Channel interface."""
-
-    def __init__(self, responses=[]):
+    def __init__(self, responses = []):
         self.responses = responses
         self.requests = []
 
-    def unary_unary(self, method, request_serializer=None, response_deserializer=None):
+    def unary_unary(
+            self, method, request_serializer=None, response_deserializer=None):
         return MultiCallableStub(method, self)
 
 
@@ -74,49 +74,44 @@ class CustomException(Exception):
 
 
 class TestSecurityCenterClient(object):
+
     def test_create_source(self):
         # Setup Expected Response
-        name = "name3373707"
-        display_name = "displayName1615086568"
-        description = "description-1724546052"
-        expected_response = {
-            "name": name,
-            "display_name": display_name,
-            "description": description,
-        }
+        name = 'name3373707'
+        display_name = 'displayName1615086568'
+        description = 'description-1724546052'
+        expected_response = {'name': name, 'display_name': display_name, 'description': description}
         expected_response = source_pb2.Source(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        parent = client.organization_path("[ORGANIZATION]")
+        parent = client.organization_path('[ORGANIZATION]')
         source = {}
 
         response = client.create_source(parent, source)
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.CreateSourceRequest(
-            parent=parent, source=source
-        )
+        expected_request = securitycenter_service_pb2.CreateSourceRequest(parent=parent, source=source)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_create_source_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        parent = client.organization_path("[ORGANIZATION]")
+        parent = client.organization_path('[ORGANIZATION]')
         source = {}
 
         with pytest.raises(CustomException):
@@ -124,53 +119,45 @@ class TestSecurityCenterClient(object):
 
     def test_create_finding(self):
         # Setup Expected Response
-        name = "name3373707"
-        parent_2 = "parent21175163357"
-        resource_name = "resourceName979421212"
-        category = "category50511102"
-        external_uri = "externalUri-1385596168"
-        expected_response = {
-            "name": name,
-            "parent": parent_2,
-            "resource_name": resource_name,
-            "category": category,
-            "external_uri": external_uri,
-        }
+        name = 'name3373707'
+        parent_2 = 'parent21175163357'
+        resource_name = 'resourceName979421212'
+        category = 'category50511102'
+        external_uri = 'externalUri-1385596168'
+        expected_response = {'name': name, 'parent': parent_2, 'resource_name': resource_name, 'category': category, 'external_uri': external_uri}
         expected_response = finding_pb2.Finding(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        parent = client.source_path("[ORGANIZATION]", "[SOURCE]")
-        finding_id = "findingId728776081"
+        parent = client.source_path('[ORGANIZATION]', '[SOURCE]')
+        finding_id = 'findingId728776081'
         finding = {}
 
         response = client.create_finding(parent, finding_id, finding)
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.CreateFindingRequest(
-            parent=parent, finding_id=finding_id, finding=finding
-        )
+        expected_request = securitycenter_service_pb2.CreateFindingRequest(parent=parent, finding_id=finding_id, finding=finding)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_create_finding_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        parent = client.source_path("[ORGANIZATION]", "[SOURCE]")
-        finding_id = "findingId728776081"
+        parent = client.source_path('[ORGANIZATION]', '[SOURCE]')
+        finding_id = 'findingId728776081'
         finding = {}
 
         with pytest.raises(CustomException):
@@ -178,55 +165,44 @@ class TestSecurityCenterClient(object):
 
     def test_create_notification_config(self):
         # Setup Expected Response
-        name = "name3373707"
-        description = "description-1724546052"
-        pubsub_topic = "pubsubTopic-338126829"
-        service_account = "serviceAccount-1948028253"
-        expected_response = {
-            "name": name,
-            "description": description,
-            "pubsub_topic": pubsub_topic,
-            "service_account": service_account,
-        }
-        expected_response = notification_config_pb2.NotificationConfig(
-            **expected_response
-        )
+        name = 'name3373707'
+        description = 'description-1724546052'
+        pubsub_topic = 'pubsubTopic-338126829'
+        service_account = 'serviceAccount-1948028253'
+        expected_response = {'name': name, 'description': description, 'pubsub_topic': pubsub_topic, 'service_account': service_account}
+        expected_response = notification_config_pb2.NotificationConfig(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        parent = client.organization_path("[ORGANIZATION]")
-        config_id = "configId-804450504"
+        parent = client.organization_path('[ORGANIZATION]')
+        config_id = 'configId-804450504'
         notification_config = {}
 
-        response = client.create_notification_config(
-            parent, config_id, notification_config
-        )
+        response = client.create_notification_config(parent, config_id, notification_config)
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.CreateNotificationConfigRequest(
-            parent=parent, config_id=config_id, notification_config=notification_config
-        )
+        expected_request = securitycenter_service_pb2.CreateNotificationConfigRequest(parent=parent, config_id=config_id, notification_config=notification_config)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_create_notification_config_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        parent = client.organization_path("[ORGANIZATION]")
-        config_id = "configId-804450504"
+        parent = client.organization_path('[ORGANIZATION]')
+        config_id = 'configId-804450504'
         notification_config = {}
 
         with pytest.raises(CustomException):
@@ -234,37 +210,31 @@ class TestSecurityCenterClient(object):
 
     def test_delete_notification_config(self):
         channel = ChannelStub()
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        name = client.notification_config_path(
-            "[ORGANIZATION]", "[NOTIFICATION_CONFIG]"
-        )
+        name = client.notification_config_path('[ORGANIZATION]', '[NOTIFICATION_CONFIG]')
 
         client.delete_notification_config(name)
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.DeleteNotificationConfigRequest(
-            name=name
-        )
+        expected_request = securitycenter_service_pb2.DeleteNotificationConfigRequest(name=name)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_delete_notification_config_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        name = client.notification_config_path(
-            "[ORGANIZATION]", "[NOTIFICATION_CONFIG]"
-        )
+        name = client.notification_config_path('[ORGANIZATION]', '[NOTIFICATION_CONFIG]')
 
         with pytest.raises(CustomException):
             client.delete_notification_config(name)
@@ -272,19 +242,19 @@ class TestSecurityCenterClient(object):
     def test_get_iam_policy(self):
         # Setup Expected Response
         version = 351608024
-        etag = b"21"
-        expected_response = {"version": version, "etag": etag}
+        etag = b'21'
+        expected_response = {'version': version, 'etag': etag}
         expected_response = policy_pb2.Policy(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        resource = "resource-341064690"
+        resource = 'resource-341064690'
 
         response = client.get_iam_policy(resource)
         assert expected_response == response
@@ -296,139 +266,115 @@ class TestSecurityCenterClient(object):
 
     def test_get_iam_policy_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        resource = "resource-341064690"
+        resource = 'resource-341064690'
 
         with pytest.raises(CustomException):
             client.get_iam_policy(resource)
 
     def test_get_notification_config(self):
         # Setup Expected Response
-        name_2 = "name2-1052831874"
-        description = "description-1724546052"
-        pubsub_topic = "pubsubTopic-338126829"
-        service_account = "serviceAccount-1948028253"
-        expected_response = {
-            "name": name_2,
-            "description": description,
-            "pubsub_topic": pubsub_topic,
-            "service_account": service_account,
-        }
-        expected_response = notification_config_pb2.NotificationConfig(
-            **expected_response
-        )
+        name_2 = 'name2-1052831874'
+        description = 'description-1724546052'
+        pubsub_topic = 'pubsubTopic-338126829'
+        service_account = 'serviceAccount-1948028253'
+        expected_response = {'name': name_2, 'description': description, 'pubsub_topic': pubsub_topic, 'service_account': service_account}
+        expected_response = notification_config_pb2.NotificationConfig(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        name = client.notification_config_path(
-            "[ORGANIZATION]", "[NOTIFICATION_CONFIG]"
-        )
+        name = client.notification_config_path('[ORGANIZATION]', '[NOTIFICATION_CONFIG]')
 
         response = client.get_notification_config(name)
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.GetNotificationConfigRequest(
-            name=name
-        )
+        expected_request = securitycenter_service_pb2.GetNotificationConfigRequest(name=name)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_get_notification_config_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        name = client.notification_config_path(
-            "[ORGANIZATION]", "[NOTIFICATION_CONFIG]"
-        )
+        name = client.notification_config_path('[ORGANIZATION]', '[NOTIFICATION_CONFIG]')
 
         with pytest.raises(CustomException):
             client.get_notification_config(name)
 
     def test_get_organization_settings(self):
         # Setup Expected Response
-        name_2 = "name2-1052831874"
+        name_2 = 'name2-1052831874'
         enable_asset_discovery = False
-        expected_response = {
-            "name": name_2,
-            "enable_asset_discovery": enable_asset_discovery,
-        }
-        expected_response = organization_settings_pb2.OrganizationSettings(
-            **expected_response
-        )
+        expected_response = {'name': name_2, 'enable_asset_discovery': enable_asset_discovery}
+        expected_response = organization_settings_pb2.OrganizationSettings(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        name = client.organization_settings_path("[ORGANIZATION]")
+        name = client.organization_settings_path('[ORGANIZATION]')
 
         response = client.get_organization_settings(name)
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.GetOrganizationSettingsRequest(
-            name=name
-        )
+        expected_request = securitycenter_service_pb2.GetOrganizationSettingsRequest(name=name)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_get_organization_settings_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        name = client.organization_settings_path("[ORGANIZATION]")
+        name = client.organization_settings_path('[ORGANIZATION]')
 
         with pytest.raises(CustomException):
             client.get_organization_settings(name)
 
     def test_get_source(self):
         # Setup Expected Response
-        name_2 = "name2-1052831874"
-        display_name = "displayName1615086568"
-        description = "description-1724546052"
-        expected_response = {
-            "name": name_2,
-            "display_name": display_name,
-            "description": description,
-        }
+        name_2 = 'name2-1052831874'
+        display_name = 'displayName1615086568'
+        description = 'description-1724546052'
+        expected_response = {'name': name_2, 'display_name': display_name, 'description': description}
         expected_response = source_pb2.Source(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        name = client.source_path("[ORGANIZATION]", "[SOURCE]")
+        name = client.source_path('[ORGANIZATION]', '[SOURCE]')
 
         response = client.get_source(name)
         assert expected_response == response
@@ -440,43 +386,37 @@ class TestSecurityCenterClient(object):
 
     def test_get_source_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        name = client.source_path("[ORGANIZATION]", "[SOURCE]")
+        name = client.source_path('[ORGANIZATION]', '[SOURCE]')
 
         with pytest.raises(CustomException):
             client.get_source(name)
 
     def test_group_assets(self):
         # Setup Expected Response
-        next_page_token = ""
+        next_page_token = ''
         total_size = 705419236
         group_by_results_element = {}
         group_by_results = [group_by_results_element]
-        expected_response = {
-            "next_page_token": next_page_token,
-            "total_size": total_size,
-            "group_by_results": group_by_results,
-        }
-        expected_response = securitycenter_service_pb2.GroupAssetsResponse(
-            **expected_response
-        )
+        expected_response = {'next_page_token': next_page_token, 'total_size': total_size, 'group_by_results': group_by_results}
+        expected_response = securitycenter_service_pb2.GroupAssetsResponse(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        parent = client.organization_path("[ORGANIZATION]")
-        group_by = "groupBy506361367"
+        parent = client.organization_path('[ORGANIZATION]')
+        group_by = 'groupBy506361367'
 
         paged_list_response = client.group_assets(parent, group_by)
         resources = list(paged_list_response)
@@ -485,22 +425,20 @@ class TestSecurityCenterClient(object):
         assert expected_response.group_by_results[0] == resources[0]
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.GroupAssetsRequest(
-            parent=parent, group_by=group_by
-        )
+        expected_request = securitycenter_service_pb2.GroupAssetsRequest(parent=parent, group_by=group_by)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_group_assets_exception(self):
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        parent = client.organization_path("[ORGANIZATION]")
-        group_by = "groupBy506361367"
+        parent = client.organization_path('[ORGANIZATION]')
+        group_by = 'groupBy506361367'
 
         paged_list_response = client.group_assets(parent, group_by)
         with pytest.raises(CustomException):
@@ -508,29 +446,23 @@ class TestSecurityCenterClient(object):
 
     def test_group_findings(self):
         # Setup Expected Response
-        next_page_token = ""
+        next_page_token = ''
         total_size = 705419236
         group_by_results_element = {}
         group_by_results = [group_by_results_element]
-        expected_response = {
-            "next_page_token": next_page_token,
-            "total_size": total_size,
-            "group_by_results": group_by_results,
-        }
-        expected_response = securitycenter_service_pb2.GroupFindingsResponse(
-            **expected_response
-        )
+        expected_response = {'next_page_token': next_page_token, 'total_size': total_size, 'group_by_results': group_by_results}
+        expected_response = securitycenter_service_pb2.GroupFindingsResponse(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        parent = client.source_path("[ORGANIZATION]", "[SOURCE]")
-        group_by = "groupBy506361367"
+        parent = client.source_path('[ORGANIZATION]', '[SOURCE]')
+        group_by = 'groupBy506361367'
 
         paged_list_response = client.group_findings(parent, group_by)
         resources = list(paged_list_response)
@@ -539,22 +471,20 @@ class TestSecurityCenterClient(object):
         assert expected_response.group_by_results[0] == resources[0]
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.GroupFindingsRequest(
-            parent=parent, group_by=group_by
-        )
+        expected_request = securitycenter_service_pb2.GroupFindingsRequest(parent=parent, group_by=group_by)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_group_findings_exception(self):
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        parent = client.source_path("[ORGANIZATION]", "[SOURCE]")
-        group_by = "groupBy506361367"
+        parent = client.source_path('[ORGANIZATION]', '[SOURCE]')
+        group_by = 'groupBy506361367'
 
         paged_list_response = client.group_findings(parent, group_by)
         with pytest.raises(CustomException):
@@ -562,28 +492,22 @@ class TestSecurityCenterClient(object):
 
     def test_list_assets(self):
         # Setup Expected Response
-        next_page_token = ""
+        next_page_token = ''
         total_size = 705419236
         list_assets_results_element = {}
         list_assets_results = [list_assets_results_element]
-        expected_response = {
-            "next_page_token": next_page_token,
-            "total_size": total_size,
-            "list_assets_results": list_assets_results,
-        }
-        expected_response = securitycenter_service_pb2.ListAssetsResponse(
-            **expected_response
-        )
+        expected_response = {'next_page_token': next_page_token, 'total_size': total_size, 'list_assets_results': list_assets_results}
+        expected_response = securitycenter_service_pb2.ListAssetsResponse(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        parent = client.organization_path("[ORGANIZATION]")
+        parent = client.organization_path('[ORGANIZATION]')
 
         paged_list_response = client.list_assets(parent)
         resources = list(paged_list_response)
@@ -597,14 +521,14 @@ class TestSecurityCenterClient(object):
         assert expected_request == actual_request
 
     def test_list_assets_exception(self):
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        parent = client.organization_path("[ORGANIZATION]")
+        parent = client.organization_path('[ORGANIZATION]')
 
         paged_list_response = client.list_assets(parent)
         with pytest.raises(CustomException):
@@ -612,28 +536,22 @@ class TestSecurityCenterClient(object):
 
     def test_list_findings(self):
         # Setup Expected Response
-        next_page_token = ""
+        next_page_token = ''
         total_size = 705419236
         list_findings_results_element = {}
         list_findings_results = [list_findings_results_element]
-        expected_response = {
-            "next_page_token": next_page_token,
-            "total_size": total_size,
-            "list_findings_results": list_findings_results,
-        }
-        expected_response = securitycenter_service_pb2.ListFindingsResponse(
-            **expected_response
-        )
+        expected_response = {'next_page_token': next_page_token, 'total_size': total_size, 'list_findings_results': list_findings_results}
+        expected_response = securitycenter_service_pb2.ListFindingsResponse(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        parent = client.source_path("[ORGANIZATION]", "[SOURCE]")
+        parent = client.source_path('[ORGANIZATION]', '[SOURCE]')
 
         paged_list_response = client.list_findings(parent)
         resources = list(paged_list_response)
@@ -647,14 +565,14 @@ class TestSecurityCenterClient(object):
         assert expected_request == actual_request
 
     def test_list_findings_exception(self):
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        parent = client.source_path("[ORGANIZATION]", "[SOURCE]")
+        parent = client.source_path('[ORGANIZATION]', '[SOURCE]')
 
         paged_list_response = client.list_findings(parent)
         with pytest.raises(CustomException):
@@ -662,26 +580,21 @@ class TestSecurityCenterClient(object):
 
     def test_list_notification_configs(self):
         # Setup Expected Response
-        next_page_token = ""
+        next_page_token = ''
         notification_configs_element = {}
         notification_configs = [notification_configs_element]
-        expected_response = {
-            "next_page_token": next_page_token,
-            "notification_configs": notification_configs,
-        }
-        expected_response = securitycenter_service_pb2.ListNotificationConfigsResponse(
-            **expected_response
-        )
+        expected_response = {'next_page_token': next_page_token, 'notification_configs': notification_configs}
+        expected_response = securitycenter_service_pb2.ListNotificationConfigsResponse(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        parent = client.organization_path("[ORGANIZATION]")
+        parent = client.organization_path('[ORGANIZATION]')
 
         paged_list_response = client.list_notification_configs(parent)
         resources = list(paged_list_response)
@@ -690,21 +603,19 @@ class TestSecurityCenterClient(object):
         assert expected_response.notification_configs[0] == resources[0]
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.ListNotificationConfigsRequest(
-            parent=parent
-        )
+        expected_request = securitycenter_service_pb2.ListNotificationConfigsRequest(parent=parent)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_list_notification_configs_exception(self):
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        parent = client.organization_path("[ORGANIZATION]")
+        parent = client.organization_path('[ORGANIZATION]')
 
         paged_list_response = client.list_notification_configs(parent)
         with pytest.raises(CustomException):
@@ -712,23 +623,21 @@ class TestSecurityCenterClient(object):
 
     def test_list_sources(self):
         # Setup Expected Response
-        next_page_token = ""
+        next_page_token = ''
         sources_element = {}
         sources = [sources_element]
-        expected_response = {"next_page_token": next_page_token, "sources": sources}
-        expected_response = securitycenter_service_pb2.ListSourcesResponse(
-            **expected_response
-        )
+        expected_response = {'next_page_token': next_page_token, 'sources': sources}
+        expected_response = securitycenter_service_pb2.ListSourcesResponse(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        parent = client.organization_path("[ORGANIZATION]")
+        parent = client.organization_path('[ORGANIZATION]')
 
         paged_list_response = client.list_sources(parent)
         resources = list(paged_list_response)
@@ -742,14 +651,14 @@ class TestSecurityCenterClient(object):
         assert expected_request == actual_request
 
     def test_list_sources_exception(self):
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        parent = client.organization_path("[ORGANIZATION]")
+        parent = client.organization_path('[ORGANIZATION]')
 
         paged_list_response = client.list_sources(parent)
         with pytest.raises(CustomException):
@@ -758,52 +667,45 @@ class TestSecurityCenterClient(object):
     def test_run_asset_discovery(self):
         # Setup Expected Response
         expected_response = {}
-        expected_response = run_asset_discovery_response_pb2.RunAssetDiscoveryResponse(
-            **expected_response
-        )
-        operation = operations_pb2.Operation(
-            name="operations/test_run_asset_discovery", done=True
-        )
+        expected_response = run_asset_discovery_response_pb2.RunAssetDiscoveryResponse(**expected_response)
+        operation = operations_pb2.Operation(name='operations/test_run_asset_discovery', done=True)
         operation.response.Pack(expected_response)
 
         # Mock the API response
         channel = ChannelStub(responses=[operation])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        parent = client.organization_path("[ORGANIZATION]")
+        parent = client.organization_path('[ORGANIZATION]')
 
         response = client.run_asset_discovery(parent)
         result = response.result()
         assert expected_response == result
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.RunAssetDiscoveryRequest(
-            parent=parent
-        )
+        expected_request = securitycenter_service_pb2.RunAssetDiscoveryRequest(parent=parent)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
+
 
     def test_run_asset_discovery_exception(self):
         # Setup Response
         error = status_pb2.Status()
-        operation = operations_pb2.Operation(
-            name="operations/test_run_asset_discovery_exception", done=True
-        )
+        operation = operations_pb2.Operation(name='operations/test_run_asset_discovery_exception', done=True)
         operation.error.CopyFrom(error)
 
         # Mock the API response
         channel = ChannelStub(responses=[operation])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        parent = client.organization_path("[ORGANIZATION]")
+        parent = client.organization_path('[ORGANIZATION]')
 
         response = client.run_asset_discovery(parent)
         exception = response.exception()
@@ -811,29 +713,23 @@ class TestSecurityCenterClient(object):
 
     def test_set_finding_state(self):
         # Setup Expected Response
-        name_2 = "name2-1052831874"
-        parent = "parent-995424086"
-        resource_name = "resourceName979421212"
-        category = "category50511102"
-        external_uri = "externalUri-1385596168"
-        expected_response = {
-            "name": name_2,
-            "parent": parent,
-            "resource_name": resource_name,
-            "category": category,
-            "external_uri": external_uri,
-        }
+        name_2 = 'name2-1052831874'
+        parent = 'parent-995424086'
+        resource_name = 'resourceName979421212'
+        category = 'category50511102'
+        external_uri = 'externalUri-1385596168'
+        expected_response = {'name': name_2, 'parent': parent, 'resource_name': resource_name, 'category': category, 'external_uri': external_uri}
         expected_response = finding_pb2.Finding(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        name = client.finding_path("[ORGANIZATION]", "[SOURCE]", "[FINDING]")
+        name = client.finding_path('[ORGANIZATION]', '[SOURCE]', '[FINDING]')
         state = enums.Finding.State.STATE_UNSPECIFIED
         start_time = {}
 
@@ -841,22 +737,20 @@ class TestSecurityCenterClient(object):
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.SetFindingStateRequest(
-            name=name, state=state, start_time=start_time
-        )
+        expected_request = securitycenter_service_pb2.SetFindingStateRequest(name=name, state=state, start_time=start_time)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_set_finding_state_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        name = client.finding_path("[ORGANIZATION]", "[SOURCE]", "[FINDING]")
+        name = client.finding_path('[ORGANIZATION]', '[SOURCE]', '[FINDING]')
         state = enums.Finding.State.STATE_UNSPECIFIED
         start_time = {}
 
@@ -866,41 +760,39 @@ class TestSecurityCenterClient(object):
     def test_set_iam_policy(self):
         # Setup Expected Response
         version = 351608024
-        etag = b"21"
-        expected_response = {"version": version, "etag": etag}
+        etag = b'21'
+        expected_response = {'version': version, 'etag': etag}
         expected_response = policy_pb2.Policy(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        resource = "resource-341064690"
+        resource = 'resource-341064690'
         policy = {}
 
         response = client.set_iam_policy(resource, policy)
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = iam_policy_pb2.SetIamPolicyRequest(
-            resource=resource, policy=policy
-        )
+        expected_request = iam_policy_pb2.SetIamPolicyRequest(resource=resource, policy=policy)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_set_iam_policy_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        resource = "resource-341064690"
+        resource = 'resource-341064690'
         policy = {}
 
         with pytest.raises(CustomException):
@@ -909,41 +801,37 @@ class TestSecurityCenterClient(object):
     def test_test_iam_permissions(self):
         # Setup Expected Response
         expected_response = {}
-        expected_response = iam_policy_pb2.TestIamPermissionsResponse(
-            **expected_response
-        )
+        expected_response = iam_policy_pb2.TestIamPermissionsResponse(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup Request
-        resource = "resource-341064690"
+        resource = 'resource-341064690'
         permissions = []
 
         response = client.test_iam_permissions(resource, permissions)
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = iam_policy_pb2.TestIamPermissionsRequest(
-            resource=resource, permissions=permissions
-        )
+        expected_request = iam_policy_pb2.TestIamPermissionsRequest(resource=resource, permissions=permissions)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_test_iam_permissions_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
 
         # Setup request
-        resource = "resource-341064690"
+        resource = 'resource-341064690'
         permissions = []
 
         with pytest.raises(CustomException):
@@ -951,23 +839,17 @@ class TestSecurityCenterClient(object):
 
     def test_update_finding(self):
         # Setup Expected Response
-        name = "name3373707"
-        parent = "parent-995424086"
-        resource_name = "resourceName979421212"
-        category = "category50511102"
-        external_uri = "externalUri-1385596168"
-        expected_response = {
-            "name": name,
-            "parent": parent,
-            "resource_name": resource_name,
-            "category": category,
-            "external_uri": external_uri,
-        }
+        name = 'name3373707'
+        parent = 'parent-995424086'
+        resource_name = 'resourceName979421212'
+        category = 'category50511102'
+        external_uri = 'externalUri-1385596168'
+        expected_response = {'name': name, 'parent': parent, 'resource_name': resource_name, 'category': category, 'external_uri': external_uri}
         expected_response = finding_pb2.Finding(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
@@ -979,16 +861,14 @@ class TestSecurityCenterClient(object):
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.UpdateFindingRequest(
-            finding=finding
-        )
+        expected_request = securitycenter_service_pb2.UpdateFindingRequest(finding=finding)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_update_finding_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
@@ -1001,23 +881,16 @@ class TestSecurityCenterClient(object):
 
     def test_update_notification_config(self):
         # Setup Expected Response
-        name = "name3373707"
-        description = "description-1724546052"
-        pubsub_topic = "pubsubTopic-338126829"
-        service_account = "serviceAccount-1948028253"
-        expected_response = {
-            "name": name,
-            "description": description,
-            "pubsub_topic": pubsub_topic,
-            "service_account": service_account,
-        }
-        expected_response = notification_config_pb2.NotificationConfig(
-            **expected_response
-        )
+        name = 'name3373707'
+        description = 'description-1724546052'
+        pubsub_topic = 'pubsubTopic-338126829'
+        service_account = 'serviceAccount-1948028253'
+        expected_response = {'name': name, 'description': description, 'pubsub_topic': pubsub_topic, 'service_account': service_account}
+        expected_response = notification_config_pb2.NotificationConfig(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
@@ -1029,16 +902,14 @@ class TestSecurityCenterClient(object):
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.UpdateNotificationConfigRequest(
-            notification_config=notification_config
-        )
+        expected_request = securitycenter_service_pb2.UpdateNotificationConfigRequest(notification_config=notification_config)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_update_notification_config_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
@@ -1051,19 +922,14 @@ class TestSecurityCenterClient(object):
 
     def test_update_organization_settings(self):
         # Setup Expected Response
-        name = "name3373707"
+        name = 'name3373707'
         enable_asset_discovery = False
-        expected_response = {
-            "name": name,
-            "enable_asset_discovery": enable_asset_discovery,
-        }
-        expected_response = organization_settings_pb2.OrganizationSettings(
-            **expected_response
-        )
+        expected_response = {'name': name, 'enable_asset_discovery': enable_asset_discovery}
+        expected_response = organization_settings_pb2.OrganizationSettings(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
@@ -1075,16 +941,14 @@ class TestSecurityCenterClient(object):
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.UpdateOrganizationSettingsRequest(
-            organization_settings=organization_settings
-        )
+        expected_request = securitycenter_service_pb2.UpdateOrganizationSettingsRequest(organization_settings=organization_settings)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_update_organization_settings_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
@@ -1097,19 +961,15 @@ class TestSecurityCenterClient(object):
 
     def test_update_source(self):
         # Setup Expected Response
-        name = "name3373707"
-        display_name = "displayName1615086568"
-        description = "description-1724546052"
-        expected_response = {
-            "name": name,
-            "display_name": display_name,
-            "description": description,
-        }
+        name = 'name3373707'
+        display_name = 'displayName1615086568'
+        description = 'description-1724546052'
+        expected_response = {'name': name, 'display_name': display_name, 'description': description}
         expected_response = source_pb2.Source(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
@@ -1127,8 +987,8 @@ class TestSecurityCenterClient(object):
 
     def test_update_source_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
@@ -1141,13 +1001,13 @@ class TestSecurityCenterClient(object):
 
     def test_update_security_marks(self):
         # Setup Expected Response
-        name = "name3373707"
-        expected_response = {"name": name}
+        name = 'name3373707'
+        expected_response = {'name': name}
         expected_response = security_marks_pb2.SecurityMarks(**expected_response)
 
         # Mock the API response
-        channel = ChannelStub(responses=[expected_response])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [expected_response])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()
@@ -1159,16 +1019,14 @@ class TestSecurityCenterClient(object):
         assert expected_response == response
 
         assert len(channel.requests) == 1
-        expected_request = securitycenter_service_pb2.UpdateSecurityMarksRequest(
-            security_marks=security_marks
-        )
+        expected_request = securitycenter_service_pb2.UpdateSecurityMarksRequest(security_marks=security_marks)
         actual_request = channel.requests[0][1]
         assert expected_request == actual_request
 
     def test_update_security_marks_exception(self):
         # Mock the API response
-        channel = ChannelStub(responses=[CustomException()])
-        patch = mock.patch("google.api_core.grpc_helpers.create_channel")
+        channel = ChannelStub(responses = [CustomException()])
+        patch = mock.patch('google.api_core.grpc_helpers.create_channel')
         with patch as create_channel:
             create_channel.return_value = channel
             client = securitycenter_v1p1beta1.SecurityCenterClient()

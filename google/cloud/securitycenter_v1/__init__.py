@@ -26,12 +26,11 @@ from google.cloud.securitycenter_v1.gapic import security_center_client
 
 if sys.version_info[:2] == (2, 7):
     message = (
-        "A future version of this library will drop support for Python 2.7. "
-        "More details about Python 2 support for Google Cloud Client Libraries "
-        "can be found at https://cloud.google.com/python/docs/python2-sunset/"
+        'A future version of this library will drop support for Python 2.7. '
+        'More details about Python 2 support for Google Cloud Client Libraries '
+        'can be found at https://cloud.google.com/python/docs/python2-sunset/'
     )
     warnings.warn(message, DeprecationWarning)
-
 
 class SecurityCenterClient(security_center_client.SecurityCenterClient):
     __doc__ = security_center_client.SecurityCenterClient.__doc__
@@ -39,7 +38,7 @@ class SecurityCenterClient(security_center_client.SecurityCenterClient):
 
 
 __all__ = (
-    "enums",
-    "types",
-    "SecurityCenterClient",
+    'enums',
+    'types',
+    'SecurityCenterClient',
 )

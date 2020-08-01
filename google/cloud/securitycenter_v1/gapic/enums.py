@@ -29,7 +29,6 @@ class NullValue(enum.IntEnum):
     Attributes:
       NULL_VALUE (int): Null value.
     """
-
     NULL_VALUE = 0
 
 
@@ -44,7 +43,6 @@ class Finding(object):
           INACTIVE (int): The finding has been fixed, triaged as a non-issue or otherwise addressed
           and is no longer active.
         """
-
         STATE_UNSPECIFIED = 0
         ACTIVE = 1
         INACTIVE = 2
@@ -67,7 +65,6 @@ class ListAssetsResponse(object):
               REMOVED (int): Asset was removed between the points in time.
               ACTIVE (int): Asset was present at both point(s) in time.
             """
-
             UNUSED = 0
             ADDED = 1
             REMOVED = 2
@@ -97,7 +94,6 @@ class ListFindingsResponse(object):
               REMOVED (int): The finding at timestamp does not match the filter specified, but it
               did at timestamp - compare_duration.
             """
-
             UNUSED = 0
             CHANGED = 1
             UNCHANGED = 2
@@ -125,7 +121,6 @@ class OrganizationSettings(object):
               EXCLUDE (int): Asset Discovery will ignore all resources under the projects specified.
               All other resources will be retrieved.
             """
-
             INCLUSION_MODE_UNSPECIFIED = 0
             INCLUDE_ONLY = 1
             EXCLUDE = 2
@@ -143,8 +138,8 @@ class RunAssetDiscoveryResponse(object):
           run for the same organization was started with a higher priority.
           TERMINATED (int): Asset discovery run was killed and terminated.
         """
-
         STATE_UNSPECIFIED = 0
         COMPLETED = 1
         SUPERSEDED = 2
         TERMINATED = 3
+    

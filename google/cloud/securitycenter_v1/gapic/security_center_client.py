@@ -35,9 +35,7 @@ import grpc
 
 from google.cloud.securitycenter_v1.gapic import enums
 from google.cloud.securitycenter_v1.gapic import security_center_client_config
-from google.cloud.securitycenter_v1.gapic.transports import (
-    security_center_grpc_transport,
-)
+from google.cloud.securitycenter_v1.gapic.transports import security_center_grpc_transport
 from google.cloud.securitycenter_v1.proto import finding_pb2
 from google.cloud.securitycenter_v1.proto import notification_config_pb2
 from google.cloud.securitycenter_v1.proto import organization_settings_pb2
@@ -56,20 +54,22 @@ from google.protobuf import field_mask_pb2
 from google.protobuf import timestamp_pb2
 
 
+
 _GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution(
-    "google-cloud-securitycenter",
+    'google-cloud-securitycenter',
 ).version
 
 
 class SecurityCenterClient(object):
     """V1 APIs for Security Center service."""
 
-    SERVICE_ADDRESS = "securitycenter.googleapis.com:443"
+    SERVICE_ADDRESS = 'securitycenter.googleapis.com:443'
     """The default address of the service."""
 
     # The name of the interface for this client. This is the key used to
     # find the method configuration in the client_config dictionary.
-    _INTERFACE_NAME = "google.cloud.securitycenter.v1.SecurityCenter"
+    _INTERFACE_NAME = 'google.cloud.securitycenter.v1.SecurityCenter'
+
 
     @classmethod
     def from_service_account_file(cls, filename, *args, **kwargs):
@@ -85,17 +85,19 @@ class SecurityCenterClient(object):
         Returns:
             SecurityCenterClient: The constructed client.
         """
-        credentials = service_account.Credentials.from_service_account_file(filename)
-        kwargs["credentials"] = credentials
+        credentials = service_account.Credentials.from_service_account_file(
+            filename)
+        kwargs['credentials'] = credentials
         return cls(*args, **kwargs)
 
     from_service_account_json = from_service_account_file
+
 
     @classmethod
     def asset_security_marks_path(cls, organization, asset):
         """Return a fully-qualified asset_security_marks string."""
         return google.api_core.path_template.expand(
-            "organizations/{organization}/assets/{asset}/securityMarks",
+            'organizations/{organization}/assets/{asset}/securityMarks',
             organization=organization,
             asset=asset,
         )
@@ -104,7 +106,7 @@ class SecurityCenterClient(object):
     def finding_path(cls, organization, source, finding):
         """Return a fully-qualified finding string."""
         return google.api_core.path_template.expand(
-            "organizations/{organization}/sources/{source}/findings/{finding}",
+            'organizations/{organization}/sources/{source}/findings/{finding}',
             organization=organization,
             source=source,
             finding=finding,
@@ -114,7 +116,7 @@ class SecurityCenterClient(object):
     def finding_security_marks_path(cls, organization, source, finding):
         """Return a fully-qualified finding_security_marks string."""
         return google.api_core.path_template.expand(
-            "organizations/{organization}/sources/{source}/findings/{finding}/securityMarks",
+            'organizations/{organization}/sources/{source}/findings/{finding}/securityMarks',
             organization=organization,
             source=source,
             finding=finding,
@@ -124,7 +126,7 @@ class SecurityCenterClient(object):
     def notification_config_path(cls, organization, notification_config):
         """Return a fully-qualified notification_config string."""
         return google.api_core.path_template.expand(
-            "organizations/{organization}/notificationConfigs/{notification_config}",
+            'organizations/{organization}/notificationConfigs/{notification_config}',
             organization=organization,
             notification_config=notification_config,
         )
@@ -133,14 +135,15 @@ class SecurityCenterClient(object):
     def organization_path(cls, organization):
         """Return a fully-qualified organization string."""
         return google.api_core.path_template.expand(
-            "organizations/{organization}", organization=organization,
+            'organizations/{organization}',
+            organization=organization,
         )
 
     @classmethod
     def organization_settings_path(cls, organization):
         """Return a fully-qualified organization_settings string."""
         return google.api_core.path_template.expand(
-            "organizations/{organization}/organizationSettings",
+            'organizations/{organization}/organizationSettings',
             organization=organization,
         )
 
@@ -148,7 +151,7 @@ class SecurityCenterClient(object):
     def security_marks_path(cls, organization, asset):
         """Return a fully-qualified security_marks string."""
         return google.api_core.path_template.expand(
-            "organizations/{organization}/assets/{asset}/securityMarks",
+            'organizations/{organization}/assets/{asset}/securityMarks',
             organization=organization,
             asset=asset,
         )
@@ -157,7 +160,7 @@ class SecurityCenterClient(object):
     def source_path(cls, organization, source):
         """Return a fully-qualified source string."""
         return google.api_core.path_template.expand(
-            "organizations/{organization}/sources/{source}",
+            'organizations/{organization}/sources/{source}',
             organization=organization,
             source=source,
         )
@@ -166,18 +169,13 @@ class SecurityCenterClient(object):
     def topic_path(cls, project, topic):
         """Return a fully-qualified topic string."""
         return google.api_core.path_template.expand(
-            "projects/{project}/topics/{topic}", project=project, topic=topic,
+            'projects/{project}/topics/{topic}',
+            project=project,
+            topic=topic,
         )
 
-    def __init__(
-        self,
-        transport=None,
-        channel=None,
-        credentials=None,
-        client_config=None,
-        client_info=None,
-        client_options=None,
-    ):
+    def __init__(self, transport=None, channel=None, credentials=None,
+            client_config=None, client_info=None, client_options=None):
         """Constructor.
 
         Args:
@@ -213,27 +211,20 @@ class SecurityCenterClient(object):
         """
         # Raise deprecation warnings for things we want to go away.
         if client_config is not None:
-            warnings.warn(
-                "The `client_config` argument is deprecated.",
-                PendingDeprecationWarning,
-                stacklevel=2,
-            )
+            warnings.warn('The `client_config` argument is deprecated.',
+                          PendingDeprecationWarning, stacklevel=2)
         else:
             client_config = security_center_client_config.config
 
         if channel:
-            warnings.warn(
-                "The `channel` argument is deprecated; use " "`transport` instead.",
-                PendingDeprecationWarning,
-                stacklevel=2,
-            )
+            warnings.warn('The `channel` argument is deprecated; use '
+                          '`transport` instead.',
+                          PendingDeprecationWarning, stacklevel=2)
 
         api_endpoint = self.SERVICE_ADDRESS
         if client_options:
             if type(client_options) == dict:
-                client_options = google.api_core.client_options.from_dict(
-                    client_options
-                )
+                client_options = google.api_core.client_options.from_dict(client_options)
             if client_options.api_endpoint:
                 api_endpoint = client_options.api_endpoint
 
@@ -250,13 +241,15 @@ class SecurityCenterClient(object):
             else:
                 if credentials:
                     raise ValueError(
-                        "Received both a transport instance and "
-                        "credentials; these are mutually exclusive."
+                        'Received both a transport instance and '
+                        'credentials; these are mutually exclusive.'
                     )
                 self.transport = transport
         else:
             self.transport = security_center_grpc_transport.SecurityCenterGrpcTransport(
-                address=api_endpoint, channel=channel, credentials=credentials,
+                address=api_endpoint,
+                channel=channel,
+                credentials=credentials,
             )
 
         if client_info is None:
@@ -272,7 +265,7 @@ class SecurityCenterClient(object):
         # (Ordinarily, these are the defaults specified in the `*_config.py`
         # file next to this one.)
         self._method_configs = google.api_core.gapic_v1.config.parse_method_configs(
-            client_config["interfaces"][self._INTERFACE_NAME],
+            client_config['interfaces'][self._INTERFACE_NAME],
         )
 
         # Save a dictionary of cached API call functions.
@@ -283,13 +276,12 @@ class SecurityCenterClient(object):
 
     # Service calls
     def get_iam_policy(
-        self,
-        resource,
-        options_=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            resource,
+            options_=None,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Gets the access control policy on the specified Source.
 
@@ -331,48 +323,42 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "get_iam_policy" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "get_iam_policy"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'get_iam_policy' not in self._inner_api_calls:
+            self._inner_api_calls['get_iam_policy'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.get_iam_policy,
-                default_retry=self._method_configs["GetIamPolicy"].retry,
-                default_timeout=self._method_configs["GetIamPolicy"].timeout,
+                default_retry=self._method_configs['GetIamPolicy'].retry,
+                default_timeout=self._method_configs['GetIamPolicy'].timeout,
                 client_info=self._client_info,
             )
 
         request = iam_policy_pb2.GetIamPolicyRequest(
-            resource=resource, options=options_,
+            resource=resource,
+            options=options_,
         )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("resource", resource)]
+            routing_header = [('resource', resource)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["get_iam_policy"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['get_iam_policy'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def group_assets(
-        self,
-        parent,
-        group_by,
-        filter_=None,
-        compare_duration=None,
-        read_time=None,
-        page_size=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            parent,
+            group_by,
+            filter_=None,
+            compare_duration=None,
+            read_time=None,
+            page_size=None,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Filters an organization's assets and  groups them by their specified
         properties.
@@ -560,13 +546,11 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "group_assets" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "group_assets"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'group_assets' not in self._inner_api_calls:
+            self._inner_api_calls['group_assets'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.group_assets,
-                default_retry=self._method_configs["GroupAssets"].retry,
-                default_timeout=self._method_configs["GroupAssets"].timeout,
+                default_retry=self._method_configs['GroupAssets'].retry,
+                default_timeout=self._method_configs['GroupAssets'].timeout,
                 client_info=self._client_info,
             )
 
@@ -582,42 +566,34 @@ class SecurityCenterClient(object):
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("parent", parent)]
+            routing_header = [('parent', parent)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
         iterator = google.api_core.page_iterator.GRPCIterator(
             client=None,
-            method=functools.partial(
-                self._inner_api_calls["group_assets"],
-                retry=retry,
-                timeout=timeout,
-                metadata=metadata,
-            ),
+            method=functools.partial(self._inner_api_calls['group_assets'], retry=retry, timeout=timeout, metadata=metadata),
             request=request,
-            items_field="group_by_results",
-            request_token_field="page_token",
-            response_token_field="next_page_token",
+            items_field='group_by_results',
+            request_token_field='page_token',
+            response_token_field='next_page_token',
         )
         return iterator
 
     def group_findings(
-        self,
-        parent,
-        group_by,
-        filter_=None,
-        read_time=None,
-        compare_duration=None,
-        page_size=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            parent,
+            group_by,
+            filter_=None,
+            read_time=None,
+            compare_duration=None,
+            page_size=None,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Filters an organization or source's findings and groups them by
         their specified properties.
@@ -795,13 +771,11 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "group_findings" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "group_findings"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'group_findings' not in self._inner_api_calls:
+            self._inner_api_calls['group_findings'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.group_findings,
-                default_retry=self._method_configs["GroupFindings"].retry,
-                default_timeout=self._method_configs["GroupFindings"].timeout,
+                default_retry=self._method_configs['GroupFindings'].retry,
+                default_timeout=self._method_configs['GroupFindings'].timeout,
                 client_info=self._client_info,
             )
 
@@ -817,38 +791,30 @@ class SecurityCenterClient(object):
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("parent", parent)]
+            routing_header = [('parent', parent)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
         iterator = google.api_core.page_iterator.GRPCIterator(
             client=None,
-            method=functools.partial(
-                self._inner_api_calls["group_findings"],
-                retry=retry,
-                timeout=timeout,
-                metadata=metadata,
-            ),
+            method=functools.partial(self._inner_api_calls['group_findings'], retry=retry, timeout=timeout, metadata=metadata),
             request=request,
-            items_field="group_by_results",
-            request_token_field="page_token",
-            response_token_field="next_page_token",
+            items_field='group_by_results',
+            request_token_field='page_token',
+            response_token_field='next_page_token',
         )
         return iterator
 
     def test_iam_permissions(
-        self,
-        resource,
-        permissions,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            resource,
+            permissions,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Returns the permissions that a caller has on the specified source.
 
@@ -892,44 +858,38 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "test_iam_permissions" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "test_iam_permissions"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'test_iam_permissions' not in self._inner_api_calls:
+            self._inner_api_calls['test_iam_permissions'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.test_iam_permissions,
-                default_retry=self._method_configs["TestIamPermissions"].retry,
-                default_timeout=self._method_configs["TestIamPermissions"].timeout,
+                default_retry=self._method_configs['TestIamPermissions'].retry,
+                default_timeout=self._method_configs['TestIamPermissions'].timeout,
                 client_info=self._client_info,
             )
 
         request = iam_policy_pb2.TestIamPermissionsRequest(
-            resource=resource, permissions=permissions,
+            resource=resource,
+            permissions=permissions,
         )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("resource", resource)]
+            routing_header = [('resource', resource)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["test_iam_permissions"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['test_iam_permissions'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def create_source(
-        self,
-        parent,
-        source,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            parent,
+            source,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Creates a source.
 
@@ -973,45 +933,39 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "create_source" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "create_source"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'create_source' not in self._inner_api_calls:
+            self._inner_api_calls['create_source'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.create_source,
-                default_retry=self._method_configs["CreateSource"].retry,
-                default_timeout=self._method_configs["CreateSource"].timeout,
+                default_retry=self._method_configs['CreateSource'].retry,
+                default_timeout=self._method_configs['CreateSource'].timeout,
                 client_info=self._client_info,
             )
 
         request = securitycenter_service_pb2.CreateSourceRequest(
-            parent=parent, source=source,
+            parent=parent,
+            source=source,
         )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("parent", parent)]
+            routing_header = [('parent', parent)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["create_source"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['create_source'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def create_finding(
-        self,
-        parent,
-        finding_id,
-        finding,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            parent,
+            finding_id,
+            finding,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Creates a finding. The corresponding source must exist for finding creation
         to succeed.
@@ -1062,45 +1016,40 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "create_finding" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "create_finding"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'create_finding' not in self._inner_api_calls:
+            self._inner_api_calls['create_finding'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.create_finding,
-                default_retry=self._method_configs["CreateFinding"].retry,
-                default_timeout=self._method_configs["CreateFinding"].timeout,
+                default_retry=self._method_configs['CreateFinding'].retry,
+                default_timeout=self._method_configs['CreateFinding'].timeout,
                 client_info=self._client_info,
             )
 
         request = securitycenter_service_pb2.CreateFindingRequest(
-            parent=parent, finding_id=finding_id, finding=finding,
+            parent=parent,
+            finding_id=finding_id,
+            finding=finding,
         )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("parent", parent)]
+            routing_header = [('parent', parent)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["create_finding"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['create_finding'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def create_notification_config(
-        self,
-        parent,
-        config_id,
-        notification_config,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            parent,
+            config_id,
+            notification_config,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Creates a notification config.
 
@@ -1152,45 +1101,38 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "create_notification_config" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "create_notification_config"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'create_notification_config' not in self._inner_api_calls:
+            self._inner_api_calls['create_notification_config'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.create_notification_config,
-                default_retry=self._method_configs["CreateNotificationConfig"].retry,
-                default_timeout=self._method_configs[
-                    "CreateNotificationConfig"
-                ].timeout,
+                default_retry=self._method_configs['CreateNotificationConfig'].retry,
+                default_timeout=self._method_configs['CreateNotificationConfig'].timeout,
                 client_info=self._client_info,
             )
 
         request = securitycenter_service_pb2.CreateNotificationConfigRequest(
-            parent=parent, config_id=config_id, notification_config=notification_config,
+            parent=parent,
+            config_id=config_id,
+            notification_config=notification_config,
         )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("parent", parent)]
+            routing_header = [('parent', parent)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["create_notification_config"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['create_notification_config'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def delete_notification_config(
-        self,
-        name,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            name,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Deletes a notification config.
 
@@ -1223,43 +1165,36 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "delete_notification_config" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "delete_notification_config"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'delete_notification_config' not in self._inner_api_calls:
+            self._inner_api_calls['delete_notification_config'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.delete_notification_config,
-                default_retry=self._method_configs["DeleteNotificationConfig"].retry,
-                default_timeout=self._method_configs[
-                    "DeleteNotificationConfig"
-                ].timeout,
+                default_retry=self._method_configs['DeleteNotificationConfig'].retry,
+                default_timeout=self._method_configs['DeleteNotificationConfig'].timeout,
                 client_info=self._client_info,
             )
 
-        request = securitycenter_service_pb2.DeleteNotificationConfigRequest(name=name,)
+        request = securitycenter_service_pb2.DeleteNotificationConfigRequest(
+            name=name,
+        )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("name", name)]
+            routing_header = [('name', name)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        self._inner_api_calls["delete_notification_config"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        self._inner_api_calls['delete_notification_config'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def get_notification_config(
-        self,
-        name,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            name,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Gets a notification config.
 
@@ -1295,41 +1230,36 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "get_notification_config" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "get_notification_config"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'get_notification_config' not in self._inner_api_calls:
+            self._inner_api_calls['get_notification_config'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.get_notification_config,
-                default_retry=self._method_configs["GetNotificationConfig"].retry,
-                default_timeout=self._method_configs["GetNotificationConfig"].timeout,
+                default_retry=self._method_configs['GetNotificationConfig'].retry,
+                default_timeout=self._method_configs['GetNotificationConfig'].timeout,
                 client_info=self._client_info,
             )
 
-        request = securitycenter_service_pb2.GetNotificationConfigRequest(name=name,)
+        request = securitycenter_service_pb2.GetNotificationConfigRequest(
+            name=name,
+        )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("name", name)]
+            routing_header = [('name', name)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["get_notification_config"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['get_notification_config'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def get_organization_settings(
-        self,
-        name,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            name,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Gets the settings for an organization.
 
@@ -1365,41 +1295,36 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "get_organization_settings" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "get_organization_settings"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'get_organization_settings' not in self._inner_api_calls:
+            self._inner_api_calls['get_organization_settings'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.get_organization_settings,
-                default_retry=self._method_configs["GetOrganizationSettings"].retry,
-                default_timeout=self._method_configs["GetOrganizationSettings"].timeout,
+                default_retry=self._method_configs['GetOrganizationSettings'].retry,
+                default_timeout=self._method_configs['GetOrganizationSettings'].timeout,
                 client_info=self._client_info,
             )
 
-        request = securitycenter_service_pb2.GetOrganizationSettingsRequest(name=name,)
+        request = securitycenter_service_pb2.GetOrganizationSettingsRequest(
+            name=name,
+        )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("name", name)]
+            routing_header = [('name', name)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["get_organization_settings"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['get_organization_settings'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def get_source(
-        self,
-        name,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            name,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Gets a source.
 
@@ -1435,47 +1360,42 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "get_source" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "get_source"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'get_source' not in self._inner_api_calls:
+            self._inner_api_calls['get_source'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.get_source,
-                default_retry=self._method_configs["GetSource"].retry,
-                default_timeout=self._method_configs["GetSource"].timeout,
+                default_retry=self._method_configs['GetSource'].retry,
+                default_timeout=self._method_configs['GetSource'].timeout,
                 client_info=self._client_info,
             )
 
-        request = securitycenter_service_pb2.GetSourceRequest(name=name,)
+        request = securitycenter_service_pb2.GetSourceRequest(
+            name=name,
+        )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("name", name)]
+            routing_header = [('name', name)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["get_source"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['get_source'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def list_assets(
-        self,
-        parent,
-        filter_=None,
-        order_by=None,
-        read_time=None,
-        compare_duration=None,
-        field_mask=None,
-        page_size=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            parent,
+            filter_=None,
+            order_by=None,
+            read_time=None,
+            compare_duration=None,
+            field_mask=None,
+            page_size=None,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Lists an organization's assets.
 
@@ -1659,13 +1579,11 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "list_assets" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "list_assets"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'list_assets' not in self._inner_api_calls:
+            self._inner_api_calls['list_assets'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.list_assets,
-                default_retry=self._method_configs["ListAssets"].retry,
-                default_timeout=self._method_configs["ListAssets"].timeout,
+                default_retry=self._method_configs['ListAssets'].retry,
+                default_timeout=self._method_configs['ListAssets'].timeout,
                 client_info=self._client_info,
             )
 
@@ -1682,43 +1600,35 @@ class SecurityCenterClient(object):
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("parent", parent)]
+            routing_header = [('parent', parent)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
         iterator = google.api_core.page_iterator.GRPCIterator(
             client=None,
-            method=functools.partial(
-                self._inner_api_calls["list_assets"],
-                retry=retry,
-                timeout=timeout,
-                metadata=metadata,
-            ),
+            method=functools.partial(self._inner_api_calls['list_assets'], retry=retry, timeout=timeout, metadata=metadata),
             request=request,
-            items_field="list_assets_results",
-            request_token_field="page_token",
-            response_token_field="next_page_token",
+            items_field='list_assets_results',
+            request_token_field='page_token',
+            response_token_field='next_page_token',
         )
         return iterator
 
     def list_findings(
-        self,
-        parent,
-        filter_=None,
-        order_by=None,
-        read_time=None,
-        compare_duration=None,
-        field_mask=None,
-        page_size=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            parent,
+            filter_=None,
+            order_by=None,
+            read_time=None,
+            compare_duration=None,
+            field_mask=None,
+            page_size=None,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Lists an organization or source's findings.
 
@@ -1879,13 +1789,11 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "list_findings" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "list_findings"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'list_findings' not in self._inner_api_calls:
+            self._inner_api_calls['list_findings'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.list_findings,
-                default_retry=self._method_configs["ListFindings"].retry,
-                default_timeout=self._method_configs["ListFindings"].timeout,
+                default_retry=self._method_configs['ListFindings'].retry,
+                default_timeout=self._method_configs['ListFindings'].timeout,
                 client_info=self._client_info,
             )
 
@@ -1902,38 +1810,30 @@ class SecurityCenterClient(object):
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("parent", parent)]
+            routing_header = [('parent', parent)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
         iterator = google.api_core.page_iterator.GRPCIterator(
             client=None,
-            method=functools.partial(
-                self._inner_api_calls["list_findings"],
-                retry=retry,
-                timeout=timeout,
-                metadata=metadata,
-            ),
+            method=functools.partial(self._inner_api_calls['list_findings'], retry=retry, timeout=timeout, metadata=metadata),
             request=request,
-            items_field="list_findings_results",
-            request_token_field="page_token",
-            response_token_field="next_page_token",
+            items_field='list_findings_results',
+            request_token_field='page_token',
+            response_token_field='next_page_token',
         )
         return iterator
 
     def list_notification_configs(
-        self,
-        parent,
-        page_size=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            parent,
+            page_size=None,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Lists notification configs.
 
@@ -1989,55 +1889,46 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "list_notification_configs" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "list_notification_configs"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'list_notification_configs' not in self._inner_api_calls:
+            self._inner_api_calls['list_notification_configs'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.list_notification_configs,
-                default_retry=self._method_configs["ListNotificationConfigs"].retry,
-                default_timeout=self._method_configs["ListNotificationConfigs"].timeout,
+                default_retry=self._method_configs['ListNotificationConfigs'].retry,
+                default_timeout=self._method_configs['ListNotificationConfigs'].timeout,
                 client_info=self._client_info,
             )
 
         request = securitycenter_service_pb2.ListNotificationConfigsRequest(
-            parent=parent, page_size=page_size,
+            parent=parent,
+            page_size=page_size,
         )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("parent", parent)]
+            routing_header = [('parent', parent)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
         iterator = google.api_core.page_iterator.GRPCIterator(
             client=None,
-            method=functools.partial(
-                self._inner_api_calls["list_notification_configs"],
-                retry=retry,
-                timeout=timeout,
-                metadata=metadata,
-            ),
+            method=functools.partial(self._inner_api_calls['list_notification_configs'], retry=retry, timeout=timeout, metadata=metadata),
             request=request,
-            items_field="notification_configs",
-            request_token_field="page_token",
-            response_token_field="next_page_token",
+            items_field='notification_configs',
+            request_token_field='page_token',
+            response_token_field='next_page_token',
         )
         return iterator
 
     def list_sources(
-        self,
-        parent,
-        page_size=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            parent,
+            page_size=None,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Lists all sources belonging to an organization.
 
@@ -2093,54 +1984,45 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "list_sources" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "list_sources"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'list_sources' not in self._inner_api_calls:
+            self._inner_api_calls['list_sources'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.list_sources,
-                default_retry=self._method_configs["ListSources"].retry,
-                default_timeout=self._method_configs["ListSources"].timeout,
+                default_retry=self._method_configs['ListSources'].retry,
+                default_timeout=self._method_configs['ListSources'].timeout,
                 client_info=self._client_info,
             )
 
         request = securitycenter_service_pb2.ListSourcesRequest(
-            parent=parent, page_size=page_size,
+            parent=parent,
+            page_size=page_size,
         )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("parent", parent)]
+            routing_header = [('parent', parent)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
         iterator = google.api_core.page_iterator.GRPCIterator(
             client=None,
-            method=functools.partial(
-                self._inner_api_calls["list_sources"],
-                retry=retry,
-                timeout=timeout,
-                metadata=metadata,
-            ),
+            method=functools.partial(self._inner_api_calls['list_sources'], retry=retry, timeout=timeout, metadata=metadata),
             request=request,
-            items_field="sources",
-            request_token_field="page_token",
-            response_token_field="next_page_token",
+            items_field='sources',
+            request_token_field='page_token',
+            response_token_field='next_page_token',
         )
         return iterator
 
     def run_asset_discovery(
-        self,
-        parent,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            parent,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Runs asset discovery. The discovery is tracked with a long-running
         operation.
@@ -2190,33 +2072,29 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "run_asset_discovery" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "run_asset_discovery"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'run_asset_discovery' not in self._inner_api_calls:
+            self._inner_api_calls['run_asset_discovery'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.run_asset_discovery,
-                default_retry=self._method_configs["RunAssetDiscovery"].retry,
-                default_timeout=self._method_configs["RunAssetDiscovery"].timeout,
+                default_retry=self._method_configs['RunAssetDiscovery'].retry,
+                default_timeout=self._method_configs['RunAssetDiscovery'].timeout,
                 client_info=self._client_info,
             )
 
-        request = securitycenter_service_pb2.RunAssetDiscoveryRequest(parent=parent,)
+        request = securitycenter_service_pb2.RunAssetDiscoveryRequest(
+            parent=parent,
+        )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("parent", parent)]
+            routing_header = [('parent', parent)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        operation = self._inner_api_calls["run_asset_discovery"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        operation = self._inner_api_calls['run_asset_discovery'](request, retry=retry, timeout=timeout, metadata=metadata)
         return google.api_core.operation.from_gapic(
             operation,
             self.transport._operations_client,
@@ -2225,14 +2103,13 @@ class SecurityCenterClient(object):
         )
 
     def set_finding_state(
-        self,
-        name,
-        state,
-        start_time,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            name,
+            state,
+            start_time,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Updates the state of a finding.
 
@@ -2282,44 +2159,39 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "set_finding_state" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "set_finding_state"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'set_finding_state' not in self._inner_api_calls:
+            self._inner_api_calls['set_finding_state'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.set_finding_state,
-                default_retry=self._method_configs["SetFindingState"].retry,
-                default_timeout=self._method_configs["SetFindingState"].timeout,
+                default_retry=self._method_configs['SetFindingState'].retry,
+                default_timeout=self._method_configs['SetFindingState'].timeout,
                 client_info=self._client_info,
             )
 
         request = securitycenter_service_pb2.SetFindingStateRequest(
-            name=name, state=state, start_time=start_time,
+            name=name,
+            state=state,
+            start_time=start_time,
         )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("name", name)]
+            routing_header = [('name', name)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["set_finding_state"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['set_finding_state'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def set_iam_policy(
-        self,
-        resource,
-        policy,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            resource,
+            policy,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Sets the access control policy on the specified Source.
 
@@ -2366,42 +2238,38 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "set_iam_policy" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "set_iam_policy"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'set_iam_policy' not in self._inner_api_calls:
+            self._inner_api_calls['set_iam_policy'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.set_iam_policy,
-                default_retry=self._method_configs["SetIamPolicy"].retry,
-                default_timeout=self._method_configs["SetIamPolicy"].timeout,
+                default_retry=self._method_configs['SetIamPolicy'].retry,
+                default_timeout=self._method_configs['SetIamPolicy'].timeout,
                 client_info=self._client_info,
             )
 
-        request = iam_policy_pb2.SetIamPolicyRequest(resource=resource, policy=policy,)
+        request = iam_policy_pb2.SetIamPolicyRequest(
+            resource=resource,
+            policy=policy,
+        )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("resource", resource)]
+            routing_header = [('resource', resource)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["set_iam_policy"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['set_iam_policy'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def update_finding(
-        self,
-        finding,
-        update_mask=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            finding,
+            update_mask=None,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Creates or updates a finding. The corresponding source must exist for a
         finding creation to succeed.
@@ -2456,44 +2324,38 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "update_finding" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "update_finding"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'update_finding' not in self._inner_api_calls:
+            self._inner_api_calls['update_finding'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.update_finding,
-                default_retry=self._method_configs["UpdateFinding"].retry,
-                default_timeout=self._method_configs["UpdateFinding"].timeout,
+                default_retry=self._method_configs['UpdateFinding'].retry,
+                default_timeout=self._method_configs['UpdateFinding'].timeout,
                 client_info=self._client_info,
             )
 
         request = securitycenter_service_pb2.UpdateFindingRequest(
-            finding=finding, update_mask=update_mask,
+            finding=finding,
+            update_mask=update_mask,
         )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("finding.name", finding.name)]
+            routing_header = [('finding.name', finding.name)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["update_finding"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['update_finding'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def update_notification_config(
-        self,
-        notification_config,
-        update_mask=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            notification_config,
+            update_mask=None,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Updates a notification config. The following update fields are
         allowed: description, pubsub_topic, streaming_config.filter
@@ -2539,46 +2401,38 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "update_notification_config" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "update_notification_config"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'update_notification_config' not in self._inner_api_calls:
+            self._inner_api_calls['update_notification_config'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.update_notification_config,
-                default_retry=self._method_configs["UpdateNotificationConfig"].retry,
-                default_timeout=self._method_configs[
-                    "UpdateNotificationConfig"
-                ].timeout,
+                default_retry=self._method_configs['UpdateNotificationConfig'].retry,
+                default_timeout=self._method_configs['UpdateNotificationConfig'].timeout,
                 client_info=self._client_info,
             )
 
         request = securitycenter_service_pb2.UpdateNotificationConfigRequest(
-            notification_config=notification_config, update_mask=update_mask,
+            notification_config=notification_config,
+            update_mask=update_mask,
         )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("notification_config.name", notification_config.name)]
+            routing_header = [('notification_config.name', notification_config.name)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["update_notification_config"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['update_notification_config'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def update_organization_settings(
-        self,
-        organization_settings,
-        update_mask=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            organization_settings,
+            update_mask=None,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Updates an organization's settings.
 
@@ -2623,48 +2477,38 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "update_organization_settings" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "update_organization_settings"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'update_organization_settings' not in self._inner_api_calls:
+            self._inner_api_calls['update_organization_settings'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.update_organization_settings,
-                default_retry=self._method_configs["UpdateOrganizationSettings"].retry,
-                default_timeout=self._method_configs[
-                    "UpdateOrganizationSettings"
-                ].timeout,
+                default_retry=self._method_configs['UpdateOrganizationSettings'].retry,
+                default_timeout=self._method_configs['UpdateOrganizationSettings'].timeout,
                 client_info=self._client_info,
             )
 
         request = securitycenter_service_pb2.UpdateOrganizationSettingsRequest(
-            organization_settings=organization_settings, update_mask=update_mask,
+            organization_settings=organization_settings,
+            update_mask=update_mask,
         )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [
-                ("organization_settings.name", organization_settings.name)
-            ]
+            routing_header = [('organization_settings.name', organization_settings.name)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["update_organization_settings"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['update_organization_settings'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def update_source(
-        self,
-        source,
-        update_mask=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            source,
+            update_mask=None,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Updates a source.
 
@@ -2709,45 +2553,39 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "update_source" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "update_source"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'update_source' not in self._inner_api_calls:
+            self._inner_api_calls['update_source'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.update_source,
-                default_retry=self._method_configs["UpdateSource"].retry,
-                default_timeout=self._method_configs["UpdateSource"].timeout,
+                default_retry=self._method_configs['UpdateSource'].retry,
+                default_timeout=self._method_configs['UpdateSource'].timeout,
                 client_info=self._client_info,
             )
 
         request = securitycenter_service_pb2.UpdateSourceRequest(
-            source=source, update_mask=update_mask,
+            source=source,
+            update_mask=update_mask,
         )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("source.name", source.name)]
+            routing_header = [('source.name', source.name)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["update_source"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['update_source'](request, retry=retry, timeout=timeout, metadata=metadata)
 
     def update_security_marks(
-        self,
-        security_marks,
-        update_mask=None,
-        start_time=None,
-        retry=google.api_core.gapic_v1.method.DEFAULT,
-        timeout=google.api_core.gapic_v1.method.DEFAULT,
-        metadata=None,
-    ):
+            self,
+            security_marks,
+            update_mask=None,
+            start_time=None,
+            retry=google.api_core.gapic_v1.method.DEFAULT,
+            timeout=google.api_core.gapic_v1.method.DEFAULT,
+            metadata=None):
         """
         Updates security marks.
 
@@ -2800,13 +2638,11 @@ class SecurityCenterClient(object):
             ValueError: If the parameters are invalid.
         """
         # Wrap the transport method to add retry and timeout logic.
-        if "update_security_marks" not in self._inner_api_calls:
-            self._inner_api_calls[
-                "update_security_marks"
-            ] = google.api_core.gapic_v1.method.wrap_method(
+        if 'update_security_marks' not in self._inner_api_calls:
+            self._inner_api_calls['update_security_marks'] = google.api_core.gapic_v1.method.wrap_method(
                 self.transport.update_security_marks,
-                default_retry=self._method_configs["UpdateSecurityMarks"].retry,
-                default_timeout=self._method_configs["UpdateSecurityMarks"].timeout,
+                default_retry=self._method_configs['UpdateSecurityMarks'].retry,
+                default_timeout=self._method_configs['UpdateSecurityMarks'].timeout,
                 client_info=self._client_info,
             )
 
@@ -2819,15 +2655,11 @@ class SecurityCenterClient(object):
             metadata = []
         metadata = list(metadata)
         try:
-            routing_header = [("security_marks.name", security_marks.name)]
+            routing_header = [('security_marks.name', security_marks.name)]
         except AttributeError:
             pass
         else:
-            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(
-                routing_header
-            )
+            routing_metadata = google.api_core.gapic_v1.routing_header.to_grpc_metadata(routing_header)
             metadata.append(routing_metadata)
 
-        return self._inner_api_calls["update_security_marks"](
-            request, retry=retry, timeout=timeout, metadata=metadata
-        )
+        return self._inner_api_calls['update_security_marks'](request, retry=retry, timeout=timeout, metadata=metadata)
