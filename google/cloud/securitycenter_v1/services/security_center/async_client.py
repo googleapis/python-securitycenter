@@ -66,17 +66,17 @@ class SecurityCenterAsyncClient:
     DEFAULT_ENDPOINT = SecurityCenterClient.DEFAULT_ENDPOINT
     DEFAULT_MTLS_ENDPOINT = SecurityCenterClient.DEFAULT_MTLS_ENDPOINT
 
+    source_path = staticmethod(SecurityCenterClient.source_path)
+
     notification_config_path = staticmethod(
         SecurityCenterClient.notification_config_path
     )
 
-    source_path = staticmethod(SecurityCenterClient.source_path)
-
-    security_marks_path = staticmethod(SecurityCenterClient.security_marks_path)
-
     organization_settings_path = staticmethod(
         SecurityCenterClient.organization_settings_path
     )
+
+    security_marks_path = staticmethod(SecurityCenterClient.security_marks_path)
 
     finding_path = staticmethod(SecurityCenterClient.finding_path)
 
