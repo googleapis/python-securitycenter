@@ -189,7 +189,7 @@ class TestSecurityCenterClient(object):
             client = securitycenter_v1beta1.SecurityCenterClient()
 
         # Setup Request
-        resource = "resource-341064690"
+        resource = client.source_path("[ORGANIZATION]", "[SOURCE]")
 
         response = client.get_iam_policy(resource)
         assert expected_response == response
@@ -208,7 +208,7 @@ class TestSecurityCenterClient(object):
             client = securitycenter_v1beta1.SecurityCenterClient()
 
         # Setup request
-        resource = "resource-341064690"
+        resource = client.source_path("[ORGANIZATION]", "[SOURCE]")
 
         with pytest.raises(CustomException):
             client.get_iam_policy(resource)
@@ -673,7 +673,7 @@ class TestSecurityCenterClient(object):
             client = securitycenter_v1beta1.SecurityCenterClient()
 
         # Setup Request
-        resource = "resource-341064690"
+        resource = client.source_path("[ORGANIZATION]", "[SOURCE]")
         policy = {}
 
         response = client.set_iam_policy(resource, policy)
@@ -695,7 +695,7 @@ class TestSecurityCenterClient(object):
             client = securitycenter_v1beta1.SecurityCenterClient()
 
         # Setup request
-        resource = "resource-341064690"
+        resource = client.source_path("[ORGANIZATION]", "[SOURCE]")
         policy = {}
 
         with pytest.raises(CustomException):
@@ -716,7 +716,7 @@ class TestSecurityCenterClient(object):
             client = securitycenter_v1beta1.SecurityCenterClient()
 
         # Setup Request
-        resource = "resource-341064690"
+        resource = client.source_path("[ORGANIZATION]", "[SOURCE]")
         permissions = []
 
         response = client.test_iam_permissions(resource, permissions)
@@ -738,7 +738,7 @@ class TestSecurityCenterClient(object):
             client = securitycenter_v1beta1.SecurityCenterClient()
 
         # Setup request
-        resource = "resource-341064690"
+        resource = client.source_path("[ORGANIZATION]", "[SOURCE]")
         permissions = []
 
         with pytest.raises(CustomException):
