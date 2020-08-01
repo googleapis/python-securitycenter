@@ -387,11 +387,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.create_source,
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.create_source]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -489,11 +485,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.create_finding,
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.create_finding]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -589,11 +581,9 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.create_notification_config,
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[
+            self._transport.create_notification_config
+        ]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -655,11 +645,9 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.delete_notification_config,
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[
+            self._transport.delete_notification_config
+        ]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -797,19 +785,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.get_iam_policy,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
-                ),
-            ),
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.get_iam_policy]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -882,19 +858,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.get_notification_config,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
-                ),
-            ),
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.get_notification_config]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -963,19 +927,9 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.get_organization_settings,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
-                ),
-            ),
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[
+            self._transport.get_organization_settings
+        ]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -1047,19 +1001,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.get_source,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
-                ),
-            ),
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.get_source]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -1110,19 +1052,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.group_assets,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
-                ),
-            ),
-            default_timeout=480.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.group_assets]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -1229,19 +1159,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.group_findings,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
-                ),
-            ),
-            default_timeout=480.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.group_findings]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -1315,19 +1233,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.list_assets,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
-                ),
-            ),
-            default_timeout=480.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.list_assets]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -1410,19 +1316,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.list_findings,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
-                ),
-            ),
-            default_timeout=480.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.list_findings]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -1499,19 +1393,9 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.list_notification_configs,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
-                ),
-            ),
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[
+            self._transport.list_notification_configs
+        ]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -1586,19 +1470,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.list_sources,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
-                ),
-            ),
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.list_sources]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -1680,11 +1552,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.run_asset_discovery,
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.run_asset_discovery]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -1787,11 +1655,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.set_finding_state,
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.set_finding_state]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -1930,11 +1794,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.set_iam_policy,
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.set_iam_policy]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -2020,19 +1880,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.test_iam_permissions,
-            default_retry=retries.Retry(
-                initial=0.1,
-                maximum=60.0,
-                multiplier=1.3,
-                predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
-                ),
-            ),
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.test_iam_permissions]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -2128,11 +1976,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.update_finding,
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.update_finding]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -2218,11 +2062,9 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.update_notification_config,
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[
+            self._transport.update_notification_config
+        ]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -2292,11 +2134,9 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.update_organization_settings,
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[
+            self._transport.update_organization_settings
+        ]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -2380,11 +2220,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.update_source,
-            default_timeout=60.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.update_source]
 
         # Certain fields should be provided within the metadata header;
         # add these here.
@@ -2473,11 +2309,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
-        rpc = gapic_v1.method.wrap_method(
-            self._transport.update_security_marks,
-            default_timeout=480.0,
-            client_info=_client_info,
-        )
+        rpc = self._transport._wrapped_methods[self._transport.update_security_marks]
 
         # Certain fields should be provided within the metadata header;
         # add these here.

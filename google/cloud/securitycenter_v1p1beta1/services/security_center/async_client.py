@@ -68,18 +68,18 @@ class SecurityCenterAsyncClient:
     DEFAULT_ENDPOINT = SecurityCenterClient.DEFAULT_ENDPOINT
     DEFAULT_MTLS_ENDPOINT = SecurityCenterClient.DEFAULT_MTLS_ENDPOINT
 
-    notification_config_path = staticmethod(
-        SecurityCenterClient.notification_config_path
-    )
-
-    finding_path = staticmethod(SecurityCenterClient.finding_path)
+    source_path = staticmethod(SecurityCenterClient.source_path)
 
     security_marks_path = staticmethod(SecurityCenterClient.security_marks_path)
 
-    source_path = staticmethod(SecurityCenterClient.source_path)
+    finding_path = staticmethod(SecurityCenterClient.finding_path)
 
     organization_settings_path = staticmethod(
         SecurityCenterClient.organization_settings_path
+    )
+
+    notification_config_path = staticmethod(
+        SecurityCenterClient.notification_config_path
     )
 
     from_service_account_file = SecurityCenterClient.from_service_account_file
@@ -614,7 +614,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=60.0,
@@ -699,7 +699,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=60.0,
@@ -780,7 +780,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=60.0,
@@ -864,7 +864,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=60.0,
@@ -927,7 +927,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=480.0,
@@ -1046,7 +1046,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=480.0,
@@ -1132,7 +1132,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=480.0,
@@ -1227,7 +1227,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=480.0,
@@ -1316,7 +1316,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=60.0,
@@ -1403,7 +1403,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=60.0,
@@ -1837,7 +1837,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=60.0,
