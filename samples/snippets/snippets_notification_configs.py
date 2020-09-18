@@ -124,7 +124,7 @@ def update_notification_config(organization_id, notification_config_id, pubsub_t
 
     # Only description and pubsub_topic can be updated.
     field_mask = field_mask_pb2.FieldMask(
-        paths=["description", "pubsub_topic", "streaming_config.fitler"]
+        paths=["description", "pubsub_topic"]
     )
 
     updated_notification_config = client.update_notification_config(
@@ -132,11 +132,13 @@ def update_notification_config(organization_id, notification_config_id, pubsub_t
             "name": notification_config_name,
             "description": updated_description,
             "pubsub_topic": pubsub_topic,
-            "streaming_config": {"filter": updated_filter},
         },
         update_mask=field_mask,
     )
 
     print(updated_notification_config)
     # [END scc_update_notification_config]
+    # It fails when we try to update `streaming_config.filter` field.
+    # Thus now we only update the description and pubsub_topic.
+    # See: #59
     return updated_notification_config
