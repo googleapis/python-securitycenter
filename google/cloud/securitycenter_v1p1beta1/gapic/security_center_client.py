@@ -461,8 +461,7 @@ class SecurityCenterClient(object):
         Args:
             parent (str): Required. Resource name of the new notification config's parent. Its
                 format is "organizations/[organization_id]".
-            config_id (str): Required.
-                Unique identifier provided by the client within the parent scope.
+            config_id (str): Required. Unique identifier provided by the client within the parent scope.
                 It must be between 1 and 128 characters, and contains alphanumeric
                 characters, underscores or hyphens only.
             notification_config (Union[dict, ~google.cloud.securitycenter_v1p1beta1.types.NotificationConfig]): Required. The notification config being created. The name and the service account
@@ -1184,6 +1183,7 @@ class SecurityCenterClient(object):
                 -  category
                 -  state
                 -  parent
+                -  severity
 
                 The following fields are supported when compare_duration is set:
 
@@ -1227,6 +1227,8 @@ class SecurityCenterClient(object):
                 -  external_uri: ``=``, ``:``
 
                 -  event_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
+
+                -  severity: ``=``, ``:``
 
                    Usage: This should be milliseconds since epoch or an RFC3339 string.
                    Examples: ``event_time = "2019-06-10T16:07:18-07:00"``
@@ -1675,13 +1677,25 @@ class SecurityCenterClient(object):
 
                 The following field and operator combinations are supported:
 
-                name: ``=`` parent: ``=``, ``:`` resource_name: ``=``, ``:`` state:
-                ``=``, ``:`` category: ``=``, ``:`` external_uri: ``=``, ``:``
-                event_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
+                -  name: ``=``
 
-                Usage: This should be milliseconds since epoch or an RFC3339 string.
-                Examples: ``event_time = "2019-06-10T16:07:18-07:00"``
-                ``event_time = 1560208038000``
+                -  parent: ``=``, ``:``
+
+                -  resource_name: ``=``, ``:``
+
+                -  state: ``=``, ``:``
+
+                -  category: ``=``, ``:``
+
+                -  external_uri: ``=``, ``:``
+
+                -  event_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
+
+                -  severity: ``=``, ``:``
+
+                   Usage: This should be milliseconds since epoch or an RFC3339 string.
+                   Examples: ``event_time = "2019-06-10T16:07:18-07:00"``
+                   ``event_time = 1560208038000``
 
                 security_marks.marks: ``=``, ``:`` source_properties: ``=``, ``:``,
                 ``>``, ``<``, ``>=``, ``<=``
