@@ -36,7 +36,8 @@ class NullValue(enum.IntEnum):
 class Finding(object):
     class Severity(enum.IntEnum):
         """
-        The severity of the finding.
+        The severity of the finding. This field is managed by the source that
+        writes the finding.
 
         Attributes:
           SEVERITY_UNSPECIFIED (int): No severity specified. The default value.

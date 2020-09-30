@@ -521,7 +521,8 @@ Finding = _reflection.GeneratedProtocolMessageType(
           The time at which the finding was created in Security Command
           Center.
       severity:
-          The severity of the finding.
+          The severity of the finding. This field is managed by the
+          source that writes the finding.
   """,
         # @@protoc_insertion_point(class_scope:google.cloud.securitycenter.v1p1beta1.Finding)
     },
