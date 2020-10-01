@@ -26,7 +26,7 @@ release_status = "Development Status :: 3 - Alpha"
 dependencies = [
     "google-api-core[grpc] >= 1.22.0, < 2.0.0dev",
     "grpc-google-iam-v1 >= 0.12.3, < 0.13dev",
-    "proto-plus >= 1.4.0",
+    "proto-plus >= 1.10.0",
     "libcst >= 0.2.5",
 ]
 

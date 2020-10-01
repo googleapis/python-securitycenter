@@ -17,9 +17,13 @@
 
 import abc
 import typing
+import pkg_resources
 
-from google import auth
+from google import auth  # type: ignore
 from google.api_core import exceptions  # type: ignore
+from google.api_core import gapic_v1  # type: ignore
+from google.api_core import retry as retries  # type: ignore
+from google.api_core import retry as retries  # type: ignore
 from google.api_core import operations_v1  # type: ignore
 from google.auth import credentials  # type: ignore
 
@@ -43,6 +47,16 @@ from google.longrunning import operations_pb2 as operations  # type: ignore
 from google.protobuf import empty_pb2 as empty  # type: ignore
 
 
+try:
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
+        gapic_version=pkg_resources.get_distribution(
+            "google-cloud-securitycenter",
+        ).version,
+    )
+except pkg_resources.DistributionNotFound:
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
+
+
 class SecurityCenterTransport(abc.ABC):
     """Abstract transport class for SecurityCenter."""
 
@@ -56,6 +70,7 @@ class SecurityCenterTransport(abc.ABC):
         credentials_file: typing.Optional[str] = None,
         scopes: typing.Optional[typing.Sequence[str]] = AUTH_SCOPES,
         quota_project_id: typing.Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
         **kwargs,
     ) -> None:
         """Instantiate the transport.
@@ -73,6 +88,11 @@ class SecurityCenterTransport(abc.ABC):
             scope (Optional[Sequence[str]]): A list of scopes.
             quota_project_id (Optional[str]): An optional project to use for billing
                 and quota.
+            client_info (google.api_core.gapic_v1.client_info.ClientInfo):	
+                The client info used to send a user-agent string along with	
+                API requests. If ``None``, then default info will be used.	
+                Generally, you only need to set this if you're developing	
+                your own client library.
         """
         # Save the hostname. Default to port 443 (HTTPS) if none is specified.
         if ":" not in host:
@@ -98,6 +118,203 @@ class SecurityCenterTransport(abc.ABC):
 
         # Save the credentials.
         self._credentials = credentials
+
+        # Lifted into its own function so it can be stubbed out during tests.
+        self._prep_wrapped_messages(client_info)
+
+    def _prep_wrapped_messages(self, client_info):
+        # Precompute the wrapped methods.
+        self._wrapped_methods = {
+            self.create_source: gapic_v1.method.wrap_method(
+                self.create_source, default_timeout=60.0, client_info=client_info,
+            ),
+            self.create_finding: gapic_v1.method.wrap_method(
+                self.create_finding, default_timeout=60.0, client_info=client_info,
+            ),
+            self.create_notification_config: gapic_v1.method.wrap_method(
+                self.create_notification_config,
+                default_timeout=60.0,
+                client_info=client_info,
+            ),
+            self.delete_notification_config: gapic_v1.method.wrap_method(
+                self.delete_notification_config,
+                default_timeout=60.0,
+                client_info=client_info,
+            ),
+            self.get_iam_policy: gapic_v1.method.wrap_method(
+                self.get_iam_policy,
+                default_retry=retries.Retry(
+                    initial=0.1,
+                    maximum=60.0,
+                    multiplier=1.3,
+                    predicate=retries.if_exception_type(
+                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    ),
+                ),
+                default_timeout=60.0,
+                client_info=client_info,
+            ),
+            self.get_notification_config: gapic_v1.method.wrap_method(
+                self.get_notification_config,
+                default_retry=retries.Retry(
+                    initial=0.1,
+                    maximum=60.0,
+                    multiplier=1.3,
+                    predicate=retries.if_exception_type(
+                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    ),
+                ),
+                default_timeout=60.0,
+                client_info=client_info,
+            ),
+            self.get_organization_settings: gapic_v1.method.wrap_method(
+                self.get_organization_settings,
+                default_retry=retries.Retry(
+                    initial=0.1,
+                    maximum=60.0,
+                    multiplier=1.3,
+                    predicate=retries.if_exception_type(
+                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    ),
+                ),
+                default_timeout=60.0,
+                client_info=client_info,
+            ),
+            self.get_source: gapic_v1.method.wrap_method(
+                self.get_source,
+                default_retry=retries.Retry(
+                    initial=0.1,
+                    maximum=60.0,
+                    multiplier=1.3,
+                    predicate=retries.if_exception_type(
+                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    ),
+                ),
+                default_timeout=60.0,
+                client_info=client_info,
+            ),
+            self.group_assets: gapic_v1.method.wrap_method(
+                self.group_assets,
+                default_retry=retries.Retry(
+                    initial=0.1,
+                    maximum=60.0,
+                    multiplier=1.3,
+                    predicate=retries.if_exception_type(
+                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    ),
+                ),
+                default_timeout=480.0,
+                client_info=client_info,
+            ),
+            self.group_findings: gapic_v1.method.wrap_method(
+                self.group_findings,
+                default_retry=retries.Retry(
+                    initial=0.1,
+                    maximum=60.0,
+                    multiplier=1.3,
+                    predicate=retries.if_exception_type(
+                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    ),
+                ),
+                default_timeout=480.0,
+                client_info=client_info,
+            ),
+            self.list_assets: gapic_v1.method.wrap_method(
+                self.list_assets,
+                default_retry=retries.Retry(
+                    initial=0.1,
+                    maximum=60.0,
+                    multiplier=1.3,
+                    predicate=retries.if_exception_type(
+                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    ),
+                ),
+                default_timeout=480.0,
+                client_info=client_info,
+            ),
+            self.list_findings: gapic_v1.method.wrap_method(
+                self.list_findings,
+                default_retry=retries.Retry(
+                    initial=0.1,
+                    maximum=60.0,
+                    multiplier=1.3,
+                    predicate=retries.if_exception_type(
+                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    ),
+                ),
+                default_timeout=480.0,
+                client_info=client_info,
+            ),
+            self.list_notification_configs: gapic_v1.method.wrap_method(
+                self.list_notification_configs,
+                default_retry=retries.Retry(
+                    initial=0.1,
+                    maximum=60.0,
+                    multiplier=1.3,
+                    predicate=retries.if_exception_type(
+                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    ),
+                ),
+                default_timeout=60.0,
+                client_info=client_info,
+            ),
+            self.list_sources: gapic_v1.method.wrap_method(
+                self.list_sources,
+                default_retry=retries.Retry(
+                    initial=0.1,
+                    maximum=60.0,
+                    multiplier=1.3,
+                    predicate=retries.if_exception_type(
+                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    ),
+                ),
+                default_timeout=60.0,
+                client_info=client_info,
+            ),
+            self.run_asset_discovery: gapic_v1.method.wrap_method(
+                self.run_asset_discovery, default_timeout=60.0, client_info=client_info,
+            ),
+            self.set_finding_state: gapic_v1.method.wrap_method(
+                self.set_finding_state, default_timeout=60.0, client_info=client_info,
+            ),
+            self.set_iam_policy: gapic_v1.method.wrap_method(
+                self.set_iam_policy, default_timeout=60.0, client_info=client_info,
+            ),
+            self.test_iam_permissions: gapic_v1.method.wrap_method(
+                self.test_iam_permissions,
+                default_retry=retries.Retry(
+                    initial=0.1,
+                    maximum=60.0,
+                    multiplier=1.3,
+                    predicate=retries.if_exception_type(
+                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    ),
+                ),
+                default_timeout=60.0,
+                client_info=client_info,
+            ),
+            self.update_finding: gapic_v1.method.wrap_method(
+                self.update_finding, default_timeout=60.0, client_info=client_info,
+            ),
+            self.update_notification_config: gapic_v1.method.wrap_method(
+                self.update_notification_config,
+                default_timeout=60.0,
+                client_info=client_info,
+            ),
+            self.update_organization_settings: gapic_v1.method.wrap_method(
+                self.update_organization_settings,
+                default_timeout=60.0,
+                client_info=client_info,
+            ),
+            self.update_source: gapic_v1.method.wrap_method(
+                self.update_source, default_timeout=60.0, client_info=client_info,
+            ),
+            self.update_security_marks: gapic_v1.method.wrap_method(
+                self.update_security_marks,
+                default_timeout=480.0,
+                client_info=client_info,
+            ),
+        }
 
     @property
     def operations_client(self) -> operations_v1.OperationsClient:

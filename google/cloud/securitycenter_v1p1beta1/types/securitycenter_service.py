@@ -80,10 +80,7 @@ class CreateFindingRequest(proto.Message):
             "organizations/[organization_id]/sources/[source_id]".
         finding_id (str):
             Required. Unique identifier provided by the
-            client within the parent scope. It must be
-            alphanumeric and less than or equal to 32
-            characters and greater than 0 characters in
-            length.
+            client within the parent scope.
         finding (~.gcs_finding.Finding):
             Required. The Finding being created. The name and
             security_marks will be ignored as they are both output only
@@ -105,11 +102,11 @@ class CreateNotificationConfigRequest(proto.Message):
             Required. Resource name of the new notification config's
             parent. Its format is "organizations/[organization_id]".
         config_id (str):
-            Required.
-            Unique identifier provided by the client within
-            the parent scope. It must be between 1 and 128
-            characters, and contains alphanumeric
-            characters, underscores or hyphens only.
+            Required. Unique identifier provided by the
+            client within the parent scope. It must be
+            between 1 and 128 characters, and contains
+            alphanumeric characters, underscores or hyphens
+            only.
         notification_config (~.gcs_notification_config.NotificationConfig):
             Required. The notification config being
             created. The name and the service account will
@@ -456,6 +453,8 @@ class GroupFindingsRequest(proto.Message):
 
             -  event_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
 
+            -  severity: ``=``, ``:``
+
                Usage: This should be milliseconds since epoch or an
                RFC3339 string. Examples:
                ``event_time = "2019-06-10T16:07:18-07:00"``
@@ -487,6 +486,7 @@ class GroupFindingsRequest(proto.Message):
             -  category
             -  state
             -  parent
+            -  severity
 
             The following fields are supported when compare_duration is
             set:
@@ -855,7 +855,6 @@ class ListAssetsRequest(proto.Message):
             state_change is "UNUSED", which will be the state_change set
             for all assets present at read_time.
         field_mask (~.gp_field_mask.FieldMask):
-            Optional.
             A field mask to specify the ListAssetsResult
             fields to be listed in the response.
             An empty field mask will list all fields.
@@ -989,14 +988,26 @@ class ListFindingsRequest(proto.Message):
 
             The following field and operator combinations are supported:
 
-            name: ``=`` parent: ``=``, ``:`` resource_name: ``=``, ``:``
-            state: ``=``, ``:`` category: ``=``, ``:`` external_uri:
-            ``=``, ``:`` event_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
+            -  name: ``=``
 
-            Usage: This should be milliseconds since epoch or an RFC3339
-            string. Examples:
-            ``event_time = "2019-06-10T16:07:18-07:00"``
-            ``event_time = 1560208038000``
+            -  parent: ``=``, ``:``
+
+            -  resource_name: ``=``, ``:``
+
+            -  state: ``=``, ``:``
+
+            -  category: ``=``, ``:``
+
+            -  external_uri: ``=``, ``:``
+
+            -  event_time: ``=``, ``>``, ``<``, ``>=``, ``<=``
+
+            -  severity: ``=``, ``:``
+
+               Usage: This should be milliseconds since epoch or an
+               RFC3339 string. Examples:
+               ``event_time = "2019-06-10T16:07:18-07:00"``
+               ``event_time = 1560208038000``
 
             security_marks.marks: ``=``, ``:`` source_properties: ``=``,
             ``:``, ``>``, ``<``, ``>=``, ``<=``
@@ -1066,10 +1077,9 @@ class ListFindingsRequest(proto.Message):
             state_change is "UNUSED", which will be the state_change set
             for all findings present at read_time.
         field_mask (~.gp_field_mask.FieldMask):
-            Optional.
-            A field mask to specify the Finding fields to be
-            listed in the response. An empty field mask will
-            list all fields.
+            A field mask to specify the Finding fields to
+            be listed in the response. An empty field mask
+            will list all fields.
         page_token (str):
             The value returned by the last ``ListFindingsResponse``;
             indicates that this is a continuation of a prior

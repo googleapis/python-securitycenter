@@ -81,14 +81,20 @@ class Finding(proto.Message):
             come from the SecurityMarks resource that
             belongs to the finding.
         event_time (~.timestamp.Timestamp):
-            The time at which the event took place. For
+            The time at which the event took place, or
+            when an update to the finding occurred. For
             example, if the finding represents an open
             firewall it would capture the time the detector
             believes the firewall became open. The accuracy
-            is determined by the detector.
+            is determined by the detector. If the finding
+            were to be resolved afterward, this time would
+            reflect when the finding was resolved.
         create_time (~.timestamp.Timestamp):
             The time at which the finding was created in
             Security Command Center.
+        severity (~.finding.Finding.Severity):
+            The severity of the finding. This field is
+            managed by the source that writes the finding.
     """
 
     class State(proto.Enum):
@@ -96,6 +102,16 @@ class Finding(proto.Message):
         STATE_UNSPECIFIED = 0
         ACTIVE = 1
         INACTIVE = 2
+
+    class Severity(proto.Enum):
+        r"""The severity of the finding. This field is managed by the
+        source that writes the finding.
+        """
+        SEVERITY_UNSPECIFIED = 0
+        CRITICAL = 1
+        HIGH = 2
+        MEDIUM = 3
+        LOW = 4
 
     name = proto.Field(proto.STRING, number=1)
 
@@ -120,6 +136,8 @@ class Finding(proto.Message):
     event_time = proto.Field(proto.MESSAGE, number=9, message=timestamp.Timestamp,)
 
     create_time = proto.Field(proto.MESSAGE, number=10, message=timestamp.Timestamp,)
+
+    severity = proto.Field(proto.ENUM, number=13, enum=Severity,)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

@@ -81,11 +81,14 @@ class Finding(proto.Message):
             come from the SecurityMarks resource that
             belongs to the finding.
         event_time (~.timestamp.Timestamp):
-            The time at which the event took place. For
+            The time at which the event took place, or
+            when an update to the finding occurred. For
             example, if the finding represents an open
             firewall it would capture the time the detector
             believes the firewall became open. The accuracy
-            is determined by the detector.
+            is determined by the detector. If the finding
+            were to be resolved afterward, this time would
+            reflect when the finding was resolved.
         create_time (~.timestamp.Timestamp):
             The time at which the finding was created in
             Security Command Center.
