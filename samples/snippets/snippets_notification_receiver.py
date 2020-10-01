@@ -23,7 +23,6 @@ def receive_notifications(project_id, subscription_name):
 
     from google.cloud import pubsub_v1
     from google.cloud.securitycenter_v1 import NotificationMessage
-    from google.protobuf import json_format
 
     # TODO: project_id = "your-project-id"
     # TODO: subscription_name = "your-subscription-name"
