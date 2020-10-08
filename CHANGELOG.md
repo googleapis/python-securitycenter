@@ -9,7 +9,7 @@
 
 ### ⚠ BREAKING CHANGES
 
-* generate with microgenerator (#49)
+* generate with microgenerator. See [Migration Guide](https://github.com/googleapis/python-securitycenter/blob/master/UPGRADING.md)(#49)
 
 ### Features
 
