@@ -66,8 +66,6 @@ class SecurityCenterAsyncClient:
     DEFAULT_ENDPOINT = SecurityCenterClient.DEFAULT_ENDPOINT
     DEFAULT_MTLS_ENDPOINT = SecurityCenterClient.DEFAULT_MTLS_ENDPOINT
 
-    asset_path = staticmethod(SecurityCenterClient.asset_path)
-    parse_asset_path = staticmethod(SecurityCenterClient.parse_asset_path)
     finding_path = staticmethod(SecurityCenterClient.finding_path)
     parse_finding_path = staticmethod(SecurityCenterClient.parse_finding_path)
     notification_config_path = staticmethod(
@@ -88,49 +86,9 @@ class SecurityCenterAsyncClient:
     )
     source_path = staticmethod(SecurityCenterClient.source_path)
     parse_source_path = staticmethod(SecurityCenterClient.parse_source_path)
-    topic_path = staticmethod(SecurityCenterClient.topic_path)
-    parse_topic_path = staticmethod(SecurityCenterClient.parse_topic_path)
-
-    common_billing_account_path = staticmethod(
-        SecurityCenterClient.common_billing_account_path
-    )
-    parse_common_billing_account_path = staticmethod(
-        SecurityCenterClient.parse_common_billing_account_path
-    )
-
-    common_folder_path = staticmethod(SecurityCenterClient.common_folder_path)
-    parse_common_folder_path = staticmethod(
-        SecurityCenterClient.parse_common_folder_path
-    )
-
-    common_organization_path = staticmethod(
-        SecurityCenterClient.common_organization_path
-    )
-    parse_common_organization_path = staticmethod(
-        SecurityCenterClient.parse_common_organization_path
-    )
-
-    common_project_path = staticmethod(SecurityCenterClient.common_project_path)
-    parse_common_project_path = staticmethod(
-        SecurityCenterClient.parse_common_project_path
-    )
-
-    common_location_path = staticmethod(SecurityCenterClient.common_location_path)
-    parse_common_location_path = staticmethod(
-        SecurityCenterClient.parse_common_location_path
-    )
 
     from_service_account_file = SecurityCenterClient.from_service_account_file
     from_service_account_json = from_service_account_file
-
-    @property
-    def transport(self) -> SecurityCenterTransport:
-        """Return the transport used by the client instance.
-
-        Returns:
-            SecurityCenterTransport: The transport used by the client instance.
-        """
-        return self._client.transport
 
     get_transport_class = functools.partial(
         type(SecurityCenterClient).get_transport_class, type(SecurityCenterClient)
@@ -233,8 +191,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([parent, source])
-        if request is not None and has_flattened_params:
+        if request is not None and any([parent, source]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -334,8 +291,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([parent, finding_id, finding])
-        if request is not None and has_flattened_params:
+        if request is not None and any([parent, finding_id, finding]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -434,8 +390,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([parent, config_id, notification_config])
-        if request is not None and has_flattened_params:
+        if request is not None and any([parent, config_id, notification_config]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -505,8 +460,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([name])
-        if request is not None and has_flattened_params:
+        if request is not None and any([name]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -642,8 +596,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([resource])
-        if request is not None and has_flattened_params:
+        if request is not None and any([resource]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -655,7 +608,13 @@ class SecurityCenterAsyncClient:
             request = iam_policy.GetIamPolicyRequest(**request)
 
         elif not request:
-            request = iam_policy.GetIamPolicyRequest(resource=resource,)
+            request = iam_policy.GetIamPolicyRequest()
+
+        # If we have keyword arguments corresponding to fields on the
+        # request, apply these.
+
+        if resource is not None:
+            request.resource = resource
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -666,7 +625,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=60.0,
@@ -727,8 +686,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([name])
-        if request is not None and has_flattened_params:
+        if request is not None and any([name]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -751,7 +709,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=60.0,
@@ -809,8 +767,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([name])
-        if request is not None and has_flattened_params:
+        if request is not None and any([name]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -833,7 +790,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=60.0,
@@ -894,8 +851,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([name])
-        if request is not None and has_flattened_params:
+        if request is not None and any([name]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -918,7 +874,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=60.0,
@@ -981,7 +937,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=480.0,
@@ -1076,8 +1032,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([parent, group_by])
-        if request is not None and has_flattened_params:
+        if request is not None and any([parent, group_by]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -1102,7 +1057,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=480.0,
@@ -1168,7 +1123,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=480.0,
@@ -1239,7 +1194,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=480.0,
@@ -1305,8 +1260,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([parent])
-        if request is not None and has_flattened_params:
+        if request is not None and any([parent]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -1329,7 +1283,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=60.0,
@@ -1393,8 +1347,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([parent])
-        if request is not None and has_flattened_params:
+        if request is not None and any([parent]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -1417,7 +1370,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=60.0,
@@ -1488,8 +1441,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([parent])
-        if request is not None and has_flattened_params:
+        if request is not None and any([parent]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -1592,8 +1544,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([name, state, start_time])
-        if request is not None and has_flattened_params:
+        if request is not None and any([name, state, start_time]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -1734,8 +1685,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([resource])
-        if request is not None and has_flattened_params:
+        if request is not None and any([resource]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -1747,7 +1697,13 @@ class SecurityCenterAsyncClient:
             request = iam_policy.SetIamPolicyRequest(**request)
 
         elif not request:
-            request = iam_policy.SetIamPolicyRequest(resource=resource,)
+            request = iam_policy.SetIamPolicyRequest()
+
+        # If we have keyword arguments corresponding to fields on the
+        # request, apply these.
+
+        if resource is not None:
+            request.resource = resource
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1816,8 +1772,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([resource, permissions])
-        if request is not None and has_flattened_params:
+        if request is not None and any([resource, permissions]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -1829,9 +1784,16 @@ class SecurityCenterAsyncClient:
             request = iam_policy.TestIamPermissionsRequest(**request)
 
         elif not request:
-            request = iam_policy.TestIamPermissionsRequest(
-                resource=resource, permissions=permissions,
-            )
+            request = iam_policy.TestIamPermissionsRequest()
+
+        # If we have keyword arguments corresponding to fields on the
+        # request, apply these.
+
+        if resource is not None:
+            request.resource = resource
+
+        if permissions:
+            request.permissions.extend(permissions)
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1842,7 +1804,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=60.0,
@@ -1911,8 +1873,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([finding])
-        if request is not None and has_flattened_params:
+        if request is not None and any([finding]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -1999,8 +1960,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([notification_config, update_mask])
-        if request is not None and has_flattened_params:
+        if request is not None and any([notification_config, update_mask]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -2076,8 +2036,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([organization_settings])
-        if request is not None and has_flattened_params:
+        if request is not None and any([organization_settings]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -2154,8 +2113,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([source])
-        if request is not None and has_flattened_params:
+        if request is not None and any([source]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -2234,8 +2192,7 @@ class SecurityCenterAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        has_flattened_params = any([security_marks])
-        if request is not None and has_flattened_params:
+        if request is not None and any([security_marks]):
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
