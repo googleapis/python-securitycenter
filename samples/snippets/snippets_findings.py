@@ -471,7 +471,7 @@ def list_findings_at_time(source_name):
     #   source_name = "organizations/111122222444/sources/-"
     five_days_ago = str(datetime.now() - timedelta(days=5))
     # [END list_findings_at_a_time]
-    # [END securitycenter_]
+    # [END securitycenter_list_findings_at_a_time]
     i = -1
     # [START securitycenter_list_findings_at_a_time]
     # [START list_findings_at_a_time]
