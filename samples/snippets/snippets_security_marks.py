@@ -153,7 +153,7 @@ def list_assets_with_query_marks(organization_id, asset_name):
     """Lists assets with a filter on security marks. """
     add_to_asset(asset_name)
     i = -1
-    # [START securitycenter_]
+    # [START securitycenter_demo_list_assets_with_security_marks]
     # [START demo_list_assets_with_security_marks]
     from google.cloud import securitycenter
 
@@ -176,7 +176,7 @@ def list_assets_with_query_marks(organization_id, asset_name):
     for i, asset_result in enumerate(asset_iterator):
         print(i, asset_result)
     # [END demo_list_assets_with_security_marks]
-    # [END securitycenter_]
+    # [END securitycenter_demo_list_assets_with_security_marks]
     return i
 
 
@@ -185,7 +185,7 @@ def list_findings_with_query_marks(source_name, finding_name):
     # ensure marks are set on finding.
     add_to_finding(finding_name)
     i = -1
-    # [START securitycenter_]
+    # [START securitycenter_demo_list_findings_with_security_marks]
     # [START demo_list_findings_with_security_marks]
     from google.cloud import securitycenter
 
@@ -206,7 +206,7 @@ def list_findings_with_query_marks(source_name, finding_name):
     for i, finding_result in enumerate(finding_iterator):
         print(i, finding_result)
     # [END demo_list_findings_with_security_marks]
-    # [END securitycenter_]
+    # [END securitycenter_demo_list_findings_with_security_marks]
     # one finding should have been updated with keys, and one should be
     # untouched.
     return i
