@@ -33,6 +33,7 @@ def get_settings(organization_id):
     # [END get_org_settings]
     # [END securitycenter_get_org_settings]
 
+
 def update_asset_discovery_org_settings(organization_id):
     """Example showing how to update the asset discovery configuration
     for an organization."""
