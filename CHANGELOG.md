@@ -4,6 +4,16 @@
 
 [1]: https://pypi.org/project/google-cloud-securitycenter/#history
 
+### [1.0.1](https://www.github.com/googleapis/python-securitycenter/compare/v1.0.0...v1.0.1) (2020-12-15)
+
+
+### Documentation
+
+* add securitycenter prefix to samples, wrap published samples and repl… ([#85](https://www.github.com/googleapis/python-securitycenter/issues/85)) ([553dfbb](https://www.github.com/googleapis/python-securitycenter/commit/553dfbb89f7e72ad280aaa5d59cc4a054aa1948e))
+* update documentation on severity ([#72](https://www.github.com/googleapis/python-securitycenter/issues/72)) ([4ba96b2](https://www.github.com/googleapis/python-securitycenter/commit/4ba96b268d92eb57b816593b1fb968f269ed188e))
+* update snippets_findings tags ([#78](https://www.github.com/googleapis/python-securitycenter/issues/78)) ([c7e301f](https://www.github.com/googleapis/python-securitycenter/commit/c7e301f0d45d2e3d04263df63a515b52ce0391b3))
+* update snippets_list_assets tags ([#77](https://www.github.com/googleapis/python-securitycenter/issues/77)) ([11aef56](https://www.github.com/googleapis/python-securitycenter/commit/11aef56a0a9cf281e0d647d64d72c921e4b837d0))
+
 ## [1.0.0](https://www.github.com/googleapis/python-securitycenter/compare/v0.7.1...v1.0.0) (2020-10-08)
 
 
