@@ -703,6 +703,7 @@ def test_create_finding(
             state=gcs_finding.Finding.State.ACTIVE,
             category="category_value",
             external_uri="external_uri_value",
+            severity=gcs_finding.Finding.Severity.CRITICAL,
         )
 
         response = client.create_finding(request)
@@ -728,6 +729,8 @@ def test_create_finding(
     assert response.category == "category_value"
 
     assert response.external_uri == "external_uri_value"
+
+    assert response.severity == gcs_finding.Finding.Severity.CRITICAL
 
 
 def test_create_finding_from_dict():
@@ -758,6 +761,7 @@ async def test_create_finding_async(
                 state=gcs_finding.Finding.State.ACTIVE,
                 category="category_value",
                 external_uri="external_uri_value",
+                severity=gcs_finding.Finding.Severity.CRITICAL,
             )
         )
 
@@ -783,6 +787,8 @@ async def test_create_finding_async(
     assert response.category == "category_value"
 
     assert response.external_uri == "external_uri_value"
+
+    assert response.severity == gcs_finding.Finding.Severity.CRITICAL
 
 
 @pytest.mark.asyncio
@@ -4467,6 +4473,7 @@ def test_set_finding_state(
             state=finding.Finding.State.ACTIVE,
             category="category_value",
             external_uri="external_uri_value",
+            severity=finding.Finding.Severity.CRITICAL,
         )
 
         response = client.set_finding_state(request)
@@ -4492,6 +4499,8 @@ def test_set_finding_state(
     assert response.category == "category_value"
 
     assert response.external_uri == "external_uri_value"
+
+    assert response.severity == finding.Finding.Severity.CRITICAL
 
 
 def test_set_finding_state_from_dict():
@@ -4524,6 +4533,7 @@ async def test_set_finding_state_async(
                 state=finding.Finding.State.ACTIVE,
                 category="category_value",
                 external_uri="external_uri_value",
+                severity=finding.Finding.Severity.CRITICAL,
             )
         )
 
@@ -4549,6 +4559,8 @@ async def test_set_finding_state_async(
     assert response.category == "category_value"
 
     assert response.external_uri == "external_uri_value"
+
+    assert response.severity == finding.Finding.Severity.CRITICAL
 
 
 @pytest.mark.asyncio
@@ -5167,6 +5179,7 @@ def test_update_finding(
             state=gcs_finding.Finding.State.ACTIVE,
             category="category_value",
             external_uri="external_uri_value",
+            severity=gcs_finding.Finding.Severity.CRITICAL,
         )
 
         response = client.update_finding(request)
@@ -5192,6 +5205,8 @@ def test_update_finding(
     assert response.category == "category_value"
 
     assert response.external_uri == "external_uri_value"
+
+    assert response.severity == gcs_finding.Finding.Severity.CRITICAL
 
 
 def test_update_finding_from_dict():
@@ -5222,6 +5237,7 @@ async def test_update_finding_async(
                 state=gcs_finding.Finding.State.ACTIVE,
                 category="category_value",
                 external_uri="external_uri_value",
+                severity=gcs_finding.Finding.Severity.CRITICAL,
             )
         )
 
@@ -5247,6 +5263,8 @@ async def test_update_finding_async(
     assert response.category == "category_value"
 
     assert response.external_uri == "external_uri_value"
+
+    assert response.severity == gcs_finding.Finding.Severity.CRITICAL
 
 
 @pytest.mark.asyncio

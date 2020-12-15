@@ -1048,6 +1048,7 @@ class SecurityCenterAsyncClient:
                 -  state
                 - parent
 
+                -  severity
 
                 The following fields are supported when compare_duration
                 is set:
