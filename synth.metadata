@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-securitycenter.git",
-        "sha": "316d224077ecb786e19444965e0e6cdc0195efc3"
+        "sha": "553dfbb89f7e72ad280aaa5d59cc4a054aa1948e"
       }
     },
     {
