@@ -1279,15 +1279,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 -  resource_name
                 -  category
                 -  state
-                - parent
-
+                -  parent
                 -  severity
 
                 The following fields are supported when compare_duration
                 is set:
 
                 -  state_change
-
                 This corresponds to the ``group_by`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
