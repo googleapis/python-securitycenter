@@ -135,22 +135,6 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
     )
 
     @classmethod
-    def from_service_account_info(cls, info: dict, *args, **kwargs):
-        """Creates an instance of this client using the provided credentials info.
-
-        Args:
-            info (dict): The service account private key info.
-            args: Additional arguments to pass to the constructor.
-            kwargs: Additional arguments to pass to the constructor.
-
-        Returns:
-            SecurityCenterClient: The constructed client.
-        """
-        credentials = service_account.Credentials.from_service_account_info(info)
-        kwargs["credentials"] = credentials
-        return cls(*args, **kwargs)
-
-    @classmethod
     def from_service_account_file(cls, filename: str, *args, **kwargs):
         """Creates an instance of this client using the provided credentials
         file.
@@ -162,7 +146,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
             kwargs: Additional arguments to pass to the constructor.
 
         Returns:
-            SecurityCenterClient: The constructed client.
+            {@api.name}: The constructed client.
         """
         credentials = service_account.Credentials.from_service_account_file(filename)
         kwargs["credentials"] = credentials
@@ -358,10 +342,10 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 credentials identify the application to the service; if none
                 are specified, the client will attempt to ascertain the
                 credentials from the environment.
-            transport (Union[str, SecurityCenterTransport]): The
+            transport (Union[str, ~.SecurityCenterTransport]): The
                 transport to use. If set to None, a transport is chosen
                 automatically.
-            client_options (google.api_core.client_options.ClientOptions): Custom options for the
+            client_options (client_options_lib.ClientOptions): Custom options for the
                 client. It won't take effect if a ``transport`` instance is provided.
                 (1) The ``api_endpoint`` property can be used to override the
                 default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
@@ -472,21 +456,19 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Creates a source.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.CreateSourceRequest):
+            request (:class:`~.securitycenter_service.CreateSourceRequest`):
                 The request object. Request message for creating a
                 source.
-            parent (str):
+            parent (:class:`str`):
                 Required. Resource name of the new source's parent. Its
                 format should be "organizations/[organization_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            source (google.cloud.securitycenter_v1p1beta1.types.Source):
+            source (:class:`~.gcs_source.Source`):
                 Required. The Source being created, only the
                 display_name and description will be used. All other
                 fields will be ignored.
-
                 This corresponds to the ``source`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -498,7 +480,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.Source:
+            ~.gcs_source.Source:
                 Security Command Center finding
                 source. A finding source is an entity or
                 a mechanism that can produce a finding.
@@ -563,29 +545,26 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         exist for finding creation to succeed.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.CreateFindingRequest):
+            request (:class:`~.securitycenter_service.CreateFindingRequest`):
                 The request object. Request message for creating a
                 finding.
-            parent (str):
+            parent (:class:`str`):
                 Required. Resource name of the new finding's parent. Its
                 format should be
                 "organizations/[organization_id]/sources/[source_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            finding_id (str):
+            finding_id (:class:`str`):
                 Required. Unique identifier provided
                 by the client within the parent scope.
-
                 This corresponds to the ``finding_id`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            finding (google.cloud.securitycenter_v1p1beta1.types.Finding):
+            finding (:class:`~.gcs_finding.Finding`):
                 Required. The Finding being created. The name and
                 security_marks will be ignored as they are both output
                 only fields on this resource.
-
                 This corresponds to the ``finding`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -597,7 +576,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.Finding:
+            ~.gcs_finding.Finding:
                 Security Command Center finding.
                 A finding is a record of assessment data
                 (security, risk, health or privacy)
@@ -666,32 +645,29 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Creates a notification config.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.CreateNotificationConfigRequest):
+            request (:class:`~.securitycenter_service.CreateNotificationConfigRequest`):
                 The request object. Request message for creating a
                 notification config.
-            parent (str):
+            parent (:class:`str`):
                 Required. Resource name of the new notification config's
                 parent. Its format is "organizations/[organization_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            config_id (str):
+            config_id (:class:`str`):
                 Required. Unique identifier provided
                 by the client within the parent scope.
                 It must be between 1 and 128 characters,
                 and contains alphanumeric characters,
                 underscores or hyphens only.
-
                 This corresponds to the ``config_id`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            notification_config (google.cloud.securitycenter_v1p1beta1.types.NotificationConfig):
+            notification_config (:class:`~.gcs_notification_config.NotificationConfig`):
                 Required. The notification config
                 being created. The name and the service
                 account will be ignored as they are both
                 output only fields on this resource.
-
                 This corresponds to the ``notification_config`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -703,7 +679,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.NotificationConfig:
+            ~.gcs_notification_config.NotificationConfig:
                 Security Command Center notification
                 configs.
                 A notification config is a Security
@@ -772,14 +748,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Deletes a notification config.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.DeleteNotificationConfigRequest):
+            request (:class:`~.securitycenter_service.DeleteNotificationConfigRequest`):
                 The request object. Request message for deleting a
                 notification config.
-            name (str):
+            name (:class:`str`):
                 Required. Name of the notification config to delete. Its
                 format is
                 "organizations/[organization_id]/notificationConfigs/[config_id]".
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -845,15 +820,14 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         Source.
 
         Args:
-            request (google.iam.v1.iam_policy_pb2.GetIamPolicyRequest):
+            request (:class:`~.iam_policy.GetIamPolicyRequest`):
                 The request object. Request message for `GetIamPolicy`
                 method.
-            resource (str):
+            resource (:class:`str`):
                 REQUIRED: The resource for which the
                 policy is being requested. See the
                 operation documentation for the
                 appropriate value for this field.
-
                 This corresponds to the ``resource`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -865,62 +839,72 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.iam.v1.policy_pb2.Policy:
-                Defines an Identity and Access Management (IAM) policy. It is used to
-                   specify access control policies for Cloud Platform
-                   resources.
+            ~.policy.Policy:
+                Defines an Identity and Access Management (IAM) policy.
+                It is used to specify access control policies for Cloud
+                Platform resources.
 
-                   A Policy is a collection of bindings. A binding binds
-                   one or more members to a single role. Members can be
-                   user accounts, service accounts, Google groups, and
-                   domains (such as G Suite). A role is a named list of
-                   permissions (defined by IAM or configured by users).
-                   A binding can optionally specify a condition, which
-                   is a logic expression that further constrains the
-                   role binding based on attributes about the request
-                   and/or target resource.
+                A ``Policy`` is a collection of ``bindings``. A
+                ``binding`` binds one or more ``members`` to a single
+                ``role``. Members can be user accounts, service
+                accounts, Google groups, and domains (such as G Suite).
+                A ``role`` is a named list of permissions (defined by
+                IAM or configured by users). A ``binding`` can
+                optionally specify a ``condition``, which is a logic
+                expression that further constrains the role binding
+                based on attributes about the request and/or target
+                resource.
 
-                   **JSON Example**
+                **JSON Example**
 
-                      {
-                         "bindings": [
-                            {
-                               "role":
-                               "roles/resourcemanager.organizationAdmin",
-                               "members": [ "user:mike@example.com",
-                               "group:admins@example.com",
-                               "domain:google.com",
-                               "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-                               ]
+                ::
 
-                            }, { "role":
-                            "roles/resourcemanager.organizationViewer",
-                            "members": ["user:eve@example.com"],
-                            "condition": { "title": "expirable access",
-                            "description": "Does not grant access after
-                            Sep 2020", "expression": "request.time <
-                            timestamp('2020-10-01T00:00:00.000Z')", } }
+                    {
+                      "bindings": [
+                        {
+                          "role": "roles/resourcemanager.organizationAdmin",
+                          "members": [
+                            "user:mike@example.com",
+                            "group:admins@example.com",
+                            "domain:google.com",
+                            "serviceAccount:my-project-id@appspot.gserviceaccount.com"
+                          ]
+                        },
+                        {
+                          "role": "roles/resourcemanager.organizationViewer",
+                          "members": ["user:eve@example.com"],
+                          "condition": {
+                            "title": "expirable access",
+                            "description": "Does not grant access after Sep 2020",
+                            "expression": "request.time <
+                            timestamp('2020-10-01T00:00:00.000Z')",
+                          }
+                        }
+                      ]
+                    }
 
-                         ]
+                **YAML Example**
 
-                      }
+                ::
 
-                   **YAML Example**
+                    bindings:
+                    - members:
+                      - user:mike@example.com
+                      - group:admins@example.com
+                      - domain:google.com
+                      - serviceAccount:my-project-id@appspot.gserviceaccount.com
+                      role: roles/resourcemanager.organizationAdmin
+                    - members:
+                      - user:eve@example.com
+                      role: roles/resourcemanager.organizationViewer
+                      condition:
+                        title: expirable access
+                        description: Does not grant access after Sep 2020
+                        expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
 
-                      bindings: - members: - user:\ mike@example.com -
-                      group:\ admins@example.com - domain:google.com -
-                      serviceAccount:\ my-project-id@appspot.gserviceaccount.com
-                      role: roles/resourcemanager.organizationAdmin -
-                      members: - user:\ eve@example.com role:
-                      roles/resourcemanager.organizationViewer
-                      condition: title: expirable access description:
-                      Does not grant access after Sep 2020 expression:
-                      request.time <
-                      timestamp('2020-10-01T00:00:00.000Z')
-
-                   For a description of IAM and its features, see the
-                   [IAM developer's
-                   guide](\ https://cloud.google.com/iam/docs).
+                For a description of IAM and its features, see the `IAM
+                developer's
+                guide <https://cloud.google.com/iam/docs>`__.
 
         """
         # Create or coerce a protobuf request object.
@@ -969,14 +953,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Gets a notification config.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.GetNotificationConfigRequest):
+            request (:class:`~.securitycenter_service.GetNotificationConfigRequest`):
                 The request object. Request message for getting a
                 notification config.
-            name (str):
+            name (:class:`str`):
                 Required. Name of the notification config to get. Its
                 format is
                 "organizations/[organization_id]/notificationConfigs/[config_id]".
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -988,7 +971,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.NotificationConfig:
+            ~.notification_config.NotificationConfig:
                 Security Command Center notification
                 configs.
                 A notification config is a Security
@@ -1049,14 +1032,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Gets the settings for an organization.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.GetOrganizationSettingsRequest):
+            request (:class:`~.securitycenter_service.GetOrganizationSettingsRequest`):
                 The request object. Request message for getting
                 organization settings.
-            name (str):
+            name (:class:`str`):
                 Required. Name of the organization to get organization
                 settings for. Its format is
                 "organizations/[organization_id]/organizationSettings".
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1068,7 +1050,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.OrganizationSettings:
+            ~.organization_settings.OrganizationSettings:
                 User specified settings that are
                 attached to the Security Command Center
                 organization.
@@ -1129,14 +1111,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Gets a source.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.GetSourceRequest):
+            request (:class:`~.securitycenter_service.GetSourceRequest`):
                 The request object. Request message for getting a
                 source.
-            name (str):
+            name (:class:`str`):
                 Required. Relative resource name of the source. Its
                 format is
                 "organizations/[organization_id]/source/[source_id]".
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1148,7 +1129,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.Source:
+            ~.source.Source:
                 Security Command Center finding
                 source. A finding source is an entity or
                 a mechanism that can produce a finding.
@@ -1208,7 +1189,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         their specified properties.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.GroupAssetsRequest):
+            request (:class:`~.securitycenter_service.GroupAssetsRequest`):
                 The request object. Request message for grouping by
                 assets.
 
@@ -1219,7 +1200,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.services.security_center.pagers.GroupAssetsPager:
+            ~.pagers.GroupAssetsPager:
                 Response message for grouping by
                 assets.
                 Iterating over this object will yield
@@ -1276,20 +1257,19 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         /v1p1beta1/organizations/{organization_id}/sources/-/findings
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.GroupFindingsRequest):
+            request (:class:`~.securitycenter_service.GroupFindingsRequest`):
                 The request object. Request message for grouping by
                 findings.
-            parent (str):
+            parent (:class:`str`):
                 Required. Name of the source to groupBy. Its format is
                 "organizations/[organization_id]/sources/[source_id]".
                 To groupBy across all sources provide a source_id of
                 ``-``. For example:
                 organizations/{organization_id}/sources/-
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            group_by (str):
+            group_by (:class:`str`):
                 Required. Expression that defines what assets fields to
                 use for grouping (including ``state_change``). The
                 string value should follow SQL syntax: comma separated
@@ -1300,7 +1280,8 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 -  resource_name
                 -  category
                 -  state
-                -  parent
+                - parent
+
                 -  severity
 
                 The following fields are supported when compare_duration
@@ -1319,7 +1300,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.services.security_center.pagers.GroupFindingsPager:
+            ~.pagers.GroupFindingsPager:
                 Response message for group by
                 findings.
                 Iterating over this object will yield
@@ -1386,12 +1367,11 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Lists an organization's assets.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.ListAssetsRequest):
+            request (:class:`~.securitycenter_service.ListAssetsRequest`):
                 The request object. Request message for listing assets.
-            parent (str):
+            parent (:class:`str`):
                 Required. Name of the organization assets should belong
                 to. Its format is "organizations/[organization_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1403,7 +1383,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.services.security_center.pagers.ListAssetsPager:
+            ~.pagers.ListAssetsPager:
                 Response message for listing assets.
                 Iterating over this object will yield
                 results and resolve additional pages
@@ -1471,16 +1451,15 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         /v1p1beta1/organizations/{organization_id}/sources/-/findings
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.ListFindingsRequest):
+            request (:class:`~.securitycenter_service.ListFindingsRequest`):
                 The request object. Request message for listing
                 findings.
-            parent (str):
+            parent (:class:`str`):
                 Required. Name of the source the findings belong to. Its
                 format is
                 "organizations/[organization_id]/sources/[source_id]".
                 To list across all sources provide a source_id of ``-``.
                 For example: organizations/{organization_id}/sources/-
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1492,7 +1471,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.services.security_center.pagers.ListFindingsPager:
+            ~.pagers.ListFindingsPager:
                 Response message for listing
                 findings.
                 Iterating over this object will yield
@@ -1557,14 +1536,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Lists notification configs.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.ListNotificationConfigsRequest):
+            request (:class:`~.securitycenter_service.ListNotificationConfigsRequest`):
                 The request object. Request message for listing
                 notification configs.
-            parent (str):
+            parent (:class:`str`):
                 Required. Name of the organization to list notification
                 configs. Its format is
                 "organizations/[organization_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1576,7 +1554,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.services.security_center.pagers.ListNotificationConfigsPager:
+            ~.pagers.ListNotificationConfigsPager:
                 Response message for listing
                 notification configs.
                 Iterating over this object will yield
@@ -1645,13 +1623,12 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Lists all sources belonging to an organization.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.ListSourcesRequest):
+            request (:class:`~.securitycenter_service.ListSourcesRequest`):
                 The request object. Request message for listing sources.
-            parent (str):
+            parent (:class:`str`):
                 Required. Resource name of the parent of sources to
                 list. Its format should be
                 "organizations/[organization_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1663,7 +1640,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.services.security_center.pagers.ListSourcesPager:
+            ~.pagers.ListSourcesPager:
                 Response message for listing sources.
                 Iterating over this object will yield
                 results and resolve additional pages
@@ -1732,14 +1709,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         receive a TOO_MANY_REQUESTS error.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.RunAssetDiscoveryRequest):
+            request (:class:`~.securitycenter_service.RunAssetDiscoveryRequest`):
                 The request object. Request message for running asset
                 discovery for an organization.
-            parent (str):
+            parent (:class:`str`):
                 Required. Name of the organization to run asset
                 discovery for. Its format is
                 "organizations/[organization_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1751,11 +1727,11 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.api_core.operation.Operation:
+            ~.operation.Operation:
                 An object representing a long-running operation.
 
                 The result type for the operation will be
-                :class:`google.cloud.securitycenter_v1p1beta1.types.RunAssetDiscoveryResponse`
+                :class:``~.run_asset_discovery_response.RunAssetDiscoveryResponse``:
                 Response of asset discovery run
 
         """
@@ -1820,30 +1796,27 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Updates the state of a finding.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.SetFindingStateRequest):
+            request (:class:`~.securitycenter_service.SetFindingStateRequest`):
                 The request object. Request message for updating a
                 finding's state.
-            name (str):
+            name (:class:`str`):
                 Required. The relative resource name of the finding.
                 See:
                 https://cloud.google.com/apis/design/resource_names#relative_resource_name
                 Example:
                 "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            state (google.cloud.securitycenter_v1p1beta1.types.Finding.State):
+            state (:class:`~.finding.Finding.State`):
                 Required. The desired State of the
                 finding.
-
                 This corresponds to the ``state`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            start_time (google.protobuf.timestamp_pb2.Timestamp):
+            start_time (:class:`~.timestamp.Timestamp`):
                 Required. The time at which the
                 updated state takes effect.
-
                 This corresponds to the ``start_time`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1855,7 +1828,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.Finding:
+            ~.finding.Finding:
                 Security Command Center finding.
                 A finding is a record of assessment data
                 (security, risk, health or privacy)
@@ -1923,15 +1896,14 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         Source.
 
         Args:
-            request (google.iam.v1.iam_policy_pb2.SetIamPolicyRequest):
+            request (:class:`~.iam_policy.SetIamPolicyRequest`):
                 The request object. Request message for `SetIamPolicy`
                 method.
-            resource (str):
+            resource (:class:`str`):
                 REQUIRED: The resource for which the
                 policy is being specified. See the
                 operation documentation for the
                 appropriate value for this field.
-
                 This corresponds to the ``resource`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1943,62 +1915,72 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.iam.v1.policy_pb2.Policy:
-                Defines an Identity and Access Management (IAM) policy. It is used to
-                   specify access control policies for Cloud Platform
-                   resources.
+            ~.policy.Policy:
+                Defines an Identity and Access Management (IAM) policy.
+                It is used to specify access control policies for Cloud
+                Platform resources.
 
-                   A Policy is a collection of bindings. A binding binds
-                   one or more members to a single role. Members can be
-                   user accounts, service accounts, Google groups, and
-                   domains (such as G Suite). A role is a named list of
-                   permissions (defined by IAM or configured by users).
-                   A binding can optionally specify a condition, which
-                   is a logic expression that further constrains the
-                   role binding based on attributes about the request
-                   and/or target resource.
+                A ``Policy`` is a collection of ``bindings``. A
+                ``binding`` binds one or more ``members`` to a single
+                ``role``. Members can be user accounts, service
+                accounts, Google groups, and domains (such as G Suite).
+                A ``role`` is a named list of permissions (defined by
+                IAM or configured by users). A ``binding`` can
+                optionally specify a ``condition``, which is a logic
+                expression that further constrains the role binding
+                based on attributes about the request and/or target
+                resource.
 
-                   **JSON Example**
+                **JSON Example**
 
-                      {
-                         "bindings": [
-                            {
-                               "role":
-                               "roles/resourcemanager.organizationAdmin",
-                               "members": [ "user:mike@example.com",
-                               "group:admins@example.com",
-                               "domain:google.com",
-                               "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-                               ]
+                ::
 
-                            }, { "role":
-                            "roles/resourcemanager.organizationViewer",
-                            "members": ["user:eve@example.com"],
-                            "condition": { "title": "expirable access",
-                            "description": "Does not grant access after
-                            Sep 2020", "expression": "request.time <
-                            timestamp('2020-10-01T00:00:00.000Z')", } }
+                    {
+                      "bindings": [
+                        {
+                          "role": "roles/resourcemanager.organizationAdmin",
+                          "members": [
+                            "user:mike@example.com",
+                            "group:admins@example.com",
+                            "domain:google.com",
+                            "serviceAccount:my-project-id@appspot.gserviceaccount.com"
+                          ]
+                        },
+                        {
+                          "role": "roles/resourcemanager.organizationViewer",
+                          "members": ["user:eve@example.com"],
+                          "condition": {
+                            "title": "expirable access",
+                            "description": "Does not grant access after Sep 2020",
+                            "expression": "request.time <
+                            timestamp('2020-10-01T00:00:00.000Z')",
+                          }
+                        }
+                      ]
+                    }
 
-                         ]
+                **YAML Example**
 
-                      }
+                ::
 
-                   **YAML Example**
+                    bindings:
+                    - members:
+                      - user:mike@example.com
+                      - group:admins@example.com
+                      - domain:google.com
+                      - serviceAccount:my-project-id@appspot.gserviceaccount.com
+                      role: roles/resourcemanager.organizationAdmin
+                    - members:
+                      - user:eve@example.com
+                      role: roles/resourcemanager.organizationViewer
+                      condition:
+                        title: expirable access
+                        description: Does not grant access after Sep 2020
+                        expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
 
-                      bindings: - members: - user:\ mike@example.com -
-                      group:\ admins@example.com - domain:google.com -
-                      serviceAccount:\ my-project-id@appspot.gserviceaccount.com
-                      role: roles/resourcemanager.organizationAdmin -
-                      members: - user:\ eve@example.com role:
-                      roles/resourcemanager.organizationViewer
-                      condition: title: expirable access description:
-                      Does not grant access after Sep 2020 expression:
-                      request.time <
-                      timestamp('2020-10-01T00:00:00.000Z')
-
-                   For a description of IAM and its features, see the
-                   [IAM developer's
-                   guide](\ https://cloud.google.com/iam/docs).
+                For a description of IAM and its features, see the `IAM
+                developer's
+                guide <https://cloud.google.com/iam/docs>`__.
 
         """
         # Create or coerce a protobuf request object.
@@ -2049,24 +2031,22 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         specified source.
 
         Args:
-            request (google.iam.v1.iam_policy_pb2.TestIamPermissionsRequest):
+            request (:class:`~.iam_policy.TestIamPermissionsRequest`):
                 The request object. Request message for
                 `TestIamPermissions` method.
-            resource (str):
+            resource (:class:`str`):
                 REQUIRED: The resource for which the
                 policy detail is being requested. See
                 the operation documentation for the
                 appropriate value for this field.
-
                 This corresponds to the ``resource`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            permissions (Sequence[str]):
+            permissions (:class:`Sequence[str]`):
                 The set of permissions to check for the ``resource``.
                 Permissions with wildcards (such as '*' or 'storage.*')
                 are not allowed. For more information see `IAM
                 Overview <https://cloud.google.com/iam/docs/overview#permissions>`__.
-
                 This corresponds to the ``permissions`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -2078,8 +2058,8 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.iam.v1.iam_policy_pb2.TestIamPermissionsResponse:
-                Response message for TestIamPermissions method.
+            ~.iam_policy.TestIamPermissionsResponse:
+                Response message for ``TestIamPermissions`` method.
         """
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
@@ -2131,10 +2111,10 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         source must exist for a finding creation to succeed.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.UpdateFindingRequest):
+            request (:class:`~.securitycenter_service.UpdateFindingRequest`):
                 The request object. Request message for updating or
                 creating a finding.
-            finding (google.cloud.securitycenter_v1p1beta1.types.Finding):
+            finding (:class:`~.gcs_finding.Finding`):
                 Required. The finding resource to update or create if it
                 does not already exist. parent, security_marks, and
                 update_time will be ignored.
@@ -2142,11 +2122,10 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 In the case of creation, the finding id portion of the
                 name must be alphanumeric and less than or equal to 32
                 characters and greater than 0 characters in length.
-
                 This corresponds to the ``finding`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (google.protobuf.field_mask_pb2.FieldMask):
+            update_mask (:class:`~.field_mask.FieldMask`):
                 The FieldMask to use when updating the finding resource.
                 This field should not be specified when creating a
                 finding.
@@ -2156,7 +2135,6 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 source_properties. Individual source_properties can be
                 added/updated by using "source_properties." in the field
                 mask.
-
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -2168,7 +2146,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.Finding:
+            ~.gcs_finding.Finding:
                 Security Command Center finding.
                 A finding is a record of assessment data
                 (security, risk, health or privacy)
@@ -2237,22 +2215,20 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         allowed: description, pubsub_topic, streaming_config.filter
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.UpdateNotificationConfigRequest):
+            request (:class:`~.securitycenter_service.UpdateNotificationConfigRequest`):
                 The request object. Request message for updating a
                 notification config.
-            notification_config (google.cloud.securitycenter_v1p1beta1.types.NotificationConfig):
+            notification_config (:class:`~.gcs_notification_config.NotificationConfig`):
                 Required. The notification config to
                 update.
-
                 This corresponds to the ``notification_config`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (google.protobuf.field_mask_pb2.FieldMask):
+            update_mask (:class:`~.field_mask.FieldMask`):
                 The FieldMask to use when updating
                 the notification config.
                 If empty all mutable fields will be
                 updated.
-
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -2264,7 +2240,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.NotificationConfig:
+            ~.gcs_notification_config.NotificationConfig:
                 Security Command Center notification
                 configs.
                 A notification config is a Security
@@ -2333,13 +2309,12 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Updates an organization's settings.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.UpdateOrganizationSettingsRequest):
+            request (:class:`~.securitycenter_service.UpdateOrganizationSettingsRequest`):
                 The request object. Request message for updating an
                 organization's settings.
-            organization_settings (google.cloud.securitycenter_v1p1beta1.types.OrganizationSettings):
+            organization_settings (:class:`~.gcs_organization_settings.OrganizationSettings`):
                 Required. The organization settings
                 resource to update.
-
                 This corresponds to the ``organization_settings`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -2351,7 +2326,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.OrganizationSettings:
+            ~.gcs_organization_settings.OrganizationSettings:
                 User specified settings that are
                 attached to the Security Command Center
                 organization.
@@ -2415,22 +2390,20 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Updates a source.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.UpdateSourceRequest):
+            request (:class:`~.securitycenter_service.UpdateSourceRequest`):
                 The request object. Request message for updating a
                 source.
-            source (google.cloud.securitycenter_v1p1beta1.types.Source):
+            source (:class:`~.gcs_source.Source`):
                 Required. The source resource to
                 update.
-
                 This corresponds to the ``source`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (google.protobuf.field_mask_pb2.FieldMask):
+            update_mask (:class:`~.field_mask.FieldMask`):
                 The FieldMask to use when updating
                 the source resource.
                 If empty all mutable fields will be
                 updated.
-
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -2442,7 +2415,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.Source:
+            ~.gcs_source.Source:
                 Security Command Center finding
                 source. A finding source is an entity or
                 a mechanism that can produce a finding.
@@ -2507,17 +2480,16 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Updates security marks.
 
         Args:
-            request (google.cloud.securitycenter_v1p1beta1.types.UpdateSecurityMarksRequest):
+            request (:class:`~.securitycenter_service.UpdateSecurityMarksRequest`):
                 The request object. Request message for updating a
                 SecurityMarks resource.
-            security_marks (google.cloud.securitycenter_v1p1beta1.types.SecurityMarks):
+            security_marks (:class:`~.gcs_security_marks.SecurityMarks`):
                 Required. The security marks resource
                 to update.
-
                 This corresponds to the ``security_marks`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (google.protobuf.field_mask_pb2.FieldMask):
+            update_mask (:class:`~.field_mask.FieldMask`):
                 The FieldMask to use when updating the security marks
                 resource.
 
@@ -2525,7 +2497,6 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 empty or set to "marks", all marks will be replaced.
                 Individual marks can be updated using
                 "marks.<mark_key>".
-
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -2537,7 +2508,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.SecurityMarks:
+            ~.gcs_security_marks.SecurityMarks:
                 User specified security marks that
                 are attached to the parent Security
                 Command Center resource. Security marks

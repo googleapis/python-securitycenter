@@ -31,9 +31,9 @@ class RunAssetDiscoveryResponse(proto.Message):
     r"""Response of asset discovery run
 
     Attributes:
-        state (google.cloud.securitycenter_v1p1beta1.types.RunAssetDiscoveryResponse.State):
+        state (~.run_asset_discovery_response.RunAssetDiscoveryResponse.State):
             The state of an asset discovery run.
-        duration (google.protobuf.duration_pb2.Duration):
+        duration (~.gp_duration.Duration):
             The duration between asset discovery run
             start and end
     """
