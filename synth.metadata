@@ -11,8 +11,8 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "20712b8fe95001b312f62c6c5f33e3e3ec92cfaf",
-        "internalRef": "354996675"
+        "sha": "35ce99fec72979f6f9b2a5adae835a49648a3231",
+        "internalRef": "355915985"
       }
     },
     {
@@ -231,7 +231,6 @@
     "scripts/readme-gen/templates/auth_api_key.tmpl.rst",
     "scripts/readme-gen/templates/install_deps.tmpl.rst",
     "scripts/readme-gen/templates/install_portaudio.tmpl.rst",
-    "securitycenter-v1p1beta1-py.tar.gz",
     "setup.cfg",
     "testing/.gitignore",
     "tests/unit/gapic/securitycenter_v1/__init__.py",
