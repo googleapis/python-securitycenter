@@ -935,7 +935,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
             request = iam_policy.GetIamPolicyRequest(**request)
 
         elif not request:
-            request = iam_policy.GetIamPolicyRequest(resource=resource,)
+            request = iam_policy.GetIamPolicyRequest()
 
             if resource is not None:
                 request.resource = resource
@@ -2016,7 +2016,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
             request = iam_policy.SetIamPolicyRequest(**request)
 
         elif not request:
-            request = iam_policy.SetIamPolicyRequest(resource=resource,)
+            request = iam_policy.SetIamPolicyRequest()
 
             if resource is not None:
                 request.resource = resource
@@ -2099,9 +2099,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
             request = iam_policy.TestIamPermissionsRequest(**request)
 
         elif not request:
-            request = iam_policy.TestIamPermissionsRequest(
-                resource=resource, permissions=permissions,
-            )
+            request = iam_policy.TestIamPermissionsRequest()
 
             if resource is not None:
                 request.resource = resource
