@@ -784,8 +784,7 @@ class SecurityCenterAsyncClient:
                 -  resource_name
                 -  category
                 -  state
-                - parent
-
+                -  parent
                 This corresponds to the ``group_by`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
