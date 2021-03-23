@@ -1,6 +1,6 @@
 Services for Google Cloud Securitycenter v1beta1 API
 ====================================================
-.. toctree::
-    :maxdepth: 2
 
-    security_center
+.. automodule:: google.cloud.securitycenter_v1beta1.services.security_center
+    :members:
+    :inherited-members:

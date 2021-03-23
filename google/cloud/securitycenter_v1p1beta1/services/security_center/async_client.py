@@ -122,7 +122,6 @@ class SecurityCenterAsyncClient:
         SecurityCenterClient.parse_common_location_path
     )
 
-    from_service_account_info = SecurityCenterClient.from_service_account_info
     from_service_account_file = SecurityCenterClient.from_service_account_file
     from_service_account_json = from_service_account_file
 
@@ -200,21 +199,19 @@ class SecurityCenterAsyncClient:
         r"""Creates a source.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.CreateSourceRequest`):
+            request (:class:`~.securitycenter_service.CreateSourceRequest`):
                 The request object. Request message for creating a
                 source.
             parent (:class:`str`):
                 Required. Resource name of the new source's parent. Its
                 format should be "organizations/[organization_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            source (:class:`google.cloud.securitycenter_v1p1beta1.types.Source`):
+            source (:class:`~.gcs_source.Source`):
                 Required. The Source being created, only the
                 display_name and description will be used. All other
                 fields will be ignored.
-
                 This corresponds to the ``source`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -226,7 +223,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.Source:
+            ~.gcs_source.Source:
                 Security Command Center finding
                 source. A finding source is an entity or
                 a mechanism that can produce a finding.
@@ -290,29 +287,26 @@ class SecurityCenterAsyncClient:
         exist for finding creation to succeed.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.CreateFindingRequest`):
+            request (:class:`~.securitycenter_service.CreateFindingRequest`):
                 The request object. Request message for creating a
                 finding.
             parent (:class:`str`):
                 Required. Resource name of the new finding's parent. Its
                 format should be
                 "organizations/[organization_id]/sources/[source_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
             finding_id (:class:`str`):
                 Required. Unique identifier provided
                 by the client within the parent scope.
-
                 This corresponds to the ``finding_id`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            finding (:class:`google.cloud.securitycenter_v1p1beta1.types.Finding`):
+            finding (:class:`~.gcs_finding.Finding`):
                 Required. The Finding being created. The name and
                 security_marks will be ignored as they are both output
                 only fields on this resource.
-
                 This corresponds to the ``finding`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -324,7 +318,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.Finding:
+            ~.gcs_finding.Finding:
                 Security Command Center finding.
                 A finding is a record of assessment data
                 (security, risk, health or privacy)
@@ -392,13 +386,12 @@ class SecurityCenterAsyncClient:
         r"""Creates a notification config.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.CreateNotificationConfigRequest`):
+            request (:class:`~.securitycenter_service.CreateNotificationConfigRequest`):
                 The request object. Request message for creating a
                 notification config.
             parent (:class:`str`):
                 Required. Resource name of the new notification config's
                 parent. Its format is "organizations/[organization_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -408,16 +401,14 @@ class SecurityCenterAsyncClient:
                 It must be between 1 and 128 characters,
                 and contains alphanumeric characters,
                 underscores or hyphens only.
-
                 This corresponds to the ``config_id`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            notification_config (:class:`google.cloud.securitycenter_v1p1beta1.types.NotificationConfig`):
+            notification_config (:class:`~.gcs_notification_config.NotificationConfig`):
                 Required. The notification config
                 being created. The name and the service
                 account will be ignored as they are both
                 output only fields on this resource.
-
                 This corresponds to the ``notification_config`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -429,7 +420,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.NotificationConfig:
+            ~.gcs_notification_config.NotificationConfig:
                 Security Command Center notification
                 configs.
                 A notification config is a Security
@@ -493,14 +484,13 @@ class SecurityCenterAsyncClient:
         r"""Deletes a notification config.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.DeleteNotificationConfigRequest`):
+            request (:class:`~.securitycenter_service.DeleteNotificationConfigRequest`):
                 The request object. Request message for deleting a
                 notification config.
             name (:class:`str`):
                 Required. Name of the notification config to delete. Its
                 format is
                 "organizations/[organization_id]/notificationConfigs/[config_id]".
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -561,7 +551,7 @@ class SecurityCenterAsyncClient:
         Source.
 
         Args:
-            request (:class:`google.iam.v1.iam_policy_pb2.GetIamPolicyRequest`):
+            request (:class:`~.iam_policy.GetIamPolicyRequest`):
                 The request object. Request message for `GetIamPolicy`
                 method.
             resource (:class:`str`):
@@ -569,7 +559,6 @@ class SecurityCenterAsyncClient:
                 policy is being requested. See the
                 operation documentation for the
                 appropriate value for this field.
-
                 This corresponds to the ``resource`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -581,62 +570,72 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.iam.v1.policy_pb2.Policy:
-                Defines an Identity and Access Management (IAM) policy. It is used to
-                   specify access control policies for Cloud Platform
-                   resources.
+            ~.policy.Policy:
+                Defines an Identity and Access Management (IAM) policy.
+                It is used to specify access control policies for Cloud
+                Platform resources.
 
-                   A Policy is a collection of bindings. A binding binds
-                   one or more members to a single role. Members can be
-                   user accounts, service accounts, Google groups, and
-                   domains (such as G Suite). A role is a named list of
-                   permissions (defined by IAM or configured by users).
-                   A binding can optionally specify a condition, which
-                   is a logic expression that further constrains the
-                   role binding based on attributes about the request
-                   and/or target resource.
+                A ``Policy`` is a collection of ``bindings``. A
+                ``binding`` binds one or more ``members`` to a single
+                ``role``. Members can be user accounts, service
+                accounts, Google groups, and domains (such as G Suite).
+                A ``role`` is a named list of permissions (defined by
+                IAM or configured by users). A ``binding`` can
+                optionally specify a ``condition``, which is a logic
+                expression that further constrains the role binding
+                based on attributes about the request and/or target
+                resource.
 
-                   **JSON Example**
+                **JSON Example**
 
-                      {
-                         "bindings": [
-                            {
-                               "role":
-                               "roles/resourcemanager.organizationAdmin",
-                               "members": [ "user:mike@example.com",
-                               "group:admins@example.com",
-                               "domain:google.com",
-                               "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-                               ]
+                ::
 
-                            }, { "role":
-                            "roles/resourcemanager.organizationViewer",
-                            "members": ["user:eve@example.com"],
-                            "condition": { "title": "expirable access",
-                            "description": "Does not grant access after
-                            Sep 2020", "expression": "request.time <
-                            timestamp('2020-10-01T00:00:00.000Z')", } }
+                    {
+                      "bindings": [
+                        {
+                          "role": "roles/resourcemanager.organizationAdmin",
+                          "members": [
+                            "user:mike@example.com",
+                            "group:admins@example.com",
+                            "domain:google.com",
+                            "serviceAccount:my-project-id@appspot.gserviceaccount.com"
+                          ]
+                        },
+                        {
+                          "role": "roles/resourcemanager.organizationViewer",
+                          "members": ["user:eve@example.com"],
+                          "condition": {
+                            "title": "expirable access",
+                            "description": "Does not grant access after Sep 2020",
+                            "expression": "request.time <
+                            timestamp('2020-10-01T00:00:00.000Z')",
+                          }
+                        }
+                      ]
+                    }
 
-                         ]
+                **YAML Example**
 
-                      }
+                ::
 
-                   **YAML Example**
+                    bindings:
+                    - members:
+                      - user:mike@example.com
+                      - group:admins@example.com
+                      - domain:google.com
+                      - serviceAccount:my-project-id@appspot.gserviceaccount.com
+                      role: roles/resourcemanager.organizationAdmin
+                    - members:
+                      - user:eve@example.com
+                      role: roles/resourcemanager.organizationViewer
+                      condition:
+                        title: expirable access
+                        description: Does not grant access after Sep 2020
+                        expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
 
-                      bindings: - members: - user:\ mike@example.com -
-                      group:\ admins@example.com - domain:google.com -
-                      serviceAccount:\ my-project-id@appspot.gserviceaccount.com
-                      role: roles/resourcemanager.organizationAdmin -
-                      members: - user:\ eve@example.com role:
-                      roles/resourcemanager.organizationViewer
-                      condition: title: expirable access description:
-                      Does not grant access after Sep 2020 expression:
-                      request.time <
-                      timestamp('2020-10-01T00:00:00.000Z')
-
-                   For a description of IAM and its features, see the
-                   [IAM developer's
-                   guide](\ https://cloud.google.com/iam/docs).
+                For a description of IAM and its features, see the `IAM
+                developer's
+                guide <https://cloud.google.com/iam/docs>`__.
 
         """
         # Create or coerce a protobuf request object.
@@ -697,14 +696,13 @@ class SecurityCenterAsyncClient:
         r"""Gets a notification config.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.GetNotificationConfigRequest`):
+            request (:class:`~.securitycenter_service.GetNotificationConfigRequest`):
                 The request object. Request message for getting a
                 notification config.
             name (:class:`str`):
                 Required. Name of the notification config to get. Its
                 format is
                 "organizations/[organization_id]/notificationConfigs/[config_id]".
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -716,7 +714,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.NotificationConfig:
+            ~.notification_config.NotificationConfig:
                 Security Command Center notification
                 configs.
                 A notification config is a Security
@@ -784,14 +782,13 @@ class SecurityCenterAsyncClient:
         r"""Gets the settings for an organization.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.GetOrganizationSettingsRequest`):
+            request (:class:`~.securitycenter_service.GetOrganizationSettingsRequest`):
                 The request object. Request message for getting
                 organization settings.
             name (:class:`str`):
                 Required. Name of the organization to get organization
                 settings for. Its format is
                 "organizations/[organization_id]/organizationSettings".
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -803,7 +800,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.OrganizationSettings:
+            ~.organization_settings.OrganizationSettings:
                 User specified settings that are
                 attached to the Security Command Center
                 organization.
@@ -867,14 +864,13 @@ class SecurityCenterAsyncClient:
         r"""Gets a source.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.GetSourceRequest`):
+            request (:class:`~.securitycenter_service.GetSourceRequest`):
                 The request object. Request message for getting a
                 source.
             name (:class:`str`):
                 Required. Relative resource name of the source. Its
                 format is
                 "organizations/[organization_id]/source/[source_id]".
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -886,7 +882,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.Source:
+            ~.source.Source:
                 Security Command Center finding
                 source. A finding source is an entity or
                 a mechanism that can produce a finding.
@@ -953,7 +949,7 @@ class SecurityCenterAsyncClient:
         their specified properties.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.GroupAssetsRequest`):
+            request (:class:`~.securitycenter_service.GroupAssetsRequest`):
                 The request object. Request message for grouping by
                 assets.
 
@@ -964,7 +960,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.services.security_center.pagers.GroupAssetsAsyncPager:
+            ~.pagers.GroupAssetsAsyncPager:
                 Response message for grouping by
                 assets.
                 Iterating over this object will yield
@@ -1028,7 +1024,7 @@ class SecurityCenterAsyncClient:
         /v1p1beta1/organizations/{organization_id}/sources/-/findings
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.GroupFindingsRequest`):
+            request (:class:`~.securitycenter_service.GroupFindingsRequest`):
                 The request object. Request message for grouping by
                 findings.
             parent (:class:`str`):
@@ -1037,7 +1033,6 @@ class SecurityCenterAsyncClient:
                 To groupBy across all sources provide a source_id of
                 ``-``. For example:
                 organizations/{organization_id}/sources/-
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1052,7 +1047,8 @@ class SecurityCenterAsyncClient:
                 -  resource_name
                 -  category
                 -  state
-                -  parent
+                - parent
+
                 -  severity
 
                 The following fields are supported when compare_duration
@@ -1071,7 +1067,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.services.security_center.pagers.GroupFindingsAsyncPager:
+            ~.pagers.GroupFindingsAsyncPager:
                 Response message for group by
                 findings.
                 Iterating over this object will yield
@@ -1145,12 +1141,11 @@ class SecurityCenterAsyncClient:
         r"""Lists an organization's assets.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.ListAssetsRequest`):
+            request (:class:`~.securitycenter_service.ListAssetsRequest`):
                 The request object. Request message for listing assets.
             parent (:class:`str`):
                 Required. Name of the organization assets should belong
                 to. Its format is "organizations/[organization_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1162,7 +1157,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.services.security_center.pagers.ListAssetsAsyncPager:
+            ~.pagers.ListAssetsAsyncPager:
                 Response message for listing assets.
                 Iterating over this object will yield
                 results and resolve additional pages
@@ -1237,7 +1232,7 @@ class SecurityCenterAsyncClient:
         /v1p1beta1/organizations/{organization_id}/sources/-/findings
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.ListFindingsRequest`):
+            request (:class:`~.securitycenter_service.ListFindingsRequest`):
                 The request object. Request message for listing
                 findings.
             parent (:class:`str`):
@@ -1246,7 +1241,6 @@ class SecurityCenterAsyncClient:
                 "organizations/[organization_id]/sources/[source_id]".
                 To list across all sources provide a source_id of ``-``.
                 For example: organizations/{organization_id}/sources/-
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1258,7 +1252,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.services.security_center.pagers.ListFindingsAsyncPager:
+            ~.pagers.ListFindingsAsyncPager:
                 Response message for listing
                 findings.
                 Iterating over this object will yield
@@ -1330,14 +1324,13 @@ class SecurityCenterAsyncClient:
         r"""Lists notification configs.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.ListNotificationConfigsRequest`):
+            request (:class:`~.securitycenter_service.ListNotificationConfigsRequest`):
                 The request object. Request message for listing
                 notification configs.
             parent (:class:`str`):
                 Required. Name of the organization to list notification
                 configs. Its format is
                 "organizations/[organization_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1349,7 +1342,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.services.security_center.pagers.ListNotificationConfigsAsyncPager:
+            ~.pagers.ListNotificationConfigsAsyncPager:
                 Response message for listing
                 notification configs.
                 Iterating over this object will yield
@@ -1421,13 +1414,12 @@ class SecurityCenterAsyncClient:
         r"""Lists all sources belonging to an organization.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.ListSourcesRequest`):
+            request (:class:`~.securitycenter_service.ListSourcesRequest`):
                 The request object. Request message for listing sources.
             parent (:class:`str`):
                 Required. Resource name of the parent of sources to
                 list. Its format should be
                 "organizations/[organization_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1439,7 +1431,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.services.security_center.pagers.ListSourcesAsyncPager:
+            ~.pagers.ListSourcesAsyncPager:
                 Response message for listing sources.
                 Iterating over this object will yield
                 results and resolve additional pages
@@ -1515,14 +1507,13 @@ class SecurityCenterAsyncClient:
         receive a TOO_MANY_REQUESTS error.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.RunAssetDiscoveryRequest`):
+            request (:class:`~.securitycenter_service.RunAssetDiscoveryRequest`):
                 The request object. Request message for running asset
                 discovery for an organization.
             parent (:class:`str`):
                 Required. Name of the organization to run asset
                 discovery for. Its format is
                 "organizations/[organization_id]".
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1534,11 +1525,11 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.api_core.operation_async.AsyncOperation:
+            ~.operation_async.AsyncOperation:
                 An object representing a long-running operation.
 
                 The result type for the operation will be
-                :class:`google.cloud.securitycenter_v1p1beta1.types.RunAssetDiscoveryResponse`
+                :class:``~.run_asset_discovery_response.RunAssetDiscoveryResponse``:
                 Response of asset discovery run
 
         """
@@ -1602,7 +1593,7 @@ class SecurityCenterAsyncClient:
         r"""Updates the state of a finding.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.SetFindingStateRequest`):
+            request (:class:`~.securitycenter_service.SetFindingStateRequest`):
                 The request object. Request message for updating a
                 finding's state.
             name (:class:`str`):
@@ -1611,21 +1602,18 @@ class SecurityCenterAsyncClient:
                 https://cloud.google.com/apis/design/resource_names#relative_resource_name
                 Example:
                 "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            state (:class:`google.cloud.securitycenter_v1p1beta1.types.Finding.State`):
+            state (:class:`~.finding.Finding.State`):
                 Required. The desired State of the
                 finding.
-
                 This corresponds to the ``state`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            start_time (:class:`google.protobuf.timestamp_pb2.Timestamp`):
+            start_time (:class:`~.timestamp.Timestamp`):
                 Required. The time at which the
                 updated state takes effect.
-
                 This corresponds to the ``start_time`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1637,7 +1625,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.Finding:
+            ~.finding.Finding:
                 Security Command Center finding.
                 A finding is a record of assessment data
                 (security, risk, health or privacy)
@@ -1704,7 +1692,7 @@ class SecurityCenterAsyncClient:
         Source.
 
         Args:
-            request (:class:`google.iam.v1.iam_policy_pb2.SetIamPolicyRequest`):
+            request (:class:`~.iam_policy.SetIamPolicyRequest`):
                 The request object. Request message for `SetIamPolicy`
                 method.
             resource (:class:`str`):
@@ -1712,7 +1700,6 @@ class SecurityCenterAsyncClient:
                 policy is being specified. See the
                 operation documentation for the
                 appropriate value for this field.
-
                 This corresponds to the ``resource`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1724,62 +1711,72 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.iam.v1.policy_pb2.Policy:
-                Defines an Identity and Access Management (IAM) policy. It is used to
-                   specify access control policies for Cloud Platform
-                   resources.
+            ~.policy.Policy:
+                Defines an Identity and Access Management (IAM) policy.
+                It is used to specify access control policies for Cloud
+                Platform resources.
 
-                   A Policy is a collection of bindings. A binding binds
-                   one or more members to a single role. Members can be
-                   user accounts, service accounts, Google groups, and
-                   domains (such as G Suite). A role is a named list of
-                   permissions (defined by IAM or configured by users).
-                   A binding can optionally specify a condition, which
-                   is a logic expression that further constrains the
-                   role binding based on attributes about the request
-                   and/or target resource.
+                A ``Policy`` is a collection of ``bindings``. A
+                ``binding`` binds one or more ``members`` to a single
+                ``role``. Members can be user accounts, service
+                accounts, Google groups, and domains (such as G Suite).
+                A ``role`` is a named list of permissions (defined by
+                IAM or configured by users). A ``binding`` can
+                optionally specify a ``condition``, which is a logic
+                expression that further constrains the role binding
+                based on attributes about the request and/or target
+                resource.
 
-                   **JSON Example**
+                **JSON Example**
 
-                      {
-                         "bindings": [
-                            {
-                               "role":
-                               "roles/resourcemanager.organizationAdmin",
-                               "members": [ "user:mike@example.com",
-                               "group:admins@example.com",
-                               "domain:google.com",
-                               "serviceAccount:my-project-id@appspot.gserviceaccount.com"
-                               ]
+                ::
 
-                            }, { "role":
-                            "roles/resourcemanager.organizationViewer",
-                            "members": ["user:eve@example.com"],
-                            "condition": { "title": "expirable access",
-                            "description": "Does not grant access after
-                            Sep 2020", "expression": "request.time <
-                            timestamp('2020-10-01T00:00:00.000Z')", } }
+                    {
+                      "bindings": [
+                        {
+                          "role": "roles/resourcemanager.organizationAdmin",
+                          "members": [
+                            "user:mike@example.com",
+                            "group:admins@example.com",
+                            "domain:google.com",
+                            "serviceAccount:my-project-id@appspot.gserviceaccount.com"
+                          ]
+                        },
+                        {
+                          "role": "roles/resourcemanager.organizationViewer",
+                          "members": ["user:eve@example.com"],
+                          "condition": {
+                            "title": "expirable access",
+                            "description": "Does not grant access after Sep 2020",
+                            "expression": "request.time <
+                            timestamp('2020-10-01T00:00:00.000Z')",
+                          }
+                        }
+                      ]
+                    }
 
-                         ]
+                **YAML Example**
 
-                      }
+                ::
 
-                   **YAML Example**
+                    bindings:
+                    - members:
+                      - user:mike@example.com
+                      - group:admins@example.com
+                      - domain:google.com
+                      - serviceAccount:my-project-id@appspot.gserviceaccount.com
+                      role: roles/resourcemanager.organizationAdmin
+                    - members:
+                      - user:eve@example.com
+                      role: roles/resourcemanager.organizationViewer
+                      condition:
+                        title: expirable access
+                        description: Does not grant access after Sep 2020
+                        expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
 
-                      bindings: - members: - user:\ mike@example.com -
-                      group:\ admins@example.com - domain:google.com -
-                      serviceAccount:\ my-project-id@appspot.gserviceaccount.com
-                      role: roles/resourcemanager.organizationAdmin -
-                      members: - user:\ eve@example.com role:
-                      roles/resourcemanager.organizationViewer
-                      condition: title: expirable access description:
-                      Does not grant access after Sep 2020 expression:
-                      request.time <
-                      timestamp('2020-10-01T00:00:00.000Z')
-
-                   For a description of IAM and its features, see the
-                   [IAM developer's
-                   guide](\ https://cloud.google.com/iam/docs).
+                For a description of IAM and its features, see the `IAM
+                developer's
+                guide <https://cloud.google.com/iam/docs>`__.
 
         """
         # Create or coerce a protobuf request object.
@@ -1834,7 +1831,7 @@ class SecurityCenterAsyncClient:
         specified source.
 
         Args:
-            request (:class:`google.iam.v1.iam_policy_pb2.TestIamPermissionsRequest`):
+            request (:class:`~.iam_policy.TestIamPermissionsRequest`):
                 The request object. Request message for
                 `TestIamPermissions` method.
             resource (:class:`str`):
@@ -1842,7 +1839,6 @@ class SecurityCenterAsyncClient:
                 policy detail is being requested. See
                 the operation documentation for the
                 appropriate value for this field.
-
                 This corresponds to the ``resource`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1851,7 +1847,6 @@ class SecurityCenterAsyncClient:
                 Permissions with wildcards (such as '*' or 'storage.*')
                 are not allowed. For more information see `IAM
                 Overview <https://cloud.google.com/iam/docs/overview#permissions>`__.
-
                 This corresponds to the ``permissions`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1863,8 +1858,8 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.iam.v1.iam_policy_pb2.TestIamPermissionsResponse:
-                Response message for TestIamPermissions method.
+            ~.iam_policy.TestIamPermissionsResponse:
+                Response message for ``TestIamPermissions`` method.
         """
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
@@ -1928,10 +1923,10 @@ class SecurityCenterAsyncClient:
         source must exist for a finding creation to succeed.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.UpdateFindingRequest`):
+            request (:class:`~.securitycenter_service.UpdateFindingRequest`):
                 The request object. Request message for updating or
                 creating a finding.
-            finding (:class:`google.cloud.securitycenter_v1p1beta1.types.Finding`):
+            finding (:class:`~.gcs_finding.Finding`):
                 Required. The finding resource to update or create if it
                 does not already exist. parent, security_marks, and
                 update_time will be ignored.
@@ -1939,11 +1934,10 @@ class SecurityCenterAsyncClient:
                 In the case of creation, the finding id portion of the
                 name must be alphanumeric and less than or equal to 32
                 characters and greater than 0 characters in length.
-
                 This corresponds to the ``finding`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
+            update_mask (:class:`~.field_mask.FieldMask`):
                 The FieldMask to use when updating the finding resource.
                 This field should not be specified when creating a
                 finding.
@@ -1953,7 +1947,6 @@ class SecurityCenterAsyncClient:
                 source_properties. Individual source_properties can be
                 added/updated by using "source_properties." in the field
                 mask.
-
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1965,7 +1958,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.Finding:
+            ~.gcs_finding.Finding:
                 Security Command Center finding.
                 A finding is a record of assessment data
                 (security, risk, health or privacy)
@@ -2033,22 +2026,20 @@ class SecurityCenterAsyncClient:
         allowed: description, pubsub_topic, streaming_config.filter
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.UpdateNotificationConfigRequest`):
+            request (:class:`~.securitycenter_service.UpdateNotificationConfigRequest`):
                 The request object. Request message for updating a
                 notification config.
-            notification_config (:class:`google.cloud.securitycenter_v1p1beta1.types.NotificationConfig`):
+            notification_config (:class:`~.gcs_notification_config.NotificationConfig`):
                 Required. The notification config to
                 update.
-
                 This corresponds to the ``notification_config`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
+            update_mask (:class:`~.field_mask.FieldMask`):
                 The FieldMask to use when updating
                 the notification config.
                 If empty all mutable fields will be
                 updated.
-
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -2060,7 +2051,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.NotificationConfig:
+            ~.gcs_notification_config.NotificationConfig:
                 Security Command Center notification
                 configs.
                 A notification config is a Security
@@ -2124,13 +2115,12 @@ class SecurityCenterAsyncClient:
         r"""Updates an organization's settings.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.UpdateOrganizationSettingsRequest`):
+            request (:class:`~.securitycenter_service.UpdateOrganizationSettingsRequest`):
                 The request object. Request message for updating an
                 organization's settings.
-            organization_settings (:class:`google.cloud.securitycenter_v1p1beta1.types.OrganizationSettings`):
+            organization_settings (:class:`~.gcs_organization_settings.OrganizationSettings`):
                 Required. The organization settings
                 resource to update.
-
                 This corresponds to the ``organization_settings`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -2142,7 +2132,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.OrganizationSettings:
+            ~.gcs_organization_settings.OrganizationSettings:
                 User specified settings that are
                 attached to the Security Command Center
                 organization.
@@ -2201,22 +2191,20 @@ class SecurityCenterAsyncClient:
         r"""Updates a source.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.UpdateSourceRequest`):
+            request (:class:`~.securitycenter_service.UpdateSourceRequest`):
                 The request object. Request message for updating a
                 source.
-            source (:class:`google.cloud.securitycenter_v1p1beta1.types.Source`):
+            source (:class:`~.gcs_source.Source`):
                 Required. The source resource to
                 update.
-
                 This corresponds to the ``source`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
+            update_mask (:class:`~.field_mask.FieldMask`):
                 The FieldMask to use when updating
                 the source resource.
                 If empty all mutable fields will be
                 updated.
-
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -2228,7 +2216,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.Source:
+            ~.gcs_source.Source:
                 Security Command Center finding
                 source. A finding source is an entity or
                 a mechanism that can produce a finding.
@@ -2292,17 +2280,16 @@ class SecurityCenterAsyncClient:
         r"""Updates security marks.
 
         Args:
-            request (:class:`google.cloud.securitycenter_v1p1beta1.types.UpdateSecurityMarksRequest`):
+            request (:class:`~.securitycenter_service.UpdateSecurityMarksRequest`):
                 The request object. Request message for updating a
                 SecurityMarks resource.
-            security_marks (:class:`google.cloud.securitycenter_v1p1beta1.types.SecurityMarks`):
+            security_marks (:class:`~.gcs_security_marks.SecurityMarks`):
                 Required. The security marks resource
                 to update.
-
                 This corresponds to the ``security_marks`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
+            update_mask (:class:`~.field_mask.FieldMask`):
                 The FieldMask to use when updating the security marks
                 resource.
 
@@ -2310,7 +2297,6 @@ class SecurityCenterAsyncClient:
                 empty or set to "marks", all marks will be replaced.
                 Individual marks can be updated using
                 "marks.<mark_key>".
-
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -2322,7 +2308,7 @@ class SecurityCenterAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            google.cloud.securitycenter_v1p1beta1.types.SecurityMarks:
+            ~.gcs_security_marks.SecurityMarks:
                 User specified security marks that
                 are attached to the parent Security
                 Command Center resource. Security marks

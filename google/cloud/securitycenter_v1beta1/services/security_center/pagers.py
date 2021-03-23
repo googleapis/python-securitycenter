@@ -26,7 +26,7 @@ class GroupAssetsPager:
     """A pager for iterating through ``group_assets`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.securitycenter_v1beta1.types.GroupAssetsResponse` object, and
+    :class:`~.securitycenter_service.GroupAssetsResponse` object, and
     provides an ``__iter__`` method to iterate through its
     ``group_by_results`` field.
 
@@ -35,7 +35,7 @@ class GroupAssetsPager:
     through the ``group_by_results`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.securitycenter_v1beta1.types.GroupAssetsResponse`
+    All the usual :class:`~.securitycenter_service.GroupAssetsResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -53,9 +53,9 @@ class GroupAssetsPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.securitycenter_v1beta1.types.GroupAssetsRequest):
+            request (:class:`~.securitycenter_service.GroupAssetsRequest`):
                 The initial request object.
-            response (google.cloud.securitycenter_v1beta1.types.GroupAssetsResponse):
+            response (:class:`~.securitycenter_service.GroupAssetsResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -88,7 +88,7 @@ class GroupAssetsAsyncPager:
     """A pager for iterating through ``group_assets`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.securitycenter_v1beta1.types.GroupAssetsResponse` object, and
+    :class:`~.securitycenter_service.GroupAssetsResponse` object, and
     provides an ``__aiter__`` method to iterate through its
     ``group_by_results`` field.
 
@@ -97,7 +97,7 @@ class GroupAssetsAsyncPager:
     through the ``group_by_results`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.securitycenter_v1beta1.types.GroupAssetsResponse`
+    All the usual :class:`~.securitycenter_service.GroupAssetsResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -115,9 +115,9 @@ class GroupAssetsAsyncPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.securitycenter_v1beta1.types.GroupAssetsRequest):
+            request (:class:`~.securitycenter_service.GroupAssetsRequest`):
                 The initial request object.
-            response (google.cloud.securitycenter_v1beta1.types.GroupAssetsResponse):
+            response (:class:`~.securitycenter_service.GroupAssetsResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -154,7 +154,7 @@ class GroupFindingsPager:
     """A pager for iterating through ``group_findings`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.securitycenter_v1beta1.types.GroupFindingsResponse` object, and
+    :class:`~.securitycenter_service.GroupFindingsResponse` object, and
     provides an ``__iter__`` method to iterate through its
     ``group_by_results`` field.
 
@@ -163,7 +163,7 @@ class GroupFindingsPager:
     through the ``group_by_results`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.securitycenter_v1beta1.types.GroupFindingsResponse`
+    All the usual :class:`~.securitycenter_service.GroupFindingsResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -181,9 +181,9 @@ class GroupFindingsPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.securitycenter_v1beta1.types.GroupFindingsRequest):
+            request (:class:`~.securitycenter_service.GroupFindingsRequest`):
                 The initial request object.
-            response (google.cloud.securitycenter_v1beta1.types.GroupFindingsResponse):
+            response (:class:`~.securitycenter_service.GroupFindingsResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -216,7 +216,7 @@ class GroupFindingsAsyncPager:
     """A pager for iterating through ``group_findings`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.securitycenter_v1beta1.types.GroupFindingsResponse` object, and
+    :class:`~.securitycenter_service.GroupFindingsResponse` object, and
     provides an ``__aiter__`` method to iterate through its
     ``group_by_results`` field.
 
@@ -225,7 +225,7 @@ class GroupFindingsAsyncPager:
     through the ``group_by_results`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.securitycenter_v1beta1.types.GroupFindingsResponse`
+    All the usual :class:`~.securitycenter_service.GroupFindingsResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -243,9 +243,9 @@ class GroupFindingsAsyncPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.securitycenter_v1beta1.types.GroupFindingsRequest):
+            request (:class:`~.securitycenter_service.GroupFindingsRequest`):
                 The initial request object.
-            response (google.cloud.securitycenter_v1beta1.types.GroupFindingsResponse):
+            response (:class:`~.securitycenter_service.GroupFindingsResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -284,7 +284,7 @@ class ListAssetsPager:
     """A pager for iterating through ``list_assets`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.securitycenter_v1beta1.types.ListAssetsResponse` object, and
+    :class:`~.securitycenter_service.ListAssetsResponse` object, and
     provides an ``__iter__`` method to iterate through its
     ``list_assets_results`` field.
 
@@ -293,7 +293,7 @@ class ListAssetsPager:
     through the ``list_assets_results`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.securitycenter_v1beta1.types.ListAssetsResponse`
+    All the usual :class:`~.securitycenter_service.ListAssetsResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -311,9 +311,9 @@ class ListAssetsPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.securitycenter_v1beta1.types.ListAssetsRequest):
+            request (:class:`~.securitycenter_service.ListAssetsRequest`):
                 The initial request object.
-            response (google.cloud.securitycenter_v1beta1.types.ListAssetsResponse):
+            response (:class:`~.securitycenter_service.ListAssetsResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -348,7 +348,7 @@ class ListAssetsAsyncPager:
     """A pager for iterating through ``list_assets`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.securitycenter_v1beta1.types.ListAssetsResponse` object, and
+    :class:`~.securitycenter_service.ListAssetsResponse` object, and
     provides an ``__aiter__`` method to iterate through its
     ``list_assets_results`` field.
 
@@ -357,7 +357,7 @@ class ListAssetsAsyncPager:
     through the ``list_assets_results`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.securitycenter_v1beta1.types.ListAssetsResponse`
+    All the usual :class:`~.securitycenter_service.ListAssetsResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -375,9 +375,9 @@ class ListAssetsAsyncPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.securitycenter_v1beta1.types.ListAssetsRequest):
+            request (:class:`~.securitycenter_service.ListAssetsRequest`):
                 The initial request object.
-            response (google.cloud.securitycenter_v1beta1.types.ListAssetsResponse):
+            response (:class:`~.securitycenter_service.ListAssetsResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -416,7 +416,7 @@ class ListFindingsPager:
     """A pager for iterating through ``list_findings`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.securitycenter_v1beta1.types.ListFindingsResponse` object, and
+    :class:`~.securitycenter_service.ListFindingsResponse` object, and
     provides an ``__iter__`` method to iterate through its
     ``findings`` field.
 
@@ -425,7 +425,7 @@ class ListFindingsPager:
     through the ``findings`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.securitycenter_v1beta1.types.ListFindingsResponse`
+    All the usual :class:`~.securitycenter_service.ListFindingsResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -443,9 +443,9 @@ class ListFindingsPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.securitycenter_v1beta1.types.ListFindingsRequest):
+            request (:class:`~.securitycenter_service.ListFindingsRequest`):
                 The initial request object.
-            response (google.cloud.securitycenter_v1beta1.types.ListFindingsResponse):
+            response (:class:`~.securitycenter_service.ListFindingsResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -478,7 +478,7 @@ class ListFindingsAsyncPager:
     """A pager for iterating through ``list_findings`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.securitycenter_v1beta1.types.ListFindingsResponse` object, and
+    :class:`~.securitycenter_service.ListFindingsResponse` object, and
     provides an ``__aiter__`` method to iterate through its
     ``findings`` field.
 
@@ -487,7 +487,7 @@ class ListFindingsAsyncPager:
     through the ``findings`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.securitycenter_v1beta1.types.ListFindingsResponse`
+    All the usual :class:`~.securitycenter_service.ListFindingsResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -505,9 +505,9 @@ class ListFindingsAsyncPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.securitycenter_v1beta1.types.ListFindingsRequest):
+            request (:class:`~.securitycenter_service.ListFindingsRequest`):
                 The initial request object.
-            response (google.cloud.securitycenter_v1beta1.types.ListFindingsResponse):
+            response (:class:`~.securitycenter_service.ListFindingsResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -544,7 +544,7 @@ class ListSourcesPager:
     """A pager for iterating through ``list_sources`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.securitycenter_v1beta1.types.ListSourcesResponse` object, and
+    :class:`~.securitycenter_service.ListSourcesResponse` object, and
     provides an ``__iter__`` method to iterate through its
     ``sources`` field.
 
@@ -553,7 +553,7 @@ class ListSourcesPager:
     through the ``sources`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.securitycenter_v1beta1.types.ListSourcesResponse`
+    All the usual :class:`~.securitycenter_service.ListSourcesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -571,9 +571,9 @@ class ListSourcesPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.securitycenter_v1beta1.types.ListSourcesRequest):
+            request (:class:`~.securitycenter_service.ListSourcesRequest`):
                 The initial request object.
-            response (google.cloud.securitycenter_v1beta1.types.ListSourcesResponse):
+            response (:class:`~.securitycenter_service.ListSourcesResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -606,7 +606,7 @@ class ListSourcesAsyncPager:
     """A pager for iterating through ``list_sources`` requests.
 
     This class thinly wraps an initial
-    :class:`google.cloud.securitycenter_v1beta1.types.ListSourcesResponse` object, and
+    :class:`~.securitycenter_service.ListSourcesResponse` object, and
     provides an ``__aiter__`` method to iterate through its
     ``sources`` field.
 
@@ -615,7 +615,7 @@ class ListSourcesAsyncPager:
     through the ``sources`` field on the
     corresponding responses.
 
-    All the usual :class:`google.cloud.securitycenter_v1beta1.types.ListSourcesResponse`
+    All the usual :class:`~.securitycenter_service.ListSourcesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -633,9 +633,9 @@ class ListSourcesAsyncPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (google.cloud.securitycenter_v1beta1.types.ListSourcesRequest):
+            request (:class:`~.securitycenter_service.ListSourcesRequest`):
                 The initial request object.
-            response (google.cloud.securitycenter_v1beta1.types.ListSourcesResponse):
+            response (:class:`~.securitycenter_service.ListSourcesResponse`):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.

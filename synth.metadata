@@ -4,15 +4,15 @@
       "git": {
         "name": ".",
         "remote": "https://github.com/googleapis/python-securitycenter.git",
-        "sha": "25c5693599360cab02707997c570838579d7b57f"
+        "sha": "8d37bea1658bda9a646277aca90b812ddeee5494"
       }
     },
     {
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "520682435235d9c503983a360a2090025aa47cd1",
-        "internalRef": "350246057"
+        "sha": "e9135d3cb8a99f77ee2ba3318ebc2c9b807581d0",
+        "internalRef": "347410691"
       }
     },
     {
@@ -60,7 +60,6 @@
     }
   ],
   "generatedFiles": [
-    ".coveragerc",
     ".flake8",
     ".github/CONTRIBUTING.md",
     ".github/ISSUE_TEMPLATE/bug_report.md",
@@ -114,13 +113,10 @@
     "docs/_templates/layout.html",
     "docs/conf.py",
     "docs/multiprocessing.rst",
-    "docs/securitycenter_v1/security_center.rst",
     "docs/securitycenter_v1/services.rst",
     "docs/securitycenter_v1/types.rst",
-    "docs/securitycenter_v1beta1/security_center.rst",
     "docs/securitycenter_v1beta1/services.rst",
     "docs/securitycenter_v1beta1/types.rst",
-    "docs/securitycenter_v1p1beta1/security_center.rst",
     "docs/securitycenter_v1p1beta1/services.rst",
     "docs/securitycenter_v1p1beta1/types.rst",
     "google/cloud/securitycenter/__init__.py",
