@@ -43,7 +43,7 @@ class securitycenterCallTransformer(cst.CSTTransformer):
     METHOD_TO_PARAMS: Dict[str, Tuple[str]] = {
     'create_finding': ('parent', 'finding_id', 'finding', ),
     'create_source': ('parent', 'source', ),
-    'get_iam_policy': ('resource', 'options', ),
+    'get_iam_policy': ('resource', 'options_', ),
     'get_organization_settings': ('name', ),
     'get_source': ('name', ),
     'group_assets': ('parent', 'group_by', 'filter', 'compare_duration', 'read_time', 'page_token', 'page_size', ),
@@ -53,7 +53,7 @@ class securitycenterCallTransformer(cst.CSTTransformer):
     'list_sources': ('parent', 'page_token', 'page_size', ),
     'run_asset_discovery': ('parent', ),
     'set_finding_state': ('name', 'state', 'start_time', ),
-    'set_iam_policy': ('resource', 'policy', ),
+    'set_iam_policy': ('resource', 'policy_', ),
     'test_iam_permissions': ('resource', 'permissions', ),
     'update_finding': ('finding', 'update_mask', ),
     'update_organization_settings': ('organization_settings', 'update_mask', ),
