@@ -30,7 +30,7 @@ def receive_notifications(project_id, subscription_name):
 
     def callback(message):
         print("Received message")
-        
+
         # Print the data received for debugging purpose if needed
         print(message.data)
 
