@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 import proto  # type: ignore
-
 
 from google.cloud.securitycenter_v1p1beta1.types import (
     security_marks as gcs_security_marks,
@@ -112,21 +109,14 @@ class Asset(proto.Message):
                 of this resource.
         """
 
-        resource_name = proto.Field(proto.STRING, number=1)
-
-        resource_type = proto.Field(proto.STRING, number=2)
-
-        resource_parent = proto.Field(proto.STRING, number=3)
-
-        resource_project = proto.Field(proto.STRING, number=4)
-
-        resource_owners = proto.RepeatedField(proto.STRING, number=5)
-
-        resource_display_name = proto.Field(proto.STRING, number=6)
-
-        resource_parent_display_name = proto.Field(proto.STRING, number=7)
-
-        resource_project_display_name = proto.Field(proto.STRING, number=8)
+        resource_name = proto.Field(proto.STRING, number=1,)
+        resource_type = proto.Field(proto.STRING, number=2,)
+        resource_parent = proto.Field(proto.STRING, number=3,)
+        resource_project = proto.Field(proto.STRING, number=4,)
+        resource_owners = proto.RepeatedField(proto.STRING, number=5,)
+        resource_display_name = proto.Field(proto.STRING, number=6,)
+        resource_parent_display_name = proto.Field(proto.STRING, number=7,)
+        resource_project_display_name = proto.Field(proto.STRING, number=8,)
 
     class IamPolicy(proto.Message):
         r"""Cloud IAM Policy information associated with the Google Cloud
@@ -142,26 +132,20 @@ class Asset(proto.Message):
                 for format details.
         """
 
-        policy_blob = proto.Field(proto.STRING, number=1)
+        policy_blob = proto.Field(proto.STRING, number=1,)
 
-    name = proto.Field(proto.STRING, number=1)
-
+    name = proto.Field(proto.STRING, number=1,)
     security_center_properties = proto.Field(
         proto.MESSAGE, number=2, message=SecurityCenterProperties,
     )
-
     resource_properties = proto.MapField(
         proto.STRING, proto.MESSAGE, number=7, message=struct.Value,
     )
-
     security_marks = proto.Field(
         proto.MESSAGE, number=8, message=gcs_security_marks.SecurityMarks,
     )
-
     create_time = proto.Field(proto.MESSAGE, number=9, message=timestamp.Timestamp,)
-
     update_time = proto.Field(proto.MESSAGE, number=10, message=timestamp.Timestamp,)
-
     iam_policy = proto.Field(proto.MESSAGE, number=11, message=IamPolicy,)
 
 

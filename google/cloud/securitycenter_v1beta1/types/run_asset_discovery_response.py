@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 import proto  # type: ignore
-
 
 from google.protobuf import duration_pb2 as gp_duration  # type: ignore
 
@@ -29,7 +26,6 @@ __protobuf__ = proto.module(
 
 class RunAssetDiscoveryResponse(proto.Message):
     r"""Response of asset discovery run
-
     Attributes:
         state (google.cloud.securitycenter_v1beta1.types.RunAssetDiscoveryResponse.State):
             The state of an asset discovery run.
@@ -46,7 +42,6 @@ class RunAssetDiscoveryResponse(proto.Message):
         TERMINATED = 3
 
     state = proto.Field(proto.ENUM, number=1, enum=State,)
-
     duration = proto.Field(proto.MESSAGE, number=2, message=gp_duration.Duration,)
 
 

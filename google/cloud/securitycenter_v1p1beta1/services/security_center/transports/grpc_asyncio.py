@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 import warnings
-from typing import Awaitable, Callable, Dict, Optional, Sequence, Tuple
+from typing import Awaitable, Callable, Dict, Optional, Sequence, Tuple, Union
 
 from google.api_core import gapic_v1  # type: ignore
 from google.api_core import grpc_helpers_async  # type: ignore
@@ -24,6 +22,7 @@ from google.api_core import operations_v1  # type: ignore
 from google import auth  # type: ignore
 from google.auth import credentials  # type: ignore
 from google.auth.transport.grpc import SslCredentials  # type: ignore
+import packaging.version
 
 import grpc  # type: ignore
 from grpc.experimental import aio  # type: ignore
@@ -45,10 +44,9 @@ from google.cloud.securitycenter_v1p1beta1.types import securitycenter_service
 from google.cloud.securitycenter_v1p1beta1.types import source
 from google.cloud.securitycenter_v1p1beta1.types import source as gcs_source
 from google.iam.v1 import iam_policy_pb2 as iam_policy  # type: ignore
-from google.iam.v1 import policy_pb2 as policy  # type: ignore
+from google.iam.v1 import policy_pb2 as giv_policy  # type: ignore
 from google.longrunning import operations_pb2 as operations  # type: ignore
 from google.protobuf import empty_pb2 as empty  # type: ignore
-
 from .base import SecurityCenterTransport, DEFAULT_CLIENT_INFO
 from .grpc import SecurityCenterGrpcTransport
 
@@ -100,13 +98,15 @@ class SecurityCenterGrpcAsyncIOTransport(SecurityCenterTransport):
         Returns:
             aio.Channel: A gRPC AsyncIO channel object.
         """
-        scopes = scopes or cls.AUTH_SCOPES
+
+        self_signed_jwt_kwargs = cls._get_self_signed_jwt_kwargs(host, scopes)
+
         return grpc_helpers_async.create_channel(
             host,
             credentials=credentials,
             credentials_file=credentials_file,
-            scopes=scopes,
             quota_project_id=quota_project_id,
+            **self_signed_jwt_kwargs,
             **kwargs,
         )
 
@@ -128,7 +128,8 @@ class SecurityCenterGrpcAsyncIOTransport(SecurityCenterTransport):
         """Instantiate the transport.
 
         Args:
-            host (Optional[str]): The hostname to connect to.
+            host (Optional[str]):
+                 The hostname to connect to.
             credentials (Optional[google.auth.credentials.Credentials]): The
                 authorization credentials to attach to requests. These
                 credentials identify the application to the service; if none
@@ -187,7 +188,6 @@ class SecurityCenterGrpcAsyncIOTransport(SecurityCenterTransport):
             # If a channel was explicitly provided, set it.
             self._grpc_channel = channel
             self._ssl_channel_credentials = None
-
         else:
             if api_mtls_endpoint:
                 host = api_mtls_endpoint
@@ -379,7 +379,7 @@ class SecurityCenterGrpcAsyncIOTransport(SecurityCenterTransport):
     @property
     def get_iam_policy(
         self,
-    ) -> Callable[[iam_policy.GetIamPolicyRequest], Awaitable[policy.Policy]]:
+    ) -> Callable[[iam_policy.GetIamPolicyRequest], Awaitable[giv_policy.Policy]]:
         r"""Return a callable for the get iam policy method over gRPC.
 
         Gets the access control policy on the specified
@@ -399,7 +399,7 @@ class SecurityCenterGrpcAsyncIOTransport(SecurityCenterTransport):
             self._stubs["get_iam_policy"] = self.grpc_channel.unary_unary(
                 "/google.cloud.securitycenter.v1p1beta1.SecurityCenter/GetIamPolicy",
                 request_serializer=iam_policy.GetIamPolicyRequest.SerializeToString,
-                response_deserializer=policy.Policy.FromString,
+                response_deserializer=giv_policy.Policy.FromString,
             )
         return self._stubs["get_iam_policy"]
 
@@ -736,7 +736,7 @@ class SecurityCenterGrpcAsyncIOTransport(SecurityCenterTransport):
     @property
     def set_iam_policy(
         self,
-    ) -> Callable[[iam_policy.SetIamPolicyRequest], Awaitable[policy.Policy]]:
+    ) -> Callable[[iam_policy.SetIamPolicyRequest], Awaitable[giv_policy.Policy]]:
         r"""Return a callable for the set iam policy method over gRPC.
 
         Sets the access control policy on the specified
@@ -756,7 +756,7 @@ class SecurityCenterGrpcAsyncIOTransport(SecurityCenterTransport):
             self._stubs["set_iam_policy"] = self.grpc_channel.unary_unary(
                 "/google.cloud.securitycenter.v1p1beta1.SecurityCenter/SetIamPolicy",
                 request_serializer=iam_policy.SetIamPolicyRequest.SerializeToString,
-                response_deserializer=policy.Policy.FromString,
+                response_deserializer=giv_policy.Policy.FromString,
             )
         return self._stubs["set_iam_policy"]
 

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 import proto  # type: ignore
-
 
 from google.cloud.securitycenter_v1beta1.types import (
     security_marks as gcs_security_marks,
@@ -100,28 +97,19 @@ class Finding(proto.Message):
         ACTIVE = 1
         INACTIVE = 2
 
-    name = proto.Field(proto.STRING, number=1)
-
-    parent = proto.Field(proto.STRING, number=2)
-
-    resource_name = proto.Field(proto.STRING, number=3)
-
+    name = proto.Field(proto.STRING, number=1,)
+    parent = proto.Field(proto.STRING, number=2,)
+    resource_name = proto.Field(proto.STRING, number=3,)
     state = proto.Field(proto.ENUM, number=4, enum=State,)
-
-    category = proto.Field(proto.STRING, number=5)
-
-    external_uri = proto.Field(proto.STRING, number=6)
-
+    category = proto.Field(proto.STRING, number=5,)
+    external_uri = proto.Field(proto.STRING, number=6,)
     source_properties = proto.MapField(
         proto.STRING, proto.MESSAGE, number=7, message=struct.Value,
     )
-
     security_marks = proto.Field(
         proto.MESSAGE, number=8, message=gcs_security_marks.SecurityMarks,
     )
-
     event_time = proto.Field(proto.MESSAGE, number=9, message=timestamp.Timestamp,)
-
     create_time = proto.Field(proto.MESSAGE, number=10, message=timestamp.Timestamp,)
 
 
