@@ -41,7 +41,7 @@ from google.cloud.securitycenter_v1.types import securitycenter_service
 from google.cloud.securitycenter_v1.types import source
 from google.cloud.securitycenter_v1.types import source as gcs_source
 from google.iam.v1 import iam_policy_pb2 as iam_policy  # type: ignore
-from google.iam.v1 import policy_pb2 as policy  # type: ignore
+from google.iam.v1 import policy_pb2 as gi_policy  # type: ignore
 from google.longrunning import operations_pb2 as operations  # type: ignore
 from google.protobuf import empty_pb2 as empty  # type: ignore
 
@@ -375,7 +375,7 @@ class SecurityCenterTransport(abc.ABC):
         self,
     ) -> typing.Callable[
         [iam_policy.GetIamPolicyRequest],
-        typing.Union[policy.Policy, typing.Awaitable[policy.Policy]],
+        typing.Union[gi_policy.Policy, typing.Awaitable[gi_policy.Policy]],
     ]:
         raise NotImplementedError()
 
@@ -507,7 +507,7 @@ class SecurityCenterTransport(abc.ABC):
         self,
     ) -> typing.Callable[
         [iam_policy.SetIamPolicyRequest],
-        typing.Union[policy.Policy, typing.Awaitable[policy.Policy]],
+        typing.Union[gi_policy.Policy, typing.Awaitable[gi_policy.Policy]],
     ]:
         raise NotImplementedError()
 
