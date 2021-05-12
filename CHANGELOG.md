@@ -4,6 +4,19 @@
 
 [1]: https://pypi.org/project/google-cloud-securitycenter/#history
 
+### [1.1.1](https://www.github.com/googleapis/python-securitycenter/compare/v1.1.0...v1.1.1) (2021-05-12)
+
+
+### Bug Fixes
+
+* fix retry deadlines ([#116](https://www.github.com/googleapis/python-securitycenter/issues/116)) ([15c28e8](https://www.github.com/googleapis/python-securitycenter/commit/15c28e88f5b52a6e4f608198446b0753bf48734e))
+
+
+### Documentation
+
+* Fix conflict tag introduced in PR 104 ([#106](https://www.github.com/googleapis/python-securitycenter/issues/106)) ([f4f14ee](https://www.github.com/googleapis/python-securitycenter/commit/f4f14ee32602aad7b7a4837e330919b4276d7b18))
+* standardize new tag with existing tags from other languages ([#104](https://www.github.com/googleapis/python-securitycenter/issues/104)) ([55582ac](https://www.github.com/googleapis/python-securitycenter/commit/55582acd814f7cd290580d5caa531725d2ff58b8))
+
 ## [1.1.0](https://www.github.com/googleapis/python-securitycenter/compare/v1.0.0...v1.1.0) (2020-12-15)
 
 
