@@ -17,10 +17,7 @@ import proto  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package='google.cloud.securitycenter.v1',
-    manifest={
-        'Folder',
-    },
+    package="google.cloud.securitycenter.v1", manifest={"Folder",},
 )
 
 
@@ -37,14 +34,8 @@ class Folder(proto.Message):
             folder.
     """
 
-    resource_folder = proto.Field(
-        proto.STRING,
-        number=1,
-    )
-    resource_folder_display_name = proto.Field(
-        proto.STRING,
-        number=2,
-    )
+    resource_folder = proto.Field(proto.STRING, number=1,)
+    resource_folder_display_name = proto.Field(proto.STRING, number=2,)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))
