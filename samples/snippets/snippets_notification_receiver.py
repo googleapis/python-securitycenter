@@ -18,7 +18,6 @@
 
 def receive_notifications(project_id, subscription_name):
     # [START securitycenter_receive_notifications]
-    # [START scc_receive_notifications]
     # Requires https://cloud.google.com/pubsub/docs/quickstart-client-libraries#pubsub-client-libraries-python
     import concurrent
 
@@ -29,7 +28,9 @@ def receive_notifications(project_id, subscription_name):
     # TODO: subscription_name = "your-subscription-name"
 
     def callback(message):
-        print("Received message")
+
+        # Print the data received for debugging purpose if needed
+        print(f"Received message: {message.data}")
 
         notification_msg = NotificationMessage.from_json(message.data)
 
@@ -53,6 +54,5 @@ def receive_notifications(project_id, subscription_name):
         streaming_pull_future.result(timeout=1)  # Block for 1 second
     except concurrent.futures.TimeoutError:
         streaming_pull_future.cancel()
-    # [END scc_receive_notifications]
     # [END securitycenter_receive_notifications]
     return True
