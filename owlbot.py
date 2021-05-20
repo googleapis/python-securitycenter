@@ -37,8 +37,8 @@ s.remove_staging_dirs()
 # https://github.com/googleapis/gapic-generator-python/issues/897
 s.replace(
     "tests/**/*.py",
-    "assert args\[0\]\.start_time == timestamp_pb2\.Timestamp\(seconds=751\)",
-    "# assert args[0].start_time == timestamp_pb2.Timestamp(seconds=751)"
+    "(\s+)assert args\[0\]\.start_time == timestamp_pb2\.Timestamp\(seconds=751\)",
+    "\g<1># assert args[0].start_time == timestamp_pb2.Timestamp(seconds=751)"
 )
 
 # ----------------------------------------------------------------------------
