@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-securitycenter/#history
 
+### [1.2.1](https://www.github.com/googleapis/python-securitycenter/compare/v1.2.0...v1.2.1) (2021-05-20)
+
+
+### Documentation
+
+* remove unused region tags ([#108](https://www.github.com/googleapis/python-securitycenter/issues/108)) ([a983668](https://www.github.com/googleapis/python-securitycenter/commit/a9836680db5ca69ee8e3983dbf5a03414397e850))
+
 ## [1.2.0](https://www.github.com/googleapis/python-securitycenter/compare/v1.1.0...v1.2.0) (2021-05-19)
 
 
