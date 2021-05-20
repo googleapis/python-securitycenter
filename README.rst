@@ -1,5 +1,5 @@
-Python Client for Cloud Security Command Center API (`Alpha`_)
-==============================================================
+Python Client for Cloud Security Command Center API
+===================================================
 |GA| |pypi| |versions| 
 
 `Cloud Security Command Center API`_: The public Cloud Security Command Center API.
