@@ -4864,6 +4864,7 @@ async def test_set_finding_state_flattened_async():
         assert args[0].state == finding.Finding.State.ACTIVE
         # assert args[0].start_time == timestamp_pb2.Timestamp(seconds=751)
 
+
 @pytest.mark.asyncio
 async def test_set_finding_state_flattened_error_async():
     client = SecurityCenterAsyncClient(
