@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-securitycenter/#history
 
+### [1.3.2](https://www.github.com/googleapis/python-securitycenter/compare/v1.3.1...v1.3.2) (2021-06-21)
+
+
+### Documentation
+
+* omit mention of Python 2.7 in 'CONTRIBUTING.rst' ([#1127](https://www.github.com/googleapis/python-securitycenter/issues/1127)) ([#164](https://www.github.com/googleapis/python-securitycenter/issues/164)) ([42a2f11](https://www.github.com/googleapis/python-securitycenter/commit/42a2f1175d022174c45f04726072935b8738e111)), closes [#1126](https://www.github.com/googleapis/python-securitycenter/issues/1126)
+
 ### [1.3.1](https://www.github.com/googleapis/python-securitycenter/compare/v1.3.0...v1.3.1) (2021-06-10)
 
 
