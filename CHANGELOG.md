@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-securitycenter/#history
 
+### [1.4.1](https://www.github.com/googleapis/python-securitycenter/compare/v1.4.0...v1.4.1) (2021-07-20)
+
+
+### Bug Fixes
+
+* **deps:** pin 'google-{api,cloud}-core', 'google-auth' to allow 2.x versions ([#194](https://www.github.com/googleapis/python-securitycenter/issues/194)) ([37af051](https://www.github.com/googleapis/python-securitycenter/commit/37af0515bbb5b9de9719baf3ff5bc5e51df0cb58))
+
 ## [1.4.0](https://www.github.com/googleapis/python-securitycenter/compare/v1.3.1...v1.4.0) (2021-07-12)
 
 
