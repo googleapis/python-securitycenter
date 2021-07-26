@@ -17,34 +17,27 @@ import proto  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package='google.cloud.securitycenter.v1p1beta1',
-    manifest={
-        'Folder',
-    },
+    package="google.cloud.securitycenter.v1", manifest={"Indicator",},
 )
 
 
-class Folder(proto.Message):
-    r"""Message that contains the resource name and display name of a
-    folder resource.
+class Indicator(proto.Message):
+    r"""Represents what's commonly known as an Indicator of compromise (IoC)
+    in computer forensics. This is an artifact observed on a network or
+    in an operating system that, with high confidence, indicates a
+    computer intrusion. Reference:
+    https://en.wikipedia.org/wiki/Indicator_of_compromise
 
     Attributes:
-        resource_folder (str):
-            Full resource name of this folder. See:
-            https://cloud.google.com/apis/design/resource_names#full_resource_name
-        resource_folder_display_name (str):
-            The user defined display name for this
-            folder.
+        ip_addresses (Sequence[str]):
+            List of ip addresses associated to the
+            Finding.
+        domains (Sequence[str]):
+            List of domains associated to the Finding.
     """
 
-    resource_folder = proto.Field(
-        proto.STRING,
-        number=1,
-    )
-    resource_folder_display_name = proto.Field(
-        proto.STRING,
-        number=2,
-    )
+    ip_addresses = proto.RepeatedField(proto.STRING, number=1,)
+    domains = proto.RepeatedField(proto.STRING, number=2,)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))
