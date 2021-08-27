@@ -82,7 +82,7 @@ def list_assets_with_filters_and_read_time(organization_id):
     )
 
     # Lists assets as of yesterday.
-    read_time = datetime.datetime.now(tz=datetime.timezone.utc) - timedelta(days=1)
+    read_time = datetime.now(tz=datetime.timezone.utc) - timedelta(days=1)
 
     # Call the API and print results.
     asset_iterator = client.list_assets(
