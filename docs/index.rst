@@ -2,51 +2,40 @@
 
 .. include:: multiprocessing.rst
 
-Api Reference
--------------
+This package includes clients for multiple versions of Google Cloud Security Command Center.
+By default, you will get version ``securitycenter_v1``.
 
-v1
-~~~
+
+API Reference
+-------------
 .. toctree::
     :maxdepth: 2
 
     securitycenter_v1/services
     securitycenter_v1/types
 
-v1beta1
-~~~~~~~
+API Reference
+-------------
 .. toctree::
     :maxdepth: 2
 
     securitycenter_v1beta1/services
     securitycenter_v1beta1/types
 
-
-v1p1beta1
-~~~~~~~~~
+API Reference
+-------------
 .. toctree::
     :maxdepth: 2
 
     securitycenter_v1p1beta1/services
     securitycenter_v1p1beta1/types
 
-Migration Guide
----------------
-
-See the guide below for instructions on migrating to the 2.x release of this library.
-
-.. toctree::
-    :maxdepth: 2
-
-    UPGRADING
-
-
 Changelog
-----------
+---------
 
 For a list of all ``google-cloud-securitycenter`` releases:
 
 .. toctree::
-    :maxdepth: 2
+   :maxdepth: 2
 
-    changelog
+   changelog
