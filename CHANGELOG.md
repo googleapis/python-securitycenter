@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-securitycenter/#history
 
+### [1.7.1](https://www.github.com/googleapis/python-securitycenter/compare/v1.7.0...v1.7.1) (2021-11-01)
+
+
+### Bug Fixes
+
+* fix extras_require typo in setup.py ([#242](https://www.github.com/googleapis/python-securitycenter/issues/242)) ([d477b96](https://www.github.com/googleapis/python-securitycenter/commit/d477b96c4de26adc282b41c16240fe0e38689320))
+
 ## [1.7.0](https://www.github.com/googleapis/python-securitycenter/compare/v1.6.0...v1.7.0) (2021-10-08)
 
 
