@@ -68,6 +68,8 @@ setuptools.setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Operating System :: OS Independent",
         "Topic :: Internet",
     ],
@@ -75,7 +77,7 @@ setuptools.setup(
     packages=packages,
     namespace_packages=namespaces,
     install_requires=dependencies,
-    extras_requires=extras,
+    extras_require=extras,
     python_requires=">=3.6",
     scripts=[
         "scripts/fixup_securitycenter_v1_keywords.py",
