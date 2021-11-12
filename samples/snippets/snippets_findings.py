@@ -275,7 +275,7 @@ def update_finding(source_name):
         event_time=event_time,
     )
     updated_finding = client.update_finding(
-        request={"finding": finding, "update_mask": field_mask,}
+        request={"finding": finding, "update_mask": field_mask}
     )
 
     print(
@@ -544,7 +544,7 @@ def group_findings_at_time(source_name):
     read_time = datetime.utcnow() - timedelta(days=1)
 
     group_result_iterator = client.group_findings(
-        request={"parent": source_name, "group_by": "category", "read_time": read_time,}
+        request={"parent": source_name, "group_by": "category", "read_time": read_time}
     )
     for i, group_result in enumerate(group_result_iterator):
         print((i + 1), group_result)
