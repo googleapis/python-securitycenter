@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Copyright 2021 Google LLC
+# Copyright 2022 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -157,7 +157,7 @@ def update_mute_rule(mute_config_name: str) -> None:
     update_mute_config.name = mute_config_name
     update_mute_config.description = "Updated mute config description"
 
-    field_mask = field_mask_pb2.FieldMask(paths=["mute_config.description"])
+    field_mask = field_mask_pb2.FieldMask(paths=["description"])
 
     request = securitycenter.UpdateMuteConfigRequest()
     request.mute_config = update_mute_config
@@ -199,6 +199,7 @@ def set_mute_unmute_finding(finding_path: str) -> None:
 
     finding = client.set_mute(request)
     print(f"Mute value for the finding: {finding.mute}")
+
 
 # [END securitycenter_set_mute_unmute]
 
