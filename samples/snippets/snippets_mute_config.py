@@ -41,9 +41,11 @@ def create_mute_rule(parent_path: str, mute_config_id: str) -> None:
     # Set mute rule(s).
     # To construct mute rules and for supported properties, see:
     # https://cloud.google.com/security-command-center/docs/how-to-mute-findings#console_3
-    mute_config.filter = "severity=\"LOW\" OR severity=\"MEDIUM\" AND " \
-                         "category=\"Persistence: IAM Anomalous Grant\" AND " \
-                         "-resource.type:\"compute\""
+    mute_config.filter = (
+        'severity="LOW" OR severity="MEDIUM" AND '
+        'category="Persistence: IAM Anomalous Grant" AND '
+        '-resource.type:"compute"'
+    )
 
     request = securitycenter.CreateMuteConfigRequest()
     request.parent = parent_path
@@ -229,4 +231,6 @@ def bulk_mute_findings(parent_path: str, mute_rule: str) -> None:
 
     response = client.bulk_mute_findings(request)
     print(f"Bulk mute findings completed successfully ! : {response}")
+
+
 # [END securitycenter_bulk_mute]
