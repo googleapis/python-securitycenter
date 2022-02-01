@@ -18,13 +18,14 @@ import re
 import uuid
 
 from _pytest.capture import CaptureFixture
-import pytest
 
 from google.cloud import securitycenter
 from google.cloud.securitycenter_v1 import Finding
 from google.cloud.securitycenter_v1.services.security_center.pagers import (
     ListFindingsPager,
 )
+
+import pytest
 
 import snippets_mute_config
 
