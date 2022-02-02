@@ -17,18 +17,15 @@ import os
 import re
 import uuid
 
+import pytest
 from _pytest.capture import CaptureFixture
 
+import snippets_mute_config
 from google.cloud import securitycenter
 from google.cloud.securitycenter_v1 import Finding
 from google.cloud.securitycenter_v1.services.security_center.pagers import (
     ListFindingsPager,
 )
-
-import pytest
-
-import snippets_mute_config
-
 
 # TODO(developer): Replace these variables before running the sample.
 PROJECT_ID = os.environ["GOOGLE_CLOUD_PROJECT"]
