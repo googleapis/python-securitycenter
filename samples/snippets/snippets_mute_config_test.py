@@ -59,7 +59,7 @@ def finding(capsys: CaptureFixture):
 
     snippets_findings.create_source(ORGANIZATION_ID)
     out, _ = capsys.readouterr()
-    source_name = out.rsplit(":").trim()
+    source_name = out.rsplit(":")[1].strip()
     source_path = f"organizations/{ORGANIZATION_ID}/sources/{source_name}"
     finding_1 = snippets_findings.create_finding(source_path, "1testingscc")
     finding_2 = snippets_findings.create_finding(source_path, "2testingscc")
@@ -84,7 +84,7 @@ def test_get_mute_rule(capsys: CaptureFixture, mute_rule):
     )
     out, _ = capsys.readouterr()
     assert re.search("Retrieved the mute config: ", out)
-    assert re.search(mute_rule.get("update"), out)
+    assert re.search(mute_rule.get("create"), out)
 
 
 def test_list_mute_rules(capsys: CaptureFixture, mute_rule):

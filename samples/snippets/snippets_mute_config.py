@@ -104,7 +104,7 @@ def get_mute_rule(mute_config_name: str) -> None:
     request.name = mute_config_name
 
     mute_config = client.get_mute_config(request)
-    print(f"Retrieved the mute rule: {mute_config}")
+    print(f"Retrieved the mute rule: {mute_config.name}")
 
 
 # [END securitycenter_get_mute_config]
