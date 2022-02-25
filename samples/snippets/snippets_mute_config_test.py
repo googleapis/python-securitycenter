@@ -20,7 +20,6 @@ import uuid
 from _pytest.capture import CaptureFixture
 
 from google.cloud import securitycenter
-from google.cloud.securitycenter_v1 import Finding
 from google.cloud.securitycenter_v1.services.security_center.pagers import (
     ListFindingsPager,
 )
@@ -57,13 +56,15 @@ def mute_rule():
 def finding(capsys: CaptureFixture):
     import snippets_findings
 
+    from samples.snippets.snippets_findings import create_finding
+
     snippets_findings.create_source(ORGANIZATION_ID)
     out, _ = capsys.readouterr()
     source_name = out.rsplit(":")[1].strip()
     source_path = f"organizations/{ORGANIZATION_ID}/sources/{source_name}"
-    finding_1 = snippets_findings.create_finding(source_path, "1testingscc")
-    finding_2 = snippets_findings.create_finding(source_path, "2testingscc")
-    finding_3 = snippets_findings.create_finding(source_path, "3testingscc")
+    finding_1 = create_finding(source_path, "1testingscc")
+    finding_2 = create_finding(source_path, "2testingscc")
+    finding_3 = create_finding(source_path, "3testingscc")
 
     yield {
         "source": source_name,
@@ -83,7 +84,7 @@ def test_get_mute_rule(capsys: CaptureFixture, mute_rule):
         f"projects/{PROJECT_ID}/muteConfigs/{mute_rule.get('create')}"
     )
     out, _ = capsys.readouterr()
-    assert re.search("Retrieved the mute config: ", out)
+    assert re.search("Retrieved the mute rule: ", out)
     assert re.search(mute_rule.get("create"), out)
 
 
@@ -123,4 +124,4 @@ def test_bulk_mute_findings(capsys: CaptureFixture, finding):
         f"projects/{PROJECT_ID}/sources/{finding.get('source')}"
     )
     for i, finding in enumerate(response):
-        assert finding.finding.mute == Finding.Mute
+        assert finding.finding.mute == securitycenter.Finding.Mute.MUTED
