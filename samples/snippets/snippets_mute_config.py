@@ -17,6 +17,7 @@
 
 # [START securitycenter_create_mute_config]
 
+
 def create_mute_rule(parent_path: str, mute_config_id: str) -> None:
     """
     Creates a mute configuration under a given scope that will mute
@@ -191,6 +192,7 @@ def set_mute_unmute_finding(finding_path: str) -> None:
         - projects/{project_id}/sources/{source_id}/finding/{finding_id}.
     """
     from google.cloud import securitycenter
+
     client = securitycenter.SecurityCenterClient()
 
     request = securitycenter.SetMuteRequest()

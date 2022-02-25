@@ -180,7 +180,9 @@ def create_finding(source_name, finding_id):
     )
 
     # Call The API.
-    created_finding = client.create_finding(request={"parent": source_name, "finding_id": finding_id, "finding": finding})
+    created_finding = client.create_finding(
+        request={"parent": source_name, "finding_id": finding_id, "finding": finding}
+    )
     print(created_finding)
     # [END securitycenter_create_finding]
     return created_finding
