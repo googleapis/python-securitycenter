@@ -151,7 +151,7 @@ def create_finding(source_name, finding_id):
     """Creates a new finding."""
     # [START securitycenter_create_finding]
     from google.cloud import securitycenter
-    from google.cloud.securitycenter_v1 import CreateFindingRequest, Finding
+    from google.cloud.securitycenter_v1 import Finding
     import datetime
 
     # Create a new client.
