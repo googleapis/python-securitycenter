@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2020 Google LLC
+# Copyright 2022 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -1333,8 +1333,7 @@ class ListFindingsResponse(proto.Message):
                     The full resource name of project that the
                     resource belongs to.
                 project_display_name (str):
-                    The human readable name of project that the
-                    resource belongs to.
+                    The project id that the resource belongs to.
                 parent_name (str):
                     The full resource name of resource's parent.
                 parent_display_name (str):
