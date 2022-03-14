@@ -60,17 +60,16 @@ def finding(capsys: CaptureFixture):
 
     snippets_findings.create_source(ORGANIZATION_ID)
     out, _ = capsys.readouterr()
-    source_name = out.rsplit(":")[1].strip()
-    source_path = f"organizations/{ORGANIZATION_ID}/sources/{source_name}"
-    finding_1 = create_finding(source_path, "1testingscc")
-    finding_2 = create_finding(source_path, "2testingscc")
-    finding_3 = create_finding(source_path, "3testingscc")
+    # source_path is of the format: organizations/{ORGANIZATION_ID}/sources/{source_name}
+    source_path = out.split(":")[1].strip()
+    source_name = source_path.split("/")[3]
+    finding1_path = create_finding(source_path, "1testingscc").name
+    finding2_path = create_finding(source_path, "2testingscc").name
 
     yield {
         "source": source_name,
-        "finding1": finding_1,
-        "finding2": finding_2,
-        "finding3": finding_3,
+        "finding1": finding1_path,
+        "finding2": finding2_path,
     }
 
 
@@ -107,7 +106,7 @@ def test_update_mute_rule(capsys: CaptureFixture, mute_rule):
 
 
 def test_set_mute_finding(capsys: CaptureFixture, finding):
-    finding_path = f"projects/{PROJECT_ID}/sources/{finding.get('source')}/finding/{finding.get('finding1')}"
+    finding_path = finding.get('finding1_path')
     snippets_mute_config.set_mute_unmute_finding(finding_path)
     out, _ = capsys.readouterr()
     assert re.search("Mute value for the finding: MUTED", out)
