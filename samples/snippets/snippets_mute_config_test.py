@@ -56,7 +56,7 @@ def mute_rule():
 def finding(capsys: CaptureFixture):
     import snippets_findings
 
-    from samples.snippets.snippets_findings import create_finding
+    from snippets_findings import create_finding
 
     snippets_findings.create_source(ORGANIZATION_ID)
     out, _ = capsys.readouterr()
