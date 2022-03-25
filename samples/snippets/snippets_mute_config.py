@@ -200,7 +200,7 @@ def set_mute_unmute_finding(finding_path: str) -> None:
     request.mute = securitycenter.Finding.Mute.MUTED
 
     finding = client.set_mute(request)
-    print(f"Mute value for the finding: {finding.mute}")
+    print(f"Mute value for the finding: {finding.mute.name}")
 
 
 # [END securitycenter_set_mute_unmute]
