@@ -137,7 +137,9 @@ _SECURITYMARKS = _descriptor.Descriptor(
         ),
     ],
     extensions=[],
-    nested_types=[_SECURITYMARKS_MARKSENTRY,],
+    nested_types=[
+        _SECURITYMARKS_MARKSENTRY,
+    ],
     enum_types=[],
     serialized_options=b"\352A\270\001\n+securitycenter.googleapis.com/SecurityMarks\0229organizations/{organization}/assets/{asset}/securityMarks\022Norganizations/{organization}/sources/{source}/findings/{finding}/securityMarks",
     is_extendable=False,

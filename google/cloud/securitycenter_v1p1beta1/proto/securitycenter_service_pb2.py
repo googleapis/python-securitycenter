@@ -1182,7 +1182,9 @@ _GROUPRESULT = _descriptor.Descriptor(
         ),
     ],
     extensions=[],
-    nested_types=[_GROUPRESULT_PROPERTIESENTRY,],
+    nested_types=[
+        _GROUPRESULT_PROPERTIESENTRY,
+    ],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
@@ -1695,7 +1697,9 @@ _LISTASSETSRESPONSE_LISTASSETSRESULT = _descriptor.Descriptor(
     ],
     extensions=[],
     nested_types=[],
-    enum_types=[_LISTASSETSRESPONSE_LISTASSETSRESULT_STATECHANGE,],
+    enum_types=[
+        _LISTASSETSRESPONSE_LISTASSETSRESULT_STATECHANGE,
+    ],
     serialized_options=None,
     is_extendable=False,
     syntax="proto3",
@@ -1791,7 +1795,9 @@ _LISTASSETSRESPONSE = _descriptor.Descriptor(
         ),
     ],
     extensions=[],
-    nested_types=[_LISTASSETSRESPONSE_LISTASSETSRESULT,],
+    nested_types=[
+        _LISTASSETSRESPONSE_LISTASSETSRESULT,
+    ],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
@@ -2160,8 +2166,12 @@ _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT = _descriptor.Descriptor(
         ),
     ],
     extensions=[],
-    nested_types=[_LISTFINDINGSRESPONSE_LISTFINDINGSRESULT_RESOURCE,],
-    enum_types=[_LISTFINDINGSRESPONSE_LISTFINDINGSRESULT_STATECHANGE,],
+    nested_types=[
+        _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT_RESOURCE,
+    ],
+    enum_types=[
+        _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT_STATECHANGE,
+    ],
     serialized_options=None,
     is_extendable=False,
     syntax="proto3",
@@ -2257,7 +2267,9 @@ _LISTFINDINGSRESPONSE = _descriptor.Descriptor(
         ),
     ],
     extensions=[],
-    nested_types=[_LISTFINDINGSRESPONSE_LISTFINDINGSRESULT,],
+    nested_types=[
+        _LISTFINDINGSRESPONSE_LISTFINDINGSRESULT,
+    ],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,

@@ -29,8 +29,7 @@ from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
 class SecurityCenterStub(object):
-    """V1p1Beta1 APIs for Security Center service.
-    """
+    """V1p1Beta1 APIs for Security Center service."""
 
     def __init__(self, channel):
         """Constructor.
@@ -156,12 +155,10 @@ class SecurityCenterStub(object):
 
 
 class SecurityCenterServicer(object):
-    """V1p1Beta1 APIs for Security Center service.
-    """
+    """V1p1Beta1 APIs for Security Center service."""
 
     def CreateSource(self, request, context):
-        """Creates a source.
-        """
+        """Creates a source."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
@@ -175,43 +172,37 @@ class SecurityCenterServicer(object):
         raise NotImplementedError("Method not implemented!")
 
     def CreateNotificationConfig(self, request, context):
-        """Creates a notification config.
-        """
+        """Creates a notification config."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def DeleteNotificationConfig(self, request, context):
-        """Deletes a notification config.
-        """
+        """Deletes a notification config."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def GetIamPolicy(self, request, context):
-        """Gets the access control policy on the specified Source.
-        """
+        """Gets the access control policy on the specified Source."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def GetNotificationConfig(self, request, context):
-        """Gets a notification config.
-        """
+        """Gets a notification config."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def GetOrganizationSettings(self, request, context):
-        """Gets the settings for an organization.
-        """
+        """Gets the settings for an organization."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def GetSource(self, request, context):
-        """Gets a source.
-        """
+        """Gets a source."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
@@ -236,8 +227,7 @@ class SecurityCenterServicer(object):
         raise NotImplementedError("Method not implemented!")
 
     def ListAssets(self, request, context):
-        """Lists an organization's assets.
-        """
+        """Lists an organization's assets."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
@@ -253,15 +243,13 @@ class SecurityCenterServicer(object):
         raise NotImplementedError("Method not implemented!")
 
     def ListNotificationConfigs(self, request, context):
-        """Lists notification configs.
-        """
+        """Lists notification configs."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def ListSources(self, request, context):
-        """Lists all sources belonging to an organization.
-        """
+        """Lists all sources belonging to an organization."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
@@ -279,22 +267,19 @@ class SecurityCenterServicer(object):
         raise NotImplementedError("Method not implemented!")
 
     def SetFindingState(self, request, context):
-        """Updates the state of a finding.
-        """
+        """Updates the state of a finding."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def SetIamPolicy(self, request, context):
-        """Sets the access control policy on the specified Source.
-        """
+        """Sets the access control policy on the specified Source."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def TestIamPermissions(self, request, context):
-        """Returns the permissions that a caller has on the specified source.
-        """
+        """Returns the permissions that a caller has on the specified source."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
@@ -316,22 +301,19 @@ class SecurityCenterServicer(object):
         raise NotImplementedError("Method not implemented!")
 
     def UpdateOrganizationSettings(self, request, context):
-        """Updates an organization's settings.
-        """
+        """Updates an organization's settings."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def UpdateSource(self, request, context):
-        """Updates a source.
-        """
+        """Updates a source."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def UpdateSecurityMarks(self, request, context):
-        """Updates security marks.
-        """
+        """Updates security marks."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
@@ -463,8 +445,7 @@ def add_SecurityCenterServicer_to_server(servicer, server):
 
 # This class is part of an EXPERIMENTAL API.
 class SecurityCenter(object):
-    """V1p1Beta1 APIs for Security Center service.
-    """
+    """V1p1Beta1 APIs for Security Center service."""
 
     @staticmethod
     def CreateSource(
