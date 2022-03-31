@@ -228,8 +228,12 @@ _NOTIFICATIONCONFIG = _descriptor.Descriptor(
         ),
     ],
     extensions=[],
-    nested_types=[_NOTIFICATIONCONFIG_STREAMINGCONFIG,],
-    enum_types=[_NOTIFICATIONCONFIG_EVENTTYPE,],
+    nested_types=[
+        _NOTIFICATIONCONFIG_STREAMINGCONFIG,
+    ],
+    enum_types=[
+        _NOTIFICATIONCONFIG_EVENTTYPE,
+    ],
     serialized_options=b"\352Az\n0securitycenter.googleapis.com/NotificationConfig\022Forganizations/{organization}/notificationConfigs/{notification_config}",
     is_extendable=False,
     syntax="proto3",

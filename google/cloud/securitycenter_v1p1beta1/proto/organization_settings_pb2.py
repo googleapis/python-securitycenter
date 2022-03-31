@@ -119,7 +119,9 @@ _ORGANIZATIONSETTINGS_ASSETDISCOVERYCONFIG = _descriptor.Descriptor(
     ],
     extensions=[],
     nested_types=[],
-    enum_types=[_ORGANIZATIONSETTINGS_ASSETDISCOVERYCONFIG_INCLUSIONMODE,],
+    enum_types=[
+        _ORGANIZATIONSETTINGS_ASSETDISCOVERYCONFIG_INCLUSIONMODE,
+    ],
     serialized_options=None,
     is_extendable=False,
     syntax="proto3",
@@ -196,7 +198,9 @@ _ORGANIZATIONSETTINGS = _descriptor.Descriptor(
         ),
     ],
     extensions=[],
-    nested_types=[_ORGANIZATIONSETTINGS_ASSETDISCOVERYCONFIG,],
+    nested_types=[
+        _ORGANIZATIONSETTINGS_ASSETDISCOVERYCONFIG,
+    ],
     enum_types=[],
     serialized_options=b"\352Ag\n2securitycenter.googleapis.com/OrganizationSettings\0221organizations/{organization}/organizationSettings",
     is_extendable=False,

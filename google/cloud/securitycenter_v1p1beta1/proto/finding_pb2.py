@@ -413,8 +413,13 @@ _FINDING = _descriptor.Descriptor(
         ),
     ],
     extensions=[],
-    nested_types=[_FINDING_SOURCEPROPERTIESENTRY,],
-    enum_types=[_FINDING_STATE, _FINDING_SEVERITY,],
+    nested_types=[
+        _FINDING_SOURCEPROPERTIESENTRY,
+    ],
+    enum_types=[
+        _FINDING_STATE,
+        _FINDING_SEVERITY,
+    ],
     serialized_options=b"\352Ai\n%securitycenter.googleapis.com/Finding\022@organizations/{organization}/sources/{source}/findings/{finding}",
     is_extendable=False,
     syntax="proto3",

@@ -339,7 +339,10 @@ _ASSET = _descriptor.Descriptor(
         ),
     ],
     extensions=[],
-    nested_types=[_ASSET_SECURITYCENTERPROPERTIES, _ASSET_RESOURCEPROPERTIESENTRY,],
+    nested_types=[
+        _ASSET_SECURITYCENTERPROPERTIES,
+        _ASSET_RESOURCEPROPERTIESENTRY,
+    ],
     enum_types=[],
     serialized_options=b"\352AR\n#securitycenter.googleapis.com/Asset\022+organizations/{organization}/assets/{asset}",
     is_extendable=False,

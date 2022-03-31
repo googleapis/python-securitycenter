@@ -127,7 +127,9 @@ _RUNASSETDISCOVERYRESPONSE = _descriptor.Descriptor(
     ],
     extensions=[],
     nested_types=[],
-    enum_types=[_RUNASSETDISCOVERYRESPONSE_STATE,],
+    enum_types=[
+        _RUNASSETDISCOVERYRESPONSE_STATE,
+    ],
     serialized_options=None,
     is_extendable=False,
     syntax="proto3",

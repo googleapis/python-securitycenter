@@ -22,7 +22,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     serialized_options=b'\n"com.google.cloud.securitycenter.v1B\rResourceProtoP\001ZLgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1;securitycenter\252\002\036Google.Cloud.SecurityCenter.V1\312\002\036Google\\Cloud\\SecurityCenter\\V1\352\002!Google::Cloud::SecurityCenter::V1',
     create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n3google/cloud/securitycenter_v1/proto/resource.proto\x12\x1egoogle.cloud.securitycenter.v1\x1a\x1cgoogle/api/annotations.proto"t\n\x08Resource\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07project\x18\x02 \x01(\t\x12\x1c\n\x14project_display_name\x18\x03 \x01(\t\x12\x0e\n\x06parent\x18\x04 \x01(\t\x12\x1b\n\x13parent_display_name\x18\x05 \x01(\tB\xe9\x01\n"com.google.cloud.securitycenter.v1B\rResourceProtoP\x01ZLgoogle.golang.org/genproto/googleapis/cloud/securitycenter/v1;securitycenter\xaa\x02\x1eGoogle.Cloud.SecurityCenter.V1\xca\x02\x1eGoogle\\Cloud\\SecurityCenter\\V1\xea\x02!Google::Cloud::SecurityCenter::V1b\x06proto3',
-    dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,],
+    dependencies=[
+        google_dot_api_dot_annotations__pb2.DESCRIPTOR,
+    ],
 )
 
 

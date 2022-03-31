@@ -905,7 +905,9 @@ _GROUPRESULT = _descriptor.Descriptor(
         ),
     ],
     extensions=[],
-    nested_types=[_GROUPRESULT_PROPERTIESENTRY,],
+    nested_types=[
+        _GROUPRESULT_PROPERTIESENTRY,
+    ],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
@@ -1279,7 +1281,9 @@ _LISTASSETSRESPONSE_LISTASSETSRESULT = _descriptor.Descriptor(
     ],
     extensions=[],
     nested_types=[],
-    enum_types=[_LISTASSETSRESPONSE_LISTASSETSRESULT_STATE,],
+    enum_types=[
+        _LISTASSETSRESPONSE_LISTASSETSRESULT_STATE,
+    ],
     serialized_options=None,
     is_extendable=False,
     syntax="proto3",
@@ -1375,7 +1379,9 @@ _LISTASSETSRESPONSE = _descriptor.Descriptor(
         ),
     ],
     extensions=[],
-    nested_types=[_LISTASSETSRESPONSE_LISTASSETSRESULT,],
+    nested_types=[
+        _LISTASSETSRESPONSE_LISTASSETSRESULT,
+    ],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
