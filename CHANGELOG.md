@@ -4,6 +4,13 @@
 
 [1]: https://pypi.org/project/google-cloud-securitycenter/#history
 
+### [0.7.2](https://github.com/googleapis/python-securitycenter/compare/v0.7.1...v0.7.2) (2022-03-31)
+
+
+### Bug Fixes
+
+* **deps:** require google-api-core >= 1.31.5, >= 2.3.2 on v0 release ([01e4f94](https://github.com/googleapis/python-securitycenter/commit/01e4f94c1ee6f430cc81f1e604ffd4cb591e54ae))
+
 ### [0.7.1](https://www.github.com/googleapis/python-securitycenter/compare/v0.7.0...v0.7.1) (2020-09-18)
 
 
