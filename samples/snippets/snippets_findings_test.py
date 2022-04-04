@@ -23,7 +23,7 @@ import snippets_findings
 
 @pytest.fixture(scope="module")
 def organization_id():
-    """Get Organization ID from the environment variable """
+    """Get Organization ID from the environment variable"""
     return os.environ["GCLOUD_ORGANIZATION"]
 
 
@@ -76,7 +76,7 @@ def test_list_source(organization_id):
 
 
 def test_create_finding(source_name):
-    created_finding = snippets_findings.create_finding(source_name)
+    created_finding = snippets_findings.create_finding(source_name, "samplefindingid")
     assert len(created_finding.name) > 0
 
 
