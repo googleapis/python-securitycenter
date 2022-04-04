@@ -35,13 +35,19 @@ def bigquery_export_id():
     bigquery_export_id = f"default-{str(uuid.uuid4()).split('-')[0]}"
 
     create_bigquery_dataset(BIGQUERY_DATASET_ID)
-    export_filter = "severity=\"LOW\" OR severity=\"MEDIUM\""
-    snippets_bigquery_export.create_bigquery_export(f"projects/{PROJECT_ID}", export_filter, BIGQUERY_DATASET_ID, bigquery_export_id)
+    export_filter = 'severity="LOW" OR severity="MEDIUM"'
+    snippets_bigquery_export.create_bigquery_export(
+        f"projects/{PROJECT_ID}", export_filter, BIGQUERY_DATASET_ID, bigquery_export_id
+    )
 
     yield bigquery_export_id
 
-    snippets_bigquery_export.delete_bigquery_export(f"projects/{PROJECT_ID}", bigquery_export_id)
-    assert re.search(f"BigQuery export request deleted successfully: {bigquery_export_id}")
+    snippets_bigquery_export.delete_bigquery_export(
+        f"projects/{PROJECT_ID}", bigquery_export_id
+    )
+    assert re.search(
+        f"BigQuery export request deleted successfully: {bigquery_export_id}"
+    )
     delete_bigquery_dataset(BIGQUERY_DATASET_ID)
 
 
@@ -66,9 +72,14 @@ def delete_bigquery_dataset(dataset_id: str):
 
 
 def test_get_bigquery_export(capsys: CaptureFixture, bigquery_export_id: str):
-    snippets_bigquery_export.get_bigquery_export(f"projects/{PROJECT_ID}", bigquery_export_id)
+    snippets_bigquery_export.get_bigquery_export(
+        f"projects/{PROJECT_ID}", bigquery_export_id
+    )
     out, _ = capsys.readouterr()
-    assert re.search(f"Retrieved the BigQuery export: projects/{PROJECT_ID}/bigQueryExports/{bigquery_export_id}", out)
+    assert re.search(
+        f"Retrieved the BigQuery export: projects/{PROJECT_ID}/bigQueryExports/{bigquery_export_id}",
+        out,
+    )
 
 
 def test_list_bigquery_exports(capsys: CaptureFixture, bigquery_export_id: str):
@@ -79,7 +90,9 @@ def test_list_bigquery_exports(capsys: CaptureFixture, bigquery_export_id: str):
 
 
 def test_update_bigquery_exports(capsys: CaptureFixture, bigquery_export_id: str):
-    export_filter = "severity=\"MEDIUM\""
-    snippets_bigquery_export.update_bigquery_export(f"projects/{PROJECT_ID}", export_filter, bigquery_export_id)
+    export_filter = 'severity="MEDIUM"'
+    snippets_bigquery_export.update_bigquery_export(
+        f"projects/{PROJECT_ID}", export_filter, bigquery_export_id
+    )
     out, _ = capsys.readouterr()
     assert re.search("BigQueryExport updated successfully!", out)
