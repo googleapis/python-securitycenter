@@ -50,7 +50,9 @@ def create_bigquery_dataset(dataset_id: str):
 
     bigquery_client = bigquery.Client()
 
-    dataset = bigquery.Dataset(dataset_id)
+    dataset_id_full = "{}.{}".format(PROJECT_ID, dataset_id)
+    dataset = bigquery.Dataset(dataset_id_full)
+
     dataset = bigquery_client.create_dataset(dataset)
     print("Dataset {} created.".format(dataset.dataset_id))
 
