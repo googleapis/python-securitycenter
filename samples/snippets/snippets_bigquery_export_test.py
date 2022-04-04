@@ -31,7 +31,7 @@ BIGQUERY_DATASET_ID = "sampledataset"
 
 
 @pytest.fixture
-def bigquery_export():
+def bigquery_export_id():
     bigquery_export_id = f"default-{str(uuid.uuid4()).split('-')[0]}"
 
     create_bigquery_dataset(BIGQUERY_DATASET_ID)
@@ -63,20 +63,20 @@ def delete_bigquery_dataset(dataset_id: str):
     print("Dataset {} deleted.".format(dataset_id))
 
 
-def test_get_bigquery_export(capsys: CaptureFixture, bigquery_export_id: bigquery_export):
+def test_get_bigquery_export(capsys: CaptureFixture, bigquery_export_id: str):
     snippets_bigquery_export.get_bigquery_export(f"projects/{PROJECT_ID}", bigquery_export_id)
     out, _ = capsys.readouterr()
     assert re.search(f"Retrieved the BigQuery export: projects/{PROJECT_ID}/bigQueryExports/{bigquery_export_id}", out)
 
 
-def test_list_bigquery_exports(capsys: CaptureFixture, bigquery_export_id: bigquery_export):
+def test_list_bigquery_exports(capsys: CaptureFixture, bigquery_export_id: str):
     snippets_bigquery_export.list_bigquery_exports(f"projects/{PROJECT_ID}")
     out, _ = capsys.readouterr()
     assert re.search("Listing BigQuery exports:", out)
     assert re.search(bigquery_export_id, out)
 
 
-def test_update_bigquery_exports(capsys: CaptureFixture, bigquery_export_id: bigquery_export):
+def test_update_bigquery_exports(capsys: CaptureFixture, bigquery_export_id: str):
     export_filter = "severity=\"MEDIUM\""
     snippets_bigquery_export.update_bigquery_export(f"projects/{PROJECT_ID}", export_filter, bigquery_export_id)
     out, _ = capsys.readouterr()
