@@ -32,6 +32,9 @@ from .finding import (
 from .folder import (
     Folder,
 )
+from .iam_binding import (
+    IamBinding,
+)
 from .indicator import (
     Indicator,
 )
@@ -122,6 +125,7 @@ __all__ = (
     'ExternalSystem',
     'Finding',
     'Folder',
+    'IamBinding',
     'Indicator',
     'MitreAttack',
     'MuteConfig',

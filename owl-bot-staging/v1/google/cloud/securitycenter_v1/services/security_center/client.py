@@ -42,6 +42,7 @@ from google.cloud.securitycenter_v1.types import bigquery_export
 from google.cloud.securitycenter_v1.types import external_system as gcs_external_system
 from google.cloud.securitycenter_v1.types import finding
 from google.cloud.securitycenter_v1.types import finding as gcs_finding
+from google.cloud.securitycenter_v1.types import iam_binding
 from google.cloud.securitycenter_v1.types import indicator
 from google.cloud.securitycenter_v1.types import mitre_attack
 from google.cloud.securitycenter_v1.types import mute_config

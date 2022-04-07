@@ -75,6 +75,7 @@ class MitreAttack(proto.Message):
     class Technique(proto.Enum):
         r"""MITRE ATT&CK techniques that can be referenced by SCC
         findings. See: https://attack.mitre.org/techniques/enterprise/
+        Next ID: 30
         """
         TECHNIQUE_UNSPECIFIED = 0
         ACTIVE_SCANNING = 1
@@ -105,6 +106,7 @@ class MitreAttack(proto.Message):
         MODIFY_CLOUD_COMPUTE_INFRASTRUCTURE = 26
         EXPLOIT_PUBLIC_FACING_APPLICATION = 27
         MODIFY_AUTHENTICATION_PROCESS = 28
+        DATA_DESTRUCTION = 29
 
     primary_tactic = proto.Field(
         proto.ENUM,
