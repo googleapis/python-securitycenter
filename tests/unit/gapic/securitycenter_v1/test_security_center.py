@@ -47,6 +47,7 @@ from google.cloud.securitycenter_v1.types import external_system
 from google.cloud.securitycenter_v1.types import external_system as gcs_external_system
 from google.cloud.securitycenter_v1.types import finding
 from google.cloud.securitycenter_v1.types import finding as gcs_finding
+from google.cloud.securitycenter_v1.types import iam_binding
 from google.cloud.securitycenter_v1.types import indicator
 from google.cloud.securitycenter_v1.types import mitre_attack
 from google.cloud.securitycenter_v1.types import mute_config
@@ -7786,6 +7787,7 @@ def test_set_iam_policy_from_dict_foreign():
             request={
                 "resource": "resource_value",
                 "policy": policy_pb2.Policy(version=774),
+                "update_mask": field_mask_pb2.FieldMask(paths=["paths_value"]),
             }
         )
         call.assert_called()

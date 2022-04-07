@@ -17,6 +17,7 @@ import proto  # type: ignore
 
 from google.cloud.securitycenter_v1.types import access as gcs_access
 from google.cloud.securitycenter_v1.types import external_system
+from google.cloud.securitycenter_v1.types import iam_binding
 from google.cloud.securitycenter_v1.types import indicator as gcs_indicator
 from google.cloud.securitycenter_v1.types import mitre_attack as gcs_mitre_attack
 from google.cloud.securitycenter_v1.types import security_marks as gcs_security_marks
@@ -110,9 +111,9 @@ class Finding(proto.Message):
             associated with the finding.
         mute (google.cloud.securitycenter_v1.types.Finding.Mute):
             Indicates the mute state of a finding (either
-            unspecified, muted, unmuted or undefined).
-            Unlike other attributes of a finding, a finding
-            provider shouldn't set the value of mute.
+            muted, unmuted or undefined). Unlike other
+            attributes of a finding, a finding provider
+            shouldn't set the value of mute.
         finding_class (google.cloud.securitycenter_v1.types.Finding.FindingClass):
             The class of the finding.
         indicator (google.cloud.securitycenter_v1.types.Indicator):
@@ -146,6 +147,9 @@ class Finding(proto.Message):
             muted the finding, user who muted the finding, etc. Unlike
             other attributes of a finding, a finding provider shouldn't
             set the value of mute.
+        iam_bindings (Sequence[google.cloud.securitycenter_v1.types.IamBinding]):
+            Represents IAM bindings associated with the
+            Finding.
     """
 
     class State(proto.Enum):
@@ -277,6 +281,11 @@ class Finding(proto.Message):
     mute_initiator = proto.Field(
         proto.STRING,
         number=28,
+    )
+    iam_bindings = proto.RepeatedField(
+        proto.MESSAGE,
+        number=39,
+        message=iam_binding.IamBinding,
     )
 
 

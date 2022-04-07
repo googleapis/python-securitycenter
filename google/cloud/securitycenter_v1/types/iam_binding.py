@@ -17,9 +17,9 @@ import proto  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package='google.cloud.securitycenter.v1',
+    package="google.cloud.securitycenter.v1",
     manifest={
-        'IamBinding',
+        "IamBinding",
     },
 )
 
@@ -39,6 +39,7 @@ class IamBinding(proto.Message):
             A single identity requesting access for a
             Cloud Platform resource, e.g. "foo@google.com".
     """
+
     class Action(proto.Enum):
         r"""The type of action performed on a Binding in a policy."""
         ACTION_UNSPECIFIED = 0
