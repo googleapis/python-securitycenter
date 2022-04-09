@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -578,7 +578,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_create_source():
                 # Create a client
@@ -691,7 +691,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_create_finding():
                 # Create a client
@@ -818,7 +818,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_create_notification_config():
                 # Create a client
@@ -948,7 +948,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_delete_notification_config():
                 # Create a client
@@ -1038,7 +1038,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_get_iam_policy():
                 # Create a client
@@ -1195,7 +1195,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_get_notification_config():
                 # Create a client
@@ -1298,7 +1298,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_get_organization_settings():
                 # Create a client
@@ -1399,7 +1399,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_get_source():
                 # Create a client
@@ -1500,7 +1500,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_group_assets():
                 # Create a client
@@ -1597,7 +1597,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_group_findings():
                 # Create a client
@@ -1736,7 +1736,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_list_assets():
                 # Create a client
@@ -1848,7 +1848,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_list_findings():
                 # Create a client
@@ -1965,7 +1965,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_list_notification_configs():
                 # Create a client
@@ -2078,7 +2078,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_list_sources():
                 # Create a client
@@ -2192,7 +2192,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_run_asset_discovery():
                 # Create a client
@@ -2305,7 +2305,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_set_finding_state():
                 # Create a client
@@ -2431,7 +2431,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_set_iam_policy():
                 # Create a client
@@ -2589,7 +2589,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_test_iam_permissions():
                 # Create a client
@@ -2698,7 +2698,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_update_finding():
                 # Create a client
@@ -2827,7 +2827,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_update_notification_config():
                 # Create a client
@@ -2945,7 +2945,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_update_organization_settings():
                 # Create a client
@@ -3047,7 +3047,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_update_source():
                 # Create a client
@@ -3159,7 +3159,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import securitycenter_v1p1beta1
+                    from google.cloud import securitycenter_v1p1beta1
 
             def sample_update_security_marks():
                 # Create a client
