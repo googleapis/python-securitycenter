@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -688,7 +688,6 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Creates a finding. The corresponding source must
         exist for finding creation to succeed.
 
-
         .. code-block:: python
 
             from google.cloud import securitycenter_v1p1beta1
@@ -1034,7 +1033,6 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
     ) -> policy_pb2.Policy:
         r"""Gets the access control policy on the specified
         Source.
-
 
         .. code-block:: python
 
@@ -1497,7 +1495,6 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Filters an organization's assets and  groups them by
         their specified properties.
 
-
         .. code-block:: python
 
             from google.cloud import securitycenter_v1p1beta1
@@ -1593,7 +1590,6 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         Example: /v1/organizations/{organization_id}/sources/-/findings,
         /v1/folders/{folder_id}/sources/-/findings,
         /v1/projects/{project_id}/sources/-/findings
-
 
         .. code-block:: python
 
@@ -1844,7 +1840,6 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         To list across all sources provide a ``-`` as the source id.
         Example:
         /v1p1beta1/organizations/{organization_id}/sources/-/findings
-
 
         .. code-block:: python
 
@@ -2189,7 +2184,6 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         organization. If it is called too frequently the caller will
         receive a TOO_MANY_REQUESTS error.
 
-
         .. code-block:: python
 
             from google.cloud import securitycenter_v1p1beta1
@@ -2428,7 +2422,6 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Sets the access control policy on the specified
         Source.
 
-
         .. code-block:: python
 
             from google.cloud import securitycenter_v1p1beta1
@@ -2586,7 +2579,6 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         r"""Returns the permissions that a caller has on the
         specified source.
 
-
         .. code-block:: python
 
             from google.cloud import securitycenter_v1p1beta1
@@ -2694,7 +2686,6 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
     ) -> gcs_finding.Finding:
         r"""Creates or updates a finding. The corresponding
         source must exist for a finding creation to succeed.
-
 
         .. code-block:: python
 
@@ -2823,7 +2814,6 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
     ) -> gcs_notification_config.NotificationConfig:
         r"""Updates a notification config. The following update fields are
         allowed: description, pubsub_topic, streaming_config.filter
-
 
         .. code-block:: python
 

@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -279,7 +279,6 @@ class SecurityCenterAsyncClient:
         organization, folder or project. The findings matched by
         the filter will be muted after the LRO is done.
 
-
         .. code-block:: python
 
             from google.cloud import securitycenter_v1
@@ -511,7 +510,6 @@ class SecurityCenterAsyncClient:
     ) -> gcs_finding.Finding:
         r"""Creates a finding. The corresponding source must
         exist for finding creation to succeed.
-
 
         .. code-block:: python
 
@@ -1163,7 +1161,6 @@ class SecurityCenterAsyncClient:
         r"""Gets the access control policy on the specified
         Source.
 
-
         .. code-block:: python
 
             from google.cloud import securitycenter_v1
@@ -1295,8 +1292,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=60.0,
             ),
@@ -1506,8 +1502,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=60.0,
             ),
@@ -1615,8 +1610,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=60.0,
             ),
@@ -1725,8 +1719,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=60.0,
             ),
@@ -1761,7 +1754,6 @@ class SecurityCenterAsyncClient:
     ) -> pagers.GroupAssetsAsyncPager:
         r"""Filters an organization's assets and  groups them by
         their specified properties.
-
 
         .. code-block:: python
 
@@ -1815,8 +1807,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=480.0,
             ),
@@ -1867,7 +1858,6 @@ class SecurityCenterAsyncClient:
         Example: /v1/organizations/{organization_id}/sources/-/findings,
         /v1/folders/{folder_id}/sources/-/findings,
         /v1/projects/{project_id}/sources/-/findings
-
 
         .. code-block:: python
 
@@ -1972,8 +1962,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=480.0,
             ),
@@ -2066,8 +2055,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=480.0,
             ),
@@ -2113,7 +2101,6 @@ class SecurityCenterAsyncClient:
 
         To list across all sources provide a ``-`` as the source id.
         Example: /v1/organizations/{organization_id}/sources/-/findings
-
 
         .. code-block:: python
 
@@ -2166,8 +2153,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=480.0,
             ),
@@ -2398,8 +2384,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=60.0,
             ),
@@ -2516,8 +2501,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=60.0,
             ),
@@ -2566,7 +2550,6 @@ class SecurityCenterAsyncClient:
         This API can only be called with limited frequency for an
         organization. If it is called too frequently the caller will
         receive a TOO_MANY_REQUESTS error.
-
 
         .. code-block:: python
 
@@ -2924,7 +2907,6 @@ class SecurityCenterAsyncClient:
         r"""Sets the access control policy on the specified
         Source.
 
-
         .. code-block:: python
 
             from google.cloud import securitycenter_v1
@@ -3085,7 +3067,6 @@ class SecurityCenterAsyncClient:
         r"""Returns the permissions that a caller has on the
         specified source.
 
-
         .. code-block:: python
 
             from google.cloud import securitycenter_v1
@@ -3167,8 +3148,7 @@ class SecurityCenterAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=60.0,
             ),
@@ -3312,7 +3292,6 @@ class SecurityCenterAsyncClient:
     ) -> gcs_finding.Finding:
         r"""Creates or updates a finding. The corresponding
         source must exist for a finding creation to succeed.
-
 
         .. code-block:: python
 
@@ -3537,7 +3516,6 @@ class SecurityCenterAsyncClient:
     ) -> gcs_notification_config.NotificationConfig:
         r"""Updates a notification config. The following update fields are
         allowed: description, pubsub_topic, streaming_config.filter
-
 
         .. code-block:: python
 
@@ -4269,7 +4247,6 @@ class SecurityCenterAsyncClient:
         exports under a folder, then all BigQuery exports
         immediately under the folder plus the ones created under
         the projects within the folder are returned.
-
 
         .. code-block:: python
 
