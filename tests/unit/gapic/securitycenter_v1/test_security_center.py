@@ -43,10 +43,12 @@ from google.cloud.securitycenter_v1.services.security_center import pagers
 from google.cloud.securitycenter_v1.services.security_center import transports
 from google.cloud.securitycenter_v1.types import access
 from google.cloud.securitycenter_v1.types import bigquery_export
+from google.cloud.securitycenter_v1.types import connection
 from google.cloud.securitycenter_v1.types import external_system
 from google.cloud.securitycenter_v1.types import external_system as gcs_external_system
 from google.cloud.securitycenter_v1.types import finding
 from google.cloud.securitycenter_v1.types import finding as gcs_finding
+from google.cloud.securitycenter_v1.types import iam_binding
 from google.cloud.securitycenter_v1.types import indicator
 from google.cloud.securitycenter_v1.types import mitre_attack
 from google.cloud.securitycenter_v1.types import mute_config
@@ -124,24 +126,24 @@ def test__get_default_mtls_endpoint():
 
 
 @pytest.mark.parametrize(
-    "client_class",
+    "client_class,transport_name",
     [
-        SecurityCenterClient,
-        SecurityCenterAsyncClient,
+        (SecurityCenterClient, "grpc"),
+        (SecurityCenterAsyncClient, "grpc_asyncio"),
     ],
 )
-def test_security_center_client_from_service_account_info(client_class):
+def test_security_center_client_from_service_account_info(client_class, transport_name):
     creds = ga_credentials.AnonymousCredentials()
     with mock.patch.object(
         service_account.Credentials, "from_service_account_info"
     ) as factory:
         factory.return_value = creds
         info = {"valid": True}
-        client = client_class.from_service_account_info(info)
+        client = client_class.from_service_account_info(info, transport=transport_name)
         assert client.transport._credentials == creds
         assert isinstance(client, client_class)
 
-        assert client.transport._host == "securitycenter.googleapis.com:443"
+        assert client.transport._host == ("securitycenter.googleapis.com:443")
 
 
 @pytest.mark.parametrize(
@@ -170,27 +172,31 @@ def test_security_center_client_service_account_always_use_jwt(
 
 
 @pytest.mark.parametrize(
-    "client_class",
+    "client_class,transport_name",
     [
-        SecurityCenterClient,
-        SecurityCenterAsyncClient,
+        (SecurityCenterClient, "grpc"),
+        (SecurityCenterAsyncClient, "grpc_asyncio"),
     ],
 )
-def test_security_center_client_from_service_account_file(client_class):
+def test_security_center_client_from_service_account_file(client_class, transport_name):
     creds = ga_credentials.AnonymousCredentials()
     with mock.patch.object(
         service_account.Credentials, "from_service_account_file"
     ) as factory:
         factory.return_value = creds
-        client = client_class.from_service_account_file("dummy/file/path.json")
+        client = client_class.from_service_account_file(
+            "dummy/file/path.json", transport=transport_name
+        )
         assert client.transport._credentials == creds
         assert isinstance(client, client_class)
 
-        client = client_class.from_service_account_json("dummy/file/path.json")
+        client = client_class.from_service_account_json(
+            "dummy/file/path.json", transport=transport_name
+        )
         assert client.transport._credentials == creds
         assert isinstance(client, client_class)
 
-        assert client.transport._host == "securitycenter.googleapis.com:443"
+        assert client.transport._host == ("securitycenter.googleapis.com:443")
 
 
 def test_security_center_client_get_transport_class():
@@ -1204,6 +1210,8 @@ def test_create_finding(request_type, transport: str = "grpc"):
             mute=gcs_finding.Finding.Mute.MUTED,
             finding_class=gcs_finding.Finding.FindingClass.THREAT,
             mute_initiator="mute_initiator_value",
+            description="description_value",
+            next_steps="next_steps_value",
         )
         response = client.create_finding(request)
 
@@ -1225,6 +1233,8 @@ def test_create_finding(request_type, transport: str = "grpc"):
     assert response.mute == gcs_finding.Finding.Mute.MUTED
     assert response.finding_class == gcs_finding.Finding.FindingClass.THREAT
     assert response.mute_initiator == "mute_initiator_value"
+    assert response.description == "description_value"
+    assert response.next_steps == "next_steps_value"
 
 
 def test_create_finding_empty_call():
@@ -1273,6 +1283,8 @@ async def test_create_finding_async(
                 mute=gcs_finding.Finding.Mute.MUTED,
                 finding_class=gcs_finding.Finding.FindingClass.THREAT,
                 mute_initiator="mute_initiator_value",
+                description="description_value",
+                next_steps="next_steps_value",
             )
         )
         response = await client.create_finding(request)
@@ -1295,6 +1307,8 @@ async def test_create_finding_async(
     assert response.mute == gcs_finding.Finding.Mute.MUTED
     assert response.finding_class == gcs_finding.Finding.FindingClass.THREAT
     assert response.mute_initiator == "mute_initiator_value"
+    assert response.description == "description_value"
+    assert response.next_steps == "next_steps_value"
 
 
 @pytest.mark.asyncio
@@ -4312,7 +4326,7 @@ async def test_group_assets_async_pager():
         )
         assert async_pager.next_page_token == "abc"
         responses = []
-        async for response in async_pager:
+        async for response in async_pager:  # pragma: no branch
             responses.append(response)
 
         assert len(responses) == 6
@@ -4358,7 +4372,9 @@ async def test_group_assets_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page_ in (await client.group_assets(request={})).pages:
+        async for page_ in (
+            await client.group_assets(request={})
+        ).pages:  # pragma: no branch
             pages.append(page_)
         for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
             assert page_.raw_page.next_page_token == token
@@ -4745,7 +4761,7 @@ async def test_group_findings_async_pager():
         )
         assert async_pager.next_page_token == "abc"
         responses = []
-        async for response in async_pager:
+        async for response in async_pager:  # pragma: no branch
             responses.append(response)
 
         assert len(responses) == 6
@@ -4791,7 +4807,9 @@ async def test_group_findings_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page_ in (await client.group_findings(request={})).pages:
+        async for page_ in (
+            await client.group_findings(request={})
+        ).pages:  # pragma: no branch
             pages.append(page_)
         for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
             assert page_.raw_page.next_page_token == token
@@ -5089,7 +5107,7 @@ async def test_list_assets_async_pager():
         )
         assert async_pager.next_page_token == "abc"
         responses = []
-        async for response in async_pager:
+        async for response in async_pager:  # pragma: no branch
             responses.append(response)
 
         assert len(responses) == 6
@@ -5138,7 +5156,9 @@ async def test_list_assets_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page_ in (await client.list_assets(request={})).pages:
+        async for page_ in (
+            await client.list_assets(request={})
+        ).pages:  # pragma: no branch
             pages.append(page_)
         for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
             assert page_.raw_page.next_page_token == token
@@ -5438,7 +5458,7 @@ async def test_list_findings_async_pager():
         )
         assert async_pager.next_page_token == "abc"
         responses = []
-        async for response in async_pager:
+        async for response in async_pager:  # pragma: no branch
             responses.append(response)
 
         assert len(responses) == 6
@@ -5489,7 +5509,9 @@ async def test_list_findings_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page_ in (await client.list_findings(request={})).pages:
+        async for page_ in (
+            await client.list_findings(request={})
+        ).pages:  # pragma: no branch
             pages.append(page_)
         for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
             assert page_.raw_page.next_page_token == token
@@ -5882,7 +5904,7 @@ async def test_list_mute_configs_async_pager():
         )
         assert async_pager.next_page_token == "abc"
         responses = []
-        async for response in async_pager:
+        async for response in async_pager:  # pragma: no branch
             responses.append(response)
 
         assert len(responses) == 6
@@ -5930,7 +5952,9 @@ async def test_list_mute_configs_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page_ in (await client.list_mute_configs(request={})).pages:
+        async for page_ in (
+            await client.list_mute_configs(request={})
+        ).pages:  # pragma: no branch
             pages.append(page_)
         for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
             assert page_.raw_page.next_page_token == token
@@ -6325,7 +6349,7 @@ async def test_list_notification_configs_async_pager():
         )
         assert async_pager.next_page_token == "abc"
         responses = []
-        async for response in async_pager:
+        async for response in async_pager:  # pragma: no branch
             responses.append(response)
 
         assert len(responses) == 6
@@ -6375,7 +6399,9 @@ async def test_list_notification_configs_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page_ in (await client.list_notification_configs(request={})).pages:
+        async for page_ in (
+            await client.list_notification_configs(request={})
+        ).pages:  # pragma: no branch
             pages.append(page_)
         for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
             assert page_.raw_page.next_page_token == token
@@ -6748,7 +6774,7 @@ async def test_list_sources_async_pager():
         )
         assert async_pager.next_page_token == "abc"
         responses = []
-        async for response in async_pager:
+        async for response in async_pager:  # pragma: no branch
             responses.append(response)
 
         assert len(responses) == 6
@@ -6794,7 +6820,9 @@ async def test_list_sources_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page_ in (await client.list_sources(request={})).pages:
+        async for page_ in (
+            await client.list_sources(request={})
+        ).pages:  # pragma: no branch
             pages.append(page_)
         for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
             assert page_.raw_page.next_page_token == token
@@ -7075,6 +7103,8 @@ def test_set_finding_state(request_type, transport: str = "grpc"):
             mute=finding.Finding.Mute.MUTED,
             finding_class=finding.Finding.FindingClass.THREAT,
             mute_initiator="mute_initiator_value",
+            description="description_value",
+            next_steps="next_steps_value",
         )
         response = client.set_finding_state(request)
 
@@ -7096,6 +7126,8 @@ def test_set_finding_state(request_type, transport: str = "grpc"):
     assert response.mute == finding.Finding.Mute.MUTED
     assert response.finding_class == finding.Finding.FindingClass.THREAT
     assert response.mute_initiator == "mute_initiator_value"
+    assert response.description == "description_value"
+    assert response.next_steps == "next_steps_value"
 
 
 def test_set_finding_state_empty_call():
@@ -7148,6 +7180,8 @@ async def test_set_finding_state_async(
                 mute=finding.Finding.Mute.MUTED,
                 finding_class=finding.Finding.FindingClass.THREAT,
                 mute_initiator="mute_initiator_value",
+                description="description_value",
+                next_steps="next_steps_value",
             )
         )
         response = await client.set_finding_state(request)
@@ -7170,6 +7204,8 @@ async def test_set_finding_state_async(
     assert response.mute == finding.Finding.Mute.MUTED
     assert response.finding_class == finding.Finding.FindingClass.THREAT
     assert response.mute_initiator == "mute_initiator_value"
+    assert response.description == "description_value"
+    assert response.next_steps == "next_steps_value"
 
 
 @pytest.mark.asyncio
@@ -7376,6 +7412,8 @@ def test_set_mute(request_type, transport: str = "grpc"):
             mute=finding.Finding.Mute.MUTED,
             finding_class=finding.Finding.FindingClass.THREAT,
             mute_initiator="mute_initiator_value",
+            description="description_value",
+            next_steps="next_steps_value",
         )
         response = client.set_mute(request)
 
@@ -7397,6 +7435,8 @@ def test_set_mute(request_type, transport: str = "grpc"):
     assert response.mute == finding.Finding.Mute.MUTED
     assert response.finding_class == finding.Finding.FindingClass.THREAT
     assert response.mute_initiator == "mute_initiator_value"
+    assert response.description == "description_value"
+    assert response.next_steps == "next_steps_value"
 
 
 def test_set_mute_empty_call():
@@ -7444,6 +7484,8 @@ async def test_set_mute_async(
                 mute=finding.Finding.Mute.MUTED,
                 finding_class=finding.Finding.FindingClass.THREAT,
                 mute_initiator="mute_initiator_value",
+                description="description_value",
+                next_steps="next_steps_value",
             )
         )
         response = await client.set_mute(request)
@@ -7466,6 +7508,8 @@ async def test_set_mute_async(
     assert response.mute == finding.Finding.Mute.MUTED
     assert response.finding_class == finding.Finding.FindingClass.THREAT
     assert response.mute_initiator == "mute_initiator_value"
+    assert response.description == "description_value"
+    assert response.next_steps == "next_steps_value"
 
 
 @pytest.mark.asyncio
@@ -7786,6 +7830,7 @@ def test_set_iam_policy_from_dict_foreign():
             request={
                 "resource": "resource_value",
                 "policy": policy_pb2.Policy(version=774),
+                "update_mask": field_mask_pb2.FieldMask(paths=["paths_value"]),
             }
         )
         call.assert_called()
@@ -8448,6 +8493,8 @@ def test_update_finding(request_type, transport: str = "grpc"):
             mute=gcs_finding.Finding.Mute.MUTED,
             finding_class=gcs_finding.Finding.FindingClass.THREAT,
             mute_initiator="mute_initiator_value",
+            description="description_value",
+            next_steps="next_steps_value",
         )
         response = client.update_finding(request)
 
@@ -8469,6 +8516,8 @@ def test_update_finding(request_type, transport: str = "grpc"):
     assert response.mute == gcs_finding.Finding.Mute.MUTED
     assert response.finding_class == gcs_finding.Finding.FindingClass.THREAT
     assert response.mute_initiator == "mute_initiator_value"
+    assert response.description == "description_value"
+    assert response.next_steps == "next_steps_value"
 
 
 def test_update_finding_empty_call():
@@ -8517,6 +8566,8 @@ async def test_update_finding_async(
                 mute=gcs_finding.Finding.Mute.MUTED,
                 finding_class=gcs_finding.Finding.FindingClass.THREAT,
                 mute_initiator="mute_initiator_value",
+                description="description_value",
+                next_steps="next_steps_value",
             )
         )
         response = await client.update_finding(request)
@@ -8539,6 +8590,8 @@ async def test_update_finding_async(
     assert response.mute == gcs_finding.Finding.Mute.MUTED
     assert response.finding_class == gcs_finding.Finding.FindingClass.THREAT
     assert response.mute_initiator == "mute_initiator_value"
+    assert response.description == "description_value"
+    assert response.next_steps == "next_steps_value"
 
 
 @pytest.mark.asyncio
@@ -11175,7 +11228,7 @@ async def test_list_big_query_exports_async_pager():
         )
         assert async_pager.next_page_token == "abc"
         responses = []
-        async for response in async_pager:
+        async for response in async_pager:  # pragma: no branch
             responses.append(response)
 
         assert len(responses) == 6
@@ -11223,7 +11276,9 @@ async def test_list_big_query_exports_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page_ in (await client.list_big_query_exports(request={})).pages:
+        async for page_ in (
+            await client.list_big_query_exports(request={})
+        ).pages:  # pragma: no branch
             pages.append(page_)
         for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
             assert page_.raw_page.next_page_token == token
@@ -11320,6 +11375,19 @@ def test_transport_adc(transport_class):
         adc.assert_called_once()
 
 
+@pytest.mark.parametrize(
+    "transport_name",
+    [
+        "grpc",
+    ],
+)
+def test_transport_kind(transport_name):
+    transport = SecurityCenterClient.get_transport_class(transport_name)(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
+    assert transport.kind == transport_name
+
+
 def test_transport_grpc_default():
     # A client should use the gRPC transport by default.
     client = SecurityCenterClient(
@@ -11401,6 +11469,14 @@ def test_security_center_base_transport():
     # also raise NotImplementedError
     with pytest.raises(NotImplementedError):
         transport.operations_client
+
+    # Catch all for all remaining methods and properties
+    remainder = [
+        "kind",
+    ]
+    for r in remainder:
+        with pytest.raises(NotImplementedError):
+            getattr(transport, r)()
 
 
 def test_security_center_base_transport_with_credentials_file():
@@ -11547,24 +11623,40 @@ def test_security_center_grpc_transport_client_cert_source_for_mtls(transport_cl
             )
 
 
-def test_security_center_host_no_port():
+@pytest.mark.parametrize(
+    "transport_name",
+    [
+        "grpc",
+        "grpc_asyncio",
+    ],
+)
+def test_security_center_host_no_port(transport_name):
     client = SecurityCenterClient(
         credentials=ga_credentials.AnonymousCredentials(),
         client_options=client_options.ClientOptions(
             api_endpoint="securitycenter.googleapis.com"
         ),
+        transport=transport_name,
     )
-    assert client.transport._host == "securitycenter.googleapis.com:443"
+    assert client.transport._host == ("securitycenter.googleapis.com:443")
 
 
-def test_security_center_host_with_port():
+@pytest.mark.parametrize(
+    "transport_name",
+    [
+        "grpc",
+        "grpc_asyncio",
+    ],
+)
+def test_security_center_host_with_port(transport_name):
     client = SecurityCenterClient(
         credentials=ga_credentials.AnonymousCredentials(),
         client_options=client_options.ClientOptions(
             api_endpoint="securitycenter.googleapis.com:8000"
         ),
+        transport=transport_name,
     )
-    assert client.transport._host == "securitycenter.googleapis.com:8000"
+    assert client.transport._host == ("securitycenter.googleapis.com:8000")
 
 
 def test_security_center_grpc_transport_channel():
