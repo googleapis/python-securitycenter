@@ -17,9 +17,9 @@ import proto  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package='google.cloud.securitycenter.v1',
+    package="google.cloud.securitycenter.v1",
     manifest={
-        'Connection',
+        "Connection",
     },
 )
 
@@ -43,6 +43,7 @@ class Connection(proto.Message):
             IANA Internet Protocol Number such as TCP(6)
             and UDP(17).
     """
+
     class Protocol(proto.Enum):
         r"""IANA Internet Protocol Number such as TCP(6) and UDP(17)."""
         PROTOCOL_UNSPECIFIED = 0
