@@ -17,7 +17,10 @@ import proto  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package="google.cloud.securitycenter.v1", manifest={"MitreAttack",},
+    package="google.cloud.securitycenter.v1",
+    manifest={
+        "MitreAttack",
+    },
 )
 
 
@@ -73,6 +76,7 @@ class MitreAttack(proto.Message):
     class Technique(proto.Enum):
         r"""MITRE ATT&CK techniques that can be referenced by SCC
         findings. See: https://attack.mitre.org/techniques/enterprise/
+        Next ID: 31
         """
         TECHNIQUE_UNSPECIFIED = 0
         ACTIVE_SCANNING = 1
@@ -103,12 +107,33 @@ class MitreAttack(proto.Message):
         MODIFY_CLOUD_COMPUTE_INFRASTRUCTURE = 26
         EXPLOIT_PUBLIC_FACING_APPLICATION = 27
         MODIFY_AUTHENTICATION_PROCESS = 28
+        DATA_DESTRUCTION = 29
+        DOMAIN_POLICY_MODIFICATION = 30
 
-    primary_tactic = proto.Field(proto.ENUM, number=1, enum=Tactic,)
-    primary_techniques = proto.RepeatedField(proto.ENUM, number=2, enum=Technique,)
-    additional_tactics = proto.RepeatedField(proto.ENUM, number=3, enum=Tactic,)
-    additional_techniques = proto.RepeatedField(proto.ENUM, number=4, enum=Technique,)
-    version = proto.Field(proto.STRING, number=5,)
+    primary_tactic = proto.Field(
+        proto.ENUM,
+        number=1,
+        enum=Tactic,
+    )
+    primary_techniques = proto.RepeatedField(
+        proto.ENUM,
+        number=2,
+        enum=Technique,
+    )
+    additional_tactics = proto.RepeatedField(
+        proto.ENUM,
+        number=3,
+        enum=Tactic,
+    )
+    additional_techniques = proto.RepeatedField(
+        proto.ENUM,
+        number=4,
+        enum=Technique,
+    )
+    version = proto.Field(
+        proto.STRING,
+        number=5,
+    )
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

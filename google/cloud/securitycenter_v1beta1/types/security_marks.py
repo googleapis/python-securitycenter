@@ -17,7 +17,10 @@ import proto  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package="google.cloud.securitycenter.v1beta1", manifest={"SecurityMarks",},
+    package="google.cloud.securitycenter.v1beta1",
+    manifest={
+        "SecurityMarks",
+    },
 )
 
 
@@ -35,7 +38,7 @@ class SecurityMarks(proto.Message):
             Examples:
             "organizations/{organization_id}/assets/{asset_id}/securityMarks"
             "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
-        marks (Sequence[google.cloud.securitycenter_v1beta1.types.SecurityMarks.MarksEntry]):
+        marks (Mapping[str, str]):
             Mutable user specified security marks belonging to the
             parent resource. Constraints are as follows:
 
@@ -47,8 +50,15 @@ class SecurityMarks(proto.Message):
                (inclusive)
     """
 
-    name = proto.Field(proto.STRING, number=1,)
-    marks = proto.MapField(proto.STRING, proto.STRING, number=2,)
+    name = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+    marks = proto.MapField(
+        proto.STRING,
+        proto.STRING,
+        number=2,
+    )
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

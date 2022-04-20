@@ -20,9 +20,12 @@
 # [START securitycenter_create_bigquery_export]
 
 
-def create_bigquery_export(parent: str, export_filter: str, bigquery_dataset_id: str, bigquery_export_id: str):
+def create_bigquery_export(
+    parent: str, export_filter: str, bigquery_dataset_id: str, bigquery_export_id: str
+):
 
     from google.cloud import securitycenter
+
     """
     Create export configuration to export findings from a project to a BigQuery dataset.
     Optionally specify filter to export certain findings only.
@@ -64,6 +67,7 @@ def create_bigquery_export(parent: str, export_filter: str, bigquery_dataset_id:
 # [START securitycenter_get_bigquery_export]
 def get_bigquery_export(parent: str, bigquery_export_id: str):
     from google.cloud import securitycenter
+
     """
     Retrieve an existing BigQuery export.
     Args:
@@ -89,6 +93,7 @@ def get_bigquery_export(parent: str, bigquery_export_id: str):
 # [START securitycenter_list_bigquery_export]
 def list_bigquery_exports(parent: str):
     from google.cloud import securitycenter
+
     """
     List BigQuery exports in the given parent.
     Args:
@@ -180,4 +185,6 @@ def delete_bigquery_export(parent: str, bigquery_export_id: str):
 
     client.delete_big_query_export(request)
     print(f"BigQuery export request deleted successfully: {bigquery_export_id}")
+
+
 # [END securitycenter_delete_bigquery_export]

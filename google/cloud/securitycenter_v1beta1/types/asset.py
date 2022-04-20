@@ -23,7 +23,10 @@ from google.protobuf import timestamp_pb2  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package="google.cloud.securitycenter.v1beta1", manifest={"Asset",},
+    package="google.cloud.securitycenter.v1beta1",
+    manifest={
+        "Asset",
+    },
 )
 
 
@@ -47,7 +50,7 @@ class Asset(proto.Message):
             Security Command Center managed properties.
             These properties are managed by Security Command
             Center and cannot be modified by the user.
-        resource_properties (Sequence[google.cloud.securitycenter_v1beta1.types.Asset.ResourcePropertiesEntry]):
+        resource_properties (Mapping[str, google.protobuf.struct_pb2.Value]):
             Resource managed properties. These properties
             are managed and defined by the Google Cloud
             resource and cannot be modified by the user.
@@ -94,25 +97,56 @@ class Asset(proto.Message):
                 Owners of the Google Cloud resource.
         """
 
-        resource_name = proto.Field(proto.STRING, number=1,)
-        resource_type = proto.Field(proto.STRING, number=2,)
-        resource_parent = proto.Field(proto.STRING, number=3,)
-        resource_project = proto.Field(proto.STRING, number=4,)
-        resource_owners = proto.RepeatedField(proto.STRING, number=5,)
+        resource_name = proto.Field(
+            proto.STRING,
+            number=1,
+        )
+        resource_type = proto.Field(
+            proto.STRING,
+            number=2,
+        )
+        resource_parent = proto.Field(
+            proto.STRING,
+            number=3,
+        )
+        resource_project = proto.Field(
+            proto.STRING,
+            number=4,
+        )
+        resource_owners = proto.RepeatedField(
+            proto.STRING,
+            number=5,
+        )
 
-    name = proto.Field(proto.STRING, number=1,)
+    name = proto.Field(
+        proto.STRING,
+        number=1,
+    )
     security_center_properties = proto.Field(
-        proto.MESSAGE, number=2, message=SecurityCenterProperties,
+        proto.MESSAGE,
+        number=2,
+        message=SecurityCenterProperties,
     )
     resource_properties = proto.MapField(
-        proto.STRING, proto.MESSAGE, number=7, message=struct_pb2.Value,
+        proto.STRING,
+        proto.MESSAGE,
+        number=7,
+        message=struct_pb2.Value,
     )
     security_marks = proto.Field(
-        proto.MESSAGE, number=8, message=gcs_security_marks.SecurityMarks,
+        proto.MESSAGE,
+        number=8,
+        message=gcs_security_marks.SecurityMarks,
     )
-    create_time = proto.Field(proto.MESSAGE, number=9, message=timestamp_pb2.Timestamp,)
+    create_time = proto.Field(
+        proto.MESSAGE,
+        number=9,
+        message=timestamp_pb2.Timestamp,
+    )
     update_time = proto.Field(
-        proto.MESSAGE, number=10, message=timestamp_pb2.Timestamp,
+        proto.MESSAGE,
+        number=10,
+        message=timestamp_pb2.Timestamp,
     )
 
 

@@ -100,6 +100,7 @@ class SecurityCenterTransport(abc.ABC):
             always_use_jwt_access (Optional[bool]): Whether self signed JWT should
                 be used for service account credentials.
         """
+
         # Save the hostname. Default to port 443 (HTTPS) if none is specified.
         if ":" not in host:
             host += ":443"
@@ -141,10 +142,14 @@ class SecurityCenterTransport(abc.ABC):
         # Precompute the wrapped methods.
         self._wrapped_methods = {
             self.create_source: gapic_v1.method.wrap_method(
-                self.create_source, default_timeout=60.0, client_info=client_info,
+                self.create_source,
+                default_timeout=60.0,
+                client_info=client_info,
             ),
             self.create_finding: gapic_v1.method.wrap_method(
-                self.create_finding, default_timeout=60.0, client_info=client_info,
+                self.create_finding,
+                default_timeout=60.0,
+                client_info=client_info,
             ),
             self.create_notification_config: gapic_v1.method.wrap_method(
                 self.create_notification_config,
@@ -307,13 +312,19 @@ class SecurityCenterTransport(abc.ABC):
                 client_info=client_info,
             ),
             self.run_asset_discovery: gapic_v1.method.wrap_method(
-                self.run_asset_discovery, default_timeout=60.0, client_info=client_info,
+                self.run_asset_discovery,
+                default_timeout=60.0,
+                client_info=client_info,
             ),
             self.set_finding_state: gapic_v1.method.wrap_method(
-                self.set_finding_state, default_timeout=60.0, client_info=client_info,
+                self.set_finding_state,
+                default_timeout=60.0,
+                client_info=client_info,
             ),
             self.set_iam_policy: gapic_v1.method.wrap_method(
-                self.set_iam_policy, default_timeout=60.0, client_info=client_info,
+                self.set_iam_policy,
+                default_timeout=60.0,
+                client_info=client_info,
             ),
             self.test_iam_permissions: gapic_v1.method.wrap_method(
                 self.test_iam_permissions,
@@ -331,7 +342,9 @@ class SecurityCenterTransport(abc.ABC):
                 client_info=client_info,
             ),
             self.update_finding: gapic_v1.method.wrap_method(
-                self.update_finding, default_timeout=60.0, client_info=client_info,
+                self.update_finding,
+                default_timeout=60.0,
+                client_info=client_info,
             ),
             self.update_notification_config: gapic_v1.method.wrap_method(
                 self.update_notification_config,
@@ -344,7 +357,9 @@ class SecurityCenterTransport(abc.ABC):
                 client_info=client_info,
             ),
             self.update_source: gapic_v1.method.wrap_method(
-                self.update_source, default_timeout=60.0, client_info=client_info,
+                self.update_source,
+                default_timeout=60.0,
+                client_info=client_info,
             ),
             self.update_security_marks: gapic_v1.method.wrap_method(
                 self.update_security_marks,
@@ -356,9 +371,9 @@ class SecurityCenterTransport(abc.ABC):
     def close(self):
         """Closes resources associated with the transport.
 
-       .. warning::
-            Only call this method if the transport is NOT shared
-            with other clients - this may cause errors in other clients!
+        .. warning::
+             Only call this method if the transport is NOT shared
+             with other clients - this may cause errors in other clients!
         """
         raise NotImplementedError()
 
@@ -611,6 +626,10 @@ class SecurityCenterTransport(abc.ABC):
             Awaitable[gcs_security_marks.SecurityMarks],
         ],
     ]:
+        raise NotImplementedError()
+
+    @property
+    def kind(self) -> str:
         raise NotImplementedError()
 
 

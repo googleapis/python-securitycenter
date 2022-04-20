@@ -16,7 +16,9 @@
 import proto  # type: ignore
 
 from google.cloud.securitycenter_v1.types import access as gcs_access
+from google.cloud.securitycenter_v1.types import connection
 from google.cloud.securitycenter_v1.types import external_system
+from google.cloud.securitycenter_v1.types import iam_binding
 from google.cloud.securitycenter_v1.types import indicator as gcs_indicator
 from google.cloud.securitycenter_v1.types import mitre_attack as gcs_mitre_attack
 from google.cloud.securitycenter_v1.types import security_marks as gcs_security_marks
@@ -26,7 +28,10 @@ from google.protobuf import timestamp_pb2  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package="google.cloud.securitycenter.v1", manifest={"Finding",},
+    package="google.cloud.securitycenter.v1",
+    manifest={
+        "Finding",
+    },
 )
 
 
@@ -69,7 +74,7 @@ class Finding(proto.Message):
             additional information about the finding can be
             found. This field is guaranteed to be either
             empty or a well formed URL.
-        source_properties (Sequence[google.cloud.securitycenter_v1.types.Finding.SourcePropertiesEntry]):
+        source_properties (Mapping[str, google.protobuf.struct_pb2.Value]):
             Source specific properties. These properties are managed by
             the source that writes the finding. The key names in the
             source_properties map must be between 1 and 255 characters,
@@ -107,9 +112,9 @@ class Finding(proto.Message):
             associated with the finding.
         mute (google.cloud.securitycenter_v1.types.Finding.Mute):
             Indicates the mute state of a finding (either
-            unspecified, muted, unmuted or undefined).
-            Unlike other attributes of a finding, a finding
-            provider shouldn't set the value of mute.
+            muted, unmuted or undefined). Unlike other
+            attributes of a finding, a finding provider
+            shouldn't set the value of mute.
         finding_class (google.cloud.securitycenter_v1.types.Finding.FindingClass):
             The class of the finding.
         indicator (google.cloud.securitycenter_v1.types.Indicator):
@@ -126,7 +131,7 @@ class Finding(proto.Message):
         mute_update_time (google.protobuf.timestamp_pb2.Timestamp):
             Output only. The most recent time this
             finding was muted or unmuted.
-        external_systems (Sequence[google.cloud.securitycenter_v1.types.Finding.ExternalSystemsEntry]):
+        external_systems (Mapping[str, google.cloud.securitycenter_v1.types.ExternalSystem]):
             Output only. Third party SIEM/SOAR fields
             within SCC, contains external system information
             and external system finding fields.
@@ -137,12 +142,22 @@ class Finding(proto.Message):
             Access details associated to the Finding,
             such as more information on the caller, which
             method was accessed, from where, etc.
+        connections (Sequence[google.cloud.securitycenter_v1.types.Connection]):
+            Contains information about the IP connection
+            associated with the finding.
         mute_initiator (str):
             First known as mute_annotation. Records additional
             information about the mute operation e.g. mute config that
             muted the finding, user who muted the finding, etc. Unlike
             other attributes of a finding, a finding provider shouldn't
             set the value of mute.
+        description (str):
+            Contains more detail about the finding.
+        iam_bindings (Sequence[google.cloud.securitycenter_v1.types.IamBinding]):
+            Represents IAM bindings associated with the
+            Finding.
+        next_steps (str):
+            Next steps associate to the finding.
     """
 
     class State(proto.Enum):
@@ -175,41 +190,124 @@ class Finding(proto.Message):
         OBSERVATION = 4
         SCC_ERROR = 5
 
-    name = proto.Field(proto.STRING, number=1,)
-    parent = proto.Field(proto.STRING, number=2,)
-    resource_name = proto.Field(proto.STRING, number=3,)
-    state = proto.Field(proto.ENUM, number=4, enum=State,)
-    category = proto.Field(proto.STRING, number=5,)
-    external_uri = proto.Field(proto.STRING, number=6,)
+    name = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+    parent = proto.Field(
+        proto.STRING,
+        number=2,
+    )
+    resource_name = proto.Field(
+        proto.STRING,
+        number=3,
+    )
+    state = proto.Field(
+        proto.ENUM,
+        number=4,
+        enum=State,
+    )
+    category = proto.Field(
+        proto.STRING,
+        number=5,
+    )
+    external_uri = proto.Field(
+        proto.STRING,
+        number=6,
+    )
     source_properties = proto.MapField(
-        proto.STRING, proto.MESSAGE, number=7, message=struct_pb2.Value,
+        proto.STRING,
+        proto.MESSAGE,
+        number=7,
+        message=struct_pb2.Value,
     )
     security_marks = proto.Field(
-        proto.MESSAGE, number=8, message=gcs_security_marks.SecurityMarks,
+        proto.MESSAGE,
+        number=8,
+        message=gcs_security_marks.SecurityMarks,
     )
-    event_time = proto.Field(proto.MESSAGE, number=9, message=timestamp_pb2.Timestamp,)
+    event_time = proto.Field(
+        proto.MESSAGE,
+        number=9,
+        message=timestamp_pb2.Timestamp,
+    )
     create_time = proto.Field(
-        proto.MESSAGE, number=10, message=timestamp_pb2.Timestamp,
+        proto.MESSAGE,
+        number=10,
+        message=timestamp_pb2.Timestamp,
     )
-    severity = proto.Field(proto.ENUM, number=12, enum=Severity,)
-    canonical_name = proto.Field(proto.STRING, number=14,)
-    mute = proto.Field(proto.ENUM, number=15, enum=Mute,)
-    finding_class = proto.Field(proto.ENUM, number=17, enum=FindingClass,)
-    indicator = proto.Field(proto.MESSAGE, number=18, message=gcs_indicator.Indicator,)
+    severity = proto.Field(
+        proto.ENUM,
+        number=12,
+        enum=Severity,
+    )
+    canonical_name = proto.Field(
+        proto.STRING,
+        number=14,
+    )
+    mute = proto.Field(
+        proto.ENUM,
+        number=15,
+        enum=Mute,
+    )
+    finding_class = proto.Field(
+        proto.ENUM,
+        number=17,
+        enum=FindingClass,
+    )
+    indicator = proto.Field(
+        proto.MESSAGE,
+        number=18,
+        message=gcs_indicator.Indicator,
+    )
     vulnerability = proto.Field(
-        proto.MESSAGE, number=20, message=gcs_vulnerability.Vulnerability,
+        proto.MESSAGE,
+        number=20,
+        message=gcs_vulnerability.Vulnerability,
     )
     mute_update_time = proto.Field(
-        proto.MESSAGE, number=21, message=timestamp_pb2.Timestamp,
+        proto.MESSAGE,
+        number=21,
+        message=timestamp_pb2.Timestamp,
     )
     external_systems = proto.MapField(
-        proto.STRING, proto.MESSAGE, number=22, message=external_system.ExternalSystem,
+        proto.STRING,
+        proto.MESSAGE,
+        number=22,
+        message=external_system.ExternalSystem,
     )
     mitre_attack = proto.Field(
-        proto.MESSAGE, number=25, message=gcs_mitre_attack.MitreAttack,
+        proto.MESSAGE,
+        number=25,
+        message=gcs_mitre_attack.MitreAttack,
     )
-    access = proto.Field(proto.MESSAGE, number=26, message=gcs_access.Access,)
-    mute_initiator = proto.Field(proto.STRING, number=28,)
+    access = proto.Field(
+        proto.MESSAGE,
+        number=26,
+        message=gcs_access.Access,
+    )
+    connections = proto.RepeatedField(
+        proto.MESSAGE,
+        number=31,
+        message=connection.Connection,
+    )
+    mute_initiator = proto.Field(
+        proto.STRING,
+        number=28,
+    )
+    description = proto.Field(
+        proto.STRING,
+        number=37,
+    )
+    iam_bindings = proto.RepeatedField(
+        proto.MESSAGE,
+        number=39,
+        message=iam_binding.IamBinding,
+    )
+    next_steps = proto.Field(
+        proto.STRING,
+        number=40,
+    )
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))
