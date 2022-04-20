@@ -77,9 +77,10 @@ def test_get_bigquery_export(capsys: CaptureFixture, bigquery_export_id: str):
     )
     out, _ = capsys.readouterr()
     assert re.search(
-        f"Retrieved the BigQuery export: projects/{PROJECT_ID}/bigQueryExports/{bigquery_export_id}",
+        "Retrieved the BigQuery export",
         out,
     )
+    assert re.search(f"bigQueryExports/{bigquery_export_id}", out)
 
 
 def test_list_bigquery_exports(capsys: CaptureFixture, bigquery_export_id: str):

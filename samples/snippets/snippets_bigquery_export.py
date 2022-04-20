@@ -181,7 +181,7 @@ def delete_bigquery_export(parent: str, bigquery_export_id: str):
     client = securitycenter.SecurityCenterClient()
 
     request = securitycenter.DeleteBigQueryExportRequest()
-    request.name(f"{parent}/bigQueryExports{bigquery_export_id}")
+    request.name = f"{parent}/bigQueryExports{bigquery_export_id}"
 
     client.delete_big_query_export(request)
     print(f"BigQuery export request deleted successfully: {bigquery_export_id}")
