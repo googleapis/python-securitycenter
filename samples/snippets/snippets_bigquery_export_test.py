@@ -25,7 +25,7 @@ import pytest
 
 import snippets_bigquery_export
 
-PROJECT_ID = os.environ["GCLOUD_PROJECT"]
+PROJECT_ID = os.environ["GOOGLE_CLOUD_PROJECT"]
 GOOGLE_APPLICATION_CREDENTIALS = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 BIGQUERY_DATASET_ID = "sampledataset"
 
