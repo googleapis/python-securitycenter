@@ -27,7 +27,7 @@ import snippets_bigquery_export
 
 PROJECT_ID = os.environ["GCLOUD_PROJECT"]
 GOOGLE_APPLICATION_CREDENTIALS = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
-BIGQUERY_DATASET_ID = "sampledataset"
+BIGQUERY_DATASET_ID = f"sampledataset{str(uuid.uuid4()).split('-')[0]}"
 
 
 @pytest.fixture
