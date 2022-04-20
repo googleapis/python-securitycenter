@@ -30,7 +30,7 @@ GOOGLE_APPLICATION_CREDENTIALS = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 BIGQUERY_DATASET_ID = f"sampledataset{str(uuid.uuid4()).split('-')[0]}"
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def bigquery_export_id():
     bigquery_export_id = f"default-{str(uuid.uuid4()).split('-')[0]}"
 
