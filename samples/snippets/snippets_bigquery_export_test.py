@@ -47,8 +47,7 @@ def bigquery_export_id(capsys: CaptureFixture):
     )
     out, _ = capsys.readouterr()
     assert re.search(
-        f"BigQuery export request deleted successfully: {bigquery_export_id}",
-        out
+        f"BigQuery export request deleted successfully: {bigquery_export_id}", out
     )
     delete_bigquery_dataset(BIGQUERY_DATASET_ID)
 
