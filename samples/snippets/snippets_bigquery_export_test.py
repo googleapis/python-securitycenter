@@ -31,7 +31,7 @@ BIGQUERY_DATASET_ID = f"sampledataset{str(uuid.uuid4()).split('-')[0]}"
 
 
 @pytest.fixture(scope="module")
-def bigquery_export_id(capsys: CaptureFixture):
+def bigquery_export_id():
     bigquery_export_id = f"default-{str(uuid.uuid4()).split('-')[0]}"
 
     create_bigquery_dataset(BIGQUERY_DATASET_ID)
@@ -44,11 +44,6 @@ def bigquery_export_id(capsys: CaptureFixture):
 
     snippets_bigquery_export.delete_bigquery_export(
         f"projects/{PROJECT_ID}", bigquery_export_id
-    )
-    out, _ = capsys.readouterr()
-    assert re.search(
-        f"BigQuery export request deleted successfully: {bigquery_export_id}",
-        out
     )
     delete_bigquery_dataset(BIGQUERY_DATASET_ID)
 
