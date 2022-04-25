@@ -144,14 +144,14 @@ def update_bigquery_export(parent: str, export_filter: str, bigquery_export_id: 
     bigquery_export.filter = export_filter
 
     # Field mask to only update the export filter.
+    # Set the update mask to specify which properties should be updated.
+    # If empty, all mutable fields will be updated.
+    # For more info on constructing field mask path, see the proto or:
+    # https://googleapis.dev/python/protobuf/latest/google/protobuf/field_mask_pb2.html
     field_mask = field_mask_pb2.FieldMask(paths=["filter"])
 
     request = securitycenter.UpdateBigQueryExportRequest()
     request.big_query_export = bigquery_export
-    # Set the update mask to specify which properties should be updated.
-    # If empty, all mutable fields will be updated.
-    # For more info on constructing field mask path, see the proto or:
-    # https://cloud.google.com/java/docs/reference/protobuf/latest/com.google.protobuf.FieldMask
     request.update_mask = field_mask
 
     response = client.update_big_query_export(request)
