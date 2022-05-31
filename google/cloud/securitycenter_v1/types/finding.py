@@ -17,16 +17,15 @@ from google.protobuf import struct_pb2  # type: ignore
 from google.protobuf import timestamp_pb2  # type: ignore
 import proto  # type: ignore
 
-from google.cloud.securitycenter_v1.types import (
-    connection,
-    external_system,
-    iam_binding,
-)
+from google.cloud.securitycenter_v1.types import exfiltration as gcs_exfiltration
 from google.cloud.securitycenter_v1.types import mitre_attack as gcs_mitre_attack
 from google.cloud.securitycenter_v1.types import security_marks as gcs_security_marks
 from google.cloud.securitycenter_v1.types import vulnerability as gcs_vulnerability
 from google.cloud.securitycenter_v1.types import access as gcs_access
+from google.cloud.securitycenter_v1.types import compliance, connection
+from google.cloud.securitycenter_v1.types import external_system, iam_binding
 from google.cloud.securitycenter_v1.types import indicator as gcs_indicator
+from google.cloud.securitycenter_v1.types import process
 
 __protobuf__ = proto.module(
     package="google.cloud.securitycenter.v1",
@@ -152,8 +151,17 @@ class Finding(proto.Message):
             muted the finding, user who muted the finding, etc. Unlike
             other attributes of a finding, a finding provider shouldn't
             set the value of mute.
+        processes (Sequence[google.cloud.securitycenter_v1.types.Process]):
+            Represents operating system processes
+            associated with the Finding.
+        compliances (Sequence[google.cloud.securitycenter_v1.types.Compliance]):
+            Contains compliance information for security
+            standards associated to the finding.
         description (str):
             Contains more detail about the finding.
+        exfiltration (google.cloud.securitycenter_v1.types.Exfiltration):
+            Represents exfiltration associated with the
+            Finding.
         iam_bindings (Sequence[google.cloud.securitycenter_v1.types.IamBinding]):
             Represents IAM bindings associated with the
             Finding.
@@ -296,9 +304,24 @@ class Finding(proto.Message):
         proto.STRING,
         number=28,
     )
+    processes = proto.RepeatedField(
+        proto.MESSAGE,
+        number=30,
+        message=process.Process,
+    )
+    compliances = proto.RepeatedField(
+        proto.MESSAGE,
+        number=34,
+        message=compliance.Compliance,
+    )
     description = proto.Field(
         proto.STRING,
         number=37,
+    )
+    exfiltration = proto.Field(
+        proto.MESSAGE,
+        number=38,
+        message=gcs_exfiltration.Exfiltration,
     )
     iam_bindings = proto.RepeatedField(
         proto.MESSAGE,

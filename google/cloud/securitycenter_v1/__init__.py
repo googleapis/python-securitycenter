@@ -18,8 +18,11 @@ from .services.security_center import SecurityCenterAsyncClient, SecurityCenterC
 from .types.access import Access, Geolocation
 from .types.asset import Asset
 from .types.bigquery_export import BigQueryExport
+from .types.compliance import Compliance
 from .types.connection import Connection
+from .types.exfiltration import ExfilResource, Exfiltration
 from .types.external_system import ExternalSystem
+from .types.file import File
 from .types.finding import Finding
 from .types.folder import Folder
 from .types.iam_binding import IamBinding
@@ -29,6 +32,7 @@ from .types.mute_config import MuteConfig
 from .types.notification_config import NotificationConfig
 from .types.notification_message import NotificationMessage
 from .types.organization_settings import OrganizationSettings
+from .types.process import EnvironmentVariable, Process
 from .types.resource import Resource
 from .types.run_asset_discovery_response import RunAssetDiscoveryResponse
 from .types.security_marks import SecurityMarks
@@ -87,6 +91,7 @@ __all__ = (
     "BigQueryExport",
     "BulkMuteFindingsRequest",
     "BulkMuteFindingsResponse",
+    "Compliance",
     "Connection",
     "CreateBigQueryExportRequest",
     "CreateFindingRequest",
@@ -98,7 +103,11 @@ __all__ = (
     "DeleteBigQueryExportRequest",
     "DeleteMuteConfigRequest",
     "DeleteNotificationConfigRequest",
+    "EnvironmentVariable",
+    "ExfilResource",
+    "Exfiltration",
     "ExternalSystem",
+    "File",
     "Finding",
     "Folder",
     "Geolocation",
@@ -131,6 +140,7 @@ __all__ = (
     "NotificationConfig",
     "NotificationMessage",
     "OrganizationSettings",
+    "Process",
     "Reference",
     "Resource",
     "RunAssetDiscoveryRequest",

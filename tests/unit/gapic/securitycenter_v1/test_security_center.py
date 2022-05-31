@@ -60,8 +60,15 @@ from google.cloud.securitycenter_v1.services.security_center import (
     pagers,
     transports,
 )
-from google.cloud.securitycenter_v1.types import access, bigquery_export, connection
+from google.cloud.securitycenter_v1.types import (
+    access,
+    bigquery_export,
+    compliance,
+    connection,
+    exfiltration,
+)
 from google.cloud.securitycenter_v1.types import iam_binding, indicator, mitre_attack
+from google.cloud.securitycenter_v1.types import process, run_asset_discovery_response
 from google.cloud.securitycenter_v1.types import external_system as gcs_external_system
 from google.cloud.securitycenter_v1.types import (
     notification_config as gcs_notification_config,
@@ -71,13 +78,13 @@ from google.cloud.securitycenter_v1.types import (
 )
 from google.cloud.securitycenter_v1.types import security_marks as gcs_security_marks
 from google.cloud.securitycenter_v1.types import external_system
+from google.cloud.securitycenter_v1.types import file
 from google.cloud.securitycenter_v1.types import finding
 from google.cloud.securitycenter_v1.types import finding as gcs_finding
 from google.cloud.securitycenter_v1.types import mute_config
 from google.cloud.securitycenter_v1.types import mute_config as gcs_mute_config
 from google.cloud.securitycenter_v1.types import notification_config
 from google.cloud.securitycenter_v1.types import organization_settings
-from google.cloud.securitycenter_v1.types import run_asset_discovery_response
 from google.cloud.securitycenter_v1.types import security_marks
 from google.cloud.securitycenter_v1.types import securitycenter_service
 from google.cloud.securitycenter_v1.types import source
