@@ -17,12 +17,12 @@ from google.protobuf import struct_pb2  # type: ignore
 from google.protobuf import timestamp_pb2  # type: ignore
 import proto  # type: ignore
 
+from google.cloud.securitycenter_v1.types import compliance, connection, contact_details
 from google.cloud.securitycenter_v1.types import exfiltration as gcs_exfiltration
 from google.cloud.securitycenter_v1.types import mitre_attack as gcs_mitre_attack
 from google.cloud.securitycenter_v1.types import security_marks as gcs_security_marks
 from google.cloud.securitycenter_v1.types import vulnerability as gcs_vulnerability
 from google.cloud.securitycenter_v1.types import access as gcs_access
-from google.cloud.securitycenter_v1.types import compliance, connection
 from google.cloud.securitycenter_v1.types import external_system, iam_binding
 from google.cloud.securitycenter_v1.types import indicator as gcs_indicator
 from google.cloud.securitycenter_v1.types import process
@@ -154,6 +154,27 @@ class Finding(proto.Message):
         processes (Sequence[google.cloud.securitycenter_v1.types.Process]):
             Represents operating system processes
             associated with the Finding.
+        contacts (Mapping[str, google.cloud.securitycenter_v1.types.ContactDetails]):
+            Output only. Map containing the point of contacts for the
+            given finding. The key represents the type of contact, while
+            the value contains a list of all the contacts that pertain.
+            Please refer to:
+            https://cloud.google.com/resource-manager/docs/managing-notification-contacts#notification-categories
+
+            ::
+
+                {
+                  "security": {
+                    "contacts": [
+                      {
+                        "email": "person1@company.com"
+                      },
+                      {
+                        "email": "person2@company.com"
+                      }
+                    ]
+                  }
+                }
         compliances (Sequence[google.cloud.securitycenter_v1.types.Compliance]):
             Contains compliance information for security
             standards associated to the finding.
@@ -308,6 +329,12 @@ class Finding(proto.Message):
         proto.MESSAGE,
         number=30,
         message=process.Process,
+    )
+    contacts = proto.MapField(
+        proto.STRING,
+        proto.MESSAGE,
+        number=33,
+        message=contact_details.ContactDetails,
     )
     compliances = proto.RepeatedField(
         proto.MESSAGE,

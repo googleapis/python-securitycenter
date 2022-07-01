@@ -20,6 +20,7 @@ from .types.asset import Asset
 from .types.bigquery_export import BigQueryExport
 from .types.compliance import Compliance
 from .types.connection import Connection
+from .types.contact_details import Contact, ContactDetails
 from .types.exfiltration import ExfilResource, Exfiltration
 from .types.external_system import ExternalSystem
 from .types.file import File
@@ -93,6 +94,8 @@ __all__ = (
     "BulkMuteFindingsResponse",
     "Compliance",
     "Connection",
+    "Contact",
+    "ContactDetails",
     "CreateBigQueryExportRequest",
     "CreateFindingRequest",
     "CreateMuteConfigRequest",

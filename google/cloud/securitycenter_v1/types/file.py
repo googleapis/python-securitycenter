@@ -35,7 +35,7 @@ class File(proto.Message):
             Size of the file in bytes.
         sha256 (str):
             SHA256 hash of the first hashed_size bytes of the file
-            encoded as a hex string. If hashed_size == size, hash_sha256
+            encoded as a hex string. If hashed_size == size, sha256
             represents the SHA256 hash of the entire file.
         hashed_size (int):
             The length in bytes of the file prefix that was hashed. If

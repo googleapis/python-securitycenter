@@ -18,6 +18,7 @@ from .asset import Asset
 from .bigquery_export import BigQueryExport
 from .compliance import Compliance
 from .connection import Connection
+from .contact_details import Contact, ContactDetails
 from .exfiltration import ExfilResource, Exfiltration
 from .external_system import ExternalSystem
 from .file import File
@@ -89,6 +90,8 @@ __all__ = (
     "BigQueryExport",
     "Compliance",
     "Connection",
+    "Contact",
+    "ContactDetails",
     "ExfilResource",
     "Exfiltration",
     "ExternalSystem",

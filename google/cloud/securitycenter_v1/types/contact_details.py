@@ -15,35 +15,41 @@
 #
 import proto  # type: ignore
 
-
 __protobuf__ = proto.module(
-    package='google.cloud.securitycenter.v1p1beta1',
+    package="google.cloud.securitycenter.v1",
     manifest={
-        'Folder',
+        "ContactDetails",
+        "Contact",
     },
 )
 
 
-class Folder(proto.Message):
-    r"""Message that contains the resource name and display name of a
-    folder resource.
+class ContactDetails(proto.Message):
+    r"""The details pertaining to specific contacts
 
     Attributes:
-        resource_folder (str):
-            Full resource name of this folder. See:
-            https://cloud.google.com/apis/design/resource_names#full_resource_name
-        resource_folder_display_name (str):
-            The user defined display name for this
-            folder.
+        contacts (Sequence[google.cloud.securitycenter_v1.types.Contact]):
+            A list of contacts
     """
 
-    resource_folder = proto.Field(
+    contacts = proto.RepeatedField(
+        proto.MESSAGE,
+        number=1,
+        message="Contact",
+    )
+
+
+class Contact(proto.Message):
+    r"""Representa a single contact's email address
+
+    Attributes:
+        email (str):
+            An email address e.g. "person123@company.com".
+    """
+
+    email = proto.Field(
         proto.STRING,
         number=1,
-    )
-    resource_folder_display_name = proto.Field(
-        proto.STRING,
-        number=2,
     )
 
 

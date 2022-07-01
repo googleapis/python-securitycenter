@@ -65,6 +65,7 @@ from google.cloud.securitycenter_v1.types import (
     bigquery_export,
     compliance,
     connection,
+    contact_details,
     exfiltration,
 )
 from google.cloud.securitycenter_v1.types import iam_binding, indicator, mitre_attack

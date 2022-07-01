@@ -25,6 +25,7 @@ from google.cloud.securitycenter_v1.types.asset import Asset
 from google.cloud.securitycenter_v1.types.bigquery_export import BigQueryExport
 from google.cloud.securitycenter_v1.types.compliance import Compliance
 from google.cloud.securitycenter_v1.types.connection import Connection
+from google.cloud.securitycenter_v1.types.contact_details import Contact, ContactDetails
 from google.cloud.securitycenter_v1.types.exfiltration import (
     ExfilResource,
     Exfiltration,
@@ -112,6 +113,8 @@ __all__ = (
     "BigQueryExport",
     "Compliance",
     "Connection",
+    "Contact",
+    "ContactDetails",
     "ExfilResource",
     "Exfiltration",
     "ExternalSystem",

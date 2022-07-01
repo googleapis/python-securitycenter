@@ -30,6 +30,10 @@ class Process(proto.Message):
     r"""Represents an operating system process.
 
     Attributes:
+        name (str):
+            The process name visible in utilities like ``top`` and
+            ``ps``; it can be accessed via ``/proc/[pid]/comm`` and
+            changed with ``prctl(PR_SET_NAME)``.
         binary (google.cloud.securitycenter_v1.types.File):
             File information for the process executable.
         libraries (Sequence[google.cloud.securitycenter_v1.types.File]):
@@ -54,6 +58,10 @@ class Process(proto.Message):
             The parent process id.
     """
 
+    name = proto.Field(
+        proto.STRING,
+        number=12,
+    )
     binary = proto.Field(
         proto.MESSAGE,
         number=3,
