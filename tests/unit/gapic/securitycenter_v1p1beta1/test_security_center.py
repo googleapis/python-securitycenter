@@ -7937,7 +7937,6 @@ def test_security_center_transport_auth_adc(transport_class):
     [
         transports.SecurityCenterGrpcTransport,
         transports.SecurityCenterGrpcAsyncIOTransport,
-        transports.SecurityCenterRestTransport,
     ],
 )
 def test_security_center_transport_auth_gdch_credentials(transport_class):
