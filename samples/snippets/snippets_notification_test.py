@@ -133,7 +133,9 @@ def test_get_notification_config(new_notification_config_for_get):
 
 
 def test_list_notification_configs():
-    iterator = snippets_notification_configs.list_notification_configs(f"organizations/{ORG_ID}")
+    iterator = snippets_notification_configs.list_notification_configs(
+        f"organizations/{ORG_ID}"
+    )
     assert iterator is not None
 
 
