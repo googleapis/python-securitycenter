@@ -66,7 +66,7 @@ def delete_notification_config(parent_id, notification_config_id):
 
     notification_config_name = (
         f"{parent_id}/notificationConfigs/{notification_config_id}"
-        )
+    )
 
     client.delete_notification_config(request={"name": notification_config_name})
     print(f"Deleted notification config: {notification_config_name}")
@@ -90,7 +90,7 @@ def get_notification_config(parent_id, notification_config_id):
 
     notification_config_name = (
         f"{parent_id}/notificationConfigs/{notification_config_id}"
-        )
+    )
 
     notification_config = client.get_notification_config(
         request={"name": notification_config_name}
@@ -143,7 +143,7 @@ def update_notification_config(parent_id, notification_config_id, pubsub_topic):
 
     notification_config_name = (
         f"{parent_id}/notificationConfigs/{notification_config_id}"
-        )
+    )
 
     updated_description = "New updated description"
     updated_filter = 'state = "INACTIVE"'
