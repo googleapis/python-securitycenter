@@ -28,15 +28,15 @@ def create_notification_config(organization_id, notification_config_id, pubsub_t
     # TODO: pubsub_topic = "projects/{your-project-id}/topics/{your-topic-ic}"
     # Ensure this ServiceAccount has the "pubsub.topics.setIamPolicy" permission on the new topic.
 
-    # parent_name must be in one of the following formats:
+    # parent_id must be in one of the following formats:
     # "organizations/{organization_id}"
     # "projects/{project_id}"
     # "folders/{folder_id}"
-    parent_name = f"organizations/{organization_id}"
+    parent_id = f"organizations/{organization_id}"
 
     created_notification_config = client.create_notification_config(
         request={
-            "parent": parent_name,
+            "parent": parent_id,
             "config_id": notification_config_id,
             "notification_config": {
                 "description": "Notification for active findings",
@@ -61,14 +61,14 @@ def delete_notification_config(organization_id, notification_config_id):
     # TODO: organization_id = "your-org-id"
     # TODO: notification_config_id = "your-config-id"
 
-    # parent_name must be in one of the following formats:
+    # parent_id must be in one of the following formats:
     # "organizations/{organization_id}"
     # "projects/{project_id}"
     # "folders/{folder_id}"
-    parent_name = f"organizations/{organization_id}"
+    parent_id = f"organizations/{organization_id}"
 
     notification_config_name = (
-        f"{parent_name}/notificationConfigs/{notification_config_id}"
+        f"{parent_id}/notificationConfigs/{notification_config_id}"
         )
 
     client.delete_notification_config(request={"name": notification_config_name})
@@ -87,14 +87,14 @@ def get_notification_config(organization_id, notification_config_id):
     # TODO: organization_id = "your-org-id"
     # TODO: notification_config_id = "your-config-id"
 
-    # parent_name must be in one of the following formats:
+    # parent_id must be in one of the following formats:
     # "organizations/{organization_id}"
     # "projects/{project_id}"
     # "folders/{folder_id}"
-    parent_name = f"organizations/{organization_id}"
+    parent_id = f"organizations/{organization_id}"
 
     notification_config_name = (
-        f"{parent_name}/notificationConfigs/{notification_config_id}"
+        f"{parent_id}/notificationConfigs/{notification_config_id}"
         )
 
     notification_config = client.get_notification_config(
@@ -112,14 +112,14 @@ def list_notification_configs(organization_id):
 
     client = securitycenter.SecurityCenterClient()
 
-    # parent_name must be in one of the following formats:
+    # parent_id must be in one of the following formats:
     # "organizations/{organization_id}"
     # "projects/{project_id}"
     # "folders/{folder_id}"
-    parent_name = f"organizations/{organization_id}"
+    parent_id = f"organizations/{organization_id}"
 
     notification_configs_iterator = client.list_notification_configs(
-        request={"parent": parent_name}
+        request={"parent": parent_id}
     )
     for i, config in enumerate(notification_configs_iterator):
         print(f"{i}: notification_config: {config}")
@@ -140,13 +140,13 @@ def update_notification_config(organization_id, notification_config_id, pubsub_t
     # If updating a pubsub_topic, ensure this ServiceAccount has the
     # "pubsub.topics.setIamPolicy" permission on the new topic.
 
-    # parent_name must be in one of the following formats:
+    # parent_id must be in one of the following formats:
     # "organizations/{organization_id}"
     # "projects/{project_id}"
     # "folders/{folder_id}"
-    parent_name = f"organizations/{organization_id}"
+    parent_id = f"organizations/{organization_id}"
     notification_config_name = (
-        f"{parent_name}/notificationConfigs/{notification_config_id}"
+        f"{parent_id}/notificationConfigs/{notification_config_id}"
         )
 
     updated_description = "New updated description"
