@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 
 from google.api_core import client_options as client_options_lib
 from google.api_core import exceptions as core_exceptions
@@ -100,7 +111,7 @@ class SecurityCenterClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[SecurityCenterTransport]:
         """Returns an appropriate transport class.
 
@@ -553,7 +564,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, SecurityCenterTransport, None] = None,
+        transport: Optional[Union[str, SecurityCenterTransport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -651,11 +662,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def bulk_mute_findings(
         self,
-        request: Union[securitycenter_service.BulkMuteFindingsRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.BulkMuteFindingsRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Kicks off an LRO to bulk mute findings for a parent
@@ -780,12 +793,14 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def create_source(
         self,
-        request: Union[securitycenter_service.CreateSourceRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.CreateSourceRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
-        source: gcs_source.Source = None,
+        parent: Optional[str] = None,
+        source: Optional[gcs_source.Source] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcs_source.Source:
         r"""Creates a source.
@@ -897,13 +912,15 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def create_finding(
         self,
-        request: Union[securitycenter_service.CreateFindingRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.CreateFindingRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
-        finding_id: str = None,
-        finding: gcs_finding.Finding = None,
+        parent: Optional[str] = None,
+        finding_id: Optional[str] = None,
+        finding: Optional[gcs_finding.Finding] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcs_finding.Finding:
         r"""Creates a finding. The corresponding source must
@@ -1033,13 +1050,15 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def create_mute_config(
         self,
-        request: Union[securitycenter_service.CreateMuteConfigRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.CreateMuteConfigRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
-        mute_config: gcs_mute_config.MuteConfig = None,
-        mute_config_id: str = None,
+        parent: Optional[str] = None,
+        mute_config: Optional[gcs_mute_config.MuteConfig] = None,
+        mute_config_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcs_mute_config.MuteConfig:
         r"""Creates a mute config.
@@ -1166,15 +1185,17 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def create_notification_config(
         self,
-        request: Union[
-            securitycenter_service.CreateNotificationConfigRequest, dict
+        request: Optional[
+            Union[securitycenter_service.CreateNotificationConfigRequest, dict]
         ] = None,
         *,
-        parent: str = None,
-        config_id: str = None,
-        notification_config: gcs_notification_config.NotificationConfig = None,
+        parent: Optional[str] = None,
+        config_id: Optional[str] = None,
+        notification_config: Optional[
+            gcs_notification_config.NotificationConfig
+        ] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcs_notification_config.NotificationConfig:
         r"""Creates a notification config.
@@ -1306,11 +1327,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def delete_mute_config(
         self,
-        request: Union[securitycenter_service.DeleteMuteConfigRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.DeleteMuteConfigRequest, dict]
+        ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes an existing mute config.
@@ -1398,13 +1421,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def delete_notification_config(
         self,
-        request: Union[
-            securitycenter_service.DeleteNotificationConfigRequest, dict
+        request: Optional[
+            Union[securitycenter_service.DeleteNotificationConfigRequest, dict]
         ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes a notification config.
@@ -1495,11 +1518,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def get_big_query_export(
         self,
-        request: Union[securitycenter_service.GetBigQueryExportRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.GetBigQueryExportRequest, dict]
+        ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> bigquery_export.BigQueryExport:
         r"""Gets a big query export.
@@ -1600,11 +1625,11 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def get_iam_policy(
         self,
-        request: Union[iam_policy_pb2.GetIamPolicyRequest, dict] = None,
+        request: Optional[Union[iam_policy_pb2.GetIamPolicyRequest, dict]] = None,
         *,
-        resource: str = None,
+        resource: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> policy_pb2.Policy:
         r"""Gets the access control policy on the specified
@@ -1764,11 +1789,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def get_mute_config(
         self,
-        request: Union[securitycenter_service.GetMuteConfigRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.GetMuteConfigRequest, dict]
+        ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> mute_config.MuteConfig:
         r"""Gets a mute config.
@@ -1870,13 +1897,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def get_notification_config(
         self,
-        request: Union[
-            securitycenter_service.GetNotificationConfigRequest, dict
+        request: Optional[
+            Union[securitycenter_service.GetNotificationConfigRequest, dict]
         ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> notification_config.NotificationConfig:
         r"""Gets a notification config.
@@ -1979,13 +2006,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def get_organization_settings(
         self,
-        request: Union[
-            securitycenter_service.GetOrganizationSettingsRequest, dict
+        request: Optional[
+            Union[securitycenter_service.GetOrganizationSettingsRequest, dict]
         ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> organization_settings.OrganizationSettings:
         r"""Gets the settings for an organization.
@@ -2089,11 +2116,11 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def get_source(
         self,
-        request: Union[securitycenter_service.GetSourceRequest, dict] = None,
+        request: Optional[Union[securitycenter_service.GetSourceRequest, dict]] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> source.Source:
         r"""Gets a source.
@@ -2196,10 +2223,12 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def group_assets(
         self,
-        request: Union[securitycenter_service.GroupAssetsRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.GroupAssetsRequest, dict]
+        ] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.GroupAssetsPager:
         r"""Filters an organization's assets and  groups them by
@@ -2292,12 +2321,14 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def group_findings(
         self,
-        request: Union[securitycenter_service.GroupFindingsRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.GroupFindingsRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
-        group_by: str = None,
+        parent: Optional[str] = None,
+        group_by: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.GroupFindingsPager:
         r"""Filters an organization or source's findings and groups them by
@@ -2445,10 +2476,10 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def list_assets(
         self,
-        request: Union[securitycenter_service.ListAssetsRequest, dict] = None,
+        request: Optional[Union[securitycenter_service.ListAssetsRequest, dict]] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListAssetsPager:
         r"""Lists an organization's assets.
@@ -2537,10 +2568,12 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def list_findings(
         self,
-        request: Union[securitycenter_service.ListFindingsRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.ListFindingsRequest, dict]
+        ] = None,
         *,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListFindingsPager:
         r"""Lists an organization or source's findings.
@@ -2634,11 +2667,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def list_mute_configs(
         self,
-        request: Union[securitycenter_service.ListMuteConfigsRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.ListMuteConfigsRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListMuteConfigsPager:
         r"""Lists mute configs.
@@ -2752,13 +2787,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def list_notification_configs(
         self,
-        request: Union[
-            securitycenter_service.ListNotificationConfigsRequest, dict
+        request: Optional[
+            Union[securitycenter_service.ListNotificationConfigsRequest, dict]
         ] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListNotificationConfigsPager:
         r"""Lists notification configs.
@@ -2875,11 +2910,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def list_sources(
         self,
-        request: Union[securitycenter_service.ListSourcesRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.ListSourcesRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListSourcesPager:
         r"""Lists all sources belonging to an organization.
@@ -2990,11 +3027,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def run_asset_discovery(
         self,
-        request: Union[securitycenter_service.RunAssetDiscoveryRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.RunAssetDiscoveryRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> operation.Operation:
         r"""Runs asset discovery. The discovery is tracked with a
@@ -3113,13 +3152,15 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def set_finding_state(
         self,
-        request: Union[securitycenter_service.SetFindingStateRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.SetFindingStateRequest, dict]
+        ] = None,
         *,
-        name: str = None,
-        state: finding.Finding.State = None,
-        start_time: timestamp_pb2.Timestamp = None,
+        name: Optional[str] = None,
+        state: Optional[finding.Finding.State] = None,
+        start_time: Optional[timestamp_pb2.Timestamp] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> finding.Finding:
         r"""Updates the state of a finding.
@@ -3246,12 +3287,12 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def set_mute(
         self,
-        request: Union[securitycenter_service.SetMuteRequest, dict] = None,
+        request: Optional[Union[securitycenter_service.SetMuteRequest, dict]] = None,
         *,
-        name: str = None,
-        mute: finding.Finding.Mute = None,
+        name: Optional[str] = None,
+        mute: Optional[finding.Finding.Mute] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> finding.Finding:
         r"""Updates the mute state of a finding.
@@ -3371,11 +3412,11 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def set_iam_policy(
         self,
-        request: Union[iam_policy_pb2.SetIamPolicyRequest, dict] = None,
+        request: Optional[Union[iam_policy_pb2.SetIamPolicyRequest, dict]] = None,
         *,
-        resource: str = None,
+        resource: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> policy_pb2.Policy:
         r"""Sets the access control policy on the specified
@@ -3535,12 +3576,12 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def test_iam_permissions(
         self,
-        request: Union[iam_policy_pb2.TestIamPermissionsRequest, dict] = None,
+        request: Optional[Union[iam_policy_pb2.TestIamPermissionsRequest, dict]] = None,
         *,
-        resource: str = None,
-        permissions: Sequence[str] = None,
+        resource: Optional[str] = None,
+        permissions: Optional[MutableSequence[str]] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> iam_policy_pb2.TestIamPermissionsResponse:
         r"""Returns the permissions that a caller has on the
@@ -3587,7 +3628,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 This corresponds to the ``resource`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            permissions (Sequence[str]):
+            permissions (MutableSequence[str]):
                 The set of permissions to check for the ``resource``.
                 Permissions with wildcards (such as '*' or 'storage.*')
                 are not allowed. For more information see `IAM
@@ -3651,12 +3692,14 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def update_external_system(
         self,
-        request: Union[securitycenter_service.UpdateExternalSystemRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.UpdateExternalSystemRequest, dict]
+        ] = None,
         *,
-        external_system: gcs_external_system.ExternalSystem = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        external_system: Optional[gcs_external_system.ExternalSystem] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcs_external_system.ExternalSystem:
         r"""Updates external system. This is for a given finding.
@@ -3766,11 +3809,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def update_finding(
         self,
-        request: Union[securitycenter_service.UpdateFindingRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.UpdateFindingRequest, dict]
+        ] = None,
         *,
-        finding: gcs_finding.Finding = None,
+        finding: Optional[gcs_finding.Finding] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcs_finding.Finding:
         r"""Creates or updates a finding. The corresponding
@@ -3882,12 +3927,14 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def update_mute_config(
         self,
-        request: Union[securitycenter_service.UpdateMuteConfigRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.UpdateMuteConfigRequest, dict]
+        ] = None,
         *,
-        mute_config: gcs_mute_config.MuteConfig = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        mute_config: Optional[gcs_mute_config.MuteConfig] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcs_mute_config.MuteConfig:
         r"""Updates a mute config.
@@ -4001,14 +4048,16 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def update_notification_config(
         self,
-        request: Union[
-            securitycenter_service.UpdateNotificationConfigRequest, dict
+        request: Optional[
+            Union[securitycenter_service.UpdateNotificationConfigRequest, dict]
         ] = None,
         *,
-        notification_config: gcs_notification_config.NotificationConfig = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        notification_config: Optional[
+            gcs_notification_config.NotificationConfig
+        ] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcs_notification_config.NotificationConfig:
         r"""Updates a notification config. The following update fields are
@@ -4127,13 +4176,15 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def update_organization_settings(
         self,
-        request: Union[
-            securitycenter_service.UpdateOrganizationSettingsRequest, dict
+        request: Optional[
+            Union[securitycenter_service.UpdateOrganizationSettingsRequest, dict]
         ] = None,
         *,
-        organization_settings: gcs_organization_settings.OrganizationSettings = None,
+        organization_settings: Optional[
+            gcs_organization_settings.OrganizationSettings
+        ] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcs_organization_settings.OrganizationSettings:
         r"""Updates an organization's settings.
@@ -4237,11 +4288,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def update_source(
         self,
-        request: Union[securitycenter_service.UpdateSourceRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.UpdateSourceRequest, dict]
+        ] = None,
         *,
-        source: gcs_source.Source = None,
+        source: Optional[gcs_source.Source] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcs_source.Source:
         r"""Updates a source.
@@ -4344,11 +4397,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def update_security_marks(
         self,
-        request: Union[securitycenter_service.UpdateSecurityMarksRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.UpdateSecurityMarksRequest, dict]
+        ] = None,
         *,
-        security_marks: gcs_security_marks.SecurityMarks = None,
+        security_marks: Optional[gcs_security_marks.SecurityMarks] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> gcs_security_marks.SecurityMarks:
         r"""Updates security marks.
@@ -4453,13 +4508,15 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def create_big_query_export(
         self,
-        request: Union[securitycenter_service.CreateBigQueryExportRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.CreateBigQueryExportRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
-        big_query_export: bigquery_export.BigQueryExport = None,
-        big_query_export_id: str = None,
+        parent: Optional[str] = None,
+        big_query_export: Optional[bigquery_export.BigQueryExport] = None,
+        big_query_export_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> bigquery_export.BigQueryExport:
         r"""Creates a big query export.
@@ -4581,11 +4638,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def delete_big_query_export(
         self,
-        request: Union[securitycenter_service.DeleteBigQueryExportRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.DeleteBigQueryExportRequest, dict]
+        ] = None,
         *,
-        name: str = None,
+        name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes an existing big query export.
@@ -4674,12 +4733,14 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def update_big_query_export(
         self,
-        request: Union[securitycenter_service.UpdateBigQueryExportRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.UpdateBigQueryExportRequest, dict]
+        ] = None,
         *,
-        big_query_export: bigquery_export.BigQueryExport = None,
-        update_mask: field_mask_pb2.FieldMask = None,
+        big_query_export: Optional[bigquery_export.BigQueryExport] = None,
+        update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> bigquery_export.BigQueryExport:
         r"""Updates a BigQuery export.
@@ -4788,11 +4849,13 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
     def list_big_query_exports(
         self,
-        request: Union[securitycenter_service.ListBigQueryExportsRequest, dict] = None,
+        request: Optional[
+            Union[securitycenter_service.ListBigQueryExportsRequest, dict]
+        ] = None,
         *,
-        parent: str = None,
+        parent: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListBigQueryExportsPager:
         r"""Lists BigQuery exports. Note that when requesting
