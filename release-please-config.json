@@ -7,17 +7,17 @@
         "google/cloud/securitycenter/gapic_version.py",
         {
           "type": "json",
-          "path": "samples/generated_samples/snippet_metadata_securitycenter_v1.json",
+          "path": "samples/generated_samples/snippet_metadata_google.cloud.securitycenter.v1p1beta1.json",
           "jsonpath": "$.clientLibrary.version"
         },
         {
           "type": "json",
-          "path": "samples/generated_samples/snippet_metadata_securitycenter_v1p1beta1.json",
+          "path": "samples/generated_samples/snippet_metadata_google.cloud.securitycenter.v1.json",
           "jsonpath": "$.clientLibrary.version"
         },
         {
           "type": "json",
-          "path": "samples/generated_samples/snippet_metadata_securitycenter_v1beta1.json",
+          "path": "samples/generated_samples/snippet_metadata_google.cloud.securitycenter.v1beta1.json",
           "jsonpath": "$.clientLibrary.version"
         }
       ]
