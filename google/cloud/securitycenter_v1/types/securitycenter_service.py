@@ -1705,7 +1705,7 @@ class SetFindingStateRequest(proto.Message):
             Required. The relative resource name of the finding. See:
             https://cloud.google.com/apis/design/resource_names#relative_resource_name
             Example:
-            "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+            "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
         state (google.cloud.securitycenter_v1.types.Finding.State):
             Required. The desired State of the finding.
         start_time (google.protobuf.timestamp_pb2.Timestamp):
@@ -1737,9 +1737,9 @@ class SetMuteRequest(proto.Message):
             Required. The relative resource name of the finding. See:
             https://cloud.google.com/apis/design/resource_names#relative_resource_name
             Example:
-            "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
-            "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
-            "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+            "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+            "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+            "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
         mute (google.cloud.securitycenter_v1.types.Finding.Mute):
             Required. The desired state of the Mute.
     """
@@ -2023,8 +2023,8 @@ class UpdateBigQueryExportRequest(proto.Message):
 
 
 class ListBigQueryExportsRequest(proto.Message):
-    r"""Request message for listing  BigQuery exports at a given
-    scope e.g. organization, folder or project.
+    r"""Request message for listing BigQuery exports at a given scope
+    e.g. organization, folder or project.
 
     Attributes:
         parent (str):

@@ -78,6 +78,7 @@ from google.cloud.securitycenter_v1.types import (
     organization_settings as gcs_organization_settings,
 )
 from google.cloud.securitycenter_v1.types import security_marks as gcs_security_marks
+from google.cloud.securitycenter_v1.types import file
 from google.cloud.securitycenter_v1.types import finding
 from google.cloud.securitycenter_v1.types import finding as gcs_finding
 from google.cloud.securitycenter_v1.types import mute_config
@@ -3201,7 +3202,7 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 See:
                 https://cloud.google.com/apis/design/resource_names#relative_resource_name
                 Example:
-                "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+                "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}".
 
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -3333,9 +3334,9 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
                 See:
                 https://cloud.google.com/apis/design/resource_names#relative_resource_name
                 Example:
-                "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}",
-                "folders/{folder_id}/sources/{source_id}/finding/{finding_id}",
-                "projects/{project_id}/sources/{source_id}/finding/{finding_id}".
+                "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
+                "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
+                "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
 
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -4894,9 +4895,9 @@ class SecurityCenterClient(metaclass=SecurityCenterClientMeta):
 
         Args:
             request (Union[google.cloud.securitycenter_v1.types.ListBigQueryExportsRequest, dict]):
-                The request object. Request message for listing
-                BigQuery exports at a given scope e.g. organization,
-                folder or project.
+                The request object. Request message for listing BigQuery
+                exports at a given scope e.g. organization, folder or
+                project.
             parent (str):
                 Required. The parent, which owns the collection of
                 BigQuery exports. Its format is

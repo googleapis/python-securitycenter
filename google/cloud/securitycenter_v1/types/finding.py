@@ -25,13 +25,13 @@ from google.cloud.securitycenter_v1.types import (
     contact_details,
     container,
 )
+from google.cloud.securitycenter_v1.types import external_system, file, iam_binding
 from google.cloud.securitycenter_v1.types import exfiltration as gcs_exfiltration
 from google.cloud.securitycenter_v1.types import mitre_attack as gcs_mitre_attack
 from google.cloud.securitycenter_v1.types import security_marks as gcs_security_marks
 from google.cloud.securitycenter_v1.types import vulnerability as gcs_vulnerability
 from google.cloud.securitycenter_v1.types import access as gcs_access
 from google.cloud.securitycenter_v1.types import database as gcs_database
-from google.cloud.securitycenter_v1.types import external_system, iam_binding
 from google.cloud.securitycenter_v1.types import indicator as gcs_indicator
 from google.cloud.securitycenter_v1.types import kubernetes as gcs_kubernetes
 from google.cloud.securitycenter_v1.types import process
@@ -210,6 +210,8 @@ class Finding(proto.Message):
             finding.
         database (google.cloud.securitycenter_v1.types.Database):
             Database associated with the finding.
+        files (MutableSequence[google.cloud.securitycenter_v1.types.File]):
+            File associated with the finding.
     """
 
     class State(proto.Enum):
@@ -401,6 +403,11 @@ class Finding(proto.Message):
         proto.MESSAGE,
         number=44,
         message=gcs_database.Database,
+    )
+    files: MutableSequence[file.File] = proto.RepeatedField(
+        proto.MESSAGE,
+        number=46,
+        message=file.File,
     )
 
 

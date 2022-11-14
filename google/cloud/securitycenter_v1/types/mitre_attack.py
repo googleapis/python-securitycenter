@@ -113,6 +113,7 @@ class MitreAttack(proto.Message):
         NETWORK_SERVICE_DISCOVERY = 32
         ACCESS_TOKEN_MANIPULATION = 33
         ABUSE_ELEVATION_CONTROL_MECHANISM = 34
+        DEFAULT_ACCOUNTS = 35
 
     primary_tactic: Tactic = proto.Field(
         proto.ENUM,
