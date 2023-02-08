@@ -96,6 +96,7 @@ from google.cloud.securitycenter_v1.types import vulnerability
 from .transports.base import DEFAULT_CLIENT_INFO, SecurityCenterTransport
 from .transports.grpc import SecurityCenterGrpcTransport
 from .transports.grpc_asyncio import SecurityCenterGrpcAsyncIOTransport
+from .transports.rest import SecurityCenterRestTransport
 
 
 class SecurityCenterClientMeta(type):
@@ -111,6 +112,7 @@ class SecurityCenterClientMeta(type):
     )  # type: Dict[str, Type[SecurityCenterTransport]]
     _transport_registry["grpc"] = SecurityCenterGrpcTransport
     _transport_registry["grpc_asyncio"] = SecurityCenterGrpcAsyncIOTransport
+    _transport_registry["rest"] = SecurityCenterRestTransport
 
     def get_transport_class(
         cls,
