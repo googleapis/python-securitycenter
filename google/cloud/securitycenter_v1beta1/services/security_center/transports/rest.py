@@ -17,7 +17,7 @@
 import dataclasses
 import json  # type: ignore
 import re
-from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
+from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
 
 from google.api_core import (
@@ -798,7 +798,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("CreateFinding")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {
             "findingId": "",
         }
 
@@ -906,7 +906,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("CreateSource")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1009,7 +1009,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("GetIamPolicy")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1178,7 +1178,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("GetOrganizationSettings")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1273,7 +1273,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("GetSource")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1365,7 +1365,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("GroupAssets")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1464,7 +1464,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("GroupFindings")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1563,7 +1563,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("ListAssets")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1649,7 +1649,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("ListFindings")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1737,7 +1737,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("ListSources")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1823,7 +1823,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("RunAssetDiscovery")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1923,7 +1923,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("SetFindingState")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -2031,7 +2031,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("SetIamPolicy")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -2200,7 +2200,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("TestIamPermissions")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -2297,7 +2297,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("UpdateFinding")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -2403,7 +2403,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("UpdateOrganizationSettings")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -2508,7 +2508,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("UpdateSecurityMarks")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -2620,7 +2620,7 @@ class SecurityCenterRestTransport(SecurityCenterTransport):
         def __hash__(self):
             return hash("UpdateSource")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
