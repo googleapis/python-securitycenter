@@ -19,35 +19,28 @@ from typing import MutableMapping, MutableSequence
 
 import proto  # type: ignore
 
-
 __protobuf__ = proto.module(
-    package='google.cloud.securitycenter.v1',
+    package="google.cloud.securitycenter.v1",
     manifest={
-        'Folder',
+        "CloudDlpDataProfile",
     },
 )
 
 
-class Folder(proto.Message):
-    r"""Message that contains the resource name and display name of a
-    folder resource.
+class CloudDlpDataProfile(proto.Message):
+    r"""The `data
+    profile <https://cloud.google.com/dlp/docs/data-profiles>`__
+    associated with the finding.
 
     Attributes:
-        resource_folder (str):
-            Full resource name of this folder. See:
-            https://cloud.google.com/apis/design/resource_names#full_resource_name
-        resource_folder_display_name (str):
-            The user defined display name for this
-            folder.
+        data_profile (str):
+            Name of the data profile, for example,
+            ``projects/123/locations/europe/tableProfiles/8383929``.
     """
 
-    resource_folder: str = proto.Field(
+    data_profile: str = proto.Field(
         proto.STRING,
         number=1,
-    )
-    resource_folder_display_name: str = proto.Field(
-        proto.STRING,
-        number=2,
     )
 
 
